@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter-tight: "Inter Tight", sans-serif;
+}
+
+* {
+  font-family: 'Inter Tight', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter Tight', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.bp-card {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bp-card {
+    will-change: auto;
+  }
+}
