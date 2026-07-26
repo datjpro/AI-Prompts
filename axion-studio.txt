@@ -1,0 +1,47 @@
+AXION STUDIO — Design Agency Landing Page
+==========================================
+
+PROJECT: Axion Studio
+TYPE: Design Agency Landing Page
+TECH STACK: React 18 + TypeScript + Vite + Tailwind CSS 3.4
+PACKAGES: shaders (npm: shaders), lucide-react
+
+---
+
+SECTION 1: HERO (Full Viewport Height)
+---------------------------------------
+- Background: Light gray #EFEFEF with full-screen animated shader overlay (absolute, inset-0, z-10, pointer-events-none)
+- Shader Stack (from shaders/react):
+  • Swirl: colorA=#ffffff, colorB=#f0f0f0, detail=1.7
+  • ChromaFlow: baseColor=#ffffff, downColor/leftColor/rightColor/upColor=#ff5f03, momentum=13, radius=3.5
+  • FlutedGlass: aberration=0.61, angle=31, frequency=8, highlight=0.12, highlightSoftness=0, lightAngle=-90, refraction=4, shape="rounded", softness=1, speed=0.15
+  • FilmGrain: strength=0.05
+
+- Navigation: Pill-shaped white navbar (bg-white rounded-full, 5px padding), max-w-[1440px], z-20
+  • LEFT: Dark circle logo (w-9 h-9 sm:w-10 sm:h-10, bg-gray-900) with "AX" text + nav links (md+): Projects, Studio, Journal, Connect
+  • RIGHT (md+): "Taking on projects for Q1 2026" text, live London time with Clock icon, CTA button with text-roll hover animation
+  • MOBILE: Menu/Close toggle button
+
+- Mobile Menu: Fixed overlay with black/60 backdrop, white bottom sheet sliding up from bottom
+- Hero Content: Positioned at bottom of viewport, headline with responsive clamped font sizes, orange CTA button, partner badge with starburst SVG
+
+SECTION 2: ABOUT (White Background)
+------------------------------------
+- Badge: Numbered circle "1" + "Introducing Axion" pill label
+- Heading: "Strategy-led creatives, delivering results in digital and beyond."
+- Responsive layout: Stacked on mobile, 3-column grid on desktop (26% / 1fr / 48%)
+- Two images with aspect ratios, orange "About our studio" button with text-roll animation
+
+SECTION 3: CASE STUDIES (Light Gray Background #F5F5F5)
+--------------------------------------------------------
+- Badge: Numbered circle "2" + "Featured client work" pill label
+- Heading: "Our projects"
+- 2-column grid with video cards:
+  • Card 1 (Narrativ): aspect-[329/246], dark bg, white expand-on-hover button with link icon
+  • Card 2 (Luminar): aspect-square, gray bg, dark expand-on-hover button with arrow icon
+
+GLOBAL STYLES:
+- .liquid-glass and .liquid-glass-strong utility classes
+- System default font
+- All animations: duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]
+- Max content width: 1440px centered
