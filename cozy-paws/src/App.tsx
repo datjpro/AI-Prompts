@@ -84,8 +84,8 @@ export default function App() {
         <div className="hidden lg:block w-full h-full relative">
           
           {/* Centered Heading */}
-          <div className="relative z-5 text-center px-12 pt-[3.5rem] xl:pt-[4.5rem]">
-            <h1 className="font-serif-display text-[#1a3d1a] text-[clamp(64px,7vw,115px)] leading-[0.98] tracking-tight">
+          <div className="relative z-20 text-center px-12 pt-[1.5rem] xl:pt-[2.2rem]">
+            <h1 className="font-serif-display text-[#1a3d1a] text-[clamp(58px,6.5vw,105px)] leading-[1.02] tracking-tight">
               <div>
                 <span className="inline-block animate-word-pop delay-200 mr-4">Everything</span>
               </div>
@@ -139,7 +139,7 @@ export default function App() {
               <img 
                 src={ASSETS.bottomLeft} 
                 alt="Cat in house" 
-                className="w-full h-auto block max-h-[min(65vh,52vw)] object-cover object-bottom"
+                className="w-full h-auto block max-h-[min(55vh,44vw)] object-cover object-bottom"
               />
               <div className="absolute bottom-8 left-8 xl:left-14 z-20 flex flex-col gap-1 text-left animate-fade-up delay-1000">
                 <div className="flex items-center gap-2.5">
@@ -162,7 +162,7 @@ export default function App() {
               <img 
                 src={ASSETS.bottomCenter} 
                 alt="Main pet hero" 
-                className="w-full h-auto block max-h-[min(82vh,68vw)] object-cover object-bottom"
+                className="w-full h-auto block max-h-[min(70vh,58vw)] object-cover object-bottom"
               />
               <div className="absolute bottom-8 left-0 right-0 z-20 flex flex-col items-center gap-3 px-4 text-center animate-fade-up delay-1100">
                 <h2 className="text-white text-2xl xl:text-3xl font-semibold drop-shadow-md tracking-tight">
@@ -180,7 +180,7 @@ export default function App() {
               <img 
                 src={ASSETS.bottomRight} 
                 alt="Dog playing" 
-                className="w-full h-auto block max-h-[min(65vh,52vw)] object-cover object-bottom"
+                className="w-full h-auto block max-h-[min(55vh,44vw)] object-cover object-bottom"
               />
               <div className="absolute bottom-8 right-8 xl:right-14 z-20 flex flex-col items-start gap-1 text-left animate-fade-up delay-1200">
                 <div className="flex items-center gap-2">
