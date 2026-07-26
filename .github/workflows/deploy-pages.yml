@@ -28,18 +28,18 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: '22'
 
       - name: Prepare site directory
         run: |
+          set -e
           mkdir -p _site
-          # Copy Root Hub Launcher index.html
           cp index.html _site/
-          # Copy Prompt files (.txt) to _site for viewing
           cp *.txt _site/ 2>/dev/null || true
 
       - name: Build Sub-projects
         run: |
+          set -e
           PROJECTS=(
             "atelier-agency"
             "aura-email"
@@ -61,13 +61,13 @@ jobs:
 
           for proj in "${PROJECTS[@]}"; do
             if [ -d "$proj" ]; then
-              echo "----------------------------------------"
-              echo "Building $proj..."
-              echo "----------------------------------------"
+              echo "========================================"
+              echo "Building: $proj"
+              echo "========================================"
               cd "$proj"
               if [ -f "package.json" ]; then
-                npm install --legacy-peer-deps
-                npx vite build
+                npm ci || npm install --legacy-peer-deps
+                ./node_modules/.bin/vite build
                 mkdir -p "../_site/$proj"
                 cp -r dist/* "../_site/$proj/"
               fi
@@ -75,7 +75,6 @@ jobs:
             fi
           done
 
-          # Handle static single-file project nora-studio
           if [ -d "nora-studio" ]; then
             echo "Copying nora-studio static files..."
             mkdir -p "_site/nora-studio"
