@@ -6,7 +6,7 @@ Bộ sưu tập các dự án Giao diện Web (Frontend Web Applications) cao c�
 
 ## 📌 Tổng quan Repository (Repository Overview)
 
-Repository này chứa **12 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
+Repository này chứa **14 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
 
 ```
 AI-Prompts/
@@ -58,9 +58,17 @@ AI-Prompts/
 │   ├── 📄 leon-archive.txt
 │   └── 📁 leon-archive/
 │
-└── 📐 Prisma Creative Studio - Digital Agency Landing Page
-    ├── 📄 prisma-studio.txt
-    └── 📁 prisma-studio/
+├── 📐 Prisma Creative Studio - Digital Agency Landing Page
+│   ├── 📄 prisma-studio.txt
+│   └── 📁 prisma-studio/
+│
+├── 🎯 Axion Studio - Design Agency Landing Page
+│   ├── 📄 axion-studio.txt
+│   └── 📁 axion-studio/
+│
+└── 🌿 Vibrant Wellness - Holistic Wellness Hero Landing
+    ├── 📄 vibrant-wellness.txt
+    └── 📁 vibrant-wellness/
 ```
 
 ---
@@ -77,7 +85,7 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 
 ---
 
-## 📑 Danh sách Chi tiết 12 Dự án (Detailed Project Breakdown)
+## 📑 Danh sách Chi tiết 14 Dự án (Detailed Project Breakdown)
 
 ### 1. ✈️ Wandor — AI Trip Planner
 * **File Prompt**: [`wandor-travel.txt`](./wandor-travel.txt)
@@ -160,6 +168,20 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`prisma-studio.txt`](./prisma-studio.txt)
 * **Thư mục ứng dụng**: [`prisma-studio/`](./prisma-studio/)
 * **Mô tả**: Landing page toàn diện cho Prisma Creative Studio — đơn vị phát triển giải pháp số.
+
+---
+
+### 13. 🎯 Axion Studio — Design Agency Landing Page
+* **File Prompt**: [`axion-studio.txt`](./axion-studio.txt)
+* **Thư mục ứng dụng**: [`axion-studio/`](./axion-studio/)
+* **Mô tả**: Landing page cho Axion Studio — Design Agency với shader animated hero background (FlutedGlass + ChromaFlow), text-roll hover buttons, và video case study cards.
+
+---
+
+### 14. 🌿 Vibrant Wellness — Holistic Wellness Hero Landing
+* **File Prompt**: [`vibrant-wellness.txt`](./vibrant-wellness.txt)
+* **Thư mục ứng dụng**: [`vibrant-wellness/`](./vibrant-wellness/)
+* **Mô tả**: Hero landing page toàn màn hình cho thương hiệu sức khỏe toàn diện Vibrant Wellness. Thiết kế Liquid Glass UI trên nền video loop, navigation pill trong suốt, menu mobile animation, badge avatar pill, và bottom stats decorative.
 
 ---
 

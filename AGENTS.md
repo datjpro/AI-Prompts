@@ -21,7 +21,7 @@ Tệp tài liệu này quy định các quy tắc hoạt động, quy trình ki�
 
 Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent **BẮT BUỘC** phải kiểm tra danh sách bên dưới để đảm bảo chủ đề/nhiệm vụ không bị trùng lặp với các dự án đã có.
 
-### 📋 Danh mục 12 Dự án Hiện có (Prompt Catalog Index):
+### 📋 Danh mục 14 Dự án Hiện có (Prompt Catalog Index):
 
 | STT | Project Name | Tệp Prompt | Thư mục Dự án | Lĩnh vực (Domain) | Đặc trưng UI/UX & Tính năng chính |
 |---|---|---|---|---|---|
@@ -37,6 +37,8 @@ Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent
 | 10 | **Lumora** | `lumora-app.txt` | `lumora-app/` | Nhà thông minh (Smart Home) | Điều chỉnh nhiệt độ màu ánh sáng, công tắc bật/tắt thiết bị theo phòng, biểu đồ năng lượng |
 | 11 | **Leon Archive** | `leon-archive.txt` | `leon-archive/` | Kho thử nghiệm 3D / R&D | Preview WebGL Shaders, xem chi tiết 3D Assets, tải tài nguyên thiết kế |
 | 12 | **Prisma Studio** | `prisma-studio.txt` | `prisma-studio/` | Digital Agency | Nền Gradient Wave động, khối dịch vụ đa sắc, Form liên hệ tư vấn |
+| 13 | **Axion Studio** | `axion-studio.txt` | `axion-studio/` | Design Agency | Shader animated hero (FlutedGlass + ChromaFlow), text-roll hover buttons, video case study cards with expand-on-hover |
+| 14 | **Vibrant Wellness** | `vibrant-wellness.txt` | `vibrant-wellness/` | Holistic Wellness / Landing | Full-screen looping background video, Liquid Glass UI (backdrop-blur gradient-border), animated mobile menu, avatar badge pill, bottom stats |
 
 ---
 
