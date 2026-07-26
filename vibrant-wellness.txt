@@ -1,0 +1,42 @@
+Build a single-page hero landing page for a holistic wellness brand called "Vibrant Wellness." Use React, TypeScript, Tailwind CSS, and Lucide React icons. Load Google Fonts "Inter" (weights 300, 400, 500, 600, 700) via link tags in the HTML head. The entire page is a full-screen (100vh) section with a looping background video and liquid glass UI elements overlaid on top.
+
+**BACKGROUND VIDEO**
+
+Full-viewport autoplaying, looping, muted, playsInline video with `object-cover`, positioned absolute inset-0. Use this exact URL:
+`https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260715_082433_69699cf8-444b-4484-93cc-053e57896dfd.mp4`
+
+**LIQUID GLASS EFFECT**
+
+Create a `.liquid-glass` CSS class applied to the nav pill, avatar circles, badge, and CTA button:
+- `background: rgba(255,255,255,0.01)` with `background-blend-mode: luminosity`
+- `backdrop-filter: blur(4px)` (with -webkit prefix)
+- No border
+- `box-shadow: inset 0 1px 1px rgba(255,255,255,0.1)`
+- `position: relative; overflow: hidden`
+- `::before` pseudo-element creating a gradient border: absolute inset-0, border-radius inherit, padding 1.4px, background is a vertical linear-gradient from rgba(255,255,255,0.45) at 0%, to 0.15 at 20%, transparent at 40-60%, back to 0.15 at 80% and 0.45 at 100%. Use the mask-composite exclude trick so the gradient only shows as a border. Set `pointer-events: none`.
+
+**NAVIGATION (z-20, top)**
+
+Flex row, justify-between, padding px-5 pt-6 / sm:px-8 sm:pt-8 / md:px-16 lg:px-20.
+- Left: custom SVG logo (32x32, md:36x36), white fill
+- Center (desktop only): liquid-glass rounded-full pill with three links — "Home", "Our Approach", "Healing Methods"
+- Right (desktop only): liquid-glass avatar circle with Lucide CircleUserRound icon
+- Right (mobile only): liquid-glass animated hamburger/close button
+
+**MOBILE MENU OVERLAY (z-10, fixed inset-0, md:hidden)**
+
+Toggle visibility with 500ms ease-out opacity transition. Background: black/80 with backdrop-blur-xl. Centered nav links + account avatar. Content slides from -translate-y-8 to 0.
+
+**MAIN CONTENT (z-10)**
+
+Flex column, justify-between, fills remaining viewport height. Fades to opacity-0 on mobile when menu is open.
+
+Top block:
+1. Badge — liquid-glass pill with 4 overlapping avatars + "our path to natural wellness" text
+2. Heading — "Heal Your Body" / "Naturally" (large responsive typography, tight letter-spacing)
+3. Subtitle — "Holistic wellness. Transformative results."
+4. CTA button — liquid-glass pill "Begin Your Journey"
+
+**BOTTOM STATS**
+
+Two stat columns with decorative icons (dot triangle pattern + checker grid), values and labels.
