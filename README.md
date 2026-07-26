@@ -6,7 +6,7 @@ Bộ sưu tập các dự án Giao diện Web (Frontend Web Applications) cao c�
 
 ## 📌 Tổng quan Repository (Repository Overview)
 
-Repository này chứa **14 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
+Repository này chứa **15 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
 
 ```
 AI-Prompts/
@@ -66,9 +66,13 @@ AI-Prompts/
 │   ├── 📄 axion-studio.txt
 │   └── 📁 axion-studio/
 │
-└── 🌿 Vibrant Wellness - Holistic Wellness Hero Landing
-    ├── 📄 vibrant-wellness.txt
-    └── 📁 vibrant-wellness/
+├── 🌿 Vibrant Wellness - Holistic Wellness Hero Landing
+│   ├── 📄 vibrant-wellness.txt
+│   └── 📁 vibrant-wellness/
+│
+└── 🎨 Nora Studio - Motion Designer Portfolio
+    ├── 📄 nora-studio.txt
+    └── 📁 nora-studio/
 ```
 
 ---
@@ -85,7 +89,7 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 
 ---
 
-## 📑 Danh sách Chi tiết 14 Dự án (Detailed Project Breakdown)
+## 📑 Danh sách Chi tiết 15 Dự án (Detailed Project Breakdown)
 
 ### 1. ✈️ Wandor — AI Trip Planner
 * **File Prompt**: [`wandor-travel.txt`](./wandor-travel.txt)
@@ -182,6 +186,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`vibrant-wellness.txt`](./vibrant-wellness.txt)
 * **Thư mục ứng dụng**: [`vibrant-wellness/`](./vibrant-wellness/)
 * **Mô tả**: Hero landing page toàn màn hình cho thương hiệu sức khỏe toàn diện Vibrant Wellness. Thiết kế Liquid Glass UI trên nền video loop, navigation pill trong suốt, menu mobile animation, badge avatar pill, và bottom stats decorative.
+
+---
+
+### 15. 🎨 Nora Studio — Motion Designer Portfolio
+* **File Prompt**: [`nora-studio.txt`](./nora-studio.txt)
+* **Thư mục ứng dụng**: [`nora-studio/`](./nora-studio/)
+* **Mô tả**: Trang portfolio cá nhân cho Motion Designer với hiệu ứng splash screen staggered, canvas spotlight mouse-reveal, word-by-word blur animation, CTA button với sliding background, và dark glass slide-down menu panel.
 
 ---
 
