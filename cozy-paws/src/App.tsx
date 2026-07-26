@@ -139,9 +139,9 @@ export default function App() {
               <img 
                 src={ASSETS.bottomLeft} 
                 alt="Cat in house" 
-                className="w-full h-auto block max-h-[min(65vh,52vw)] object-cover object-bottom"
+                className="w-full h-auto block max-h-[min(58vh,46vw)] object-cover object-bottom"
               />
-              <div className="absolute bottom-8 left-8 xl:left-14 z-20 flex flex-col gap-1 text-left animate-fade-up delay-1000">
+              <div className="absolute bottom-6 left-8 xl:left-14 z-20 flex flex-col gap-1 text-left animate-fade-up delay-1000">
                 <div className="flex items-center gap-2.5">
                   <span className="text-[#1a3d1a] font-bold text-3xl xl:text-4xl tracking-tight">98K+</span>
                   <div className="flex items-center -space-x-2">
@@ -162,9 +162,9 @@ export default function App() {
               <img 
                 src={ASSETS.bottomCenter} 
                 alt="Main pet hero" 
-                className="w-full h-auto block max-h-[min(82vh,68vw)] object-cover object-bottom"
+                className="w-full h-auto block max-h-[min(74vh,61vw)] object-cover object-bottom"
               />
-              <div className="absolute bottom-8 left-0 right-0 z-20 flex flex-col items-center gap-3 px-4 text-center animate-fade-up delay-1100">
+              <div className="absolute bottom-6 left-0 right-0 z-20 flex flex-col items-center gap-3 px-4 text-center animate-fade-up delay-1100">
                 <h2 className="text-white text-2xl xl:text-3xl font-semibold drop-shadow-md tracking-tight">
                   Best Products for Your Pet
                 </h2>
@@ -180,9 +180,9 @@ export default function App() {
               <img 
                 src={ASSETS.bottomRight} 
                 alt="Dog playing" 
-                className="w-full h-auto block max-h-[min(65vh,52vw)] object-cover object-bottom"
+                className="w-full h-auto block max-h-[min(58vh,46vw)] object-cover object-bottom"
               />
-              <div className="absolute bottom-8 right-8 xl:right-14 z-20 flex flex-col items-start gap-1 text-left animate-fade-up delay-1200">
+              <div className="absolute bottom-6 right-8 xl:right-14 z-20 flex flex-col items-start gap-1 text-left animate-fade-up delay-1200">
                 <div className="flex items-center gap-2">
                   <span className="text-[#1a3d1a] font-bold text-3xl xl:text-4xl">4.6</span>
                   <Star size={24} fill="#E86A10" className="text-[#E86A10]" />
