@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI-Prompts — Live Showcase & Project Hub</title>
-  <meta name="description" content="Bộ sưu tập 17 Dự án Web UI/UX đỉnh cao được tạo ra từ AI Prompts chuyên sâu" />
+  <title>AI-Prompts — Next-Gen Frontend Showcase Hub</title>
+  <meta name="description" content="Bộ sưu tập 17 Dự án Web UI/UX đỉnh cao được thiết kế hoàn toàn bằng AI Prompts chuyên sâu" />
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -20,15 +20,15 @@
         extend: {
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Syne"', 'sans-serif'],
           },
           colors: {
-            brand: {
-              50: '#f0f7ff',
-              100: '#e0effe',
-              500: '#3b82f6',
-              600: '#2563eb',
-              700: '#1d4ed8',
-              900: '#0f172a',
+            dark: '#080a11',
+            accent: {
+              cyan: '#38bdf8',
+              purple: '#a855f7',
+              pink: '#ec4899',
+              orange: '#f97316',
             }
           }
         }
@@ -40,261 +40,451 @@
   <style>
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #090d16;
+      background-color: #06080e;
       color: #f8fafc;
+      overflow-x: hidden;
     }
-    .glass-card {
-      background: rgba(15, 23, 42, 0.65);
+
+    /* Staggered Splash Entrance Animation */
+    .splash {
+      position: fixed; inset: 0; width: 100vw; height: 100vh;
+      z-index: 9999; pointer-events: none; overflow: hidden;
+      animation: splashHide 0.3s ease forwards 1.2s;
+    }
+    .splash-row { display: flex; width: 100%; height: 50%; }
+    .splash-box { width: 20%; height: 100%; background: #2563eb; }
+    .splash-row-top .splash-box { animation: splashTop 0.8s cubic-bezier(0.96,-0.02,0.38,1.01) forwards; }
+    .splash-row-bottom .splash-box { animation: splashBottom 0.8s cubic-bezier(0.96,-0.02,0.38,1.01) forwards; }
+    .splash-box:nth-child(1) { animation-delay: 0s; }
+    .splash-box:nth-child(2) { animation-delay: 0.04s; }
+    .splash-box:nth-child(3) { animation-delay: 0.08s; }
+    .splash-box:nth-child(4) { animation-delay: 0.12s; }
+    .splash-box:nth-child(5) { animation-delay: 0.16s; }
+
+    @keyframes splashTop { from { transform: translateY(0%); } to { transform: translateY(-100%); } }
+    @keyframes splashBottom { from { transform: translateY(0%); } to { transform: translateY(100%); } }
+    @keyframes splashHide { to { opacity: 0; visibility: hidden; } }
+
+    /* Interactive Spotlight Canvas */
+    #spotlightCanvas {
+      position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.85;
+    }
+
+    /* Glassmorphism Cards */
+    .liquid-glass {
+      background: rgba(13, 17, 28, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    
+    .liquid-glass-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
-    .glass-card:hover {
-      border-color: rgba(59, 130, 246, 0.4);
-      box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.2);
+    
+    .liquid-glass-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 20px 40px -15px rgba(56, 189, 248, 0.25);
     }
-    .gradient-text {
-      background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
+
+    /* Text Glow & Gradient Typography */
+    .gradient-heading {
+      background: linear-gradient(135deg, #ffffff 0%, #94a3b8 50%, #38bdf8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
+    .gradient-accent {
+      background: linear-gradient(135deg, #38bdf8 0%, #c084fc 50%, #f472b6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Text Roll Hover Animation Button */
+    .btn-text-roll {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-text-roll .roll-inner {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-text-roll:hover .roll-inner {
+      transform: translateY(-50%);
+    }
+
+    /* Word Reveal Animation */
+    @keyframes wordBlurIn {
+      from { opacity: 0; filter: blur(12px); transform: translateY(15px); }
+      to { opacity: 1; filter: blur(0); transform: translateY(0); }
+    }
+    .word-animate {
+      display: inline-block;
+      opacity: 0;
+      animation: wordBlurIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #06080e; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
   </style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-blue-500 selection:text-white">
+<body class="min-h-screen flex flex-col selection:bg-cyan-500 selection:text-black relative">
 
-  <!-- Background Gradients -->
-  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-    <div class="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
-    <div class="absolute top-1/3 -right-40 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
-    <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-pink-600/15 rounded-full blur-3xl"></div>
+  <!-- Staggered Splash Entrance -->
+  <div class="splash">
+    <div class="splash-row splash-row-top">
+      <div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div>
+    </div>
+    <div class="splash-row splash-row-bottom">
+      <div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div>
+    </div>
   </div>
 
-  <!-- Header -->
-  <header class="sticky top-0 z-50 glass-card border-b border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
-          <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
-        </div>
-        <div>
-          <h1 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
-            AI-Prompts <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">Showcase Hub</span>
-          </h1>
-          <p class="text-xs text-slate-400">17 Live Interactive Web Demonstrations</p>
-        </div>
-      </div>
+  <!-- Interactive Spotlight Canvas Background -->
+  <canvas id="spotlightCanvas"></canvas>
 
-      <div class="flex items-center gap-4">
-        <a href="AGENTS.md" class="hidden sm:flex items-center gap-1.5 text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 transition">
+  <!-- Glowing Background Orbs -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-32 left-1/4 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[140px] animate-pulse"></div>
+    <div class="absolute top-1/2 -right-32 w-[600px] h-[600px] bg-purple-600/15 rounded-full blur-[160px]"></div>
+    <div class="absolute -bottom-32 left-1/3 w-[500px] h-[500px] bg-cyan-600/15 rounded-full blur-[140px]"></div>
+  </div>
+
+  <!-- Floating Liquid Glass Navbar -->
+  <header class="fixed top-5 inset-x-0 z-50 max-w-6xl mx-auto px-4 sm:px-6">
+    <nav class="liquid-glass rounded-full px-5 py-3 flex items-center justify-between border border-white/10 shadow-2xl">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-500 via-blue-600 to-purple-600 p-[1px] shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-300">
+          <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center">
+            <i data-lucide="cpu" class="w-5 h-5 text-cyan-400"></i>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-extrabold text-base tracking-wide text-white flex items-center gap-2">
+            AI-PROMPTS <span class="text-[10px] uppercase font-sans font-bold px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Hub 2.0</span>
+          </span>
+          <span class="text-[11px] text-slate-400 -mt-1 font-sans">17 Next-Gen UI Showcases</span>
+        </div>
+      </a>
+
+      <!-- Quick Nav Links -->
+      <div class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300">
+        <a href="#showcase" class="hover:text-cyan-400 transition-colors">Dự Án</a>
+        <a href="#features" class="hover:text-cyan-400 transition-colors">Đặc Tính UI</a>
+        <a href="AGENTS.md" target="_blank" class="hover:text-cyan-400 transition-colors flex items-center gap-1">
           <i data-lucide="bot" class="w-3.5 h-3.5"></i> AGENTS.md Protocol
         </a>
-        <a href="https://github.com/datjpro/AI-Prompts" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-xl transition shadow-lg shadow-blue-600/25">
-          <i data-lucide="github" class="w-4 h-4"></i> GitHub Repository
-        </a>
       </div>
-    </div>
+
+      <!-- CTA Button with Text Roll Effect -->
+      <a href="https://github.com/datjpro/AI-Prompts" target="_blank" class="btn-text-roll bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-5 py-2.5 rounded-full text-xs font-bold transition-all shadow-lg shadow-cyan-500/25 h-10">
+        <div class="roll-inner h-full flex flex-col justify-center">
+          <span class="flex items-center gap-2 py-1"><i data-lucide="github" class="w-4 h-4"></i> GitHub Repository</span>
+          <span class="flex items-center gap-2 py-1"><i data-lucide="star" class="w-4 h-4"></i> Star On GitHub</span>
+        </div>
+      </a>
+    </nav>
   </header>
 
   <!-- Hero Section -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 z-10 relative">
-    <div class="text-center max-w-3xl mx-auto mb-12">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/60 text-slate-300 text-xs font-medium mb-6">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        GitHub Pages Live Demo Collection
-      </div>
-      <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
-        Khám Phá <span class="gradient-text">17 Giao Diện Web AI</span> Thế Hệ Mới
-      </h2>
-      <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
-        Trải nghiệm trực tiếp tất cả các ứng dụng Web được xây dựng hoàn toàn từ các AI Prompt chuyên sâu. Chọn bất kỳ dự án nào bên dưới để mở bản Demo trực tiếp.
-      </p>
+  <section class="min-h-screen pt-36 pb-20 flex flex-col justify-center items-center text-center relative z-10 px-4 sm:px-6">
+    <!-- Top Pill Badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/80 border border-cyan-500/30 text-cyan-300 text-xs font-semibold mb-8 shadow-inner shadow-cyan-500/10">
+      <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+      <span>Next-Gen Interactive Frontend Catalog</span>
     </div>
 
-    <!-- Search & Filter Bar -->
-    <div class="mb-10 max-w-xl mx-auto relative">
-      <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500">
-        <i data-lucide="search" class="w-4 h-4"></i>
+    <!-- Animated Headline with Word Blur Reveal -->
+    <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-5xl leading-[1.1] mb-8">
+      <span class="word-animate gradient-heading" style="animation-delay: 0.4s;">Bộ Sưu Tập</span>
+      <span class="word-animate gradient-accent" style="animation-delay: 0.55s;">17 Giao Diện Web AI</span>
+      <span class="word-animate text-white" style="animation-delay: 0.7s;">Đột Phá Thế Hệ Mới</span>
+    </h1>
+
+    <p class="text-slate-400 text-base sm:text-lg max-w-2xl font-light leading-relaxed mb-10">
+      Trải nghiệm các thiết kế đẳng cấp thế giới được kiến tạo hoàn toàn từ các AI Prompt chuyên sâu. Tương tác trực tiếp với hiệu ứng 3D Canvas, Shaders, Liquid Glass UI và Micro-animations mượt mà.
+    </p>
+
+    <!-- Stat Pills Row -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl w-full mb-16">
+      <div class="liquid-glass rounded-2xl p-4 text-center">
+        <div class="font-display text-2xl sm:text-3xl font-extrabold text-cyan-400">17</div>
+        <div class="text-xs text-slate-400 font-medium">Dự Án Web UI</div>
       </div>
-      <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên dự án hoặc lĩnh vực..." class="w-full pl-11 pr-4 py-3 bg-slate-900/80 border border-slate-800 rounded-2xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
+      <div class="liquid-glass rounded-2xl p-4 text-center">
+        <div class="font-display text-2xl sm:text-3xl font-extrabold text-purple-400">100%</div>
+        <div class="text-xs text-slate-400 font-medium">AI Prompt Native</div>
+      </div>
+      <div class="liquid-glass rounded-2xl p-4 text-center">
+        <div class="font-display text-2xl sm:text-3xl font-extrabold text-pink-400">60 FPS</div>
+        <div class="text-xs text-slate-400 font-medium">WebGL & Motion</div>
+      </div>
+      <div class="liquid-glass rounded-2xl p-4 text-center">
+        <div class="font-display text-2xl sm:text-3xl font-extrabold text-orange-400">Live</div>
+        <div class="text-xs text-slate-400 font-medium">GitHub Pages</div>
+      </div>
     </div>
 
-    <!-- Projects Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid">
+    <!-- Search & Domain Filter Bar -->
+    <div class="w-full max-w-xl mx-auto relative mb-8" id="showcase">
+      <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+        <i data-lucide="search" class="w-5 h-5"></i>
+      </div>
+      <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên dự án, công nghệ hoặc lĩnh vực..." class="w-full pl-12 pr-4 py-4 bg-slate-900/90 border border-slate-800 rounded-2xl text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition shadow-2xl">
+    </div>
+  </section>
+
+  <!-- Showcase Grid Section -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32 z-10 relative">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
       <!-- Generated Cards via JS -->
     </div>
-  </main>
+  </section>
 
   <!-- Footer -->
-  <footer class="glass-card border-t border-slate-800/80 py-8 text-center text-xs text-slate-500 z-10 relative">
-    <div class="max-w-7xl mx-auto px-4">
-      <p>© 2026 AI-Prompts Collection. Powered by Antigravity & GitHub Pages.</p>
+  <footer class="glass-card border-t border-slate-800/80 py-10 text-center text-xs text-slate-500 z-10 relative">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <i data-lucide="sparkles" class="w-4 h-4 text-cyan-400"></i>
+        <span class="font-semibold text-slate-300">AI-Prompts Collection</span> — Created with Antigravity
+      </div>
+      <p>© 2026 Powered by GitHub Actions & GitHub Pages.</p>
     </div>
   </footer>
 
   <!-- Scripts -->
   <script>
+    // Spotlight Interactive Canvas
+    const canvas = document.getElementById('spotlightCanvas');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    let mouse = { x: width / 2, y: height / 2 };
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    function drawSpotlight() {
+      ctx.clearRect(0, 0, width, height);
+      const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 10, mouse.x, mouse.y, 350);
+      gradient.addColorStop(0, 'rgba(56, 189, 248, 0.12)');
+      gradient.addColorStop(0.5, 'rgba(168, 85, 247, 0.05)');
+      gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
+      requestAnimationFrame(drawSpotlight);
+    }
+    drawSpotlight();
+
+    // 17 Projects Data
     const projects = [
       {
         name: "Wandor",
         slug: "wandor-travel",
         domain: "Du lịch / AI Travel",
-        desc: "Background video thiên nhiên, Frosted-glass prompt card, chọn lịch trình du lịch thông minh.",
+        desc: "Background video thiên nhiên hùng vĩ, Frosted-glass prompt card thông minh, cho phép tùy chọn lịch trình du lịch cá nhân hóa.",
         icon: "compass",
-        badge: "React + Vite"
+        badge: "React + Vite",
+        gradient: "from-blue-500/20 to-cyan-500/20"
       },
       {
         name: "Celestial Odyssey",
         slug: "space-travel-landing",
         domain: "Du hành Vũ trụ / Sci-Fi",
-        desc: "Canvas particle background 3D, Card hành tinh, Modal đặt vé chuyến bay vũ trụ.",
+        desc: "Canvas particle background 3D tương tác chuột, Card khám phá các hành tinh, Modal đặt vé chuyến bay tương lai.",
         icon: "rocket",
-        badge: "Three.js Canvas"
+        badge: "Three.js WebGL",
+        gradient: "from-purple-500/20 to-indigo-500/20"
       },
       {
         name: "Leon Portfolio",
         slug: "leon-3d-portfolio",
         domain: "Portfolio 3D Creator",
-        desc: "Three.js 3D canvas model, tông tối Cyberpunk/Minimalist, bộ lọc dự án 3D.",
+        desc: "Three.js 3D canvas model tương tác góc nhìn, tông màu tối Cyberpunk/Minimalist, bộ lọc danh mục dự án 3D chuyên nghiệp.",
         icon: "box",
-        badge: "3D WebGL"
+        badge: "3D Interactive",
+        gradient: "from-emerald-500/20 to-teal-500/20"
       },
       {
         name: "Serene",
         slug: "serene-wellness",
         domain: "Spa & Health Care",
-        desc: "Bảng màu Pastel thư thái, danh mục liệu trình chăm sóc sức khỏe, Modal đặt lịch hẹn.",
+        desc: "Bảng màu Pastel thư thái, danh mục liệu trình chăm sóc sức khỏe toàn diện, Modal tương tác đặt lịch hẹn cao cấp.",
         icon: "heart",
-        badge: "Wellness UI"
+        badge: "Wellness UI",
+        gradient: "from-rose-500/20 to-pink-500/20"
       },
       {
         name: "Tiny Trails",
         slug: "tinytrails-404",
         domain: "Trang lỗi 404 / Gaming",
-        desc: "Mini-game Canvas đom đóm tương tác độc đáo, hoạt ảnh nhân vật lạc đường sinh động.",
+        desc: "Mini-game Canvas đom đóm tương tác độc đáo, hoạt ảnh nhân vật lạc đường sinh động giúp tăng giữ chân người dùng.",
         icon: "gamepad-2",
-        badge: "Interactive Canvas"
+        badge: "Canvas Game",
+        gradient: "from-amber-500/20 to-orange-500/20"
       },
       {
         name: "Aura Email",
         slug: "aura-email",
         domain: "Ứng dụng Email / AI App",
-        desc: "Bố cục 3 cột chuyên nghiệp, tính năng AI tóm tắt thư, Command Palette (Cmd+K).",
+        desc: "Bố cục 3 cột tiêu chuẩn SaaS, tính năng AI tóm tắt nội dung thư tự động, Command Palette (Cmd+K) thao tác cực nhanh.",
         icon: "mail",
-        badge: "AI Application"
+        badge: "AI Application",
+        gradient: "from-sky-500/20 to-blue-500/20"
       },
       {
         name: "Atelier Agency",
         slug: "atelier-agency",
         domain: "Creative Agency",
-        desc: "Typography khổ lớn ấn tượng, Magnetic Custom Cursor, Grid video dự án đạt giải.",
+        desc: "Typography khổ lớn ấn tượng, Magnetic Custom Cursor biến thiên theo vị trí hover, Grid video trình diễn dự án đạt giải.",
         icon: "palette",
-        badge: "Creative UI"
+        badge: "Creative Studio",
+        gradient: "from-violet-500/20 to-purple-500/20"
       },
       {
         name: "Velorah",
         slug: "velorah-hero",
         domain: "Thời trang Cao cấp",
-        desc: "Layout phong cách tạp chí cao cấp, Carousel bộ sưu tập thời trang, Quick View Modal.",
+        desc: "Layout phong cách tạp chí thời trang Vogue, Carousel bộ sưu tập ấn tượng, Quick View Modal chi tiết sản phẩm.",
         icon: "sparkles",
-        badge: "E-Commerce"
+        badge: "E-Commerce Hero",
+        gradient: "from-fuchsia-500/20 to-pink-500/20"
       },
       {
         name: "Measured",
         slug: "measured-wearable",
         domain: "Health Tech / Wearable",
-        desc: "Biểu đồ sinh học thời gian thực, hiệu ứng Neon Glow high-tech, xem nhẫn thông minh 360°.",
+        desc: "Biểu đồ nhịp sinh học thời gian thực, hiệu ứng Neon Glow high-tech, tính năng xoay xem chi tiết chiếc nhẫn thông minh 360°.",
         icon: "activity",
-        badge: "Health Dashboard"
+        badge: "Health Dashboard",
+        gradient: "from-cyan-500/20 to-emerald-500/20"
       },
       {
         name: "Lumora",
         slug: "lumora-app",
         domain: "Nhà thông minh (Smart Home)",
-        desc: "Điều chỉnh nhiệt độ màu ánh sáng, công tắc bật/tắt thiết bị theo phòng, biểu đồ năng lượng.",
+        desc: "Điều chỉnh nhiệt độ màu ánh sáng trực quan, công tắc bật/tắt thiết bị theo khu vực phòng, biểu đồ theo dõi năng lượng.",
         icon: "home",
-        badge: "IoT Dashboard"
+        badge: "IoT Dashboard",
+        gradient: "from-yellow-500/20 to-amber-500/20"
       },
       {
         name: "Leon Archive",
         slug: "leon-archive",
         domain: "Kho thử nghiệm 3D / R&D",
-        desc: "Preview WebGL Shaders, xem chi tiết 3D Assets, tải tài nguyên thiết kế đồ họa.",
+        desc: "Xem trước WebGL Shaders thời gian thực, bảng tương tác 3D Assets, hỗ trợ tải tài nguyên thiết kế đồ họa cao cấp.",
         icon: "archive",
-        badge: "R&D Lab"
+        badge: "R&D Showcase",
+        gradient: "from-blue-600/20 to-indigo-600/20"
       },
       {
         name: "Prisma Studio",
         slug: "prisma-studio",
         domain: "Digital Agency",
-        desc: "Nền Gradient Wave động mượt mà, khối dịch vụ đa sắc, Form liên hệ tư vấn chuyên nghiệp.",
+        desc: "Nền Gradient Wave chuyển động sóng nước mượt mà, khối dịch vụ đa sắc nghệ thuật, Form liên hệ tư vấn doanh nghiệp.",
         icon: "layers",
-        badge: "Agency Landing"
+        badge: "Digital Agency",
+        gradient: "from-teal-500/20 to-cyan-500/20"
       },
       {
         name: "Axion Studio",
         slug: "axion-studio",
         domain: "Design Agency",
-        desc: "Shader animated hero (FlutedGlass + ChromaFlow), text-roll hover buttons, video case study cards.",
+        desc: "Shader animated hero (FlutedGlass + ChromaFlow), nút tương tác hiệu ứng text-roll hover, video case study cards mở rộng.",
         icon: "cpu",
-        badge: "Shader Hero"
+        badge: "Shader Hero",
+        gradient: "from-orange-500/20 to-red-500/20"
       },
       {
         name: "Vibrant Wellness",
         slug: "vibrant-wellness",
         domain: "Holistic Wellness / Landing",
-        desc: "Full-screen looping background video, Liquid Glass UI, animated mobile menu, bottom stats.",
+        desc: "Full-screen looping background video, phong cách Liquid Glass UI viền phát sáng, menu mobile animation, bottom stats.",
         icon: "sun",
-        badge: "Liquid Glass"
+        badge: "Liquid Glass",
+        gradient: "from-lime-500/20 to-emerald-500/20"
       },
       {
         name: "Nora Studio",
         slug: "nora-studio",
         domain: "Motion Designer Portfolio",
-        desc: "Staggered splash screen, Canvas spotlight mouse-reveal, word-by-word blur animation.",
+        desc: "Màn hình mở đầu Staggered splash screen, Canvas spotlight mouse-reveal bí ẩn, hiệu ứng chữ xuất hiện mờ tỏ từng từ.",
         icon: "film",
-        badge: "Motion Portfolio"
+        badge: "Motion Showcase",
+        gradient: "from-sky-400/20 to-indigo-500/20"
       },
       {
         name: "TerraElix",
         slug: "terra-elix",
         domain: "Supplements / Wellness Hero",
-        desc: "Full-viewport background image, DM Sans typography, word-by-word headline reveal, 3-panel footer.",
+        desc: "Full-viewport background image thiên nhiên, typography DM Sans tinh tế, tiêu đề word-by-word reveal kèm capsule inline.",
         icon: "leaf",
-        badge: "Wellness Hero"
+        badge: "Wellness Hero",
+        gradient: "from-emerald-600/20 to-green-500/20"
       },
       {
         name: "CozyPaws",
         slug: "cozy-paws",
         domain: "Pet Care / E-Commerce Hero",
-        desc: "Viewport-height (100vh) layout, DM Serif Display, word-pop animation, floating side cards.",
+        desc: "Layout vừa vặn 100vh không cuộn trang, DM Serif Display rực rỡ, chữ nẩy hiệu ứng word-pop, card sản phẩm nổi độc đáo.",
         icon: "dog",
-        badge: "Pet Care Hero"
+        badge: "Pet Care Hero",
+        gradient: "from-orange-400/20 to-amber-500/20"
       }
     ];
 
     function renderProjects(list) {
       const grid = document.getElementById('projectsGrid');
       grid.innerHTML = list.map(p => `
-        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 group">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 rounded-xl bg-slate-800/80 border border-slate-700/50 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:text-white group-hover:bg-blue-600 transition-all duration-300">
-                <i data-lucide="${p.icon}" class="w-6 h-6"></i>
+        <div class="liquid-glass-card rounded-3xl p-7 flex flex-col justify-between group relative overflow-hidden">
+          <!-- Hover Background Gradient Accent -->
+          <div class="absolute inset-0 bg-gradient-to-br ${p.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-14 h-14 rounded-2xl bg-slate-900/90 border border-white/10 flex items-center justify-center text-cyan-400 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all duration-500 shadow-xl">
+                <i data-lucide="${p.icon}" class="w-7 h-7"></i>
               </div>
-              <span class="text-[11px] font-medium px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700/50">${p.badge}</span>
+              <span class="text-[11px] font-semibold px-3 py-1 rounded-full bg-slate-800/80 text-cyan-300 border border-slate-700/60 shadow-inner">${p.badge}</span>
             </div>
 
-            <div class="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-1">${p.domain}</div>
-            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">${p.name}</h3>
-            <p class="text-xs text-slate-400 line-clamp-3 mb-6 leading-relaxed">${p.desc}</p>
+            <div class="text-[11px] font-bold text-cyan-400 uppercase tracking-widest mb-1.5">${p.domain}</div>
+            <h3 class="font-display text-2xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">${p.name}</h3>
+            <p class="text-xs text-slate-400 leading-relaxed font-light mb-8 line-clamp-3">${p.desc}</p>
           </div>
 
-          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-3">
-            <a href="${p.slug}.txt" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-200 transition">
-              <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Prompt
+          <div class="relative z-10 pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+            <a href="${p.slug}.txt" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition font-medium">
+              <i data-lucide="file-text" class="w-4 h-4 text-cyan-400"></i> Prompt Text
             </a>
-            <a href="./${p.slug}/" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-blue-600/90 hover:bg-blue-600 px-3.5 py-2 rounded-xl transition shadow-md shadow-blue-600/20">
-              Live Demo <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            <a href="./${p.slug}/" target="_blank" class="btn-text-roll bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-4 py-2.5 rounded-2xl text-xs font-bold transition shadow-lg shadow-cyan-500/20">
+              <div class="roll-inner">
+                <span class="flex items-center gap-1">Live Demo <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
+                <span class="flex items-center gap-1">Khám Phá <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
+              </div>
             </a>
           </div>
         </div>
