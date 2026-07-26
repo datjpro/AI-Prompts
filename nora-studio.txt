@@ -1,0 +1,31 @@
+Build a single-page hero landing for a creative studio / motion designer portfolio called "Nora Studio." Use vanilla HTML, CSS, and JavaScript with Google Fonts "Inter" (weights 300–700). The page features a light warm background (#E4E4E4) with cream (#F4F1E8) and sky-blue (#75C5DE) accents.
+
+**SPLASH SCREEN**
+
+Fixed full-viewport overlay (z-9999) with two rows of 5 boxes each (#75C5DE). Top row slides up, bottom row slides down with staggered delays (0–0.2s). Entire splash fades out after 1.35s. Uses cubic-bezier(0.96,-0.02,0.38,1.01) easing.
+
+**NAVIGATION**
+
+- Logo: fixed top-left, mix-blend-mode: difference, external SVG image
+- Burger: fixed top-right, 59×59 circular button (#F4F1E8), two bars that animate into X when open, hover inverts colors to dark
+
+**MENU PANEL**
+
+Fixed panel (z-9) sliding from top with rounded corners (20px), dark glass background (rgba(17,17,17,0.95) + backdrop-blur 26px). Full-width on mobile, 420px right-aligned on desktop. Contains nav links (Work, About, Blog) at 36–42px, email contact, social links (Pinterest, Behance, Letterboxd), and a mini CTA button with sliding white background + sky-blue arrow circle.
+
+**HERO SECTION**
+
+Full-viewport section with layered elements:
+1. Big background text "Visuals" — massive clamp(180px, 28vw, 560px), positioned at absolute bottom, slides up from 330px with spring easing
+2. Base hero image — full-cover background image, enters with scale(1.5) rotate(3deg) → scale(1) rotate(0) animation
+3. Spotlight reveal layer — second image masked by a canvas-generated radial gradient that follows the mouse cursor with smooth interpolation (0.1 lerp factor), creating a spotlight reveal effect with 260px radius
+4. Content overlay — headline with word-by-word blur reveal animation (staggered 0.05s per word), text: "I build compelling visual stories & motion that make ideas shine."
+5. CTA button — pill shape with sliding white background that expands on hover, sky-blue circle with arrow icon that shifts left on hover
+
+**CTA BUTTON MECHANICS**
+
+The button has a layered construction: absolute-positioned white background that covers text area (excluding the circle), expanding to full width on hover. Arrow circle (48–54px) with translateX(-7px) hover shift. Uses cubic-bezier(0.25,0.46,0.45,0.94) timing.
+
+**ACCESSIBILITY**
+
+Includes prefers-reduced-motion media query that disables all animations, splash, and entrance effects.
