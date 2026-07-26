@@ -1,0 +1,95 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Prepare site directory
+        run: |
+          mkdir -p _site
+          # Copy Root Hub Launcher index.html
+          cp index.html _site/
+          # Copy Prompt files (.txt) to _site for viewing
+          cp *.txt _site/ 2>/dev/null || true
+
+      - name: Build Sub-projects
+        run: |
+          PROJECTS=(
+            "atelier-agency"
+            "aura-email"
+            "axion-studio"
+            "cozy-paws"
+            "leon-3d-portfolio"
+            "leon-archive"
+            "lumora-app"
+            "measured-wearable"
+            "prisma-studio"
+            "serene-wellness"
+            "space-travel-landing"
+            "terra-elix"
+            "tinytrails-404"
+            "velorah-hero"
+            "vibrant-wellness"
+            "wandor-travel"
+          )
+
+          for proj in "${PROJECTS[@]}"; do
+            if [ -d "$proj" ]; then
+              echo "----------------------------------------"
+              echo "Building $proj..."
+              echo "----------------------------------------"
+              cd "$proj"
+              if [ -f "package.json" ]; then
+                npm ci || npm install
+                npm run build
+                mkdir -p "../_site/$proj"
+                cp -r dist/* "../_site/$proj/"
+              fi
+              cd ..
+            fi
+          done
+
+          # Handle static single-file project nora-studio
+          if [ -d "nora-studio" ]; then
+            echo "Copying nora-studio static files..."
+            mkdir -p "_site/nora-studio"
+            cp -r nora-studio/* "_site/nora-studio/"
+          fi
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+bindings: []

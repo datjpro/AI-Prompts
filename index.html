@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Prompts — Live Showcase & Project Hub</title>
+  <meta name="description" content="Bộ sưu tập 17 Dự án Web UI/UX đỉnh cao được tạo ra từ AI Prompts chuyên sâu" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              900: '#0f172a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #090d16;
+      color: #f8fafc;
+    }
+    .glass-card {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+      box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.2);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-blue-500 selection:text-white">
+
+  <!-- Background Gradients -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/3 -right-40 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-pink-600/15 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 glass-card border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+          <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+            AI-Prompts <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">Showcase Hub</span>
+          </h1>
+          <p class="text-xs text-slate-400">17 Live Interactive Web Demonstrations</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="AGENTS.md" class="hidden sm:flex items-center gap-1.5 text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 transition">
+          <i data-lucide="bot" class="w-3.5 h-3.5"></i> AGENTS.md Protocol
+        </a>
+        <a href="https://github.com/datjpro/AI-Prompts" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-xl transition shadow-lg shadow-blue-600/25">
+          <i data-lucide="github" class="w-4 h-4"></i> GitHub Repository
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 z-10 relative">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/60 text-slate-300 text-xs font-medium mb-6">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        GitHub Pages Live Demo Collection
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
+        Khám Phá <span class="gradient-text">17 Giao Diện Web AI</span> Thế Hệ Mới
+      </h2>
+      <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+        Trải nghiệm trực tiếp tất cả các ứng dụng Web được xây dựng hoàn toàn từ các AI Prompt chuyên sâu. Chọn bất kỳ dự án nào bên dưới để mở bản Demo trực tiếp.
+      </p>
+    </div>
+
+    <!-- Search & Filter Bar -->
+    <div class="mb-10 max-w-xl mx-auto relative">
+      <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500">
+        <i data-lucide="search" class="w-4 h-4"></i>
+      </div>
+      <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên dự án hoặc lĩnh vực..." class="w-full pl-11 pr-4 py-3 bg-slate-900/80 border border-slate-800 rounded-2xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid">
+      <!-- Generated Cards via JS -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="glass-card border-t border-slate-800/80 py-8 text-center text-xs text-slate-500 z-10 relative">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>© 2026 AI-Prompts Collection. Powered by Antigravity & GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    const projects = [
+      {
+        name: "Wandor",
+        slug: "wandor-travel",
+        domain: "Du lịch / AI Travel",
+        desc: "Background video thiên nhiên, Frosted-glass prompt card, chọn lịch trình du lịch thông minh.",
+        icon: "compass",
+        badge: "React + Vite"
+      },
+      {
+        name: "Celestial Odyssey",
+        slug: "space-travel-landing",
+        domain: "Du hành Vũ trụ / Sci-Fi",
+        desc: "Canvas particle background 3D, Card hành tinh, Modal đặt vé chuyến bay vũ trụ.",
+        icon: "rocket",
+        badge: "Three.js Canvas"
+      },
+      {
+        name: "Leon Portfolio",
+        slug: "leon-3d-portfolio",
+        domain: "Portfolio 3D Creator",
+        desc: "Three.js 3D canvas model, tông tối Cyberpunk/Minimalist, bộ lọc dự án 3D.",
+        icon: "box",
+        badge: "3D WebGL"
+      },
+      {
+        name: "Serene",
+        slug: "serene-wellness",
+        domain: "Spa & Health Care",
+        desc: "Bảng màu Pastel thư thái, danh mục liệu trình chăm sóc sức khỏe, Modal đặt lịch hẹn.",
+        icon: "heart",
+        badge: "Wellness UI"
+      },
+      {
+        name: "Tiny Trails",
+        slug: "tinytrails-404",
+        domain: "Trang lỗi 404 / Gaming",
+        desc: "Mini-game Canvas đom đóm tương tác độc đáo, hoạt ảnh nhân vật lạc đường sinh động.",
+        icon: "gamepad-2",
+        badge: "Interactive Canvas"
+      },
+      {
+        name: "Aura Email",
+        slug: "aura-email",
+        domain: "Ứng dụng Email / AI App",
+        desc: "Bố cục 3 cột chuyên nghiệp, tính năng AI tóm tắt thư, Command Palette (Cmd+K).",
+        icon: "mail",
+        badge: "AI Application"
+      },
+      {
+        name: "Atelier Agency",
+        slug: "atelier-agency",
+        domain: "Creative Agency",
+        desc: "Typography khổ lớn ấn tượng, Magnetic Custom Cursor, Grid video dự án đạt giải.",
+        icon: "palette",
+        badge: "Creative UI"
+      },
+      {
+        name: "Velorah",
+        slug: "velorah-hero",
+        domain: "Thời trang Cao cấp",
+        desc: "Layout phong cách tạp chí cao cấp, Carousel bộ sưu tập thời trang, Quick View Modal.",
+        icon: "sparkles",
+        badge: "E-Commerce"
+      },
+      {
+        name: "Measured",
+        slug: "measured-wearable",
+        domain: "Health Tech / Wearable",
+        desc: "Biểu đồ sinh học thời gian thực, hiệu ứng Neon Glow high-tech, xem nhẫn thông minh 360°.",
+        icon: "activity",
+        badge: "Health Dashboard"
+      },
+      {
+        name: "Lumora",
+        slug: "lumora-app",
+        domain: "Nhà thông minh (Smart Home)",
+        desc: "Điều chỉnh nhiệt độ màu ánh sáng, công tắc bật/tắt thiết bị theo phòng, biểu đồ năng lượng.",
+        icon: "home",
+        badge: "IoT Dashboard"
+      },
+      {
+        name: "Leon Archive",
+        slug: "leon-archive",
+        domain: "Kho thử nghiệm 3D / R&D",
+        desc: "Preview WebGL Shaders, xem chi tiết 3D Assets, tải tài nguyên thiết kế đồ họa.",
+        icon: "archive",
+        badge: "R&D Lab"
+      },
+      {
+        name: "Prisma Studio",
+        slug: "prisma-studio",
+        domain: "Digital Agency",
+        desc: "Nền Gradient Wave động mượt mà, khối dịch vụ đa sắc, Form liên hệ tư vấn chuyên nghiệp.",
+        icon: "layers",
+        badge: "Agency Landing"
+      },
+      {
+        name: "Axion Studio",
+        slug: "axion-studio",
+        domain: "Design Agency",
+        desc: "Shader animated hero (FlutedGlass + ChromaFlow), text-roll hover buttons, video case study cards.",
+        icon: "cpu",
+        badge: "Shader Hero"
+      },
+      {
+        name: "Vibrant Wellness",
+        slug: "vibrant-wellness",
+        domain: "Holistic Wellness / Landing",
+        desc: "Full-screen looping background video, Liquid Glass UI, animated mobile menu, bottom stats.",
+        icon: "sun",
+        badge: "Liquid Glass"
+      },
+      {
+        name: "Nora Studio",
+        slug: "nora-studio",
+        domain: "Motion Designer Portfolio",
+        desc: "Staggered splash screen, Canvas spotlight mouse-reveal, word-by-word blur animation.",
+        icon: "film",
+        badge: "Motion Portfolio"
+      },
+      {
+        name: "TerraElix",
+        slug: "terra-elix",
+        domain: "Supplements / Wellness Hero",
+        desc: "Full-viewport background image, DM Sans typography, word-by-word headline reveal, 3-panel footer.",
+        icon: "leaf",
+        badge: "Wellness Hero"
+      },
+      {
+        name: "CozyPaws",
+        slug: "cozy-paws",
+        domain: "Pet Care / E-Commerce Hero",
+        desc: "Viewport-height (100vh) layout, DM Serif Display, word-pop animation, floating side cards.",
+        icon: "dog",
+        badge: "Pet Care Hero"
+      }
+    ];
+
+    function renderProjects(list) {
+      const grid = document.getElementById('projectsGrid');
+      grid.innerHTML = list.map(p => `
+        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-800/80 border border-slate-700/50 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:text-white group-hover:bg-blue-600 transition-all duration-300">
+                <i data-lucide="${p.icon}" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-medium px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700/50">${p.badge}</span>
+            </div>
+
+            <div class="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-1">${p.domain}</div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">${p.name}</h3>
+            <p class="text-xs text-slate-400 line-clamp-3 mb-6 leading-relaxed">${p.desc}</p>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-3">
+            <a href="${p.slug}.txt" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-200 transition">
+              <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Prompt
+            </a>
+            <a href="./${p.slug}/" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-blue-600/90 hover:bg-blue-600 px-3.5 py-2 rounded-xl transition shadow-md shadow-blue-600/20">
+              Live Demo <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    renderProjects(projects);
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase();
+      const filtered = projects.filter(p => p.name.toLowerCase().includes(q) || p.domain.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q));
+      renderProjects(filtered);
+    });
+  </script>
+</body>
+</html>
