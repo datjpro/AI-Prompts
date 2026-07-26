@@ -21,7 +21,7 @@ Tệp tài liệu này quy định các quy tắc hoạt động, quy trình ki�
 
 Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent **BẮT BUỘC** phải kiểm tra danh sách bên dưới để đảm bảo chủ đề/nhiệm vụ không bị trùng lặp với các dự án đã có.
 
-### 📋 Danh mục 16 Dự án Hiện có (Prompt Catalog Index):
+### 📋 Danh mục 17 Dự án Hiện có (Prompt Catalog Index):
 
 | STT | Project Name | Tệp Prompt | Thư mục Dự án | Lĩnh vực (Domain) | Đặc trưng UI/UX & Tính năng chính |
 |---|---|---|---|---|---|
@@ -41,6 +41,7 @@ Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent
 | 14 | **Vibrant Wellness** | `vibrant-wellness.txt` | `vibrant-wellness/` | Holistic Wellness / Landing | Full-screen looping background video, Liquid Glass UI (backdrop-blur gradient-border), animated mobile menu, avatar badge pill, bottom stats |
 | 15 | **Nora Studio** | `nora-studio.txt` | `nora-studio/` | Motion Designer Portfolio | Staggered splash screen, Canvas spotlight mouse-reveal, word-by-word blur animation, sliding CTA button, slide-down dark glass menu panel |
 | 16 | **TerraElix** | `terra-elix.txt` | `terra-elix/` | Supplements / Wellness Hero | Full-viewport background image, DM Sans & Inter typography, word-by-word headline reveal with inline capsule image, 3-panel footer with auto-rotating card carousel, floating desktop product |
+| 17 | **CozyPaws** | `cozy-paws.txt` | `cozy-paws/` | Pet Care / E-Commerce Hero | Viewport-height (100vh) layout, DM Serif Display typography, 3 distinct breakpoint layouts (mobile, tablet, desktop), word-pop animation, floating side product & video cards, 3-photo bottom strip with stats overlay |
 
 ---
 

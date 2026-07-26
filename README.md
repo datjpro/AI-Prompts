@@ -6,7 +6,7 @@ Bộ sưu tập các dự án Giao diện Web (Frontend Web Applications) cao c�
 
 ## 📌 Tổng quan Repository (Repository Overview)
 
-Repository này chứa **16 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
+Repository này chứa **17 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
 
 ```
 AI-Prompts/
@@ -74,9 +74,13 @@ AI-Prompts/
 │   ├── 📄 nora-studio.txt
 │   └── 📁 nora-studio/
 │
-└── 💊 TerraElix - Plant-Based Supplements Hero Landing
-    ├── 📄 terra-elix.txt
-    └── 📁 terra-elix/
+├── 💊 TerraElix - Plant-Based Supplements Hero Landing
+│   ├── 📄 terra-elix.txt
+│   └── 📁 terra-elix/
+│
+└── 🐾 CozyPaws - Pet Store Hero Landing
+    ├── 📄 cozy-paws.txt
+    └── 📁 cozy-paws/
 ```
 
 ---
@@ -93,7 +97,7 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 
 ---
 
-## 📑 Danh sách Chi tiết 16 Dự án (Detailed Project Breakdown)
+## 📑 Danh sách Chi tiết 17 Dự án (Detailed Project Breakdown)
 
 ### 1. ✈️ Wandor — AI Trip Planner
 * **File Prompt**: [`wandor-travel.txt`](./wandor-travel.txt)
@@ -204,6 +208,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`terra-elix.txt`](./terra-elix.txt)
 * **Thư mục ứng dụng**: [`terra-elix/`](./terra-elix/)
 * **Mô tả**: Hero landing page cho thương hiệu thực phẩm bổ sung thiên nhiên TerraElix. Giao diện responsive toàn màn hình với hình nền thiên nhiên cao cấp, typography DM Sans & Inter, tiêu đề hoạt ảnh word-by-word reveal kèm viên capsule inline, CTA Explore Now, mobile product overlay và 3-panel footer grid với carousel tự động xoay.
+
+---
+
+### 17. 🐾 CozyPaws — Pet Store Hero Landing
+* **File Prompt**: [`cozy-paws.txt`](./cozy-paws.txt)
+* **Thư mục ứng dụng**: [`cozy-paws/`](./cozy-paws/)
+* **Mô tả**: Hero landing page tràn màn hình (no scroll 100vh) dành cho thương hiệu đồ dùng thú cưng CozyPaws. Sử dụng phong cách màu Mint & Orange rực rỡ, phông chữ DM Serif Display, tiêu đề hoạt ảnh `word-pop`, card sản phẩm và card video review nổi 2 bên, cùng bộ 3 ảnh ghép chân trang với thông số rating & lượt dùng overlay.
 
 ---
 
