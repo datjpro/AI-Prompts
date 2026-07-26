@@ -6,7 +6,7 @@ Bộ sưu tập các dự án Giao diện Web (Frontend Web Applications) cao c�
 
 ## 📌 Tổng quan Repository (Repository Overview)
 
-Repository này chứa **15 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
+Repository này chứa **16 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
 
 ```
 AI-Prompts/
@@ -70,9 +70,13 @@ AI-Prompts/
 │   ├── 📄 vibrant-wellness.txt
 │   └── 📁 vibrant-wellness/
 │
-└── 🎨 Nora Studio - Motion Designer Portfolio
-    ├── 📄 nora-studio.txt
-    └── 📁 nora-studio/
+├── 🎨 Nora Studio - Motion Designer Portfolio
+│   ├── 📄 nora-studio.txt
+│   └── 📁 nora-studio/
+│
+└── 💊 TerraElix - Plant-Based Supplements Hero Landing
+    ├── 📄 terra-elix.txt
+    └── 📁 terra-elix/
 ```
 
 ---
@@ -89,7 +93,7 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 
 ---
 
-## 📑 Danh sách Chi tiết 15 Dự án (Detailed Project Breakdown)
+## 📑 Danh sách Chi tiết 16 Dự án (Detailed Project Breakdown)
 
 ### 1. ✈️ Wandor — AI Trip Planner
 * **File Prompt**: [`wandor-travel.txt`](./wandor-travel.txt)
@@ -193,6 +197,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`nora-studio.txt`](./nora-studio.txt)
 * **Thư mục ứng dụng**: [`nora-studio/`](./nora-studio/)
 * **Mô tả**: Trang portfolio cá nhân cho Motion Designer với hiệu ứng splash screen staggered, canvas spotlight mouse-reveal, word-by-word blur animation, CTA button với sliding background, và dark glass slide-down menu panel.
+
+---
+
+### 16. 💊 TerraElix — Plant-Based Supplements Hero Landing
+* **File Prompt**: [`terra-elix.txt`](./terra-elix.txt)
+* **Thư mục ứng dụng**: [`terra-elix/`](./terra-elix/)
+* **Mô tả**: Hero landing page cho thương hiệu thực phẩm bổ sung thiên nhiên TerraElix. Giao diện responsive toàn màn hình với hình nền thiên nhiên cao cấp, typography DM Sans & Inter, tiêu đề hoạt ảnh word-by-word reveal kèm viên capsule inline, CTA Explore Now, mobile product overlay và 3-panel footer grid với carousel tự động xoay.
 
 ---
 
