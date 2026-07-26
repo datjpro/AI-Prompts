@@ -28,18 +28,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: 22
 
       - name: Prepare site directory
         run: |
-          set -e
           mkdir -p _site
           cp index.html _site/
           cp *.txt _site/ 2>/dev/null || true
 
       - name: Build Sub-projects
         run: |
-          set -e
           PROJECTS=(
             "atelier-agency"
             "aura-email"
@@ -62,12 +60,12 @@ jobs:
           for proj in "${PROJECTS[@]}"; do
             if [ -d "$proj" ]; then
               echo "========================================"
-              echo "Building: $proj"
+              echo "Building project: $proj"
               echo "========================================"
               cd "$proj"
               if [ -f "package.json" ]; then
-                npm ci || npm install --legacy-peer-deps
-                ./node_modules/.bin/vite build
+                npm install --include=dev --legacy-peer-deps
+                npx vite build
                 mkdir -p "../_site/$proj"
                 cp -r dist/* "../_site/$proj/"
               fi
