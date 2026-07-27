@@ -21,7 +21,7 @@ export default function App() {
         loop
         playsInline
         className="absolute inset-0 h-full w-full object-cover lg:scale-[1.2]"
-        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWGWJTttwIXH07lWA1P/hf_20260725_114042_d2ed2a89-f2fa-449b-9609-da456344257b.mp4"
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260725_114042_d2ed2a89-f2fa-449b-9609-da456344257b.mp4"
       />
 
       {/* Main UI Container */}
