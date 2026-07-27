@@ -240,11 +240,22 @@
     </div>
 
     <!-- Search & Domain Filter Bar -->
-    <div class="w-full max-w-xl mx-auto relative mb-8" id="showcase">
+    <div class="w-full max-w-xl mx-auto relative mb-6" id="showcase">
       <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
         <i data-lucide="search" class="w-5 h-5"></i>
       </div>
       <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên dự án, công nghệ hoặc lĩnh vực..." class="w-full pl-12 pr-4 py-4 bg-slate-900/90 border border-slate-800 rounded-2xl text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition shadow-2xl">
+    </div>
+
+    <!-- Category Filter Pills -->
+    <div class="flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto mb-12" id="filterPills">
+      <button data-cat="all" class="filter-pill px-4 py-2 rounded-full text-xs font-semibold bg-cyan-500 text-slate-950 border border-cyan-400 shadow-lg shadow-cyan-500/20 transition-all cursor-pointer">Tất Cả (18)</button>
+      <button data-cat="agency" class="filter-pill px-4 py-2 rounded-full text-xs font-semibold bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-cyan-500/50 hover:text-cyan-300 transition-all cursor-pointer">Agency &amp; Studio</button>
+      <button data-cat="portfolio" class="filter-pill px-4 py-2 rounded-full text-xs font-semibold bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-cyan-500/50 hover:text-cyan-300 transition-all cursor-pointer">Portfolio &amp; Creative</button>
+      <button data-cat="wellness" class="filter-pill px-4 py-2 rounded-full text-xs font-semibold bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-cyan-500/50 hover:text-cyan-300 transition-all cursor-pointer">Health &amp; Wellness</button>
+      <button data-cat="ecom" class="filter-pill px-4 py-2 rounded-full text-xs font-semibold bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-cyan-500/50 hover:text-cyan-300 transition-all cursor-pointer">E-Commerce &amp; Tech</button>
+      <button data-cat="travel" class="filter-pill px-4 py-2 rounded-full text-xs font-semibold bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-cyan-500/50 hover:text-cyan-300 transition-all cursor-pointer">Travel &amp; Sci-Fi</button>
+      <button data-cat="apps" class="filter-pill px-4 py-2 rounded-full text-xs font-semibold bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-cyan-500/50 hover:text-cyan-300 transition-all cursor-pointer">SaaS &amp; Utilities</button>
     </div>
   </section>
 
@@ -299,11 +310,12 @@
     }
     drawSpotlight();
 
-    // 17 Projects Data
+    // 18 Projects Data Categorized
     const projects = [
       {
         name: "Wandor",
         slug: "wandor-travel",
+        category: "travel",
         domain: "Du lịch / AI Travel",
         desc: "Background video thiên nhiên hùng vĩ, Frosted-glass prompt card thông minh, cho phép tùy chọn lịch trình du lịch cá nhân hóa.",
         icon: "compass",
@@ -313,6 +325,7 @@
       {
         name: "Celestial Odyssey",
         slug: "space-travel-landing",
+        category: "travel",
         domain: "Du hành Vũ trụ / Sci-Fi",
         desc: "Canvas particle background 3D tương tác chuột, Card khám phá các hành tinh, Modal đặt vé chuyến bay tương lai.",
         icon: "rocket",
@@ -322,6 +335,7 @@
       {
         name: "Leon Portfolio",
         slug: "leon-3d-portfolio",
+        category: "portfolio",
         domain: "Portfolio 3D Creator",
         desc: "Three.js 3D canvas model tương tác góc nhìn, tông màu tối Cyberpunk/Minimalist, bộ lọc danh mục dự án 3D chuyên nghiệp.",
         icon: "box",
@@ -331,6 +345,7 @@
       {
         name: "Serene",
         slug: "serene-wellness",
+        category: "wellness",
         domain: "Spa & Health Care",
         desc: "Bảng màu Pastel thư thái, danh mục liệu trình chăm sóc sức khỏe toàn diện, Modal tương tác đặt lịch hẹn cao cấp.",
         icon: "heart",
@@ -340,6 +355,7 @@
       {
         name: "Tiny Trails",
         slug: "tinytrails-404",
+        category: "apps",
         domain: "Trang lỗi 404 / Gaming",
         desc: "Mini-game Canvas đom đóm tương tác độc đáo, hoạt ảnh nhân vật lạc đường sinh động giúp tăng giữ chân người dùng.",
         icon: "gamepad-2",
@@ -349,6 +365,7 @@
       {
         name: "Aura Email",
         slug: "aura-email",
+        category: "apps",
         domain: "Ứng dụng Email / AI App",
         desc: "Bố cục 3 cột tiêu chuẩn SaaS, tính năng AI tóm tắt nội dung thư tự động, Command Palette (Cmd+K) thao tác cực nhanh.",
         icon: "mail",
@@ -358,6 +375,7 @@
       {
         name: "Atelier Agency",
         slug: "atelier-agency",
+        category: "agency",
         domain: "Creative Agency",
         desc: "Typography khổ lớn ấn tượng, Magnetic Custom Cursor biến thiên theo vị trí hover, Grid video trình diễn dự án đạt giải.",
         icon: "palette",
@@ -367,6 +385,7 @@
       {
         name: "Velorah",
         slug: "velorah-hero",
+        category: "ecom",
         domain: "Thời trang Cao cấp",
         desc: "Layout phong cách tạp chí thời trang Vogue, Carousel bộ sưu tập ấn tượng, Quick View Modal chi tiết sản phẩm.",
         icon: "sparkles",
@@ -376,6 +395,7 @@
       {
         name: "Measured",
         slug: "measured-wearable",
+        category: "ecom",
         domain: "Health Tech / Wearable",
         desc: "Biểu đồ nhịp sinh học thời gian thực, hiệu ứng Neon Glow high-tech, tính năng xoay xem chi tiết chiếc nhẫn thông minh 360°.",
         icon: "activity",
@@ -385,6 +405,7 @@
       {
         name: "Lumora",
         slug: "lumora-app",
+        category: "ecom",
         domain: "Nhà thông minh (Smart Home)",
         desc: "Điều chỉnh nhiệt độ màu ánh sáng trực quan, công tắc bật/tắt thiết bị theo khu vực phòng, biểu đồ theo dõi năng lượng.",
         icon: "home",
@@ -394,6 +415,7 @@
       {
         name: "Leon Archive",
         slug: "leon-archive",
+        category: "portfolio",
         domain: "Kho thử nghiệm 3D / R&D",
         desc: "Xem trước WebGL Shaders thời gian thực, bảng tương tác 3D Assets, hỗ trợ tải tài nguyên thiết kế đồ họa cao cấp.",
         icon: "archive",
@@ -403,6 +425,7 @@
       {
         name: "Prisma Studio",
         slug: "prisma-studio",
+        category: "agency",
         domain: "Digital Agency",
         desc: "Nền Gradient Wave chuyển động sóng nước mượt mà, khối dịch vụ đa sắc nghệ thuật, Form liên hệ tư vấn doanh nghiệp.",
         icon: "layers",
@@ -412,6 +435,7 @@
       {
         name: "Axion Studio",
         slug: "axion-studio",
+        category: "agency",
         domain: "Design Agency",
         desc: "Shader animated hero (FlutedGlass + ChromaFlow), nút tương tác hiệu ứng text-roll hover, video case study cards mở rộng.",
         icon: "cpu",
@@ -421,6 +445,7 @@
       {
         name: "Vibrant Wellness",
         slug: "vibrant-wellness",
+        category: "wellness",
         domain: "Holistic Wellness / Landing",
         desc: "Full-screen looping background video, phong cách Liquid Glass UI viền phát sáng, menu mobile animation, bottom stats.",
         icon: "sun",
@@ -430,6 +455,7 @@
       {
         name: "Nora Studio",
         slug: "nora-studio",
+        category: "portfolio",
         domain: "Motion Designer Portfolio",
         desc: "Màn hình mở đầu Staggered splash screen, Canvas spotlight mouse-reveal bí ẩn, hiệu ứng chữ xuất hiện mờ tỏ từng từ.",
         icon: "film",
@@ -439,6 +465,7 @@
       {
         name: "TerraElix",
         slug: "terra-elix",
+        category: "wellness",
         domain: "Supplements / Wellness Hero",
         desc: "Full-viewport background image thiên nhiên, typography DM Sans tinh tế, tiêu đề word-by-word reveal kèm capsule inline.",
         icon: "leaf",
@@ -448,6 +475,7 @@
       {
         name: "CozyPaws",
         slug: "cozy-paws",
+        category: "ecom",
         domain: "Pet Care / E-Commerce Hero",
         desc: "Layout vừa vặn 100vh không cuộn trang, DM Serif Display rực rỡ, chữ nẩy hiệu ứng word-pop, card sản phẩm nổi độc đáo.",
         icon: "dog",
@@ -457,6 +485,7 @@
       {
         name: "Adam Roberts",
         slug: "adam-roberts",
+        category: "portfolio",
         domain: "Portfolio / Design & Engineering",
         desc: "Full-bleed background video 120% scale, typography kết hợp Inter & basis33 pixel, 4-column meta grid, nút showreel và award chips.",
         icon: "video",
@@ -467,6 +496,17 @@
 
     function renderProjects(list) {
       const grid = document.getElementById('projectsGrid');
+      if (list.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-500">
+            <i data-lucide="search-x" class="w-12 h-12 mx-auto mb-3 opacity-50"></i>
+            <p class="text-sm font-medium">Không tìm thấy dự án phù hợp với từ khóa hoặc bộ lọc đã chọn.</p>
+          </div>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
       grid.innerHTML = list.map(p => `
         <div class="liquid-glass-card rounded-3xl p-7 flex flex-col justify-between group relative overflow-hidden">
           <!-- Hover Background Gradient Accent -->
@@ -501,12 +541,42 @@
       lucide.createIcons();
     }
 
+    let activeCategory = 'all';
+    let searchQuery = '';
+
+    function filterAndRender() {
+      const filtered = projects.filter(p => {
+        const matchCat = activeCategory === 'all' || p.category === activeCategory;
+        const matchQuery = !searchQuery || 
+          p.name.toLowerCase().includes(searchQuery) ||
+          p.domain.toLowerCase().includes(searchQuery) ||
+          p.desc.toLowerCase().includes(searchQuery);
+        return matchCat && matchQuery;
+      });
+      renderProjects(filtered);
+    }
+
     renderProjects(projects);
 
+    // Category Filter Event
+    document.querySelectorAll('.filter-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-pill').forEach(b => {
+          b.classList.remove('bg-cyan-500', 'text-slate-950', 'border-cyan-400', 'shadow-lg', 'shadow-cyan-500/20');
+          b.classList.add('bg-slate-900/80', 'text-slate-300', 'border-slate-800');
+        });
+        btn.classList.remove('bg-slate-900/80', 'text-slate-300', 'border-slate-800');
+        btn.classList.add('bg-cyan-500', 'text-slate-950', 'border-cyan-400', 'shadow-lg', 'shadow-cyan-500/20');
+        
+        activeCategory = btn.dataset.cat;
+        filterAndRender();
+      });
+    });
+
+    // Search Input Event
     document.getElementById('searchInput').addEventListener('input', (e) => {
-      const q = e.target.value.toLowerCase();
-      const filtered = projects.filter(p => p.name.toLowerCase().includes(q) || p.domain.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q));
-      renderProjects(filtered);
+      searchQuery = e.target.value.toLowerCase();
+      filterAndRender();
     });
   </script>
 </body>
