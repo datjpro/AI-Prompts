@@ -91,6 +91,10 @@ AI-Prompts/
 └── 🏰 Mostar City - Cinematic Scroll Page
     ├── 📄 mostar-city.txt
     └── 📁 mostar-city/
+
+└── ✈️ SkyElite - Private Jets Hero Section
+    ├── 📄 skyelite-jets.txt
+    └── 📁 skyelite-jets/
 ```
 
 ---
@@ -107,7 +111,7 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 
 ---
 
-## 📑 Danh sách Chi tiết 19 Dự án (Detailed Project Breakdown)
+## 📑 Danh sách Chi tiết 20 Dự án (Detailed Project Breakdown)
 
 ### 1. ✈️ Wandor — AI Trip Planner
 * **File Prompt**: [`wandor-travel.txt`](./wandor-travel.txt)
@@ -239,6 +243,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`mostar-city.txt`](./mostar-city.txt)
 * **Thư mục ứng dụng**: [`mostar-city/`](./mostar-city/)
 * **Mô tả**: Trải nghiệm cuộn trang điện ảnh 3 màn hình cho thành phố Mostar (Bosnia và Herzegovina). Đơn trang Vanilla HTML/CSS/JS không phụ thuộc framework, tích hợp kỹ thuật cuộn sticky parallax 3D, tách khung ảnh splitframe, blur tint thích ứng, typography Ogg Medium và carousel vô tận các địa danh nổi tiếng.
+
+---
+
+### 20. ✈️ SkyElite — Private Jets Hero Section
+* **File Prompt**: [`skyelite-jets.txt`](./skyelite-jets.txt)
+* **Thư mục ứng dụng**: [`skyelite-jets/`](./skyelite-jets/)
+* **Mô tả**: Hero landing page cao cấp dành cho dịch vụ chuyên cơ riêng SkyElite. Thiết kế video background tràn viền (100vh), phông chữ Inter thanh lịch, menu navigation desktop & mobile dropdown glassmorphism, tiêu đề 2 dòng "Premium. Accessible." có hiệu ứng xếp lớp chữ âm, cùng nút bấm CTA Discover và Book Now.
 
 ---
 
