@@ -45,6 +45,7 @@ Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent
 | 18 | **Adam Roberts** | `adam-roberts.txt` | `adam-roberts/` | Portfolio / Design & Engineering | Full-bleed looping video background, 4-column meta grid, font-pixel (basis33) & Inter typography, play showreel button, award chips (FWA, W., CSSDA), fullscreen mobile menu |
 | 19 | **Mostar City** | `mostar-city.txt` | `mostar-city/` | Du lịch / Cinematic Scroll | Standalone page vanilla HTML/CSS/JS, scroll story parallax 3D, multi-layer image blend, infinite sights slider |
 | 20 | **SkyElite** | `skyelite-jets.txt` | `skyelite-jets/` | Du thuyền & Hàng không / Private Jets | Hero section video background tràn viền (100vh), typography Inter, menu mobile backdrop-blur, heading hai lớp chèn chữ -12px overlap, CTA Discover & Book Now |
+| 21 | **DE</HELPERS** | `dehelpers-hero.txt` | `dehelpers-hero/` | Outsource Dev / Hero Section | Sticky background video, fixed navbar, liquid glass testimonial card, Framer Motion staggered mobile menu |
 
 ---
 

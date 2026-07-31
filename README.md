@@ -95,6 +95,10 @@ AI-Prompts/
 └── ✈️ SkyElite - Private Jets Hero Section
     ├── 📄 skyelite-jets.txt
     └── 📁 skyelite-jets/
+
+└── 💻 DE</HELPERS - Outsourced Development Team Hero
+    ├── 📄 dehelpers-hero.txt
+    └── 📁 dehelpers-hero/
 ```
 
 ---
@@ -111,7 +115,7 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 
 ---
 
-## 📑 Danh sách Chi tiết 20 Dự án (Detailed Project Breakdown)
+## 📑 Danh sách Chi tiết 21 Dự án (Detailed Project Breakdown)
 
 ### 1. ✈️ Wandor — AI Trip Planner
 * **File Prompt**: [`wandor-travel.txt`](./wandor-travel.txt)
@@ -250,6 +254,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`skyelite-jets.txt`](./skyelite-jets.txt)
 * **Thư mục ứng dụng**: [`skyelite-jets/`](./skyelite-jets/)
 * **Mô tả**: Hero landing page cao cấp dành cho dịch vụ chuyên cơ riêng SkyElite. Thiết kế video background tràn viền (100vh), phông chữ Inter thanh lịch, menu navigation desktop & mobile dropdown glassmorphism, tiêu đề 2 dòng "Premium. Accessible." có hiệu ứng xếp lớp chữ âm, cùng nút bấm CTA Discover và Book Now.
+
+---
+
+### 21. 💻 DE&lt;/HELPERS — Outsourced Development Team Hero Section
+* **File Prompt**: [`dehelpers-hero.txt`](./dehelpers-hero.txt)
+* **Thư mục ứng dụng**: [`dehelpers-hero/`](./dehelpers-hero/)
+* **Mô tả**: Hero section hiện đại dành cho đội ngũ phát triển phần mềm thuê ngoài DE&lt;/HELPERS. Trang bao gồm sticky background video cuộn phía sau nội dung, gradient overlay 40% ở đáy video, fixed navigation bar với logo độc đáo, menu mobile hoạt ảnh xoay icon Menu/X và stagger link bằng Framer Motion, cùng card đánh giá khách hàng hiệu ứng Liquid Glass siêu mờ.
 
 ---
 
