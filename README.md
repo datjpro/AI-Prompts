@@ -84,9 +84,13 @@ AI-Prompts/
 │   ├── 📄 cozy-paws.txt
 │   └── 📁 cozy-paws/
 │
-└── 🎬 Adam Roberts - Design & Engineering Portfolio
-    ├── 📄 adam-roberts.txt
-    └── 📁 adam-roberts/
+├── 🎬 Adam Roberts - Design & Engineering Portfolio
+│   ├── 📄 adam-roberts.txt
+│   └── 📁 adam-roberts/
+│
+└── 🏰 Mostar City - Cinematic Scroll Page
+    ├── 📄 mostar-city.txt
+    └── 📁 mostar-city/
 ```
 
 ---
@@ -103,7 +107,7 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 
 ---
 
-## 📑 Danh sách Chi tiết 17 Dự án (Detailed Project Breakdown)
+## 📑 Danh sách Chi tiết 19 Dự án (Detailed Project Breakdown)
 
 ### 1. ✈️ Wandor — AI Trip Planner
 * **File Prompt**: [`wandor-travel.txt`](./wandor-travel.txt)
@@ -221,6 +225,20 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`cozy-paws.txt`](./cozy-paws.txt)
 * **Thư mục ứng dụng**: [`cozy-paws/`](./cozy-paws/)
 * **Mô tả**: Hero landing page tràn màn hình (no scroll 100vh) dành cho thương hiệu đồ dùng thú cưng CozyPaws. Sử dụng phong cách màu Mint & Orange rực rỡ, phông chữ DM Serif Display, tiêu đề hoạt ảnh `word-pop`, card sản phẩm và card video review nổi 2 bên, cùng bộ 3 ảnh ghép chân trang với thông số rating & lượt dùng overlay.
+
+---
+
+### 18. 🎬 Adam Roberts — Design & Engineering Portfolio
+* **File Prompt**: [`adam-roberts.txt`](./adam-roberts.txt)
+* **Thư mục ứng dụng**: [`adam-roberts/`](./adam-roberts/)
+* **Mô tả**: Portfolio cá nhân dành cho Designer & Engineer Adam Roberts. Nổi bật với full-bleed looping video background, 4-column meta grid, typography kết hợp Inter & basis33 pixel, nút play showreel và award chips.
+
+---
+
+### 19. 🏰 Mostar City — Cinematic Scroll Page
+* **File Prompt**: [`mostar-city.txt`](./mostar-city.txt)
+* **Thư mục ứng dụng**: [`mostar-city/`](./mostar-city/)
+* **Mô tả**: Trải nghiệm cuộn trang điện ảnh 3 màn hình cho thành phố Mostar (Bosnia và Herzegovina). Đơn trang Vanilla HTML/CSS/JS không phụ thuộc framework, tích hợp kỹ thuật cuộn sticky parallax 3D, tách khung ảnh splitframe, blur tint thích ứng, typography Ogg Medium và carousel vô tận các địa danh nổi tiếng.
 
 ---
 

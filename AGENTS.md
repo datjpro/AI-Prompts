@@ -43,6 +43,7 @@ Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent
 | 16 | **TerraElix** | `terra-elix.txt` | `terra-elix/` | Supplements / Wellness Hero | Full-viewport background image, DM Sans & Inter typography, word-by-word headline reveal with inline capsule image, 3-panel footer with auto-rotating card carousel, floating desktop product |
 | 17 | **CozyPaws** | `cozy-paws.txt` | `cozy-paws/` | Pet Care / E-Commerce Hero | Viewport-height (100vh) layout, DM Serif Display typography, 3 distinct breakpoint layouts (mobile, tablet, desktop), word-pop animation, floating side product & video cards, 3-photo bottom strip with stats overlay |
 | 18 | **Adam Roberts** | `adam-roberts.txt` | `adam-roberts/` | Portfolio / Design & Engineering | Full-bleed looping video background, 4-column meta grid, font-pixel (basis33) & Inter typography, play showreel button, award chips (FWA, W., CSSDA), fullscreen mobile menu |
+| 19 | **Mostar City** | `mostar-city.txt` | `mostar-city/` | Du lịch / Cinematic Scroll | Standalone page vanilla HTML/CSS/JS, scroll story parallax 3D, multi-layer image blend, infinite sights slider |
 
 ---
 
