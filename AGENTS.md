@@ -10,10 +10,12 @@ Tệp tài liệu này quy định các quy tắc hoạt động, quy trình ki�
 
 * **Tệp Prompt**: Đặt ở thư mục gốc dưới dạng `<project-name>.txt` (sử dụng `kebab-case`).
 * **Thư mục Ứng dụng**: Đặt ở thư mục gốc dưới dạng `<project-name>/` (sử dụng `kebab-case` trùng tên hoàn toàn với tệp prompt).
+* **Tệp GIF Demo (BẮT BUỘC)**: Mọi thư mục ứng dụng **BẮT BUỘC** phải chứa tệp GIF xem trước giao diện động tại `<project-name>/preview.gif` (và/hoặc `<project-name>/public/preview.gif`) để mô phỏng chân thực giao diện web đang hoạt động.
 
 *Ví dụ:*
 - Tệp Prompt: `wandor-travel.txt`
 - Thư mục dự án: `wandor-travel/`
+- Tệp GIF xem trước: `wandor-travel/preview.gif`
 
 ---
 
@@ -88,15 +90,18 @@ touch <project-name>.txt
 npx -y create-vite@latest <project-name> --template react-ts
 # ...phát triển ứng dụng...
 
-# Bước 3: Thêm vào Git cho riêng dự án đó
-git add <project-name>.txt <project-name>/
-git commit -m "feat(<project-name>): add <Project Name> prompt & application"
+# Bước 3: Tạo tệp preview.gif demo giao diện ứng dụng
+# (Chụp/Render hình ảnh giao diện thực tế và xuất thành <project-name>/preview.gif)
 
-# Bước 4: Cập nhật AGENTS.md và README.md
+# Bước 4: Thêm vào Git cho riêng dự án đó (bao gồm cả preview.gif)
+git add <project-name>.txt <project-name>/
+git commit -m "feat(<project-name>): add <Project Name> prompt, application & preview GIF"
+
+# Bước 5: Cập nhật AGENTS.md và README.md
 git add AGENTS.md README.md
 git commit -m "docs: update AGENTS.md and README.md index for <project-name>"
 
-# Bước 5: Push lên GitHub
+# Bước 6: Push lên GitHub
 git push origin main
 ```
 
