@@ -79,8 +79,12 @@ Khi người dùng yêu cầu thêm Prompt/Ứng dụng mới, Agent thực hi�
    - Khi thêm dự án mới: `feat(<project-name>): add <Project Name> prompt & application`
    - Khi sửa đổi dự án: `fix(<project-name>): <nội dung sửa>` hoặc `refactor(<project-name>): <nội dung>`
    - Khi cập nhật tài liệu: `docs: update AGENTS.md & README.md for <project-name>`
+3. **BẮT BUỘC CHẠY DEMO & CHỜ USER DUYỆT TRƯỚC KHIN COMMIT**:
+   - AI Agent **TUYỆT ĐỐI KHÔNG TỰ Ý COMMIT** code ngay sau khi tạo/chỉnh sửa dự án.
+   - AI Agent **BẮT BUỘC** phải chạy server demo local (ví dụ `npm run dev`), thông báo cho người dùng xem và duyệt giao diện web.
+   - Chỉ khi Người dùng xem demo và phản hồi **đồng ý/duyệt**, Agent mới được thực hiện tạo `preview.gif`, cập nhật tài liệu (`AGENTS.md`, `README.md`), `git commit` và `git push`.
 
-### 🔄 Quy trình 5 Bước cho AI Agent khi thêm Prompt mới:
+### 🔄 Quy trình 6 Bước cho AI Agent khi thêm Prompt mới:
 
 ```bash
 # Bước 1: Tạo tệp prompt chuẩn tên
@@ -90,18 +94,20 @@ touch <project-name>.txt
 npx -y create-vite@latest <project-name> --template react-ts
 # ...phát triển ứng dụng...
 
-# Bước 3: Tạo tệp preview.gif demo giao diện ứng dụng
-# (Chụp/Render hình ảnh giao diện thực tế và xuất thành <project-name>/preview.gif)
+# Bước 3: Khởi chạy local dev server & Thông báo Người dùng duyệt Demo
+npm run dev
+# (Dừng tại đây, gửi link local demo cho User kiểm tra và CHỜ USER DUYỆT)
 
-# Bước 4: Thêm vào Git cho riêng dự án đó (bao gồm cả preview.gif)
+# Bước 4: Sau khi User ĐỒNG Ý/DUYỆT, tạo tệp preview.gif demo giao diện thực tế
+# (Chụp/Render giao diện thực tế và xuất thành <project-name>/preview.gif)
+
+# Bước 5: Thêm vào Git cho riêng dự án đó (bao gồm tệp prompt, ứng dụng & preview.gif)
 git add <project-name>.txt <project-name>/
 git commit -m "feat(<project-name>): add <Project Name> prompt, application & preview GIF"
 
-# Bước 5: Cập nhật AGENTS.md và README.md
+# Bước 6: Cập nhật AGENTS.md và README.md, commit và push lên GitHub
 git add AGENTS.md README.md
 git commit -m "docs: update AGENTS.md and README.md index for <project-name>"
-
-# Bước 6: Push lên GitHub
 git push origin main
 ```
 
