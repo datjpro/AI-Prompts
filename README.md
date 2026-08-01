@@ -8,7 +8,7 @@ Bộ sưu tập các dự án Giao diện Web (Frontend Web Applications) cao c�
 
 🌐 **Live Demo Hub**: Xem trực tuyến tất cả 18 giao diện tại [GitHub Pages Live Showcase Hub](https://datjpro.github.io/AI-Prompts/)
 
-Repository này chứa **18 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
+Repository này chứa **22 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
 
 ```
 AI-Prompts/
@@ -99,6 +99,10 @@ AI-Prompts/
 └── 💻 DE</HELPERS - Outsourced Development Team Hero
     ├── 📄 dehelpers-hero.txt
     └── 📁 dehelpers-hero/
+
+└── ⛔ Void 404 - Cinematic Full-Viewport 404 Error Page
+    ├── 📄 void-404.txt
+    └── 📁 void-404/
 ```
 
 ---
@@ -115,7 +119,7 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 
 ---
 
-## 📑 Danh sách Chi tiết 21 Dự án (Detailed Project Breakdown)
+## 📑 Danh sách Chi tiết 22 Dự án (Detailed Project Breakdown)
 
 ### 1. ✈️ Wandor — AI Trip Planner
 * **File Prompt**: [`wandor-travel.txt`](./wandor-travel.txt)
@@ -261,6 +265,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`dehelpers-hero.txt`](./dehelpers-hero.txt)
 * **Thư mục ứng dụng**: [`dehelpers-hero/`](./dehelpers-hero/)
 * **Mô tả**: Hero section hiện đại dành cho đội ngũ phát triển phần mềm thuê ngoài DE&lt;/HELPERS. Trang bao gồm sticky background video cuộn phía sau nội dung, gradient overlay 40% ở đáy video, fixed navigation bar với logo độc đáo, menu mobile hoạt ảnh xoay icon Menu/X và stagger link bằng Framer Motion, cùng card đánh giá khách hàng hiệu ứng Liquid Glass siêu mờ.
+
+---
+
+### 22. ⛔ Void 404 — Cinematic Full-Viewport 404 Error Page
+* **File Prompt**: [`void-404.txt`](./void-404.txt)
+* **Thư mục ứng dụng**: [`void-404/`](./void-404/)
+* **Mô tả**: Trang báo lỗi 404 điện ảnh tràn màn hình, xây dựng bằng React + Vite + Tailwind CSS v4. Nền video loop không overlay, số "404" khổng lồ với font Geist Mono SemiBold và gradient trắng mờ dần, chia cắt bởi divider 1px, thông điệp lỗi tinh tế. Logo LGPSM cấu thành từ pixel-mark SVG + wordmark SVG trắng, căn giữa phía trên. Hoàn toàn không có hoạt ảnh, overlay hay thành phần UI phụ trợ — chuyển động duy nhất đến từ video nền.
 
 ---
 

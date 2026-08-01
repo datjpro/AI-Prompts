@@ -21,7 +21,7 @@ Tệp tài liệu này quy định các quy tắc hoạt động, quy trình ki�
 
 Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent **BẮT BUỘC** phải kiểm tra danh sách bên dưới để đảm bảo chủ đề/nhiệm vụ không bị trùng lặp với các dự án đã có.
 
-### 📋 Danh mục 18 Dự án Hiện có (Prompt Catalog Index):
+### 📋 Danh mục 22 Dự án Hiện có (Prompt Catalog Index):
 
 | STT | Project Name | Tệp Prompt | Thư mục Dự án | Lĩnh vực (Domain) | Đặc trưng UI/UX & Tính năng chính |
 |---|---|---|---|---|---|
@@ -46,6 +46,7 @@ Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent
 | 19 | **Mostar City** | `mostar-city.txt` | `mostar-city/` | Du lịch / Cinematic Scroll | Standalone page vanilla HTML/CSS/JS, scroll story parallax 3D, multi-layer image blend, infinite sights slider |
 | 20 | **SkyElite** | `skyelite-jets.txt` | `skyelite-jets/` | Du thuyền & Hàng không / Private Jets | Hero section video background tràn viền (100vh), typography Inter, menu mobile backdrop-blur, heading hai lớp chèn chữ -12px overlap, CTA Discover & Book Now |
 | 21 | **DE</HELPERS** | `dehelpers-hero.txt` | `dehelpers-hero/` | Outsource Dev / Hero Section | Sticky background video, fixed navbar, liquid glass testimonial card, Framer Motion staggered mobile menu |
+| 22 | **Void 404** | `void-404.txt` | `void-404/` | Trang lỗi 404 / Cinematic | Full-viewport video background (no overlay), large gradient 404 numeral (Geist Mono SemiBold), centered divider + message, LGPSM pixel-mark logo, React + Vite + Tailwind CSS v4 |
 
 ---
 
