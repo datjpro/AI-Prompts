@@ -1,0 +1,47 @@
+Create a single-page, full-viewport 404 error screen in React + Vite + Tailwind CSS v4.
+
+PAGE / CANVAS
+- Full viewport: min-height: 100svh. Black fallback background. No horizontal scroll.
+- Responsive, preserving desktop composition at larger sizes.
+- No cards, buttons, nav links, gradients outside the 404 numerals, texture, glass, dark overlay, blur overlay, or extra UI.
+
+BACKGROUND VIDEO
+- Full-page background video: https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260801_001207_ec20d138-aa45-4b2b-ab8c-bdc71607f240.mp4
+- Semantic <video> element, first child, autoPlay loop muted playsInline aria-hidden="true".
+- position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1.
+- No dark/tint/overlay. Content above via higher z-index.
+
+FONT
+- @font-face: family "Geist Mono:SemiBold", weight 600, style normal, font-display swap.
+- src: url("https://static.figma.com/font/GeistMono_wght__1") format("woff2").
+- Used for large 404 and message text.
+
+HEADER LOGO
+- Centered horizontally at top. Desktop: top 80px.
+- Total frame: 233px × 40px, white fill.
+- Mark (54×40 px): exact SVG paths provided in spec.
+- Logotype: 14px right of mark, viewBox="0 0 164.311 100", exact path provided.
+
+CENTRED 404 CONTENT
+- position absolute, top 50%, left 50%, transform translate(-50%,-50%).
+- Desktop width 483px. Flex column, center align, 44px gap.
+- Contains: h1 "404" + hr divider + p message.
+
+404 HEADING
+- Font: Geist Mono:SemiBold. Desktop size 295.751px. Weight 600. Line-height 1.1. Letter-spacing -24.6459px.
+- Gradient: linear-gradient(247.33deg, #fff 2.53%, rgba(255,255,255,0.4) 93.61%).
+- background-clip: text; -webkit-background-clip: text; color: transparent.
+
+DIVIDER — 425px wide, 1px, solid white.
+
+MESSAGE — "The path may be broken, but the journey isn't. Let's get you back."
+- Font: Geist Mono:SemiBold. 24px, weight 600, line-height 1.1, letter-spacing -2px, white.
+
+MOBILE (≤640px)
+- Logo: top 32px, scale 75% centered.
+- Content: width min(100%-40px, 360px), gap 28px.
+- 404 font-size: clamp(140px, 52vw, 200px); letter-spacing ~-0.09em.
+- Divider: full width. Message: clamp(16px, 4.5vw, 20px), letter-spacing -1.3px.
+
+ACCESSIBILITY
+- <main> for page, <h1> for 404, aria-hidden on SVG/video, aria-label="LGPSM" on logo wrapper.
