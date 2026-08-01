@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI-Prompts — Next-Gen Frontend Showcase Hub</title>
-  <meta name="description" content="Bộ sưu tập 21 Dự án Web UI/UX đỉnh cao được thiết kế hoàn toàn bằng AI Prompts chuyên sâu" />
+  <meta name="description" content="Bộ sưu tập 22 Dự án Web UI/UX đỉnh cao được thiết kế hoàn toàn bằng AI Prompts chuyên sâu" />
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -177,7 +177,7 @@
           <span class="font-display font-extrabold text-base tracking-wide text-white flex items-center gap-2">
             AI-PROMPTS <span class="text-[10px] uppercase font-sans font-bold px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Hub 2.0</span>
           </span>
-          <span class="text-[11px] text-slate-400 -mt-1 font-sans">21 Next-Gen UI Showcases</span>
+          <span class="text-[11px] text-slate-400 -mt-1 font-sans">22 Next-Gen UI Showcases</span>
         </div>
       </a>
 
@@ -211,18 +211,18 @@
     <!-- Animated Headline with Word Blur Reveal -->
     <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-5xl leading-[1.1] mb-8">
       <span class="word-animate gradient-heading" style="animation-delay: 0.4s;">Bộ Sưu Tập</span>
-      <span class="word-animate gradient-accent" style="animation-delay: 0.55s;">21 Giao Diện Web AI</span>
+      <span class="word-animate gradient-accent" style="animation-delay: 0.55s;">22 Giao Diện Web AI</span>
       <span class="word-animate text-white" style="animation-delay: 0.7s;">Đột Phá Thế Hệ Mới</span>
     </h1>
 
     <p class="text-slate-400 text-base sm:text-lg max-w-2xl font-light leading-relaxed mb-10">
-      Trải nghiệm các thiết kế đẳng cấp thế giới được kiến tạo hoàn toàn từ các AI Prompt chuyên sâu. Tương tác trực tiếp với hiệu ứng 3D Canvas, Shaders, Liquid Glass UI và Micro-animations mượt mà.
+      Trải nghiệm các thiết kế đẳng cấp thế giới được kiến tạo hoàn toàn từ các AI Prompt chuyên sâu. Tương tác trực tiếp với hiệu ứng 3D Canvas, Shaders, Liquid Glass UI, Video Loop và Preview GIF sống động.
     </p>
 
     <!-- Stat Pills Row -->
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl w-full mb-16">
       <div class="liquid-glass rounded-2xl p-4 text-center">
-        <div class="font-display text-2xl sm:text-3xl font-extrabold text-cyan-400">21</div>
+        <div class="font-display text-2xl sm:text-3xl font-extrabold text-cyan-400">22</div>
         <div class="text-xs text-slate-400 font-medium">Dự Án Web UI</div>
       </div>
       <div class="liquid-glass rounded-2xl p-4 text-center">
@@ -235,7 +235,7 @@
       </div>
       <div class="liquid-glass rounded-2xl p-4 text-center">
         <div class="font-display text-2xl sm:text-3xl font-extrabold text-orange-400">Live</div>
-        <div class="text-xs text-slate-400 font-medium">GitHub Pages</div>
+        <div class="text-xs text-slate-400 font-medium">GIF Previews</div>
       </div>
     </div>
 
@@ -249,7 +249,7 @@
 
     <!-- Category Filter Pills -->
     <div class="flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto mb-12" id="filterPills">
-      <button data-cat="all" class="filter-pill px-4 py-2 rounded-full text-xs font-semibold bg-cyan-500 text-slate-950 border border-cyan-400 shadow-lg shadow-cyan-500/20 transition-all cursor-pointer">Tất Cả (21)</button>
+      <button data-cat="all" class="filter-pill px-4 py-2 rounded-full text-xs font-semibold bg-cyan-500 text-slate-950 border border-cyan-400 shadow-lg shadow-cyan-500/20 transition-all cursor-pointer">Tất Cả (22)</button>
       <button data-cat="agency" class="filter-pill px-4 py-2 rounded-full text-xs font-semibold bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-cyan-500/50 hover:text-cyan-300 transition-all cursor-pointer">Agency &amp; Studio</button>
       <button data-cat="portfolio" class="filter-pill px-4 py-2 rounded-full text-xs font-semibold bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-cyan-500/50 hover:text-cyan-300 transition-all cursor-pointer">Portfolio &amp; Creative</button>
       <button data-cat="wellness" class="filter-pill px-4 py-2 rounded-full text-xs font-semibold bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-cyan-500/50 hover:text-cyan-300 transition-all cursor-pointer">Health &amp; Wellness</button>
@@ -310,7 +310,7 @@
     }
     drawSpotlight();
 
-    // 18 Projects Data Categorized
+    // 22 Projects Data Categorized
     const projects = [
       {
         name: "Wandor",
@@ -521,6 +521,17 @@
         icon: "code",
         badge: "Liquid Glass Hero",
         gradient: "from-purple-600/20 to-indigo-600/20"
+      },
+      {
+        name: "Void 404",
+        slug: "void-404",
+        category: "apps",
+        domain: "Trang lỗi 404 / Cinematic",
+        desc: "Trang báo lỗi 404 điện ảnh tràn màn hình với video nền loop không overlay, số 404 khổng lồ gradient trắng mờ dần, divider 1px và logo LGPSM.",
+        icon: "alert-triangle",
+        badge: "React + Tailwind v4",
+        gradient: "from-slate-600/20 to-zinc-500/20",
+        preview: "void-404/preview.gif"
       }
     ];
 
@@ -538,28 +549,39 @@
       }
 
       grid.innerHTML = list.map(p => `
-        <div class="liquid-glass-card rounded-3xl p-7 flex flex-col justify-between group relative overflow-hidden">
+        <div class="liquid-glass-card rounded-3xl p-6 flex flex-col justify-between group relative overflow-hidden">
           <!-- Hover Background Gradient Accent -->
           <div class="absolute inset-0 bg-gradient-to-br ${p.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
           <div class="relative z-10">
-            <div class="flex items-center justify-between mb-6">
-              <div class="w-14 h-14 rounded-2xl bg-slate-900/90 border border-white/10 flex items-center justify-center text-cyan-400 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all duration-500 shadow-xl">
-                <i data-lucide="${p.icon}" class="w-7 h-7"></i>
+            <!-- Animated GIF Preview (If available) -->
+            ${p.preview ? `
+              <div class="relative w-full h-44 rounded-2xl overflow-hidden mb-5 border border-white/10 shadow-xl group/preview bg-slate-950">
+                <img src="${p.preview}" alt="${p.name} Live Demo Preview" class="w-full h-full object-cover group-hover/preview:scale-105 transition-transform duration-700">
+                <div class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-[10px] font-bold text-cyan-300 border border-white/10 flex items-center gap-1.5 shadow-lg">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+                  <span>UI GIF Preview</span>
+                </div>
+              </div>
+            ` : ''}
+
+            <div class="flex items-center justify-between mb-5">
+              <div class="w-12 h-12 rounded-2xl bg-slate-900/90 border border-white/10 flex items-center justify-center text-cyan-400 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all duration-500 shadow-xl">
+                <i data-lucide="${p.icon}" class="w-6 h-6"></i>
               </div>
               <span class="text-[11px] font-semibold px-3 py-1 rounded-full bg-slate-800/80 text-cyan-300 border border-slate-700/60 shadow-inner">${p.badge}</span>
             </div>
 
             <div class="text-[11px] font-bold text-cyan-400 uppercase tracking-widest mb-1.5">${p.domain}</div>
-            <h3 class="font-display text-2xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">${p.name}</h3>
-            <p class="text-xs text-slate-400 leading-relaxed font-light mb-8 line-clamp-3">${p.desc}</p>
+            <h3 class="font-display text-2xl font-bold text-white mb-2.5 group-hover:text-cyan-300 transition-colors">${p.name}</h3>
+            <p class="text-xs text-slate-400 leading-relaxed font-light mb-6 line-clamp-3">${p.desc}</p>
           </div>
 
-          <div class="relative z-10 pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+          <div class="relative z-10 pt-4 border-t border-white/10 flex items-center justify-between gap-3">
             <a href="${p.slug}.txt" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition font-medium">
               <i data-lucide="file-text" class="w-4 h-4 text-cyan-400"></i> Prompt Text
             </a>
-            <a href="/AI-Prompts/${p.slug}/" target="_blank" class="btn-text-roll bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-4 py-2.5 rounded-2xl text-xs font-bold transition shadow-lg shadow-cyan-500/20">
+            <a href="${p.slug}/" target="_blank" class="btn-text-roll bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-4 py-2.5 rounded-2xl text-xs font-bold transition shadow-lg shadow-cyan-500/20">
               <div class="roll-inner">
                 <span class="flex items-center gap-1">Live Demo <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
                 <span class="flex items-center gap-1">Khám Phá <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
