@@ -8,7 +8,7 @@ Bộ sưu tập các dự án Giao diện Web (Frontend Web Applications) cao c�
 
 🌐 **Live Demo Hub**: Xem trực tuyến tất cả 18 giao diện tại [GitHub Pages Live Showcase Hub](https://datjpro.github.io/AI-Prompts/)
 
-Repository này chứa **22 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
+Repository này chứa **23 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
 
 ```
 AI-Prompts/
@@ -103,6 +103,10 @@ AI-Prompts/
 └── ⛔ Void 404 - Cinematic Full-Viewport 404 Error Page
     ├── 📄 void-404.txt
     └── 📁 void-404/
+
+└── 🎙️ ECHOID - Voice Identity Product Hero Landing
+    ├── 📄 echoid-voice.txt
+    └── 📁 echoid-voice/
 ```
 
 ---
@@ -272,6 +276,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`void-404.txt`](./void-404.txt)
 * **Thư mục ứng dụng**: [`void-404/`](./void-404/)
 * **Mô tả**: Trang báo lỗi 404 điện ảnh tràn màn hình, xây dựng bằng React + Vite + Tailwind CSS v4. Nền video loop không overlay, số "404" khổng lồ với font Geist Mono SemiBold và gradient trắng mờ dần, chia cắt bởi divider 1px, thông điệp lỗi tinh tế. Logo LGPSM cấu thành từ pixel-mark SVG + wordmark SVG trắng, căn giữa phía trên. Hoàn toàn không có hoạt ảnh, overlay hay thành phần UI phụ trợ — chuyển động duy nhất đến từ video nền.
+
+---
+
+### 23. 🎙️ ECHOID — Voice Identity Product Hero Landing
+* **File Prompt**: [`echoid-voice.txt`](./echoid-voice.txt)
+* **Thư mục ứng dụng**: [`echoid-voice/`](./echoid-voice/)
+* **Mô tả**: Landing page định danh giọng nói tràn màn hình cho ECHOID — sản phẩm thuộc E network. Nổi bật với background video cinematic khuôn mặt AI, dual gradient scrim overlay, bảng màu pure black (#000), khung voice entry sắc cạnh, nút bấm tối giản, menu mobile circular clip-path backdrop-blur và font chữ kết hợp Sora & JetBrains Mono.
 
 ---
 

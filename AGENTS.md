@@ -49,6 +49,7 @@ Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent
 | 20 | **SkyElite** | `skyelite-jets.txt` | `skyelite-jets/` | Du thuyền & Hàng không / Private Jets | Hero section video background tràn viền (100vh), typography Inter, menu mobile backdrop-blur, heading hai lớp chèn chữ -12px overlap, CTA Discover & Book Now |
 | 21 | **DE</HELPERS** | `dehelpers-hero.txt` | `dehelpers-hero/` | Outsource Dev / Hero Section | Sticky background video, fixed navbar, liquid glass testimonial card, Framer Motion staggered mobile menu |
 | 22 | **Void 404** | `void-404.txt` | `void-404/` | Trang lỗi 404 / Cinematic | Full-viewport video background (no overlay), large gradient 404 numeral (Geist Mono SemiBold), centered divider + message, LGPSM pixel-mark logo, React + Vite + Tailwind CSS v4 |
+| 23 | **ECHOID** | `echoid-voice.txt` | `echoid-voice/` | Định danh Giọng nói / Voice ID | Single full-viewport hero page, full-bleed cinematic AI face video, right-aligned voice entry panel, sharp rect UI, dual gradient scrim, Google Fonts Sora & JetBrains Mono |
 
 ---
 
