@@ -8,7 +8,7 @@ Bộ sưu tập các dự án Giao diện Web (Frontend Web Applications) cao c�
 
 🌐 **Live Demo Hub**: Xem trực tuyến tất cả 18 giao diện tại [GitHub Pages Live Showcase Hub](https://datjpro.github.io/AI-Prompts/)
 
-Repository này chứa **23 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
+Repository này chứa **24 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
 
 ```
 AI-Prompts/
@@ -283,6 +283,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`echoid-voice.txt`](./echoid-voice.txt)
 * **Thư mục ứng dụng**: [`echoid-voice/`](./echoid-voice/)
 * **Mô tả**: Landing page định danh giọng nói tràn màn hình cho ECHOID — sản phẩm thuộc E network. Nổi bật với background video cinematic khuôn mặt AI, dual gradient scrim overlay, bảng màu pure black (#000), khung voice entry sắc cạnh, nút bấm tối giản, menu mobile circular clip-path backdrop-blur và font chữ kết hợp Sora & JetBrains Mono.
+
+---
+
+### 24. 🧠 SynapseX — Neural-AI Interface Landing
+* **File Prompt**: [`synapsex-landing.txt`](./synapsex-landing.txt)
+* **Thư mục ứng dụng**: [`synapsex-landing/`](./synapsex-landing/)
+* **Mô tả**: Landing page giao diện thần kinh AI đơn trang cho SynapseX. Giao diện tông màu đen pure black (#000), phông chữ chủ đạo Space Mono và Anton SC watermark background. Nổi bật với 5 background video CloudFront tràn màn hình, hero video tương tác mouse-scrubbing, navbar capsule mở rộng linh hoạt với animation spring, hiệu ứng chữ scramble (ScrambleIn & ScrambleText), đoạn văn 3D scroll tilt transform, lưới chỉ số hiệu năng và các card kiến trúc 3 lớp (Capture - Process - Interface).
 
 ---
 

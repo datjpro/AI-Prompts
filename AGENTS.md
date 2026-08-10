@@ -23,7 +23,7 @@ Tệp tài liệu này quy định các quy tắc hoạt động, quy trình ki�
 
 Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent **BẮT BUỘC** phải kiểm tra danh sách bên dưới để đảm bảo chủ đề/nhiệm vụ không bị trùng lặp với các dự án đã có.
 
-### 📋 Danh mục 22 Dự án Hiện có (Prompt Catalog Index):
+### 📋 Danh mục 24 Dự án Hiện có (Prompt Catalog Index):
 
 | STT | Project Name | Tệp Prompt | Thư mục Dự án | Lĩnh vực (Domain) | Đặc trưng UI/UX & Tính năng chính |
 |---|---|---|---|---|---|
@@ -50,6 +50,7 @@ Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent
 | 21 | **DE</HELPERS** | `dehelpers-hero.txt` | `dehelpers-hero/` | Outsource Dev / Hero Section | Sticky background video, fixed navbar, liquid glass testimonial card, Framer Motion staggered mobile menu |
 | 22 | **Void 404** | `void-404.txt` | `void-404/` | Trang lỗi 404 / Cinematic | Full-viewport video background (no overlay), large gradient 404 numeral (Geist Mono SemiBold), centered divider + message, LGPSM pixel-mark logo, React + Vite + Tailwind CSS v4 |
 | 23 | **ECHOID** | `echoid-voice.txt` | `echoid-voice/` | Định danh Giọng nói / Voice ID | Single full-viewport hero page, full-bleed cinematic AI face video, right-aligned voice entry panel, sharp rect UI, dual gradient scrim, Google Fonts Sora & JetBrains Mono |
+| 24 | **SynapseX** | `synapsex-landing.txt` | `synapsex-landing/` | Giao diện Thần kinh Neural-AI / Interface | Background video full-viewport (5 CloudFront videos), mouse-scrubbed hero video, typography Space Mono & Anton SC, scramble text animations, navbar capsule expanding menu, 3D scroll text, responsive metric grid, 3-layer architecture cards |
 
 ---
 
