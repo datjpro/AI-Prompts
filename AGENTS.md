@@ -10,7 +10,7 @@ Tệp tài liệu này quy định các quy tắc hoạt động, quy trình ki�
 
 * **Tệp Prompt**: Đặt ở thư mục gốc dưới dạng `<project-name>.txt` (sử dụng `kebab-case`).
 * **Thư mục Ứng dụng**: Đặt ở thư mục gốc dưới dạng `<project-name>/` (sử dụng `kebab-case` trùng tên hoàn toàn với tệp prompt).
-* **Tệp GIF Demo (BẮT BUỘC)**: Mọi thư mục ứng dụng **BẮT BUỘC** phải chứa tệp GIF xem trước giao diện động tại `<project-name>/preview.gif` (và/hoặc `<project-name>/public/preview.gif`) để mô phỏng chân thực giao diện web đang hoạt động.
+* **Tệp GIF Demo (BẮT BUỘC BẰNG MỌI GIÁ)**: Mọi thư mục ứng dụng **BẮT BUỘC** phải sở hữu 1 tệp GIF xem trước giao diện động riêng biệt tại `<project-name>/preview.gif` (và `<project-name>/public/preview.gif`), được chụp/render trực tiếp từ chính giao diện ứng dụng đang hoạt động của dự án đó (tuyệt đối không dùng lại GIF của dự án khác). Đồng thời BẮT BUỘC phải đăng ký đường dẫn `preview: "<project-name>/preview.gif"` trong mảng `projects` của tệp `index.html` để hiển thị trên Live Showcase Hub.
 
 *Ví dụ:*
 - Tệp Prompt: `wandor-travel.txt`

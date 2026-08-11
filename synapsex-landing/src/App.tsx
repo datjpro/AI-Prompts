@@ -306,7 +306,7 @@ export default function App() {
       {/* ---------------------------------------------------- */}
       <section 
         ref={heroSectionRef}
-        className="relative w-full h-screen h-[100dvh] overflow-hidden flex flex-col"
+        className="relative w-full h-screen h-[100dvh] overflow-hidden flex flex-col bg-black"
       >
         {/* Background Video #1 (mouse-scrubbed, NOT autoplay) */}
         <video
@@ -386,7 +386,7 @@ export default function App() {
       {/* ---------------------------------------------------- */}
       <section 
         ref={section2Ref}
-        className="relative w-full h-screen h-[100dvh] overflow-hidden flex items-center justify-center"
+        className="relative w-full h-screen h-[100dvh] overflow-hidden flex items-center justify-center bg-black"
       >
         {/* Background Video #2 (autoplay, muted, loop) */}
         <video
@@ -511,7 +511,7 @@ export default function App() {
       {/* ---------------------------------------------------- */}
       <section 
         ref={techSectionRef}
-        className="relative w-full h-screen h-[100dvh] overflow-hidden flex flex-col justify-between"
+        className="relative w-full h-screen h-[100dvh] overflow-hidden flex flex-col justify-between bg-black"
       >
         {/* Background Video #4 (autoplay, muted, loop) */}
         <video
