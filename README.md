@@ -8,7 +8,7 @@ Bộ sưu tập các dự án Giao diện Web (Frontend Web Applications) cao c�
 
 🌐 **Live Demo Hub**: Xem trực tuyến tất cả 18 giao diện tại [GitHub Pages Live Showcase Hub](https://datjpro.github.io/AI-Prompts/)
 
-Repository này chứa **24 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
+Repository này chứa **25 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
 
 ```
 AI-Prompts/
@@ -107,6 +107,14 @@ AI-Prompts/
 └── 🎙️ ECHOID - Voice Identity Product Hero Landing
     ├── 📄 echoid-voice.txt
     └── 📁 echoid-voice/
+
+└── 🧠 SynapseX - Neural-AI Interface Landing
+    ├── 📄 synapsex-landing.txt
+    └── 📁 synapsex-landing/
+
+└── 👥 Kollektiva - Creative Studio & Team Portfolio
+    ├── 📄 kollektiva.txt
+    └── 📁 kollektiva/
 ```
 
 ---
@@ -123,7 +131,7 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 
 ---
 
-## 📑 Danh sách Chi tiết 22 Dự án (Detailed Project Breakdown)
+## 📑 Danh sách Chi tiết 25 Dự án (Detailed Project Breakdown)
 
 ### 1. ✈️ Wandor — AI Trip Planner
 * **File Prompt**: [`wandor-travel.txt`](./wandor-travel.txt)
@@ -290,6 +298,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`synapsex-landing.txt`](./synapsex-landing.txt)
 * **Thư mục ứng dụng**: [`synapsex-landing/`](./synapsex-landing/)
 * **Mô tả**: Landing page giao diện thần kinh AI đơn trang cho SynapseX. Giao diện tông màu đen pure black (#000), phông chữ chủ đạo Space Mono và Anton SC watermark background. Nổi bật với 5 background video CloudFront tràn màn hình, hero video tương tác mouse-scrubbing, navbar capsule mở rộng linh hoạt với animation spring, hiệu ứng chữ scramble (ScrambleIn & ScrambleText), đoạn văn 3D scroll tilt transform, lưới chỉ số hiệu năng và các card kiến trúc 3 lớp (Capture - Process - Interface).
+
+---
+
+### 25. 👥 Kollektiva — Creative Studio & Team Portfolio
+* **File Prompt**: [`kollektiva.txt`](./kollektiva.txt)
+* **Thư mục ứng dụng**: [`kollektiva/`](./kollektiva/)
+* **Mô tả**: Giao diện đơn trang tràn 100vh màn hình cho studio sáng tạo Kollektiva. Phông chữ Geist sans-serif, 8 ảnh chân dung đội ngũ full-bleed chuyển nền crossfade 700ms mượt mà, headline tĩnh, mô tả bio fadeIn 500ms theo nhân sự, hàng chọn avatar có dot chỉ báo active và footer thông tin meta tối giản.
 
 ---
 
