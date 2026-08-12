@@ -53,6 +53,8 @@ Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent
 | 24 | **SynapseX** | `synapsex-landing.txt` | `synapsex-landing/` | Giao diện Thần kinh Neural-AI / Interface | Background video full-viewport (5 CloudFront videos), mouse-scrubbed hero video, typography Space Mono & Anton SC, scramble text animations, navbar capsule expanding menu, 3D scroll text, responsive metric grid, 3-layer architecture cards |
 | 25 | **Kollektiva** | `kollektiva.txt` | `kollektiva/` | Creative Studio / Team Portfolio | Full-viewport single-page layout, Geist sans-serif font, 8 full-bleed stacked portrait crossfades 700ms, dynamic bio fadeIn 500ms, avatar picker row with active indicator dot, meta footer |
 | 26 | **Vantage** | `vantage-landing.txt` | `vantage-landing/` | Analytics & Signal / Landing | Full-viewport dark landing (no scroll), CloudFront cinematic video background, Reference Sans & Reference Display variable typography, custom SVG disc logo, bottom-right glass demo card, staggered 3500ms entrance motion timeline |
+| 27 | **Next Layer AI** | `next-layer-ai.txt` | `next-layer-ai/` | AI Infrastructure / Landing | Single-file full-viewport dark landing (no scroll), CloudFront cinematic video background, Manrope variable font & custom S-mark logo, exact 1487x1058 design unit math (--u/--h), partner logo strip |
+
 
 
 ---

@@ -119,6 +119,10 @@ AI-Prompts/
 └── 📊 Vantage - Stop Digging Through Dashboards Landing Page
     ├── 📄 vantage-landing.txt
     └── 📁 vantage-landing/
+
+└── ⚡ Next Layer AI - The Next Layer of Intelligence Landing Page
+    ├── 📄 next-layer-ai.txt
+    └── 📁 next-layer-ai/
 ```
 
 ---
@@ -318,6 +322,14 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **Mô tả**: Recreate landing page pixel-faithfully với full-viewport dark background (không cuộn trang `overflow: hidden`). Background video cinematic từ CloudFront, phông chữ biến thể Reference Sans & Reference Display (weight 500), logo đĩa xước SVG, thẻ Demo Card glassmorphism góc dưới bên phải, và hoạt ảnh xuất hiện chuẩn xác 3500ms.
 
 ---
+
+### 27. ⚡ Next Layer AI — The Next Layer of Intelligence Landing Page
+* **File Prompt**: [`next-layer-ai.txt`](./next-layer-ai.txt)
+* **Thư mục ứng dụng**: [`next-layer-ai/`](./next-layer-ai/)
+* **Mô tả**: Giao diện đơn trang tràn màn hình full-viewport cinematic AI-infrastructure landing page (không cuộn trang `overflow: hidden`). Nền video CloudFront người đi tới cổng ánh sáng, phông chữ Manrope UI & IpsumMark wordmark, logo hình chữ S kim loại mạ bạc góc trên bên trái, hệ thống responsive unit locked 1487x1058 design canvas (`--u`/`--h`), dải logo đối tác logoipsum và menu mobile frosted-glass pill.
+
+---
+
 
 
 ## ⚡ Hướng dẫn Khởi chạy Dự án (Getting Started)
