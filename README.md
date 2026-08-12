@@ -115,6 +115,10 @@ AI-Prompts/
 └── 👥 Kollektiva - Creative Studio & Team Portfolio
     ├── 📄 kollektiva.txt
     └── 📁 kollektiva/
+
+└── 📊 Vantage - Stop Digging Through Dashboards Landing Page
+    ├── 📄 vantage-landing.txt
+    └── 📁 vantage-landing/
 ```
 
 ---
@@ -307,6 +311,14 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **Mô tả**: Giao diện đơn trang tràn 100vh màn hình cho studio sáng tạo Kollektiva. Phông chữ Geist sans-serif, 8 ảnh chân dung đội ngũ full-bleed chuyển nền crossfade 700ms mượt mà, headline tĩnh, mô tả bio fadeIn 500ms theo nhân sự, hàng chọn avatar có dot chỉ báo active và footer thông tin meta tối giản.
 
 ---
+
+### 26. 📊 Vantage — Stop Digging Through Dashboards Landing Page
+* **File Prompt**: [`vantage-landing.txt`](./vantage-landing.txt)
+* **Thư mục ứng dụng**: [`vantage-landing/`](./vantage-landing/)
+* **Mô tả**: Recreate landing page pixel-faithfully với full-viewport dark background (không cuộn trang `overflow: hidden`). Background video cinematic từ CloudFront, phông chữ biến thể Reference Sans & Reference Display (weight 500), logo đĩa xước SVG, thẻ Demo Card glassmorphism góc dưới bên phải, và hoạt ảnh xuất hiện chuẩn xác 3500ms.
+
+---
+
 
 ## ⚡ Hướng dẫn Khởi chạy Dự án (Getting Started)
 

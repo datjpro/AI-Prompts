@@ -52,6 +52,8 @@ Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent
 | 23 | **ECHOID** | `echoid-voice.txt` | `echoid-voice/` | Định danh Giọng nói / Voice ID | Single full-viewport hero page, full-bleed cinematic AI face video, right-aligned voice entry panel, sharp rect UI, dual gradient scrim, Google Fonts Sora & JetBrains Mono |
 | 24 | **SynapseX** | `synapsex-landing.txt` | `synapsex-landing/` | Giao diện Thần kinh Neural-AI / Interface | Background video full-viewport (5 CloudFront videos), mouse-scrubbed hero video, typography Space Mono & Anton SC, scramble text animations, navbar capsule expanding menu, 3D scroll text, responsive metric grid, 3-layer architecture cards |
 | 25 | **Kollektiva** | `kollektiva.txt` | `kollektiva/` | Creative Studio / Team Portfolio | Full-viewport single-page layout, Geist sans-serif font, 8 full-bleed stacked portrait crossfades 700ms, dynamic bio fadeIn 500ms, avatar picker row with active indicator dot, meta footer |
+| 26 | **Vantage** | `vantage-landing.txt` | `vantage-landing/` | Analytics & Signal / Landing | Full-viewport dark landing (no scroll), CloudFront cinematic video background, Reference Sans & Reference Display variable typography, custom SVG disc logo, bottom-right glass demo card, staggered 3500ms entrance motion timeline |
+
 
 ---
 
