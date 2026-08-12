@@ -123,6 +123,10 @@ AI-Prompts/
 └── ⚡ Next Layer AI - The Next Layer of Intelligence Landing Page
     ├── 📄 next-layer-ai.txt
     └── 📁 next-layer-ai/
+
+└── ✉️ Forma Contact - Bold Ideas Contact Landing Page
+    ├── 📄 forma-contact.txt
+    └── 📁 forma-contact/
 ```
 
 ---
@@ -329,6 +333,14 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **Mô tả**: Giao diện đơn trang tràn màn hình full-viewport cinematic AI-infrastructure landing page (không cuộn trang `overflow: hidden`). Nền video CloudFront người đi tới cổng ánh sáng, phông chữ Manrope UI & IpsumMark wordmark, logo hình chữ S kim loại mạ bạc góc trên bên trái, hệ thống responsive unit locked 1487x1058 design canvas (`--u`/`--h`), dải logo đối tác logoipsum và menu mobile frosted-glass pill.
 
 ---
+
+### 28. ✉️ Forma Contact — Bold Ideas Contact Landing Page
+* **File Prompt**: [`forma-contact.txt`](./forma-contact.txt)
+* **Thư mục ứng dụng**: [`forma-contact/`](./forma-contact/)
+* **Mô tả**: Landing page phong cách điện ảnh hiện đại tích hợp contact form tương tác. Xây dựng bằng React 18, TypeScript, Vite & Tailwind CSS. Nổi bật với background video tràn viền trong khung thẻ bo tròn góc `rounded-3xl`, phông chữ Inter kết hợp Instrument Serif italic nhấn chữ *products*, thanh navbar glassmorphism mờ mượt, thẻ contact form với mạng xã hội `SocialBtn`, bộ chọn dịch vụ multi-select chips và màn hình thông báo gửi thành công `You're all set!`.
+
+---
+
 
 
 
