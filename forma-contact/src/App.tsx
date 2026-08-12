@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Twitter, Circle, Instagram, Linkedin } from 'lucide-react';
 
 const VIDEO_URL = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260602_150901_c45b90ec-18d7-42ff-90e2-b95d7109e330.mp4";
 
@@ -16,20 +15,51 @@ const SERVICES = [
 ];
 
 interface SocialBtnProps {
-  icon: React.ElementType;
+  type: 'twitter' | 'circle' | 'instagram' | 'linkedin';
   className: string;
   href?: string;
   label: string;
 }
 
-const SocialBtn: React.FC<SocialBtnProps> = ({ icon: Icon, className, href = "#", label }) => {
+const SocialBtn: React.FC<SocialBtnProps> = ({ type, className, href = "#", label }) => {
+  const renderIcon = () => {
+    switch (type) {
+      case 'twitter':
+        return (
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.936 9.936 0 0024 4.59z"/>
+          </svg>
+        );
+      case 'circle':
+        return (
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+          </svg>
+        );
+      case 'instagram':
+        return (
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        );
+      case 'linkedin':
+        return (
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        );
+    }
+  };
+
   return (
     <a
       href={href}
       aria-label={label}
       className={`w-8 h-8 rounded-xl flex items-center justify-center hover:opacity-80 transition-opacity ${className}`}
     >
-      <Icon size={13} />
+      {renderIcon()}
     </a>
   );
 };
@@ -97,7 +127,7 @@ export default function App() {
               </nav>
 
               {/* CTA Button */}
-              <button className="bg-black text-white text-sm font-medium px-4 sm:px-5 py-2 rounded-xl hover:bg-gray-800 transition-colors ml-auto sm:ml-0 whitespace-nowrap">
+              <button className="bg-black text-white text-sm font-medium px-4 sm:px-5 py-2 rounded-xl hover:bg-gray-800 transition-colors ml-auto sm:ml-0 whitespace-nowrap cursor-pointer">
                 Start a project
               </button>
             </div>
@@ -141,10 +171,10 @@ export default function App() {
                   </div>
 
                   <div className="flex items-center gap-1.5 shrink-0">
-                    <SocialBtn icon={Twitter} className="bg-gray-100 text-gray-800" label="Twitter" />
-                    <SocialBtn icon={Circle} className="bg-pink-100 text-pink-500" label="Circle" />
-                    <SocialBtn icon={Instagram} className="bg-orange-100 text-orange-400" label="Instagram" />
-                    <SocialBtn icon={Linkedin} className="bg-blue-100 text-blue-600" label="LinkedIn" />
+                    <SocialBtn type="twitter" className="bg-gray-100 text-gray-800" label="Twitter" />
+                    <SocialBtn type="circle" className="bg-pink-100 text-pink-500" label="Circle" />
+                    <SocialBtn type="instagram" className="bg-orange-100 text-orange-400" label="Instagram" />
+                    <SocialBtn type="linkedin" className="bg-blue-100 text-blue-600" label="LinkedIn" />
                   </div>
                 </div>
 
@@ -213,7 +243,7 @@ export default function App() {
                               key={service}
                               type="button"
                               onClick={() => toggleService(service)}
-                              className={`text-xs font-medium px-3 py-2 rounded-lg border transition-all ${
+                              className={`text-xs font-medium px-3 py-2 rounded-lg border transition-all cursor-pointer ${
                                 isActive
                                   ? 'bg-gray-100 text-black border-black'
                                   : 'bg-white text-gray-700 border-gray-200 hover:border-gray-400'
