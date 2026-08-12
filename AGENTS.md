@@ -106,17 +106,46 @@ npm run dev
 # (Dừng tại đây, gửi link local demo cho User kiểm tra và CHỜ USER DUYỆT)
 
 # Bước 4: Sau khi User ĐỒNG Ý/DUYỆT, tạo tệp preview.gif demo giao diện thực tế
-# (Chụp/Render giao diện thực tế và xuất thành <project-name>/preview.gif)
+# (Sử dụng script tự động chụp giao diện ứng dụng web đang hoạt động:)
+node scripts/capture-preview.js <project-name> [port]
 
 # Bước 5: Thêm vào Git cho riêng dự án đó (bao gồm tệp prompt, ứng dụng & preview.gif)
 git add <project-name>.txt <project-name>/
 git commit -m "feat(<project-name>): add <Project Name> prompt, application & preview GIF"
 
 # Bước 6: Cập nhật AGENTS.md và README.md, commit và push lên GitHub
-git add AGENTS.md README.md
+git add AGENTS.md README.md index.html
 git commit -m "docs: update AGENTS.md and README.md index for <project-name>"
 git push origin main
 ```
+
+---
+
+## 🎬 5. Công cụ Tự động Chụp GIF Giao diện Web (`scripts/capture-preview.js`)
+
+Để đảm bảo mọi tệp `preview.gif` đều được quay từ giao diện thực tế của ứng dụng Web (bao gồm UI, typography, nút bấm, glass card và video background), dự án cung cấp sẵn script chuyên dụng tại `scripts/capture-preview.js`.
+
+### 📌 Cú pháp Sử dụng:
+```bash
+node scripts/capture-preview.js <project-name> [port] [viewportWidth] [viewportHeight]
+```
+
+### 💡 Ví dụ:
+```bash
+# Tạo GIF cho dự án vantage-landing (đang chạy ở port 5173)
+node scripts/capture-preview.js vantage-landing 5173
+
+# Tạo GIF cho dự án next-layer-ai (đang chạy ở port 5174)
+node scripts/capture-preview.js next-layer-ai 5174
+```
+
+### ⚙️ Cơ chế Hoạt động:
+1. Script tự động phát hiện server dev đang chạy hoặc tự tạo server tĩnh để phục vụ trang web.
+2. Sử dụng Playwright Chromium headless mở giao diện chuẩn kích thước viewport (1487x1058 hoặc tùy chỉnh).
+3. Đợi 1000ms cho các hiệu ứng entrance motion ổn định.
+4. Chụp liên tiếp 30 khung hình PNG (3 giây ở 10 FPS).
+5. Tự động dùng `ffmpeg` ghép các khung hình thành `preview.gif` tối ưu palette màu và sao chép tự động sang cả `<project-name>/preview.gif` và `<project-name>/public/preview.gif`.
+
 
 ---
 *Tài liệu này là bộ quy chuẩn vận hành bắt buộc cho mọi AI Agent làm việc trong repository `AI-Prompts`.*
