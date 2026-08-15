@@ -23,7 +23,7 @@ Tệp tài liệu này quy định các quy tắc hoạt động, quy trình ki�
 
 Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent **BẮT BUỘC** phải kiểm tra danh sách bên dưới để đảm bảo chủ đề/nhiệm vụ không bị trùng lặp với các dự án đã có.
 
-### 📋 Danh mục 29 Dự án Hiện có (Prompt Catalog Index):
+### 📋 Danh mục 30 Dự án Hiện có (Prompt Catalog Index):
 
 | STT | Project Name | Tệp Prompt | Thư mục Dự án | Lĩnh vực (Domain) | Đặc trưng UI/UX & Tính năng chính |
 |---|---|---|---|---|---|
@@ -56,6 +56,7 @@ Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent
 | 27 | **Next Layer AI** | `next-layer-ai.txt` | `next-layer-ai/` | AI Infrastructure / Landing | Single-file full-viewport dark landing (no scroll), CloudFront cinematic video background, Manrope variable font & custom S-mark logo, exact 1487x1058 design unit math (--u/--h), partner logo strip |
 | 28 | **Forma Contact** | `forma-contact.txt` | `forma-contact/` | Contact & Agency / Landing | Full-screen video background landing page, React + TS + Tailwind, Instrument Serif italic accent, liquid glass navbar, interactive contact form with multi-select service chips & success state |
 | 29 | **Evolve AI** | `evolve-ai.txt` | `evolve-ai/` | AI Infrastructure / Evolve Hero | Single-viewport full-bleed CloudFront background video (100vh), BubbledotICG-FinePos retro dot-matrix typography, 3 overlapping avatar rings (Microsoft, Amazon, Google), active 3-dot nav indicator, easeOutCubic count-up stats (`< % * #`) |
+| 30 | **Nexum** | `nexum-hero.txt` | `nexum-hero/` | AI Operations / Hero Landing | Single full-viewport dark cinematic hero page, CloudFront looping video background, responsive dark-to-light text switching, glassmorphism nav & cards, Silkscreen stats counter, Stratify quote card |
 
 
 

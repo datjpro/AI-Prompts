@@ -131,6 +131,10 @@ AI-Prompts/
 └── 🧠 Evolve AI - Intelligence Designed To Evolve Landing Page
     ├── 📄 evolve-ai.txt
     └── 📁 evolve-ai/
+
+└── ⚡ Nexum - AI-Ops Cinematic Hero Landing
+    ├── 📄 nexum-hero.txt
+    └── 📁 nexum-hero/
 ```
 
 ---
@@ -143,11 +147,11 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **Styling**: Tailwind CSS / Vanilla CSS3 / Glassmorphism Design Tokens
 * **3D & Canvas Animations**: Three.js, React Three Fiber, HTML5 Canvas API
 * **Motion & Micro-interactions**: Framer Motion, GSAP, CSS Keyframes
-* **Iconography & Fonts**: Lucide React, Google Fonts (Geist, Special Elite, Inter, Outfit, Syne, Playfair Display, BubbledotICG-FinePos)
+* **Iconography & Fonts**: Lucide React, Google Fonts (Geist, Silkscreen, Special Elite, Inter, Outfit, Syne, Playfair Display, BubbledotICG-FinePos)
 
 ---
 
-## 📑 Danh sách Chi tiết 29 Dự án (Detailed Project Breakdown)
+## 📑 Danh sách Chi tiết 30 Dự án (Detailed Project Breakdown)
 
 ### 1. ✈️ Wandor — AI Trip Planner
 * **File Prompt**: [`wandor-travel.txt`](./wandor-travel.txt)
@@ -349,6 +353,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`evolve-ai.txt`](./evolve-ai.txt)
 * **Thư mục ứng dụng**: [`evolve-ai/`](./evolve-ai/)
 * **Mô tả**: Single-viewport full-bleed cinematic video landing page xây dựng bằng HTML5, Vanilla CSS và JavaScript. Phông chữ Inter kết hợp BubbledotICG-FinePos retro dot-matrix, logo biểu tượng hình học tối giản, 3 avatar ring thương hiệu (Microsoft, Amazon, Google) xếp chồng, pill "Trusted by 2000+ Enterprises", nút CTA "Get Started" với hiệu ứng phát sáng mềm mại, 4 chỉ số hiệu năng count-up mượt mà bằng easeOutCubic (`< 120ms`, `% 99.99%`, `* 24/7`, `# 2.4M`) và menu sheet mobile với nút burger chuyển đổi sang chữ X.
+
+---
+
+### 30. ⚡ Nexum — Dark Cinematic AI-Ops Hero Landing
+* **File Prompt**: [`nexum-hero.txt`](./nexum-hero.txt)
+* **Thư mục ứng dụng**: [`nexum-hero/`](./nexum-hero/)
+* **Mô tả**: Single-viewport dark cinematic hero page cho nền tảng vận hành AI (AI-Ops) xây dựng bằng React 19, TypeScript, Tailwind CSS v4 và Lucide React. Nổi bật với background video CloudFront tràn màn hình, hệ màu responsive tự động đảo từ đen (`#010101`) trên mobile sang trắng trên desktop, thanh điều hướng glassmorphism pill, mobile menu drawer với transition mượt mà, headline "Ship AI workers that grind while you rest", email CTA capsule và 2 thẻ glassmorphism (chỉ số thống kê Silkscreen `42,500+` và testimonial từ Stratify).
 
 ---
 

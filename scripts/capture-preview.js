@@ -21,13 +21,14 @@ const ALL_PROJECTS = [
   'cozy-paws', 'adam-roberts', 'mostar-city', 'skyelite-jets',
   'dehelpers-hero', 'void-404', 'echoid-voice', 'synapsex-landing',
   'kollektiva', 'vantage-landing', 'next-layer-ai', 'forma-contact',
-  'evolve-ai'
+  'evolve-ai', 'nexum-hero'
 ];
 
 const RECENT_PROJECTS = [
   'adam-roberts', 'mostar-city', 'skyelite-jets', 'dehelpers-hero',
   'void-404', 'echoid-voice', 'synapsex-landing', 'kollektiva',
-  'vantage-landing', 'next-layer-ai', 'forma-contact', 'evolve-ai'
+  'vantage-landing', 'next-layer-ai', 'forma-contact', 'evolve-ai',
+  'nexum-hero'
 ];
 
 // Helper to serve static folder if pure HTML
