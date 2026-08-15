@@ -135,6 +135,10 @@ AI-Prompts/
 └── ⚡ Nexum - AI-Ops Cinematic Hero Landing
     ├── 📄 nexum-hero.txt
     └── 📁 nexum-hero/
+
+└── 🌐 Digital Epoch - Decentralized Web Foundation Hero
+    ├── 📄 epoch-hero.txt
+    └── 📁 epoch-hero/
 ```
 
 ---
@@ -151,7 +155,7 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 
 ---
 
-## 📑 Danh sách Chi tiết 30 Dự án (Detailed Project Breakdown)
+## 📑 Danh sách Chi tiết 31 Dự án (Detailed Project Breakdown)
 
 ### 1. ✈️ Wandor — AI Trip Planner
 * **File Prompt**: [`wandor-travel.txt`](./wandor-travel.txt)
@@ -360,6 +364,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`nexum-hero.txt`](./nexum-hero.txt)
 * **Thư mục ứng dụng**: [`nexum-hero/`](./nexum-hero/)
 * **Mô tả**: Single-viewport dark cinematic hero page cho nền tảng vận hành AI (AI-Ops) xây dựng bằng React 19, TypeScript, Tailwind CSS v4 và Lucide React. Nổi bật với background video CloudFront tràn màn hình, hệ màu responsive tự động đảo từ đen (`#010101`) trên mobile sang trắng trên desktop, thanh điều hướng glassmorphism pill, mobile menu drawer với transition mượt mà, headline "Ship AI workers that grind while you rest", email CTA capsule và 2 thẻ glassmorphism (chỉ số thống kê Silkscreen `42,500+` và testimonial từ Stratify).
+
+---
+
+### 31. 🌐 Digital Epoch — Decentralized Web Foundation Hero
+* **File Prompt**: [`epoch-hero.txt`](./epoch-hero.txt)
+* **Thư mục ứng dụng**: [`epoch-hero/`](./epoch-hero/)
+* **Mô tả**: Hero section hiện đại, hiệu năng cao xây dựng bằng React 19, TypeScript, Tailwind CSS v4 và Motion. Nổi bật với khung container bo góc lớn `rounded-[48px]`, background video tinh thể 3D CloudFront, typography kết hợp Outfit & Inter, motion text reveal mượt mà, thanh navbar nổi chân trang kiểu capsule kính mờ (`✦`, Products, Docs, Get in touch >), và marquee scroller vô tận gồm 8 logo công nghệ với hiệu ứng đổi màu nền gradient phóng to sống động khi di chuột.
 
 ---
 
