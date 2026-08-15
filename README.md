@@ -127,6 +127,10 @@ AI-Prompts/
 └── ✉️ Forma Contact - Bold Ideas Contact Landing Page
     ├── 📄 forma-contact.txt
     └── 📁 forma-contact/
+
+└── 🧠 Evolve AI - Intelligence Designed To Evolve Landing Page
+    ├── 📄 evolve-ai.txt
+    └── 📁 evolve-ai/
 ```
 
 ---
@@ -139,11 +143,11 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **Styling**: Tailwind CSS / Vanilla CSS3 / Glassmorphism Design Tokens
 * **3D & Canvas Animations**: Three.js, React Three Fiber, HTML5 Canvas API
 * **Motion & Micro-interactions**: Framer Motion, GSAP, CSS Keyframes
-* **Iconography & Fonts**: Lucide React, Google Fonts (Geist, Special Elite, Inter, Outfit, Syne, Playfair Display)
+* **Iconography & Fonts**: Lucide React, Google Fonts (Geist, Special Elite, Inter, Outfit, Syne, Playfair Display, BubbledotICG-FinePos)
 
 ---
 
-## 📑 Danh sách Chi tiết 25 Dự án (Detailed Project Breakdown)
+## 📑 Danh sách Chi tiết 29 Dự án (Detailed Project Breakdown)
 
 ### 1. ✈️ Wandor — AI Trip Planner
 * **File Prompt**: [`wandor-travel.txt`](./wandor-travel.txt)
@@ -338,6 +342,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`forma-contact.txt`](./forma-contact.txt)
 * **Thư mục ứng dụng**: [`forma-contact/`](./forma-contact/)
 * **Mô tả**: Landing page phong cách điện ảnh hiện đại tích hợp contact form tương tác. Xây dựng bằng React 18, TypeScript, Vite & Tailwind CSS. Nổi bật với background video tràn viền trong khung thẻ bo tròn góc `rounded-3xl`, phông chữ Inter kết hợp Instrument Serif italic nhấn chữ *products*, thanh navbar glassmorphism mờ mượt, thẻ contact form với mạng xã hội `SocialBtn`, bộ chọn dịch vụ multi-select chips và màn hình thông báo gửi thành công `You're all set!`.
+
+---
+
+### 29. 🧠 Evolve AI — Intelligence Designed To Evolve Landing Page
+* **File Prompt**: [`evolve-ai.txt`](./evolve-ai.txt)
+* **Thư mục ứng dụng**: [`evolve-ai/`](./evolve-ai/)
+* **Mô tả**: Single-viewport full-bleed cinematic video landing page xây dựng bằng HTML5, Vanilla CSS và JavaScript. Phông chữ Inter kết hợp BubbledotICG-FinePos retro dot-matrix, logo biểu tượng hình học tối giản, 3 avatar ring thương hiệu (Microsoft, Amazon, Google) xếp chồng, pill "Trusted by 2000+ Enterprises", nút CTA "Get Started" với hiệu ứng phát sáng mềm mại, 4 chỉ số hiệu năng count-up mượt mà bằng easeOutCubic (`< 120ms`, `% 99.99%`, `* 24/7`, `# 2.4M`) và menu sheet mobile với nút burger chuyển đổi sang chữ X.
 
 ---
 
