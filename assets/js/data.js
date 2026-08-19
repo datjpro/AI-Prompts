@@ -501,5 +501,21 @@ window.PROJECTS_DATA = [
     preview: "lumen-index/preview.gif",
     stats: { lines: "155 lines", difficulty: "Advanced" },
     featured: true
+  },
+  {
+    id: 34,
+    name: "Signal Log in",
+    slug: "signal-login",
+    category: "apps",
+    domain: "Xác thực & SaaS / Log in Hero",
+    badge: "Self-Contained 1464x949",
+    tags: ["Vanilla HTML/CSS/JS", "Falcon Video Loop", "Eloquia & FreeSans", "3-Mode Responsive", "WAAPI Entrance"],
+    desc: "Trang đăng nhập pixel-exact tự chứa (self-contained) chuẩn tham chiếu 1464×949. Video chim ưng lao dốc CloudFront, typography Eloquia & FreeSans, bộ điều khiển Responsive 3 chế độ (Desktop / Tablet / Mobile), badge sét inline SVG và timeline hoạt ảnh WAAPI.",
+    icon: "log-in",
+    accent: "#293340",
+    gradient: "from-slate-700/20 via-zinc-600/15 to-transparent",
+    preview: "signal-login/preview.gif",
+    stats: { lines: "470 lines", difficulty: "Expert" },
+    featured: true
   }
 ];

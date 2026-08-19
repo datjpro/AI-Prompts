@@ -8,7 +8,7 @@ Bộ sưu tập các dự án Giao diện Web (Frontend Web Applications) cao c�
 
 🌐 **Live Demo Hub**: Xem trực tuyến tất cả giao diện tại [GitHub Pages Live Showcase Hub](https://datjpro.github.io/AI-Prompts/)
 
-Repository này chứa **33 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
+Repository này chứa **34 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
 
 ```
 AI-Prompts/
@@ -147,6 +147,10 @@ AI-Prompts/
 └── 💎 LŪMEN // ÍNDEX - DeFi & Private Banking Hero Landing
     ├── 📄 lumen-index.txt
     └── 📁 lumen-index/
+
+└── 🦅 Signal - Log in Hero Page
+    ├── 📄 signal-login.txt
+    └── 📁 signal-login/
 ```
 
 ---
@@ -393,6 +397,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`lumen-index.txt`](./lumen-index.txt)
 * **Thư mục ứng dụng**: [`lumen-index/`](./lumen-index/)
 * **Mô tả**: Single full-viewport hero section cho nền tảng DeFi & Private Banking cao cấp xây dựng bằng React 18, TypeScript, Vite, Tailwind CSS và Lucide React. Nổi bật với background video CloudFront tràn màn hình không phủ scrim, typography Graphik LCG & Manrope, hệ thống 4 đường lưới dọc + 2 đường ngang và 8 dấu cộng `+` 10×10px giao cắt, sơ đồ 3 nút trung tâm kết nối qua 6 đường SVG elbow lines (`[ CORE_ENTITY ]`, `[ LUMINOUS_INSIGHT ]`, `[ CONNECTIVITY ]`), thẻ thông tin vát góc 45° chamfered border SVG (`NOT A BANK — AN ECOSYSTEM`), nút CTA `Explore Private Banking` biểu tượng sao 4 cánh `✦`, và menu mobile cross-fade mượt mà.
+
+---
+
+### 34. 🦅 Signal — Log in Hero Page
+* **File Prompt**: [`signal-login.txt`](./signal-login.txt)
+* **Thư mục ứng dụng**: [`signal-login/`](./signal-login/)
+* **Mô tả**: Trang đăng nhập pixel-exact tự chứa 100% (self-contained single `index.html` file, zero-dependency) chuẩn tham chiếu 1464×949. Nổi bật với video chim ưng lao dốc tốc độ cao CloudFront, typography Eloquia (variable 200–800) & FreeSans, bộ điều khiển Responsive 3 chế độ (Mode A Landscape co giãn tỷ lệ card/photo mượt mà, Mode B Tablet Portrait masthead band 42.5vh & headline wrap, Mode C Mobile Stacked scrim gradient & card bo góc 28px phủ ảnh), inline SVGs (badge sét, mũi tên, Google 4 màu), và timeline hoạt ảnh mở màn Web Animations API (WAAPI) từ 40ms đến 1260ms kèm pre-paint guard chống giật layout.
 
 ---
 

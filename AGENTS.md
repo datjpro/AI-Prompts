@@ -23,7 +23,7 @@ Tệp tài liệu này quy định các quy tắc hoạt động, quy trình ki�
 
 Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent **BẮT BUỘC** phải kiểm tra danh sách bên dưới để đảm bảo chủ đề/nhiệm vụ không bị trùng lặp với các dự án đã có.
 
-### 📋 Danh mục 33 Dự án Hiện có (Prompt Catalog Index):
+### 📋 Danh mục 34 Dự án Hiện có (Prompt Catalog Index):
 
 | STT | Project Name | Tệp Prompt | Thư mục Dự án | Lĩnh vực (Domain) | Đặc trưng UI/UX & Tính năng chính |
 |---|---|---|---|---|---|
@@ -60,6 +60,7 @@ Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent
 | 31 | **Digital Epoch** | `epoch-hero.txt` | `epoch-hero/` | Decentralized Web / Epoch Hero | Hero container 1400x600 rounded-[48px], CloudFront 3D crystal video background, Inter & Outfit typography, floating bottom navbar capsule (✦, Products, Docs, Get in touch), seamless marquee logo scroller with hover gradient scale |
 | 32 | **Apogee** | `apogee-hero.txt` | `apogee-hero/` | Dữ liệu & AI Ops / Hero Landing | Single full-viewport dark landing (100vh), CloudFront nebula video background, Suisse Intl typography, 32 animated chart bars with projected states, glassmorphism stat card ($14.2M), cross-fading mobile menu with body scroll lock |
 | 33 | **LŪMEN // ÍNDEX** | `lumen-index.txt` | `lumen-index/` | DeFi & Private Banking / Hero Landing | Single full-viewport DeFi hero (100vh), CloudFront looping video, Graphik LCG & Manrope typography, 3 central technical nodes with SVG elbow lines, chamfered info card, cross-fade mobile menu |
+| 34 | **Signal Log in** | `signal-login.txt` | `signal-login/` | Xác thực & SaaS / Log in Hero | Trang đăng nhập pixel-exact tự chứa (1464×949), video chim ưng lao dốc CloudFront, typography Eloquia & FreeSans, bộ điều khiển Responsive 3 chế độ (Desktop / Tablet / Mobile), badge sét inline SVG và timeline hoạt ảnh WAAPI |
 
 
 
