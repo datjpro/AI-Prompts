@@ -1,11 +1,25 @@
 ﻿/**
  * AI-Prompts Showcase Hub — main.js
+ * Universal offline-ready (file:// + http://),
  * Mobile menu, Three.js galaxy, stats count-up,
- * project cards render, search/filter, modal, toast
+ * project cards render with HTML escaping, search/filter, modal, toast
  */
 
+// Helper to escape HTML characters in dynamic data
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  lucide.createIcons();
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
 
   initMobileMenu();
   initThreeGalaxy();
@@ -31,16 +45,16 @@ function initMobileMenu() {
     if (!burger) return;
     burger.classList.add('open');
     burger.setAttribute('aria-expanded', 'true');
-    overlay.classList.remove('hidden');
-    menu.classList.remove('hidden');
+    if (overlay) overlay.classList.remove('hidden');
+    if (menu) menu.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
   };
   const close = () => {
     if (!burger) return;
     burger.classList.remove('open');
     burger.setAttribute('aria-expanded', 'false');
-    overlay.classList.add('hidden');
-    menu.classList.add('hidden');
+    if (overlay) overlay.classList.add('hidden');
+    if (menu) menu.classList.add('hidden');
     document.body.style.overflow = '';
   };
 
@@ -152,7 +166,7 @@ function initStats() {
   };
 
   const io = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting && !triggered) {
+    if (entries[0] && entries[0].isIntersecting && !triggered) {
       triggered = true;
       stats.forEach((el, i) => run(el, i));
       io.disconnect();
@@ -165,7 +179,7 @@ function initStats() {
 }
 
 /* ============================================================
-   4. RENDER PROJECT CARDS
+   4. RENDER PROJECT CARDS (With robust HTML escaping & direct index.html paths)
    ============================================================ */
 function renderProjects(projects) {
   const grid = document.getElementById('projectsGrid');
@@ -177,36 +191,43 @@ function renderProjects(projects) {
       : diff === 'advanced' ? 'badge-advanced'
       : diff === 'intermediate' ? 'badge-intermediate'
       : 'badge-default';
-    const badgeLabel = p.stats?.difficulty ?? p.badge ?? 'Standard';
+    const badgeLabel = escapeHtml(p.stats?.difficulty ?? p.badge ?? 'Standard');
 
-    const tagsHtml = (p.tags ?? []).slice(0, 3).map(t => `<span class="card-tag">${t}</span>`).join('');
+    const tagsHtml = (p.tags ?? []).slice(0, 3).map(t => `<span class="card-tag">${escapeHtml(t)}</span>`).join('');
 
     const previewHtml = p.preview
-      ? `<img src="${p.preview}" alt="${p.name} preview" loading="lazy" />`
-      : `<div class="card-preview-placeholder">${p.icon ?? '⚡'}</div>`;
+      ? `<img src="${p.preview}" alt="${escapeHtml(p.name)} preview" loading="lazy" />`
+      : `<div class="card-preview-placeholder">${escapeHtml(p.icon ?? '⚡')}</div>`;
+
+    const safeSlug = escapeHtml(p.slug ?? '');
+    const safeName = escapeHtml(p.name ?? '');
+    const safeDomain = escapeHtml(p.domain ?? '');
+    const safeDesc = escapeHtml(p.desc ?? '');
+    const safeCat = escapeHtml(p.category ?? '');
+    const searchTags = (p.tags ?? []).join(' ').toLowerCase();
 
     return `
-      <article class="project-card" style="animation-delay:${idx * 0.04}s"
-        data-name="${(p.name ?? '').toLowerCase()}"
-        data-tags="${(p.tags ?? []).join(' ').toLowerCase()}"
-        data-cat="${p.category ?? ''}"
-        data-domain="${(p.domain ?? '').toLowerCase()}">
+      <article class="project-card" style="animation-delay:${idx * 0.03}s"
+        data-name="${safeName.toLowerCase()}"
+        data-tags="${escapeHtml(searchTags)}"
+        data-cat="${safeCat}"
+        data-domain="${safeDomain.toLowerCase()}">
         <div class="card-preview">${previewHtml}</div>
         <div class="card-body">
           <div class="card-top">
             <span class="card-badge ${badgeCls}">${badgeLabel}</span>
             <span class="card-num">#${String(p.id ?? idx+1).padStart(2,'0')}</span>
           </div>
-          <div class="card-name">${p.name ?? ''}</div>
-          <div class="card-domain">${p.domain ?? ''}</div>
-          <div class="card-desc">${p.desc ?? ''}</div>
+          <div class="card-name">${safeName}</div>
+          <div class="card-domain">${safeDomain}</div>
+          <div class="card-desc">${safeDesc}</div>
           <div class="card-tags">${tagsHtml}</div>
           <div class="card-footer">
-            <button class="card-prompt-btn" onclick="openPromptModal('${p.slug}','${(p.name ?? '').replace(/'/g,"\\'")}')">
+            <button type="button" class="card-prompt-btn" onclick="openPromptModal('${safeSlug}','${safeName.replace(/'/g, "\\'")}')">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
               Prompt
             </button>
-            <a href="${p.slug}/" target="_blank" class="card-demo-btn">
+            <a href="${safeSlug}/index.html" target="_blank" class="card-demo-btn">
               Live Demo
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
             </a>
@@ -246,14 +267,14 @@ function initSearchFilter() {
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       searchTerm = e.target.value.toLowerCase().trim();
-      clearBtn.classList.toggle('hidden', !searchTerm);
+      if (clearBtn) clearBtn.classList.toggle('hidden', !searchTerm);
       filter();
     });
   }
 
   if (clearBtn) {
     clearBtn.addEventListener('click', () => {
-      searchInput.value = '';
+      if (searchInput) searchInput.value = '';
       searchTerm = '';
       clearBtn.classList.add('hidden');
       filter();
@@ -284,7 +305,7 @@ function initSearchFilter() {
 }
 
 /* ============================================================
-   6. PROMPT MODAL
+   6. PROMPT MODAL (With file:// CORS graceful handling)
    ============================================================ */
 let modalSlug = '';
 
@@ -306,43 +327,54 @@ function openPromptModal(slug, name) {
   titleEl.textContent = name;
   slugEl.textContent  = `${slug}.txt`;
   promptView.textContent = 'Đang tải nội dung prompt...';
-  sandboxView.classList.add('hidden');
-  promptView.classList.remove('hidden');
-  tabPromptBtn.classList.add('active');
-  tabSandboxBtn.classList.remove('active');
-  iframe.src = '';
-  fullscreenLink.href = `${slug}/`;
+  if (sandboxView) sandboxView.classList.add('hidden');
+  if (promptView) promptView.classList.remove('hidden');
+  if (tabPromptBtn) tabPromptBtn.classList.add('active');
+  if (tabSandboxBtn) tabSandboxBtn.classList.remove('active');
+  if (iframe) iframe.src = '';
+  if (fullscreenLink) fullscreenLink.href = `${slug}/index.html`;
 
   modal.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
-  lucide.createIcons();
+  if (typeof lucide !== 'undefined') lucide.createIcons();
 
   fetch(`${slug}.txt`)
     .then(r => r.ok ? r.text() : Promise.reject(r.status))
     .then(text => {
       promptView.textContent = text;
       const lines = text.split('\n').length;
-      statsEl.textContent = `${lines.toLocaleString()} dòng`;
+      if (statsEl) statsEl.textContent = `${lines.toLocaleString()} dòng`;
     })
     .catch(() => {
-      promptView.textContent = `[Không thể tải prompt cho "${name}". File: ${slug}.txt]`;
-      statsEl.textContent = '—';
+      const isFileProtocol = window.location.protocol === 'file:';
+      if (isFileProtocol) {
+        promptView.textContent = `[Chế độ Offline (file://)]\n\nDo chính sách bảo mật của trình duyệt khi mở tệp cục bộ (file://), trình duyệt chặn Ajax đọc tệp .txt.\n\n→ Bạn có thể mở trực tiếp tệp "${slug}.txt" trong thư mục dự án.\n→ Hoặc chuyển sang tab "Live Sandbox" / nhấn "Mở tab riêng" ở góc phải để trải nghiệm giao diện!`;
+      } else {
+        promptView.textContent = `[Không thể tải prompt cho "${name}". Tệp: ${slug}.txt]`;
+      }
+      if (statsEl) statsEl.textContent = '—';
     });
 
-  tabPromptBtn.onclick = () => {
-    promptView.classList.remove('hidden');
-    sandboxView.classList.add('hidden');
-    tabPromptBtn.classList.add('active');
-    tabSandboxBtn.classList.remove('active');
-  };
+  if (tabPromptBtn) {
+    tabPromptBtn.onclick = () => {
+      if (promptView) promptView.classList.remove('hidden');
+      if (sandboxView) sandboxView.classList.add('hidden');
+      tabPromptBtn.classList.add('active');
+      if (tabSandboxBtn) tabSandboxBtn.classList.remove('active');
+    };
+  }
 
-  tabSandboxBtn.onclick = () => {
-    sandboxView.classList.remove('hidden');
-    promptView.classList.add('hidden');
-    tabSandboxBtn.classList.add('active');
-    tabPromptBtn.classList.remove('active');
-    if (!iframe.src || iframe.src === window.location.href) iframe.src = `${slug}/`;
-  };
+  if (tabSandboxBtn) {
+    tabSandboxBtn.onclick = () => {
+      if (sandboxView) sandboxView.classList.remove('hidden');
+      if (promptView) promptView.classList.add('hidden');
+      tabSandboxBtn.classList.add('active');
+      if (tabPromptBtn) tabPromptBtn.classList.remove('active');
+      if (iframe && (!iframe.src || iframe.src === window.location.href)) {
+        iframe.src = `${slug}/index.html`;
+      }
+    };
+  }
 }
 
 function initModal() {
@@ -366,7 +398,9 @@ function initModal() {
   if (copyBtn) {
     copyBtn.addEventListener('click', () => {
       const text = document.getElementById('modalPromptView')?.textContent ?? '';
-      navigator.clipboard.writeText(text).then(() => showToast('Đã sao chép prompt thành công!'));
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => showToast('Đã sao chép prompt thành công!'));
+      }
     });
   }
 }
@@ -378,7 +412,7 @@ function openRandomProject() {
   const projects = window.PROJECTS_DATA ?? [];
   if (!projects.length) return;
   const p = projects[Math.floor(Math.random() * projects.length)];
-  window.open(`${p.slug}/`, '_blank');
+  window.open(`${p.slug}/index.html`, '_blank');
 }
 
 /* ============================================================
@@ -388,14 +422,14 @@ function showToast(msg) {
   const toast   = document.getElementById('toast');
   const toastMsg = document.getElementById('toastMsg');
   if (!toast) return;
-  toastMsg.textContent = msg;
+  if (toastMsg) toastMsg.textContent = msg;
   toast.classList.remove('hidden');
-  lucide.createIcons();
+  if (typeof lucide !== 'undefined') lucide.createIcons();
   setTimeout(() => toast.classList.add('hidden'), 2800);
 }
 
 /* ============================================================
-   9. SCROLL PROGRESS (navbar becomes glass on scroll)
+   9. SCROLL PROGRESS
    ============================================================ */
 function initScrollProgress() {
   const header = document.querySelector('.header');
