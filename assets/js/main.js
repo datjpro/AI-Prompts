@@ -17,12 +17,12 @@ function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
 
-  // 0. Dynamic Showcase Preview Cycling Preloader
+  // 0. Cinematic Anime Preloader
   initPreloader();
 
   // 1. Dynamic Background Video Stream Engine (Rotates across project themes)
@@ -51,7 +51,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 9. Scroll Progress
   initScrollProgress();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
 
 /* ============================================================
    0. CINEMATIC ANIME PRELOADER
@@ -402,6 +408,13 @@ function renderProjects(projects) {
   if (!grid) return;
 
   grid.innerHTML = projects.map((p, idx) => {
+    const safeSlug = escapeHtml(p.slug ?? '');
+    const safeName = escapeHtml(p.name ?? '');
+    const safeDomain = escapeHtml(p.domain ?? '');
+    const safeDesc = escapeHtml(p.desc ?? '');
+    const safeCat = escapeHtml(p.category ?? '');
+    const searchTags = (p.tags ?? []).join(' ').toLowerCase();
+
     const diff = (p.stats?.difficulty ?? '').toLowerCase();
     const badgeCls = diff === 'expert' ? 'badge-expert'
       : diff === 'advanced' ? 'badge-advanced'
@@ -412,15 +425,8 @@ function renderProjects(projects) {
     const tagsHtml = (p.tags ?? []).slice(0, 3).map(t => `<span class="card-tag">${escapeHtml(t)}</span>`).join('');
 
     const previewHtml = p.preview
-      ? `<img src="${p.preview}" alt="${escapeHtml(p.name)} preview" loading="lazy" />`
+      ? `<img src="${p.preview}" onerror="if(!this.dataset.triedFallback){this.dataset.triedFallback='1';this.src='https://raw.githubusercontent.com/datjpro/AI-Prompts/main/${safeSlug}/preview.gif';}" alt="${safeName} preview" loading="lazy" />`
       : `<div class="card-preview-placeholder">${escapeHtml(p.icon ?? '⚡')}</div>`;
-
-    const safeSlug = escapeHtml(p.slug ?? '');
-    const safeName = escapeHtml(p.name ?? '');
-    const safeDomain = escapeHtml(p.domain ?? '');
-    const safeDesc = escapeHtml(p.desc ?? '');
-    const safeCat = escapeHtml(p.category ?? '');
-    const searchTags = (p.tags ?? []).join(' ').toLowerCase();
 
     return `
       <article class="project-card" style="animation-delay:${idx * 0.03}s"
@@ -630,6 +636,7 @@ function openPromptModal(slug, name) {
 
   fetch(`${slug}.txt`)
     .then(r => r.ok ? r.text() : Promise.reject(r.status))
+    .catch(() => fetch(`https://raw.githubusercontent.com/datjpro/AI-Prompts/main/${slug}.txt`).then(r => r.ok ? r.text() : Promise.reject(r.status)))
     .then(text => {
       promptView.textContent = text;
       const lines = text.split('\n').length;
