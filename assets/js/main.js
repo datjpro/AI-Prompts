@@ -54,58 +54,37 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ============================================================
-   0. DYNAMIC SHOWCASE PREVIEW CYCLING PRELOADER
+   0. CINEMATIC ANIME PRELOADER
    ============================================================ */
 function initPreloader() {
   const preloader = document.getElementById('preloader');
   const fill      = document.getElementById('preloaderFill');
   const percent   = document.getElementById('preloaderPercent');
   const status    = document.getElementById('preloaderStatus');
-  const gifImg    = document.getElementById('preloaderGifImg');
-  const badgeText = document.getElementById('preloaderBadgeText');
 
   if (!preloader) return;
 
-  // Actual showcase projects to cycle dynamically
-  const sampleProjects = (window.PROJECTS_DATA && window.PROJECTS_DATA.length)
-    ? [...window.PROJECTS_DATA].sort(() => 0.5 - Math.random())
-    : [
-        { id: 34, name: 'Signal Log in', preview: 'signal-login/preview.gif' },
-        { id: 33, name: 'LŪMEN // ÍNDEX', preview: 'lumen-index/preview.gif' },
-        { id: 32, name: 'Apogee', preview: 'apogee-hero/preview.gif' },
-        { id: 29, name: 'Evolve AI', preview: 'evolve-ai/preview.gif' },
-        { id: 31, name: 'Digital Epoch', preview: 'epoch-hero/preview.gif' },
-        { id: 24, name: 'SynapseX', preview: 'synapsex-landing/preview.gif' }
-      ];
-
-  let cycleIdx = 0;
-  if (gifImg && sampleProjects[0]) gifImg.src = sampleProjects[0].preview;
-  if (badgeText && sampleProjects[0]) badgeText.textContent = `UI #${sampleProjects[0].id} • ${sampleProjects[0].name}`;
-
-  // Cycle preview GIF and badge every 300ms during loading
-  const cycleTimer = setInterval(() => {
-    cycleIdx = (cycleIdx + 1) % sampleProjects.length;
-    const p = sampleProjects[cycleIdx];
-    if (gifImg && p.preview) gifImg.src = p.preview;
-    if (badgeText) badgeText.textContent = `UI #${p.id} • ${p.name}`;
-    if (status) status.textContent = `Đang nạp UI #${p.id}: ${p.name}...`;
-  }, 300);
-
   let progress = 0;
-  const duration = 1500; // ms
+  const duration = 1400; // ms
   const interval = 20;
   const step = 100 / (duration / interval);
+
+  const statuses = [
+    { p: 0, text: 'Khởi tạo 34 Không gian UI/UX...' },
+    { p: 35, text: 'Nạp đồ họa Three.js & WebGL Shaders...' },
+    { p: 70, text: 'Đồng bộ hóa 34 Live Masterpieces...' },
+    { p: 95, text: 'Hoàn tất • Chào mừng bạn!' }
+  ];
 
   const timer = setInterval(() => {
     progress += step;
     if (progress >= 100) {
       progress = 100;
       clearInterval(timer);
-      clearInterval(cycleTimer);
 
       if (fill) fill.style.width = '100%';
       if (percent) percent.textContent = '100%';
-      if (status) status.textContent = 'Khởi tạo 34 Masterpiece UI hoàn tất!';
+      if (status) status.textContent = 'Hoàn tất • Chào mừng bạn!';
 
       setTimeout(() => {
         preloader.classList.add('loaded');
@@ -117,6 +96,11 @@ function initPreloader() {
       const current = Math.floor(progress);
       if (fill) fill.style.width = `${current}%`;
       if (percent) percent.textContent = `${String(current).padStart(2, '0')}%`;
+
+      const match = statuses.filter(s => current >= s.p).pop();
+      if (match && status && status.textContent !== match.text) {
+        status.textContent = match.text;
+      }
     }
   }, interval);
 }
