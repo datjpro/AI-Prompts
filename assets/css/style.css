@@ -359,6 +359,17 @@ body{
   border-color: rgba(14, 165, 233, 0.4);
   transform: translateY(-1px);
 }
+@media(max-width:720px){
+  .bg-switcher-capsule {
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2px 6px;
+  }
+  .bg-switcher-capsule:hover {
+    transform: translateX(-50%) translateY(-1px);
+  }
+}
 .bg-switch-btn {
   width: 26px;
   height: 26px;
