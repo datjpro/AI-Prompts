@@ -29,7 +29,1051 @@
   <!-- Lenis Smooth Inertial Scrolling -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+/* ============================================================
+   AI-PROMPTS SHOWCASE HUB — STYLESHEET
+   Design DNA: single-viewport hero + BubbledotICG + video bg
+   + Cinematic Anime Preloader
+   ============================================================ */
+
+/* Geist Pixel Circle fallback */
+@font-face {
+  font-family: "Geist Pixel Circle";
+  src: url("fonts/GeistPixel-Circle.woff2") format("woff2"),
+       url("evolve-ai/fonts/GeistPixel-Circle.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* ─── CSS Variables ─── */
+:root {
+  --bg: #000000;
+  --text: #ffffff;
+  --muted: #8e8e8e;
+  --nav-text: #2e2e2e;
+  --pill-dark: #28282a;
+  --sign-in-text: #c8c8c8;
+  --nav-shadow: 0 4px 14px rgba(0,0,0,0.18);
+  --trust-bg: #28282a;
+  --trust-border: rgba(255,255,255,0.35);
+  --trust-text: #c4c2c3;
+  --font-sans: "Inter","Segoe UI",system-ui,sans-serif;
+  --font-display: "BubbledotICG-FinePos","Geist Pixel Circle",monospace;
+  --trust-size: clamp(36px,4.5vw,42px);
+  --cyan: #0ea5e9;
+  --purple: #a855f7;
+  --pink: #ec4899;
+}
+
+/* ─── Reset ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{height:100%;scroll-behavior:smooth}
+body{
+  font-family:var(--font-sans);
+  background:#000;
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+
+/* ============================================================
+   0. CINEMATIC PRELOADER (With Anime GIF Asset)
+   ============================================================ */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #04060a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.7s cubic-bezier(0.85, 0, 0.15, 1), visibility 0.7s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.preloader-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.35;
+}
+
+.preloader-glow-cyan {
+  top: 20%;
+  left: 30%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.6) 0%, transparent 70%);
+  animation: glowPulse 4s ease-in-out infinite alternate;
+}
+
+.preloader-glow-purple {
+  bottom: 20%;
+  right: 30%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.5) 0%, transparent 70%);
+  animation: glowPulse 4s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes glowPulse {
+  0% { transform: scale(0.9); opacity: 0.25; }
+  100% { transform: scale(1.15); opacity: 0.45; }
+}
+
+.preloader-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.5s ease;
+}
+
+.preloader.loaded .preloader-content {
+  transform: scale(1.06) translateY(-10px);
+  opacity: 0;
+}
+
+/* Avatar GIF Container */
+.preloader-avatar-wrap {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes ringRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.preloader-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #0ea5e9, #a855f7, #ec4899, #0ea5e9);
+  animation: ringRotate 3.5s linear infinite;
+  box-shadow: 0 0 35px rgba(14, 165, 233, 0.45);
+  filter: blur(0.5px);
+}
+
+.preloader-ring::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: #04060a;
+}
+
+.preloader-gif-frame {
+  position: relative;
+  z-index: 2;
+  width: 138px;
+  height: 138px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), inset 0 0 25px rgba(0, 0, 0, 0.7);
+  background: #000;
+}
+
+.preloader-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+  transform: scale(1.02);
+}
+
+.preloader-vignette {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 20px rgba(4, 6, 10, 0.7);
+  pointer-events: none;
+}
+
+.preloader-badge {
+  position: absolute;
+  bottom: -10px;
+  z-index: 5;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(10, 15, 30, 0.85);
+  border: 1px solid rgba(14, 165, 233, 0.5);
+  color: #38bdf8;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 10px rgba(14, 165, 233, 0.3);
+  white-space: nowrap;
+}
+
+.preloader-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0ea5e9;
+  box-shadow: 0 0 8px #0ea5e9;
+  animation: dotPulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes dotPulse {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Typography */
+.preloader-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 3.2vw, 28px);
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  text-shadow: 0 0 24px rgba(14, 165, 233, 0.35);
+}
+
+.text-cyan {
+  color: var(--cyan);
+}
+
+.preloader-status {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: #a1a1aa;
+  letter-spacing: 0.02em;
+  margin-bottom: 22px;
+  min-height: 20px;
+}
+
+/* Progress bar */
+.preloader-bar-wrap {
+  width: 260px;
+  max-width: 85vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.preloader-bar-bg {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.preloader-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  background: linear-gradient(90deg, #0ea5e9, #a855f7, #ec4899);
+  box-shadow: 0 0 14px #0ea5e9;
+  transition: width 0.08s linear;
+  border-radius: 999px;
+}
+
+.preloader-percent {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 12px;
+  color: #0ea5e9;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Shutter Curtain Exit */
+.preloader-shutter {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: #04060a;
+  z-index: 1;
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.preloader-shutter-top {
+  top: 0;
+  transform-origin: top center;
+}
+
+.preloader-shutter-bottom {
+  bottom: 0;
+  transform-origin: bottom center;
+}
+
+.preloader.loaded .preloader-shutter-top {
+  transform: translateY(-100%);
+}
+
+.preloader.loaded .preloader-shutter-bottom {
+  transform: translateY(100%);
+}
+
+/* ============================================================
+   BACKGROUND VIDEO ENGINE (Multi-Theme Cross-Fade Streams)
+   ============================================================ */
+.bg{
+  position:fixed;inset:0;
+  background:#000;overflow:hidden;z-index:0;
+  pointer-events:none;
+}
+.bg-video{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;pointer-events:none;
+  opacity:0;
+  transition:opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.bg-video.active{
+  opacity:1;
+}
+.bg-scrim{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.25) 45%,rgba(0,0,0,0.78) 100%);
+  pointer-events:none;
+}
+
+/* Floating Background Controller Capsule */
+.bg-switcher-capsule {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: rgba(10, 15, 26, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
+  transition: border-color 0.3s ease, transform 0.2s ease;
+}
+.bg-switcher-capsule:hover {
+  border-color: rgba(14, 165, 233, 0.4);
+  transform: translateY(-1px);
+}
+@media(max-width:720px){
+  .bg-switcher-capsule {
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2px 6px;
+  }
+  .bg-switcher-capsule:hover {
+    transform: translateX(-50%) translateY(-1px);
+  }
+}
+.bg-switch-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.bg-switch-btn:hover {
+  background: rgba(14, 165, 233, 0.25);
+  color: #38bdf8;
+}
+.bg-switch-btn svg {
+  width: 13px;
+  height: 13px;
+}
+.bg-stream-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 6px;
+}
+.bg-stream-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0ea5e9;
+  box-shadow: 0 0 8px #0ea5e9;
+  animation: dotPulse 1.4s ease-in-out infinite alternate;
+}
+.bg-stream-title {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* Three.js canvas */
+#threeCanvas{
+  position:fixed;inset:0;
+  pointer-events:none;z-index:1;
+  opacity:0.55;mix-blend-mode:screen;
+}
+
+/* ============================================================
+   HERO PAGE (viewport-locked)
+   ============================================================ */
+.page{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;align-items:center;
+  height:100vh;height:100dvh;
+  overflow:hidden;
+  padding:clamp(16px,2.4vh,28px) clamp(14px,3vw,32px);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes slideDown{
+  from{opacity:0;transform:translateY(-18px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes reveal{
+  from{opacity:0;transform:translateY(22px) scale(0.98);filter:blur(6px);}
+  to{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+}
+@keyframes headlineFade{
+  from{opacity:0;transform:translateY(14px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes revealPulse{
+  0%{opacity:0;transform:translateY(18px) scale(0.97);filter:blur(5px);}
+  60%{opacity:1;transform:translateY(-2px) scale(1.01);filter:blur(0);}
+  100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+}
+@keyframes overlayIn{from{opacity:0;}to{opacity:1;}}
+@keyframes menuIn{
+  from{opacity:0;transform:translateY(-10px) scale(0.97);}
+  to{opacity:1;transform:translateY(0) scale(1);}
+}
+@keyframes linkIn{
+  from{opacity:0;transform:translateY(7px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes cardIn{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.anim{opacity:0;animation:reveal 0.85s cubic-bezier(0.22,1,0.36,1) forwards;animation-delay:var(--d,0s);}
+.hl-line.anim{opacity:0;animation:headlineFade 0.85s cubic-bezier(0.22,1,0.36,1) forwards;animation-delay:var(--d,0s);}
+.cta-group.anim{opacity:0;animation:revealPulse 0.85s cubic-bezier(0.22,1,0.36,1) forwards;animation-delay:var(--d,0s);}
+.header.anim{opacity:0;animation:slideDown 0.7s cubic-bezier(0.22,1,0.36,1) forwards;animation-delay:var(--d,0s);}
+
+@media(prefers-reduced-motion:reduce){
+  .anim,.hl-line.anim,.cta-group.anim,.header.anim{animation:none!important;opacity:1!important;transform:none!important;filter:none!important;}
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header{width:100%;flex-shrink:0;position:relative;}
+.header-inner{
+  display:flex;align-items:center;justify-content:center;
+  gap:clamp(14px,2.4vw,24px);max-width:760px;margin:0 auto;
+}
+
+/* Logo button */
+.logo-btn{
+  width:clamp(40px,4.4vw,46px);height:clamp(40px,4.4vw,46px);
+  border-radius:50%;background:#fff;border:none;cursor:pointer;
+  display:grid;place-items:center;
+  box-shadow:var(--nav-shadow);flex-shrink:0;text-decoration:none;
+  transition:transform 0.25s cubic-bezier(0.22,1,0.36,1);
+}
+.logo-btn:hover{transform:scale(1.04);}
+
+/* Nav pill */
+.nav-pill{
+  display:flex;align-items:center;
+  height:clamp(44px,5.2vw,48px);flex:1;max-width:460px;
+  padding:4px 8px;border-radius:999px;background:#fff;
+  box-shadow:var(--nav-shadow);gap:2px;
+}
+.nav-link{
+  display:flex;flex-direction:column;align-items:center;position:relative;
+  flex:1;height:100%;justify-content:center;
+  text-decoration:none;color:var(--nav-text);
+  font-family:var(--font-sans);font-weight:500;
+  font-size:clamp(12px,1.3vw,14px);letter-spacing:-0.01em;
+  opacity:0.5;border-radius:999px;
+  transition:opacity 0.2s ease;
+  white-space:nowrap;padding:0 clamp(6px,1vw,12px);
+}
+.nav-link:hover{opacity:0.75;}
+.nav-link.active{opacity:1;}
+.nav-link.active::after{
+  content:'';position:absolute;bottom:5px;left:50%;transform:translateX(-50%);
+  width:3px;height:3px;background:#000;border-radius:50%;
+  box-shadow:-5px 0 0 #000,5px 0 0 #000;
+}
+
+/* Sign-in / GitHub button */
+.sign-in-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  height:clamp(44px,5.2vw,48px);padding:0 clamp(16px,2vw,22px);
+  border-radius:999px;background:var(--pill-dark);color:var(--sign-in-text);
+  font-family:var(--font-sans);font-weight:500;font-size:clamp(12px,1.3vw,14px);
+  border:none;cursor:pointer;box-shadow:var(--nav-shadow);flex-shrink:0;
+  text-decoration:none;letter-spacing:-0.01em;
+  transition:background 0.2s ease,color 0.2s ease,transform 0.2s ease;
+}
+.sign-in-btn:hover{background:#323234;color:#fff;transform:translateY(-1px);}
+
+/* Visibility helpers */
+.desktop-only{display:flex;}
+.mobile-only{display:none;}
+
+/* ============================================================
+   HERO CENTER
+   ============================================================ */
+.hero{
+  flex:1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;
+  max-width:960px;width:100%;
+  gap:clamp(14px,2.2vh,20px);
+}
+
+/* Trust row */
+.trust-row{display:inline-flex;align-items:center;margin-bottom:clamp(12px,2vh,20px);}
+.avatar{
+  width:var(--trust-size);height:var(--trust-size);
+  border-radius:50%;background:var(--trust-bg);
+  border:1px solid var(--trust-border);padding:5px;
+  display:grid;place-items:center;position:relative;
+  transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+.avatar-inner{
+  width:100%;height:100%;border-radius:50%;background:#fff;
+  display:grid;place-items:center;color:#111;
+  font-size:calc(var(--trust-size)*0.34);
+}
+.a1{z-index:1;}
+.a2{z-index:2;margin-left:calc(var(--trust-size)*-0.42);}
+.a3{z-index:4;margin-left:calc(var(--trust-size)*-0.42);}
+.a1:hover{transform:translateY(-2px);}
+.a2:hover{transform:translateY(-4px);}
+.a3:hover{transform:translateY(-2px);}
+.trust-pill{
+  display:flex;align-items:center;height:var(--trust-size);
+  background:var(--trust-bg);border:1px solid var(--trust-border);
+  border-radius:999px;padding:0 clamp(12px,1.6vw,16px);
+  padding-left:calc(var(--trust-size)*0.58);
+  margin-left:calc(var(--trust-size)*-0.42);
+  color:var(--trust-text);font-family:var(--font-sans);font-weight:500;
+  font-size:clamp(11px,1.3vw,13px);white-space:nowrap;z-index:3;
+}
+
+/* Headline */
+.headline{display:flex;flex-direction:column;align-items:center;}
+.hl-line{
+  display:block;font-family:var(--font-display);font-weight:400;
+  font-size:clamp(28px,6.5vw,82px);letter-spacing:-0.04em;
+  line-height:1.1;color:#fff;white-space:nowrap;overflow:hidden;
+}
+
+/* Subhead */
+.subhead{
+  max-width:min(520px,92%);
+  font-size:clamp(calc(13px + 2pt),calc(1.5vw + 2pt),calc(16px + 2pt));
+  color:#d0d0d0;opacity:0.82;line-height:1.55;
+  font-weight:400;font-family:var(--font-sans);
+}
+
+/* CTA group */
+.cta-group{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;}
+
+.cta-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:#fff;color:#000;text-decoration:none;
+  font-family:var(--font-sans);font-weight:600;
+  font-size:clamp(13px,1.4vw,14.5px);
+  padding:clamp(11px,1.5vh,13px) clamp(22px,2.8vw,28px);
+  border-radius:999px;border:none;cursor:pointer;
+  box-shadow:0 0 0 1px rgba(255,255,255,0.15),0 0 22px rgba(255,255,255,0.3),0 0 44px rgba(255,255,255,0.1);
+  transition:transform 0.25s cubic-bezier(0.22,1,0.36,1),box-shadow 0.25s ease;
+}
+.cta-btn:hover{
+  transform:translateY(-2px) scale(1.02);
+  box-shadow:0 0 0 1px rgba(255,255,255,0.25),0 0 32px rgba(255,255,255,0.48),0 0 60px rgba(255,255,255,0.18);
+}
+
+.cta-ghost{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.2);
+  color:#e0e0e0;backdrop-filter:blur(12px);
+  font-family:var(--font-sans);font-weight:500;
+  font-size:clamp(13px,1.4vw,14.5px);
+  padding:clamp(11px,1.5vh,13px) clamp(20px,2.6vw,26px);
+  border-radius:999px;cursor:pointer;
+  transition:background 0.2s ease,transform 0.2s ease;
+}
+.cta-ghost:hover{background:rgba(255,255,255,0.14);transform:translateY(-1px);}
+
+/* ============================================================
+   STATS FOOTER (bottom of viewport 1)
+   ============================================================ */
+.stats-footer{
+  width:100%;max-width:920px;flex-shrink:0;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(10px,1.8vw,22px);
+  padding-top:clamp(6px,1vh,12px);
+}
+.stat{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.stat-icon{font-family:var(--font-display);font-size:clamp(20px,2.8vw,30px);color:#fff;line-height:1;}
+.stat-value{
+  font-family:var(--font-sans);font-size:clamp(16px,2vw,24px);
+  font-weight:500;color:#fff;letter-spacing:-0.025em;
+  font-variant-numeric:tabular-nums;line-height:1;
+}
+.stat-label{font-family:var(--font-sans);font-size:clamp(10px,1.1vw,12px);color:var(--muted);text-align:center;}
+
+/* ============================================================
+   MOBILE BURGER
+   ============================================================ */
+.burger{
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  gap:5px;width:48px;height:48px;border-radius:50%;
+  background:var(--pill-dark);border:none;cursor:pointer;
+  transition:background 0.2s ease;
+}
+.burger.open{background:#fff;}
+.bar{display:block;width:18px;height:1.5px;background:#fff;border-radius:2px;
+  transition:transform 0.3s cubic-bezier(0.22,1,0.36,1),opacity 0.2s ease;transform-origin:center;}
+.burger.open .bar{background:#000;}
+.burger.open .bar:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.burger.open .bar:nth-child(2){opacity:0;transform:scaleX(0);}
+.burger.open .bar:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+.menu-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.62);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  z-index:40;animation:overlayIn 0.28s ease forwards;
+}
+.menu-overlay.hidden{display:none;}
+.mobile-menu{
+  position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);
+  width:calc(100% - 28px);max-width:440px;
+  background:#fff;border-radius:28px;padding:22px 18px 20px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.45);
+  z-index:50;animation:menuIn 0.38s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.mobile-menu.hidden{display:none;}
+.mobile-links{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;}
+.mobile-link{
+  display:flex;align-items:center;position:relative;text-decoration:none;
+  color:var(--nav-text);font-family:var(--font-sans);font-weight:500;font-size:15px;
+  padding:10px 14px;border-radius:14px;opacity:0.5;
+  transition:opacity 0.2s ease,background 0.2s ease;
+  animation:linkIn 0.32s cubic-bezier(0.22,1,0.36,1) both;
+  animation-delay:calc(var(--link-index,0)*0.06s + 0.08s);
+}
+.mobile-link:hover{opacity:0.75;background:rgba(0,0,0,0.04);}
+.mobile-link.active{opacity:1;}
+.mobile-link.active::after{
+  content:'';position:absolute;bottom:8px;left:50%;transform:translateX(-50%);
+  width:3px;height:3px;background:#000;border-radius:50%;
+  box-shadow:-5px 0 0 #000,5px 0 0 #000;
+}
+.mobile-sign-in{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;height:46px;border-radius:14px;
+  background:var(--pill-dark);color:var(--sign-in-text);
+  font-family:var(--font-sans);font-weight:500;font-size:15px;
+  border:none;cursor:pointer;text-decoration:none;
+  transition:background 0.2s ease,color 0.2s ease;
+}
+.mobile-sign-in:hover{background:#323234;color:#fff;}
+
+/* ============================================================
+   SHOWCASE SECTION (scrollable area below hero)
+   ============================================================ */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.showcase-section{
+  position:relative;z-index:2;
+  background:linear-gradient(180deg,rgba(4,6,10,0) 0%,#04060a 5%);
+  padding:clamp(40px,6vw,80px) clamp(14px,4vw,40px) 0;
+  min-height:100vh;
+}
+
+.showcase-header{
+  max-width:1200px;margin:0 auto;
+  display:flex;flex-direction:column;gap:16px;margin-bottom:20px;
+}
+@media(min-width:640px){
+  .showcase-header{flex-direction:row;align-items:flex-end;justify-content:space-between;}
+}
+
+.showcase-eyebrow{
+  font-family:var(--font-sans);font-size:11px;font-weight:600;
+  color:var(--cyan);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:6px;
+}
+.showcase-title{
+  font-family:var(--font-sans);font-size:clamp(22px,3.5vw,36px);
+  font-weight:700;color:#fff;letter-spacing:-0.02em;
+}
+
+/* Search */
+.search-wrap{
+  position:relative;width:100%;
+  flex-shrink:0;
+}
+@media(min-width:640px){.search-wrap{width:300px;}}
+.search-icon{
+  position:absolute;left:12px;top:50%;transform:translateY(-50%);
+  width:15px;height:15px;color:var(--cyan);pointer-events:none;
+}
+.search-input{
+  width:100%;padding:10px 36px 10px 38px;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+  border-radius:12px;color:#fff;font-family:var(--font-sans);font-size:13px;
+  outline:none;transition:border-color 0.2s ease,background 0.2s ease;
+}
+.search-input::placeholder{color:rgba(255,255,255,0.3);}
+.search-input:focus{border-color:var(--cyan);background:rgba(255,255,255,0.09);}
+.clear-btn{
+  position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;
+  display:flex;align-items:center;
+}
+.clear-btn.hidden{display:none;}
+
+/* Filter pills */
+.filter-pills{
+  max-width:1200px;margin:0 auto 28px;
+  display:flex;flex-wrap:wrap;gap:8px;
+  padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);
+}
+.filter-pill{
+  padding:8px 16px;border-radius:999px;font-size:12px;font-weight:600;
+  font-family:var(--font-sans);cursor:pointer;transition:all 0.2s ease;
+  background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.55);
+  border:1px solid rgba(255,255,255,0.1);
+}
+.filter-pill:hover{color:rgba(255,255,255,0.85);border-color:rgba(14,165,233,0.35);}
+.filter-pill.active{background:var(--cyan);color:#000;border-color:var(--cyan);}
+
+/* Projects grid with 3D Perspective */
+.projects-grid{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1fr;gap:28px;
+  perspective:1200px;
+  transform-style:preserve-3d;
+}
+@media(min-width:640px){.projects-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1024px){.projects-grid{grid-template-columns:repeat(3,1fr);}}
+
+/* ── 3D Perspective Project Card (Unflattened preserve-3d) ── */
+.project-card{
+  position:relative;
+  border-radius:24px;
+  background:linear-gradient(145deg,rgba(255,255,255,0.06) 0%,rgba(255,255,255,0.015) 100%);
+  border:1px solid rgba(255,255,255,0.12);
+  transform-style:preserve-3d;
+  transform:perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0);
+  transition:border-color 0.4s ease,box-shadow 0.4s ease,transform 0.15s ease-out;
+  will-change:transform;
+  box-shadow:0 12px 35px -10px rgba(0,0,0,0.7);
+  animation:cardIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
+  cursor:pointer;
+}
+
+.project-card:hover{
+  border-color:rgba(14,165,233,0.65);
+  box-shadow:
+    0 30px 60px -12px rgba(0,0,0,0.9),
+    0 0 35px rgba(14,165,233,0.28),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+/* Specular Light Flare Overlay */
+.card-glare{
+  position:absolute;
+  inset:0;
+  border-radius:24px;
+  pointer-events:none;
+  z-index:30;
+  opacity:0;
+  transition:opacity 0.25s ease;
+  mix-blend-mode:overlay;
+}
+
+.card-preview{
+  width:100%;aspect-ratio:16/9;overflow:hidden;
+  border-radius:22px 22px 0 0;
+  background:#000;position:relative;
+  transform:translateZ(26px);
+  transform-style:preserve-3d;
+  box-shadow:0 6px 20px rgba(0,0,0,0.6);
+}
+.card-preview img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.project-card:hover .card-preview img{transform:scale(1.08);}
+.card-preview-placeholder{
+  width:100%;height:100%;
+  background:linear-gradient(135deg,rgba(14,165,233,0.15),rgba(168,85,247,0.15));
+  display:flex;align-items:center;justify-content:center;
+  font-size:32px;
+}
+
+.card-body{
+  padding:18px 20px 18px;
+  transform:translateZ(36px);
+  transform-style:preserve-3d;
+}
+.card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;transform:translateZ(14px);}
+.card-badge{
+  font-size:10px;font-weight:700;font-family:var(--font-sans);
+  padding:3px 10px;border-radius:999px;letter-spacing:0.04em;
+  text-transform:uppercase;
+  box-shadow:0 2px 8px rgba(0,0,0,0.4);
+  transform:translateZ(18px);
+}
+.badge-expert{background:rgba(239,68,68,0.2);color:#fca5a5;border:1px solid rgba(239,68,68,0.35);}
+.badge-advanced{background:rgba(245,158,11,0.2);color:#fcd34d;border:1px solid rgba(245,158,11,0.35);}
+.badge-intermediate{background:rgba(16,185,129,0.2);color:#6ee7b7;border:1px solid rgba(16,185,129,0.35);}
+.badge-default{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.12);}
+
+.card-num{font-size:10px;font-weight:600;color:rgba(255,255,255,0.35);font-family:var(--font-sans);}
+.card-name{
+  font-size:17px;font-weight:700;color:#fff;letter-spacing:-0.02em;
+  margin-bottom:4px;font-family:var(--font-sans);
+  transform:translateZ(24px);
+  text-shadow:0 2px 10px rgba(0,0,0,0.9);
+}
+.card-domain{font-size:11px;color:var(--cyan);font-weight:500;font-family:var(--font-sans);margin-bottom:8px;transform:translateZ(12px);}
+.card-desc{
+  font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;margin-bottom:12px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  transform:translateZ(14px);
+}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;transform:translateZ(18px);}
+.card-tag{
+  font-size:10px;padding:2px 8px;border-radius:999px;
+  background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.45);
+  border:1px solid rgba(255,255,255,0.08);font-family:var(--font-sans);
+}
+.card-footer{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  transform:translateZ(28px);
+}
+.card-prompt-btn{
+  font-size:11px;font-weight:500;color:rgba(255,255,255,0.45);
+  background:none;border:none;cursor:pointer;
+  display:flex;align-items:center;gap:5px;font-family:var(--font-sans);
+  transition:color 0.2s ease;padding:0;
+}
+.card-prompt-btn:hover{color:#fff;}
+.card-prompt-btn svg{width:13px;height:13px;}
+.card-demo-btn{
+  font-size:12px;font-weight:600;
+  padding:7px 16px;border-radius:10px;
+  background:var(--cyan);color:#000;text-decoration:none;
+  font-family:var(--font-sans);
+  display:inline-flex;align-items:center;gap:5px;
+  transition:background 0.2s ease,transform 0.2s ease,box-shadow 0.2s ease;
+  box-shadow:0 4px 12px rgba(14,165,233,0.3);
+}
+.card-demo-btn:hover{background:#38bdf8;transform:translateY(-1px);box-shadow:0 6px 18px rgba(14,165,233,0.45);}
+.card-demo-btn svg{width:12px;height:12px;}
+
+/* ============================================================
+   SITE FOOTER
+   ============================================================ */
+.site-footer{
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding:32px clamp(14px,4vw,40px);
+  margin-top:60px;
+}
+.site-footer-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;
+}
+@media(min-width:640px){
+  .site-footer-inner{flex-direction:row;justify-content:space-between;text-align:left;}
+}
+.footer-brand{display:flex;align-items:center;gap:12px;}
+.footer-name{font-weight:600;color:#fff;font-size:13px;font-family:var(--font-sans);}
+.footer-sub{font-size:11px;color:rgba(255,255,255,0.35);margin-top:2px;font-family:var(--font-sans);}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.25);font-family:var(--font-sans);}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;}
+.modal.hidden{display:none;}
+.modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(20px);}
+.modal-card{
+  position:relative;width:100%;max-width:900px;max-height:90vh;
+  background:#090d1a;border:1px solid rgba(255,255,255,0.12);
+  border-radius:24px;display:flex;flex-direction:column;overflow:hidden;
+  box-shadow:0 40px 100px rgba(0,0,0,0.8);
+}
+.modal-header{
+  padding:18px 20px;border-bottom:1px solid rgba(255,255,255,0.08);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:rgba(255,255,255,0.02);flex-wrap:wrap;
+}
+.modal-title-group{display:flex;align-items:center;gap:12px;}
+.modal-icon{
+  width:38px;height:38px;border-radius:10px;
+  background:rgba(14,165,233,0.15);color:var(--cyan);
+  display:grid;place-items:center;flex-shrink:0;
+}
+.modal-icon svg{width:18px;height:18px;}
+.modal-title{font-size:15px;font-weight:700;color:#fff;font-family:var(--font-sans);}
+.modal-meta{display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,0.4);font-family:var(--font-sans);}
+.modal-slug{color:var(--cyan);}
+.modal-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.modal-tabs{
+  display:flex;align-items:center;
+  background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px;padding:3px;
+}
+.modal-tab{
+  padding:5px 12px;border-radius:8px;font-size:11px;font-weight:600;
+  font-family:var(--font-sans);border:none;cursor:pointer;
+  background:transparent;color:rgba(255,255,255,0.4);
+  transition:background 0.2s ease,color 0.2s ease;
+}
+.modal-tab.active{background:var(--cyan);color:#000;}
+.modal-copy-btn{
+  display:flex;align-items:center;gap:6px;
+  padding:7px 14px;border-radius:10px;
+  background:var(--cyan);color:#000;
+  font-size:12px;font-weight:600;font-family:var(--font-sans);
+  border:none;cursor:pointer;transition:background 0.2s ease;
+}
+.modal-copy-btn svg{width:13px;height:13px;}
+.modal-copy-btn:hover{background:#38bdf8;}
+.modal-close-btn{
+  width:34px;height:34px;border-radius:8px;border:none;cursor:pointer;
+  background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);
+  display:grid;place-items:center;transition:background 0.2s ease,color 0.2s ease;
+}
+.modal-close-btn svg{width:16px;height:16px;}
+.modal-close-btn:hover{background:rgba(255,255,255,0.12);color:#fff;}
+.modal-prompt-view{
+  flex:1;overflow-y:auto;padding:20px;
+  font-family:"JetBrains Mono",monospace;font-size:12px;
+  color:rgba(255,255,255,0.7);line-height:1.7;
+  white-space:pre-wrap;word-break:break-word;
+  background:#05080f;
+}
+.modal-sandbox-view{flex:1;background:#000;}
+.modal-sandbox-view.hidden{display:none;}
+.sandbox-frame{width:100%;height:100%;border:none;min-height:400px;}
+.modal-footer{
+  padding:12px 20px;border-top:1px solid rgba(255,255,255,0.08);
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:11px;color:rgba(255,255,255,0.3);
+  background:rgba(255,255,255,0.02);flex-wrap:wrap;gap:8px;
+}
+.modal-footer svg{width:12px;height:12px;}
+.modal-footer span{display:flex;align-items:center;gap:5px;font-family:var(--font-sans);}
+.modal-fullscreen-link{
+  color:var(--cyan);text-decoration:none;font-weight:600;
+  display:flex;align-items:center;gap:4px;font-family:var(--font-sans);
+  transition:color 0.2s ease;
+}
+.modal-fullscreen-link:hover{color:#38bdf8;}
+.modal-fullscreen-link svg{width:12px;height:12px;}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+.toast{
+  position:fixed;bottom:28px;right:24px;z-index:200;
+  padding:12px 18px;border-radius:14px;
+  background:var(--cyan);color:#000;font-weight:700;font-size:13px;
+  display:flex;align-items:center;gap:8px;font-family:var(--font-sans);
+  box-shadow:0 8px 30px rgba(14,165,233,0.4);
+}
+.toast.hidden{display:none;}
+.toast svg{width:16px;height:16px;}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:720px){
+  .desktop-only{display:none!important;}
+  .mobile-only{display:flex!important;}
+  .header-inner{justify-content:space-between;max-width:100%;}
+  .hl-line{letter-spacing:-0.08em;line-height:1.05;}
+  .stats-footer{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-height:700px){
+  .hero{gap:clamp(8px,1.2vh,12px);}
+  .trust-row{margin-bottom:clamp(6px,1vh,10px);}
+}
+@media(max-width:420px){
+  :root{--trust-size:34px;}
+  .hl-line{letter-spacing:-0.09em;line-height:1.04;}
+  .trust-pill{font-size:11px;}
+  .preloader-avatar-wrap{width:120px;height:120px;margin-bottom:18px;}
+  .preloader-gif-frame{width:108px;height:108px;}
+  .preloader-title{font-size:18px;}
+}
+@media(max-width:540px){.br-desktop{display:none;}}
+
+</style>
 </head>
 <body>
 
@@ -325,7 +1369,1367 @@
     <span id="toastMsg">Đã sao chép prompt thành công!</span>
   </div>
 
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script>
+/**
+ * AI-Prompts Collection — 32 Projects Comprehensive Catalog Data
+ */
+window.PROJECTS_DATA = [
+  {
+    id: 1,
+    name: "Wandor",
+    slug: "wandor-travel",
+    category: "travel",
+    domain: "Du lịch / AI Travel",
+    badge: "React + Vite",
+    tags: ["React 18", "Tailwind CSS", "Video Background", "Frosted Glass"],
+    desc: "Background video thiên nhiên hùng vĩ, Frosted-glass prompt card thông minh, cho phép tùy chọn lịch trình du lịch cá nhân hóa.",
+    icon: "compass",
+    accent: "#38bdf8",
+    gradient: "from-blue-500/20 via-cyan-500/15 to-transparent",
+    preview: "wandor-travel/preview.gif",
+    stats: { lines: "140 lines", difficulty: "Medium" }
+  },
+  {
+    id: 2,
+    name: "Celestial Odyssey",
+    slug: "space-travel-landing",
+    category: "travel",
+    domain: "Du hành Vũ trụ / Sci-Fi",
+    badge: "Three.js WebGL",
+    tags: ["Three.js", "3D Particles", "Canvas WebGL", "Sci-Fi Modal"],
+    desc: "Canvas particle background 3D tương tác chuột, Card khám phá các hành tinh, Modal đặt vé chuyến bay vũ trụ tương lai.",
+    icon: "rocket",
+    accent: "#a855f7",
+    gradient: "from-purple-500/20 via-indigo-500/15 to-transparent",
+    preview: "space-travel-landing/preview.gif",
+    stats: { lines: "230 lines", difficulty: "Advanced" }
+  },
+  {
+    id: 3,
+    name: "Leon Portfolio",
+    slug: "leon-3d-portfolio",
+    category: "portfolio",
+    domain: "Portfolio 3D Creator",
+    badge: "3D Interactive",
+    tags: ["Three.js", "React Three Fiber", "Cyberpunk Dark", "3D Orbit"],
+    desc: "Three.js 3D canvas model tương tác góc nhìn, tông màu tối Cyberpunk/Minimalist, bộ lọc danh mục dự án 3D chuyên nghiệp.",
+    icon: "box",
+    accent: "#10b981",
+    gradient: "from-emerald-500/20 via-teal-500/15 to-transparent",
+    preview: "leon-3d-portfolio/preview.gif",
+    stats: { lines: "310 lines", difficulty: "Expert" }
+  },
+  {
+    id: 4,
+    name: "Serene",
+    slug: "serene-wellness",
+    category: "wellness",
+    domain: "Spa & Health Care",
+    badge: "Pastel Wellness",
+    tags: ["Pastel Palette", "Tailwind CSS", "Booking Modal", "Soft Shadows"],
+    desc: "Bảng màu Pastel thư thái, danh mục liệu trình chăm sóc sức khỏe toàn diện, Modal tương tác đặt lịch hẹn cao cấp.",
+    icon: "heart",
+    accent: "#f43f5e",
+    gradient: "from-rose-500/20 via-pink-500/15 to-transparent",
+    preview: "serene-wellness/preview.gif",
+    stats: { lines: "160 lines", difficulty: "Medium" }
+  },
+  {
+    id: 5,
+    name: "Tiny Trails",
+    slug: "tinytrails-404",
+    category: "apps",
+    domain: "Trang lỗi 404 / Gaming",
+    badge: "Canvas Mini-Game",
+    tags: ["HTML5 Canvas", "Interactive Game", "Particle Physics", "Sound FX"],
+    desc: "Mini-game Canvas đom đóm tương tác độc đáo, hoạt ảnh nhân vật lạc đường sinh động giúp tăng giữ chân người dùng.",
+    icon: "gamepad-2",
+    accent: "#f59e0b",
+    gradient: "from-amber-500/20 via-orange-500/15 to-transparent",
+    preview: "tinytrails-404/preview.gif",
+    stats: { lines: "185 lines", difficulty: "Medium" }
+  },
+  {
+    id: 6,
+    name: "Aura Email",
+    slug: "aura-email",
+    category: "apps",
+    domain: "Ứng dụng Email / AI App",
+    badge: "AI SaaS App",
+    tags: ["Cmd+K Palette", "3-Column SaaS", "AI Summarizer", "Keyboard Nav"],
+    desc: "Bố cục 3 cột tiêu chuẩn SaaS, tính năng AI tóm tắt nội dung thư tự động, Command Palette (Cmd+K) thao tác cực nhanh.",
+    icon: "mail",
+    accent: "#0ea5e9",
+    gradient: "from-sky-500/20 via-blue-500/15 to-transparent",
+    preview: "aura-email/preview.gif",
+    stats: { lines: "390 lines", difficulty: "Advanced" }
+  },
+  {
+    id: 7,
+    name: "Atelier Agency",
+    slug: "atelier-agency",
+    category: "agency",
+    domain: "Creative Agency",
+    badge: "Magnetic Studio",
+    tags: ["Magnetic Cursor", "Maxi Typography", "Video Showcase", "FWA Style"],
+    desc: "Typography khổ lớn ấn tượng, Magnetic Custom Cursor biến thiên theo vị trí hover, Grid video trình diễn dự án đạt giải.",
+    icon: "palette",
+    accent: "#8b5cf6",
+    gradient: "from-violet-500/20 via-purple-500/15 to-transparent",
+    preview: "atelier-agency/preview.gif",
+    stats: { lines: "175 lines", difficulty: "Medium" }
+  },
+  {
+    id: 8,
+    name: "Velorah",
+    slug: "velorah-hero",
+    category: "ecom",
+    domain: "Thời trang Cao cấp",
+    badge: "Vogue Magazine UI",
+    tags: ["Vogue Layout", "Editorial Typography", "Lookbook Carousel", "Quick View"],
+    desc: "Layout phong cách tạp chí thời trang Vogue, Carousel bộ sưu tập ấn tượng, Quick View Modal chi tiết sản phẩm.",
+    icon: "sparkles",
+    accent: "#d946ef",
+    gradient: "from-fuchsia-500/20 via-pink-500/15 to-transparent",
+    preview: "velorah-hero/preview.gif",
+    stats: { lines: "155 lines", difficulty: "Medium" }
+  },
+  {
+    id: 9,
+    name: "Measured",
+    slug: "measured-wearable",
+    category: "wellness",
+    domain: "Health Tech / Wearable",
+    badge: "Health Dashboard",
+    tags: ["Realtime Biosignals", "360 Ring View", "Neon Glow UI", "Chart Canvas"],
+    desc: "Biểu đồ nhịp sinh học thời gian thực, hiệu ứng Neon Glow high-tech, tính năng xoay xem chi tiết chiếc nhẫn thông minh 360°.",
+    icon: "activity",
+    accent: "#06b6d4",
+    gradient: "from-cyan-500/20 via-emerald-500/15 to-transparent",
+    preview: "measured-wearable/preview.gif",
+    stats: { lines: "165 lines", difficulty: "Medium" }
+  },
+  {
+    id: 10,
+    name: "Lumora",
+    slug: "lumora-app",
+    category: "ecom",
+    domain: "Nhà thông minh (Smart Home)",
+    badge: "IoT Dashboard",
+    tags: ["Color Temp Slider", "Room Device Toggles", "Energy Graph", "Glass Controls"],
+    desc: "Điều chỉnh nhiệt độ màu ánh sáng trực quan, công tắc bật/tắt thiết bị theo khu vực phòng, biểu đồ theo dõi năng lượng.",
+    icon: "home",
+    accent: "#eab308",
+    gradient: "from-yellow-500/20 via-amber-500/15 to-transparent",
+    preview: "lumora-app/preview.gif",
+    stats: { lines: "145 lines", difficulty: "Medium" }
+  },
+  {
+    id: 11,
+    name: "Leon Archive",
+    slug: "leon-archive",
+    category: "portfolio",
+    domain: "Kho thử nghiệm 3D / R&D",
+    badge: "WebGL R&D Lab",
+    tags: ["WebGL Shaders", "3D Asset Grid", "Realtime Shaders", "Design Assets"],
+    desc: "Xem trước WebGL Shaders thời gian thực, bảng tương tác 3D Assets, hỗ trợ tải tài nguyên thiết kế đồ họa cao cấp.",
+    icon: "archive",
+    accent: "#3b82f6",
+    gradient: "from-blue-600/20 via-indigo-600/15 to-transparent",
+    preview: "leon-archive/preview.gif",
+    stats: { lines: "280 lines", difficulty: "Advanced" }
+  },
+  {
+    id: 12,
+    name: "Prisma Studio",
+    slug: "prisma-studio",
+    category: "agency",
+    domain: "Digital Agency",
+    badge: "Gradient Wave UI",
+    tags: ["Wave Shaders", "Dynamic Colors", "Creative Agency", "Interactive Contact"],
+    desc: "Nền Gradient Wave chuyển động sóng nước mượt mà, khối dịch vụ đa sắc nghệ thuật, Form liên hệ tư vấn doanh nghiệp.",
+    icon: "layers",
+    accent: "#14b8a6",
+    gradient: "from-teal-500/20 via-cyan-500/15 to-transparent",
+    preview: "prisma-studio/preview.gif",
+    stats: { lines: "210 lines", difficulty: "Medium" }
+  },
+  {
+    id: 13,
+    name: "Axion Studio",
+    slug: "axion-studio",
+    category: "agency",
+    domain: "Design Agency",
+    badge: "Shader Hero",
+    tags: ["FlutedGlass Shader", "ChromaFlow", "Text-Roll Buttons", "Video Expand Cards"],
+    desc: "Shader animated hero (FlutedGlass + ChromaFlow), nút tương tác hiệu ứng text-roll hover, video case study cards mở rộng.",
+    icon: "cpu",
+    accent: "#f97316",
+    gradient: "from-orange-500/20 via-red-500/15 to-transparent",
+    preview: "axion-studio/preview.gif",
+    stats: { lines: "95 lines", difficulty: "Medium" }
+  },
+  {
+    id: 14,
+    name: "Vibrant Wellness",
+    slug: "vibrant-wellness",
+    category: "wellness",
+    domain: "Holistic Wellness / Landing",
+    badge: "Liquid Glass",
+    tags: ["Liquid Glass UI", "Looping Video", "Glowing Gradient Borders", "Stats Strip"],
+    desc: "Full-screen looping background video, phong cách Liquid Glass UI viền phát sáng, menu mobile animation, bottom stats.",
+    icon: "sun",
+    accent: "#84cc16",
+    gradient: "from-lime-500/20 via-emerald-500/15 to-transparent",
+    preview: "vibrant-wellness/preview.gif",
+    stats: { lines: "98 lines", difficulty: "Medium" }
+  },
+  {
+    id: 15,
+    name: "Nora Studio",
+    slug: "nora-studio",
+    category: "portfolio",
+    domain: "Motion Designer Portfolio",
+    badge: "Motion Showcase",
+    tags: ["Staggered Splash", "Spotlight Canvas", "Word Blur Reveal", "Sliding Dark Menu"],
+    desc: "Màn hình mở đầu Staggered splash screen, Canvas spotlight mouse-reveal bí ẩn, hiệu ứng chữ xuất hiện mờ tỏ từng từ.",
+    icon: "film",
+    accent: "#60a5fa",
+    gradient: "from-sky-400/20 via-indigo-500/15 to-transparent",
+    preview: "nora-studio/preview.gif",
+    stats: { lines: "360 lines", difficulty: "Advanced" }
+  },
+  {
+    id: 16,
+    name: "TerraElix",
+    slug: "terra-elix",
+    category: "wellness",
+    domain: "Supplements / Wellness Hero",
+    badge: "Botanical Hero",
+    tags: ["DM Sans Typography", "Word-by-word Reveal", "Rotating 3-Card Carousel", "Floating Product"],
+    desc: "Full-viewport background image thiên nhiên, typography DM Sans tinh tế, tiêu đề word-by-word reveal kèm capsule inline.",
+    icon: "leaf",
+    accent: "#059669",
+    gradient: "from-emerald-600/20 via-green-500/15 to-transparent",
+    preview: "terra-elix/preview.gif",
+    stats: { lines: "190 lines", difficulty: "Medium" }
+  },
+  {
+    id: 17,
+    name: "CozyPaws",
+    slug: "cozy-paws",
+    category: "ecom",
+    domain: "Pet Care / E-Commerce Hero",
+    badge: "DM Serif Display",
+    tags: ["100vh Layout", "DM Serif Display", "Word-pop Animation", "Floating Product Cards"],
+    desc: "Layout vừa vặn 100vh không cuộn trang, DM Serif Display rực rỡ, chữ nẩy hiệu ứng word-pop, card sản phẩm nổi độc đáo.",
+    icon: "dog",
+    accent: "#fb923c",
+    gradient: "from-orange-400/20 via-amber-500/15 to-transparent",
+    preview: "cozy-paws/preview.gif",
+    stats: { lines: "160 lines", difficulty: "Medium" }
+  },
+  {
+    id: 18,
+    name: "Adam Roberts",
+    slug: "adam-roberts",
+    category: "portfolio",
+    domain: "Portfolio / Design & Engineering",
+    badge: "Pixel & Video Hero",
+    tags: ["Basis33 Pixel Font", "Full-bleed Video 120%", "4-Column Meta Grid", "FWA Award Chips"],
+    desc: "Full-bleed background video 120% scale, typography kết hợp Inter & basis33 pixel, 4-column meta grid, nút showreel và award chips.",
+    icon: "video",
+    accent: "#c084fc",
+    gradient: "from-purple-600/20 via-pink-600/15 to-transparent",
+    preview: "adam-roberts/preview.gif",
+    stats: { lines: "240 lines", difficulty: "Advanced" }
+  },
+  {
+    id: 19,
+    name: "Mostar City",
+    slug: "mostar-city",
+    category: "travel",
+    domain: "Du lịch / Cinematic Scroll",
+    badge: "Cinematic 3D Scroll",
+    tags: ["Vanilla HTML/JS", "3-Screen Scroll Parallax", "Splitframe Blend", "Infinite Slider"],
+    desc: "Trải nghiệm cuộn trang điện ảnh 3 màn hình với sticky parallax 3D, splitframe image, custom shade gradient và infinite sights slider.",
+    icon: "compass",
+    accent: "#0d9488",
+    gradient: "from-teal-600/20 via-sky-500/15 to-transparent",
+    preview: "mostar-city/preview.gif",
+    stats: { lines: "550 lines", difficulty: "Expert" }
+  },
+  {
+    id: 20,
+    name: "SkyElite",
+    slug: "skyelite-jets",
+    category: "travel",
+    domain: "Du thuyền & Hàng không / Private Jets",
+    badge: "Private Jets Hero",
+    tags: ["100vh Full-Bleed Video", "Inter Overlap Titles", "Glassmorphism Menu", "Luxury Aviation"],
+    desc: "Hero landing page cao cấp với video background tràn viền (100vh), typography Inter, menu mobile glassmorphism và tiêu đề 2 dòng xếp lớp chữ âm.",
+    icon: "plane",
+    accent: "#38bdf8",
+    gradient: "from-sky-500/20 via-slate-600/15 to-transparent",
+    preview: "skyelite-jets/preview.gif",
+    stats: { lines: "85 lines", difficulty: "Medium" }
+  },
+  {
+    id: 21,
+    name: "DE</HELPERS",
+    slug: "dehelpers-hero",
+    category: "agency",
+    domain: "Outsource Dev / Hero Section",
+    badge: "Liquid Glass Hero",
+    tags: ["Sticky Video Background", "Framer Motion Stagger", "Liquid Glass Testimonial", "Fixed Navbar"],
+    desc: "Hero section hiện đại với sticky background video, gradient fade 40%, fixed navbar, menu mobile Framer Motion stagger và card Liquid Glass.",
+    icon: "code",
+    accent: "#9333ea",
+    gradient: "from-purple-600/20 via-indigo-600/15 to-transparent",
+    preview: "dehelpers-hero/preview.gif",
+    stats: { lines: "135 lines", difficulty: "Medium" }
+  },
+  {
+    id: 22,
+    name: "Void 404",
+    slug: "void-404",
+    category: "apps",
+    domain: "Trang lỗi 404 / Cinematic",
+    badge: "Tailwind v4 Cinematic",
+    tags: ["React 18", "Tailwind CSS v4", "Large 404 Numeral", "LGPSM Logo Pixel-Mark"],
+    desc: "Trang báo lỗi 404 điện ảnh tràn màn hình với video nền loop không overlay, số 404 khổng lồ gradient trắng mờ dần, divider 1px và logo LGPSM.",
+    icon: "alert-triangle",
+    accent: "#64748b",
+    gradient: "from-slate-600/20 via-zinc-500/15 to-transparent",
+    preview: "void-404/preview.gif",
+    stats: { lines: "78 lines", difficulty: "Easy" }
+  },
+  {
+    id: 23,
+    name: "ECHOID",
+    slug: "echoid-voice",
+    category: "ai",
+    domain: "Định danh Giọng nói / Voice ID",
+    badge: "Voice Identity Hero",
+    tags: ["Cinematic Face Video", "Sora & JetBrains Mono", "Voice Entry Panel", "Dual Scrim"],
+    desc: "Single full-viewport hero page với full-bleed cinematic AI face video, voice entry panel phía bên phải, sharp rect UI và Google Fonts Sora & JetBrains Mono.",
+    icon: "mic",
+    accent: "#0284c7",
+    gradient: "from-cyan-600/20 via-blue-600/15 to-transparent",
+    preview: "echoid-voice/preview.gif",
+    stats: { lines: "310 lines", difficulty: "Advanced" }
+  },
+  {
+    id: 24,
+    name: "SynapseX",
+    slug: "synapsex-landing",
+    category: "ai",
+    domain: "Giao diện Thần kinh Neural-AI",
+    badge: "Neural-AI Interface",
+    tags: ["Mouse Scrub Video", "Space Mono & Anton SC", "Scramble Text", "3-Layer Architecture"],
+    desc: "Giao diện Neural-AI full-viewport với video nền tương tác theo vị trí chuột, Space Mono & Anton SC typography, scramble text animations và card kiến trúc 3 lớp.",
+    icon: "cpu",
+    accent: "#059669",
+    gradient: "from-emerald-600/20 via-teal-600/15 to-transparent",
+    preview: "synapsex-landing/preview.gif",
+    stats: { lines: "295 lines", difficulty: "Advanced" },
+    featured: true
+  },
+  {
+    id: 25,
+    name: "Kollektiva",
+    slug: "kollektiva",
+    category: "agency",
+    domain: "Creative Studio / Team Portfolio",
+    badge: "Geist Studio Portfolio",
+    tags: ["Geist Typography", "8 Portrait Crossfades", "Avatar Picker Row", "Active Indicator Dot"],
+    desc: "Giao diện 100vh hiện đại cho Kollektiva studio. Typography Geist sans-serif, 8 ảnh chân dung full-bleed crossfade 700ms, avatar picker row tương tác với indicator dot mượt mà.",
+    icon: "users",
+    accent: "#78716c",
+    gradient: "from-stone-600/20 via-neutral-500/15 to-transparent",
+    preview: "kollektiva/preview.gif",
+    stats: { lines: "235 lines", difficulty: "Advanced" }
+  },
+  {
+    id: 26,
+    name: "Vantage",
+    slug: "vantage-landing",
+    category: "ai",
+    domain: "Analytics & Signal / Landing",
+    badge: "Reference Typography",
+    tags: ["Reference Sans & Display", "Disc SVG Logo", "Glass Demo Card", "3500ms Entrance Motion"],
+    desc: "Full-viewport dark landing page (overflow: hidden). Background video CloudFront, Reference Sans & Display typography, logo đĩa SVG, card glassmorphism và hoạt ảnh entrance 3500ms.",
+    icon: "bar-chart-2",
+    accent: "#475569",
+    gradient: "from-slate-700/20 via-zinc-600/15 to-transparent",
+    preview: "vantage-landing/preview.gif",
+    stats: { lines: "260 lines", difficulty: "Advanced" }
+  },
+  {
+    id: 27,
+    name: "Next Layer AI",
+    slug: "next-layer-ai",
+    category: "ai",
+    domain: "AI Infrastructure / Landing",
+    badge: "1487x1058 Math Layout",
+    tags: ["Manrope Variable Font", "Portal Video Background", "Metal S Logo", "Design Unit Math"],
+    desc: "Full-viewport dark cinematic landing (overflow: hidden). Background video CloudFront portal, Manrope variable font, logo chữ S kim loại 3D, hệ thống unit --u/--h locked 1487x1058 và partner logoipsum strip.",
+    icon: "cpu",
+    accent: "#52525b",
+    gradient: "from-zinc-700/20 via-neutral-600/15 to-transparent",
+    preview: "next-layer-ai/preview.gif",
+    stats: { lines: "310 lines", difficulty: "Advanced" },
+    featured: true
+  },
+  {
+    id: 28,
+    name: "Forma Contact",
+    slug: "forma-contact",
+    category: "agency",
+    domain: "Contact & Agency / Landing",
+    badge: "Instrument Serif UI",
+    tags: ["Instrument Serif Italic", "Interactive Contact Form", "Multi-Select Chips", "Liquid Glass Navbar"],
+    desc: "Landing page background video full-screen với contact form tương tác. Phông chữ Inter & Instrument Serif italic, navbar liquid glass, bộ chọn dịch vụ multi-select chips và màn hình gửi tin nhắn thành công.",
+    icon: "mail",
+    accent: "#3b82f6",
+    gradient: "from-blue-500/20 via-indigo-500/15 to-transparent",
+    preview: "forma-contact/preview.gif",
+    stats: { lines: "165 lines", difficulty: "Medium" }
+  },
+  {
+    id: 29,
+    name: "Evolve AI",
+    slug: "evolve-ai",
+    category: "ai",
+    domain: "AI Infrastructure / Evolve Hero",
+    badge: "Dot-Matrix Bubbledot",
+    tags: ["Bubbledot Dot-Matrix", "3 Avatar Rings", "easeOut Count-Up", "Mobile Burger Sheet"],
+    desc: "Single-viewport full-bleed CloudFront background video, BubbledotICG-FinePos retro dot-matrix typography, 3 avatar rings (Microsoft, Amazon, Google), active 3-dot nav indicator và easeOutCubic count-up stats (< % * #).",
+    icon: "cpu",
+    accent: "#52525b",
+    gradient: "from-zinc-700/20 via-neutral-600/15 to-transparent",
+    preview: "evolve-ai/preview.gif",
+    stats: { lines: "215 lines", difficulty: "Advanced" }
+  },
+  {
+    id: 30,
+    name: "Nexum",
+    slug: "nexum-hero",
+    category: "ai",
+    domain: "AI Operations / Hero Landing",
+    badge: "Silkscreen AI-Ops",
+    tags: ["Silkscreen Stats Counter", "Responsive Light-Dark", "CloudFront Video", "Stratify Testimonial"],
+    desc: "Landing page dark cinematic cho nền tảng AI-Ops tràn toàn màn hình. Nền video CloudFront, đổi màu chữ thông minh, nav glassmorphism, mobile drawer, email CTA và 2 thẻ glassmorphism với font Silkscreen.",
+    icon: "cpu",
+    accent: "#d97706",
+    gradient: "from-amber-600/20 via-orange-500/15 to-transparent",
+    preview: "nexum-hero/preview.gif",
+    stats: { lines: "195 lines", difficulty: "Advanced" }
+  },
+  {
+    id: 31,
+    name: "Digital Epoch",
+    slug: "epoch-hero",
+    category: "landing",
+    domain: "Decentralized Web / Epoch Hero",
+    badge: "3D Crystal Motion",
+    tags: ["Rounded 48px Container", "3D Crystal Video", "Outfit & Inter", "Capsule Floating Navbar"],
+    desc: "Hero section hiện đại với container rounded-[48px], video nền tinh thể 3D CloudFront, Outfit & Inter typography, navbar nổi chân trang kiểu capsule và marquee scroller vô tận đổi màu gradient.",
+    icon: "sparkles",
+    accent: "#2563eb",
+    gradient: "from-blue-600/20 via-cyan-500/15 to-transparent",
+    preview: "epoch-hero/preview.gif",
+    stats: { lines: "115 lines", difficulty: "Advanced" },
+    featured: true
+  },
+  {
+    id: 32,
+    name: "Apogee",
+    slug: "apogee-hero",
+    category: "ai",
+    domain: "Dữ liệu & AI Ops / Hero Landing",
+    badge: "Suisse Intl Masterpiece",
+    tags: ["Suisse Intl Font", "32 Animated Bar Charts", "Nebula Video Loop", "Glass Stat Card $14.2M"],
+    desc: "Hero section dark cinematic tràn màn hình (100vh). Nền video CloudFront tinh vân, typography Suisse Intl, biểu đồ 32 cột hoạt ảnh tăng trưởng doanh thu với trạng thái dự phóng, thẻ glassmorphism $14.2M và menu mobile mượt mà.",
+    icon: "activity",
+    accent: "#4f46e5",
+    gradient: "from-blue-600/25 via-indigo-500/20 to-transparent",
+    preview: "apogee-hero/preview.gif",
+    stats: { lines: "135 lines", difficulty: "Expert" },
+    featured: true
+  },
+  {
+    id: 33,
+    name: "LŪMEN // ÍNDEX",
+    slug: "lumen-index",
+    category: "ai",
+    domain: "DeFi & Private Banking / Hero Landing",
+    badge: "Graphik & Manrope UI",
+    tags: ["React 18", "Tailwind CSS", "CloudFront Video", "Central Nodes", "SVG Connectors", "Chamfered Card"],
+    desc: "Single full-screen DeFi / private-banking landing hero. Video background CloudFront tràn màn hình (100vh), typography Graphik LCG & Manrope, hệ thống 3 node kỹ thuật kết nối SVG elbow lines, thẻ vát góc chamfered border và menu mobile cross-fade.",
+    icon: "sparkles",
+    accent: "#AFDDFF",
+    gradient: "from-sky-400/20 via-blue-500/15 to-transparent",
+    preview: "lumen-index/preview.gif",
+    stats: { lines: "155 lines", difficulty: "Advanced" },
+    featured: true
+  },
+  {
+    id: 34,
+    name: "Signal Log in",
+    slug: "signal-login",
+    category: "apps",
+    domain: "Xác thực & SaaS / Log in Hero",
+    badge: "Self-Contained 1464x949",
+    tags: ["Vanilla HTML/CSS/JS", "Falcon Video Loop", "Eloquia & FreeSans", "3-Mode Responsive", "WAAPI Entrance"],
+    desc: "Trang đăng nhập pixel-exact tự chứa (self-contained) chuẩn tham chiếu 1464×949. Video chim ưng lao dốc CloudFront, typography Eloquia & FreeSans, bộ điều khiển Responsive 3 chế độ (Desktop / Tablet / Mobile), badge sét inline SVG và timeline hoạt ảnh WAAPI.",
+    icon: "log-in",
+    accent: "#293340",
+    gradient: "from-slate-700/20 via-zinc-600/15 to-transparent",
+    preview: "signal-login/preview.gif",
+    stats: { lines: "470 lines", difficulty: "Expert" },
+    featured: true
+  }
+];
+
+</script>
+  <script>
+/**
+ * AI-Prompts Showcase Hub — main.js
+ * Universal offline-ready (file:// + http://),
+ * Lenis Inertial Smooth Scrolling, Dynamic 3D Perspective Card Tilt & Specular Glare,
+ * Dynamic Showcase Preview Cycling Preloader, Mobile menu, Three.js Luminous Fluid Wave Matrix,
+ * stats count-up, project cards render with HTML escaping, search/filter, modal, toast
+ */
+
+// Helper to escape HTML characters in dynamic data
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+
+  // 0. Dynamic Showcase Preview Cycling Preloader
+  initPreloader();
+
+  // 1. Dynamic Background Video Stream Engine (Rotates across project themes)
+  initBgVideoEngine();
+
+  // 2. Lenis Smooth Inertial Scroll
+  initSmoothScroll();
+
+  // 3. Mobile Menu
+  initMobileMenu();
+
+  // 4. Three.js Luminous Fluid Energy Waves
+  initThreeGalaxy();
+
+  // 5. Stats Count-Up
+  initStats();
+
+  // 6. Render 34 Projects & 3D Card Hover
+  renderProjects(window.PROJECTS_DATA || []);
+
+  // 7. Search & Filter
+  initSearchFilter();
+
+  // 8. Modal
+  initModal();
+
+  // 9. Scroll Progress
+  initScrollProgress();
+});
+
+/* ============================================================
+   0. CINEMATIC ANIME PRELOADER
+   ============================================================ */
+function initPreloader() {
+  const preloader = document.getElementById('preloader');
+  const fill      = document.getElementById('preloaderFill');
+  const percent   = document.getElementById('preloaderPercent');
+  const status    = document.getElementById('preloaderStatus');
+
+  if (!preloader) return;
+
+  let progress = 0;
+  const duration = 1400; // ms
+  const interval = 20;
+  const step = 100 / (duration / interval);
+
+  const statuses = [
+    { p: 0, text: 'Khởi tạo 34 Không gian UI/UX...' },
+    { p: 35, text: 'Nạp đồ họa Three.js & WebGL Shaders...' },
+    { p: 70, text: 'Đồng bộ hóa 34 Live Masterpieces...' },
+    { p: 95, text: 'Hoàn tất • Chào mừng bạn!' }
+  ];
+
+  const timer = setInterval(() => {
+    progress += step;
+    if (progress >= 100) {
+      progress = 100;
+      clearInterval(timer);
+
+      if (fill) fill.style.width = '100%';
+      if (percent) percent.textContent = '100%';
+      if (status) status.textContent = 'Hoàn tất • Chào mừng bạn!';
+
+      setTimeout(() => {
+        preloader.classList.add('loaded');
+        setTimeout(() => {
+          preloader.remove();
+        }, 900);
+      }, 350);
+    } else {
+      const current = Math.floor(progress);
+      if (fill) fill.style.width = `${current}%`;
+      if (percent) percent.textContent = `${String(current).padStart(2, '0')}%`;
+
+      const match = statuses.filter(s => current >= s.p).pop();
+      if (match && status && status.textContent !== match.text) {
+        status.textContent = match.text;
+      }
+    }
+  }, interval);
+}
+
+/* ============================================================
+   1. LENIS SMOOTH INERTIAL SCROLLING
+   ============================================================ */
+let lenisInstance = null;
+
+function initSmoothScroll() {
+  if (typeof Lenis !== 'undefined') {
+    lenisInstance = new Lenis({
+      duration: 1.25,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true,
+      touchMultiplier: 1.5,
+    });
+
+    function raf(time) {
+      lenisInstance.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Intercept internal hash anchor navigation
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        const href = anchor.getAttribute('href');
+        if (href && href.length > 1) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            lenisInstance.scrollTo(target, { offset: 0, duration: 1.4 });
+          }
+        }
+      });
+    });
+  }
+}
+
+/* ============================================================
+   2. MOBILE MENU
+   ============================================================ */
+function initMobileMenu() {
+  const burger    = document.getElementById('burgerBtn');
+  const overlay   = document.getElementById('menuOverlay');
+  const menu      = document.getElementById('mobileMenu');
+  const links     = menu ? menu.querySelectorAll('.mobile-link') : [];
+
+  links.forEach((link, i) => link.style.setProperty('--link-index', i));
+
+  const open = () => {
+    if (!burger) return;
+    burger.classList.add('open');
+    burger.setAttribute('aria-expanded', 'true');
+    if (overlay) overlay.classList.remove('hidden');
+    if (menu) menu.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  };
+  const close = () => {
+    if (!burger) return;
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    if (overlay) overlay.classList.add('hidden');
+    if (menu) menu.classList.add('hidden');
+    document.body.style.overflow = '';
+  };
+
+  if (burger)  burger.addEventListener('click', () => burger.getAttribute('aria-expanded') === 'true' ? close() : open());
+  if (overlay) overlay.addEventListener('click', close);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 720) close(); });
+  links.forEach((link) => link.addEventListener('click', close));
+
+  // Nav link active state sync
+  document.querySelectorAll('.nav-link, .mobile-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      const text = link.textContent.trim();
+      document.querySelectorAll('.nav-link, .mobile-link').forEach((l) => {
+        l.classList.toggle('active', l.textContent.trim() === text);
+      });
+    });
+  });
+}
+
+/* ============================================================
+   3. THREE.JS LUMINOUS FLUID ENERGY WAVES (Zero Square Blocks)
+   ============================================================ */
+function initThreeGalaxy() {
+  const container = document.getElementById('threeCanvas');
+  if (!container || typeof THREE === 'undefined') return;
+
+  const scene    = new THREE.Scene();
+  const camera   = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor(0x000000, 0);
+  container.appendChild(renderer.domElement);
+  Object.assign(container.style, { position:'fixed', inset:'0', pointerEvents:'none', zIndex:'1' });
+  Object.assign(renderer.domElement.style, { width:'100%', height:'100%' });
+
+  function createGlowSprite() {
+    const canvas = document.createElement('canvas');
+    canvas.width = 64;
+    canvas.height = 64;
+    const ctx = canvas.getContext('2d');
+    const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+    grad.addColorStop(0, 'rgba(255, 255, 255, 1)');
+    grad.addColorStop(0.2, 'rgba(56, 189, 248, 0.85)');
+    grad.addColorStop(0.5, 'rgba(168, 85, 247, 0.35)');
+    grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 64, 64);
+    return new THREE.CanvasTexture(canvas);
+  }
+
+  const glowTexture = createGlowSprite();
+
+  const gridX = 55;
+  const gridZ = 55;
+  const numParticles = gridX * gridZ;
+  const waveGeo = new THREE.BufferGeometry();
+  const wavePos = new Float32Array(numParticles * 3);
+  const waveCol = new Float32Array(numParticles * 3);
+
+  const spacing = 0.55;
+  const offsetX = (gridX * spacing) / 2;
+  const offsetZ = (gridZ * spacing) / 2;
+
+  let idx = 0;
+  for (let ix = 0; ix < gridX; ix++) {
+    for (let iz = 0; iz < gridZ; iz++) {
+      const x = ix * spacing - offsetX;
+      const z = iz * spacing - offsetZ;
+      wavePos[idx * 3]     = x;
+      wavePos[idx * 3 + 1] = 0;
+      wavePos[idx * 3 + 2] = z;
+
+      const ratio = (ix + iz) / (gridX + gridZ);
+      waveCol[idx * 3]     = 0.05 + ratio * 0.6;  // R
+      waveCol[idx * 3 + 1] = 0.65 - ratio * 0.2;  // G
+      waveCol[idx * 3 + 2] = 0.95;                // B
+      idx++;
+    }
+  }
+
+  waveGeo.setAttribute('position', new THREE.BufferAttribute(wavePos, 3));
+  waveGeo.setAttribute('color',    new THREE.BufferAttribute(waveCol, 3));
+
+  const waveMat = new THREE.PointsMaterial({
+    size: 0.32,
+    map: glowTexture,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.75,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+    sizeAttenuation: true
+  });
+
+  const waveMesh = new THREE.Points(waveGeo, waveMat);
+  waveMesh.position.y = -3.2;
+  waveMesh.rotation.x = 0.35;
+  scene.add(waveMesh);
+
+  const starCount = 200;
+  const starGeo   = new THREE.BufferGeometry();
+  const starPos   = new Float32Array(starCount * 3);
+  const starCol   = new Float32Array(starCount * 3);
+
+  for (let i = 0; i < starCount; i++) {
+    starPos[i * 3]     = (Math.random() - 0.5) * 22;
+    starPos[i * 3 + 1] = (Math.random() - 0.5) * 14;
+    starPos[i * 3 + 2] = (Math.random() - 0.5) * 16;
+
+    const isCyan = Math.random() > 0.5;
+    starCol[i * 3]     = isCyan ? 0.2 : 0.7;
+    starCol[i * 3 + 1] = isCyan ? 0.8 : 0.3;
+    starCol[i * 3 + 2] = isCyan ? 1.0 : 0.9;
+  }
+
+  starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+  starGeo.setAttribute('color',    new THREE.BufferAttribute(starCol, 3));
+
+  const starMat = new THREE.PointsMaterial({
+    size: 0.45,
+    map: glowTexture,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.65,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+  });
+
+  const starMesh = new THREE.Points(starGeo, starMat);
+  scene.add(starMesh);
+
+  camera.position.set(0, 1.5, 12);
+
+  let targetMouseX = 0, targetMouseY = 0;
+  let currentMouseX = 0, currentMouseY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+    targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  let clock = 0;
+  const animate = () => {
+    requestAnimationFrame(animate);
+    clock += 0.022;
+
+    currentMouseX += (targetMouseX - currentMouseX) * 0.05;
+    currentMouseY += (targetMouseY - currentMouseY) * 0.05;
+
+    const positions = waveGeo.attributes.position.array;
+    let pIdx = 0;
+    for (let ix = 0; ix < gridX; ix++) {
+      for (let iz = 0; iz < gridZ; iz++) {
+        const x = ix * spacing - offsetX;
+        const z = iz * spacing - offsetZ;
+        
+        const y = Math.sin(x * 0.3 + clock) * Math.cos(z * 0.3 + clock * 0.8) * 0.95
+                + Math.sin((x + z) * 0.18 + clock * 1.2) * 0.55;
+
+        positions[pIdx * 3 + 1] = y;
+        pIdx++;
+      }
+    }
+    waveGeo.attributes.position.needsUpdate = true;
+
+    waveMesh.rotation.z = currentMouseX * 0.12;
+    waveMesh.rotation.x = 0.35 + currentMouseY * 0.08;
+
+    starMesh.rotation.y = clock * 0.03 + currentMouseX * 0.1;
+    starMesh.rotation.x = Math.sin(clock * 0.02) * 0.05 + currentMouseY * 0.06;
+
+    renderer.render(scene, camera);
+  };
+  animate();
+}
+
+/* ============================================================
+   4. STATS COUNT-UP (easeOutCubic)
+   ============================================================ */
+function initStats() {
+  const stats = document.querySelectorAll('.stat');
+  let triggered = false;
+  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+  const run = (el, i) => {
+    const target   = parseFloat(el.dataset.target ?? '0');
+    const suffix   = el.dataset.suffix ?? '';
+    const decimals = parseInt(el.dataset.decimals ?? '0', 10);
+    const valueEl  = el.querySelector('.stat-value');
+    if (!valueEl) return;
+    const dur   = 1500 + i * 80;
+    const delay = 480  + i * 90;
+    setTimeout(() => {
+      let t0 = null;
+      const tick = (now) => {
+        if (!t0) t0 = now;
+        const p = Math.min((now - t0) / dur, 1);
+        valueEl.textContent = (easeOutCubic(p) * target).toFixed(decimals) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+        else valueEl.textContent = target.toFixed(decimals) + suffix;
+      };
+      requestAnimationFrame(tick);
+    }, delay);
+  };
+
+  const io = new IntersectionObserver((entries) => {
+    if (entries[0] && entries[0].isIntersecting && !triggered) {
+      triggered = true;
+      stats.forEach((el, i) => run(el, i));
+      io.disconnect();
+    }
+  }, { threshold: 0.25 });
+
+  const footer = document.querySelector('.stats-footer');
+  if (footer) io.observe(footer);
+  else stats.forEach((el, i) => run(el, i));
+}
+
+/* ============================================================
+   5. RENDER 34 PROJECT CARDS (With Specular Glare & 3D Tilt)
+   ============================================================ */
+function renderProjects(projects) {
+  const grid = document.getElementById('projectsGrid');
+  if (!grid) return;
+
+  grid.innerHTML = projects.map((p, idx) => {
+    const diff = (p.stats?.difficulty ?? '').toLowerCase();
+    const badgeCls = diff === 'expert' ? 'badge-expert'
+      : diff === 'advanced' ? 'badge-advanced'
+      : diff === 'intermediate' ? 'badge-intermediate'
+      : 'badge-default';
+    const badgeLabel = escapeHtml(p.stats?.difficulty ?? p.badge ?? 'Standard');
+
+    const tagsHtml = (p.tags ?? []).slice(0, 3).map(t => `<span class="card-tag">${escapeHtml(t)}</span>`).join('');
+
+    const previewHtml = p.preview
+      ? `<img src="${p.preview}" alt="${escapeHtml(p.name)} preview" loading="lazy" />`
+      : `<div class="card-preview-placeholder">${escapeHtml(p.icon ?? '⚡')}</div>`;
+
+    const safeSlug = escapeHtml(p.slug ?? '');
+    const safeName = escapeHtml(p.name ?? '');
+    const safeDomain = escapeHtml(p.domain ?? '');
+    const safeDesc = escapeHtml(p.desc ?? '');
+    const safeCat = escapeHtml(p.category ?? '');
+    const searchTags = (p.tags ?? []).join(' ').toLowerCase();
+
+    return `
+      <article class="project-card" style="animation-delay:${idx * 0.03}s"
+        data-name="${safeName.toLowerCase()}"
+        data-tags="${escapeHtml(searchTags)}"
+        data-cat="${safeCat}"
+        data-domain="${safeDomain.toLowerCase()}">
+        <div class="card-glare"></div>
+        <div class="card-preview">${previewHtml}</div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-badge ${badgeCls}">${badgeLabel}</span>
+            <span class="card-num">#${String(p.id ?? idx+1).padStart(2,'0')}</span>
+          </div>
+          <div class="card-name">${safeName}</div>
+          <div class="card-domain">${safeDomain}</div>
+          <div class="card-desc">${safeDesc}</div>
+          <div class="card-tags">${tagsHtml}</div>
+          <div class="card-footer">
+            <button type="button" class="card-prompt-btn" onclick="openPromptModal('${safeSlug}','${safeName.replace(/'/g, "\\'")}')">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Prompt
+            </button>
+            <a href="${safeSlug}/index.html" target="_blank" class="card-demo-btn">
+              Live Demo
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join('');
+
+  // Initialize 3D Card Hover after rendering
+  init3DCardTilt();
+}
+
+/* ============================================================
+   6. DYNAMIC 3D CARD PERSPECTIVE TILT & SPECULAR FLARE
+   ============================================================ */
+function init3DCardTilt() {
+  const cards = document.querySelectorAll('.project-card');
+
+  cards.forEach((card) => {
+    let glare = card.querySelector('.card-glare');
+    if (!glare) {
+      glare = document.createElement('div');
+      glare.className = 'card-glare';
+      card.appendChild(glare);
+    }
+
+    let bounds = null;
+
+    const onMouseEnter = () => {
+      bounds = card.getBoundingClientRect();
+      card.style.transition = 'transform 0.1s ease-out, border-color 0.35s ease, box-shadow 0.35s ease';
+      if (glare) glare.style.opacity = '1';
+    };
+
+    const onMouseMove = (e) => {
+      if (!bounds) bounds = card.getBoundingClientRect();
+      const x = e.clientX - bounds.left;
+      const y = e.clientY - bounds.top;
+
+      const centerX = bounds.width / 2;
+      const centerY = bounds.height / 2;
+
+      const percentX = (x - centerX) / centerX;
+      const percentY = (y - centerY) / centerY;
+
+      const maxTilt = 16; // Bold, tangible 16 degree tilt
+      const tiltX = -percentY * maxTilt;
+      const tiltY = percentX * maxTilt;
+
+      // 3D perspective rotation + forward translation + dynamic 3D drop shadow
+      card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) translateY(-8px) translateZ(20px) scale3d(1.03, 1.03, 1.03)`;
+      card.style.boxShadow = `${(-tiltY * 2.2).toFixed(1)}px ${(tiltX * 2.2 + 22).toFixed(1)}px 45px rgba(0, 0, 0, 0.85), 0 0 35px rgba(14, 165, 233, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35)`;
+      card.style.borderColor = 'rgba(14, 165, 233, 0.7)';
+
+      if (glare) {
+        glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(56, 189, 248, 0.5) 0%, rgba(168, 85, 247, 0.22) 40%, transparent 70%)`;
+      }
+    };
+
+    const onMouseLeave = () => {
+      bounds = null;
+      card.style.transition = 'transform 0.65s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.4s ease, box-shadow 0.4s ease';
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) translateZ(0) scale3d(1, 1, 1)';
+      card.style.boxShadow = '0 12px 35px -10px rgba(0, 0, 0, 0.7)';
+      card.style.borderColor = 'rgba(255, 255, 255, 0.12)';
+      if (glare) glare.style.opacity = '0';
+    };
+
+    card.addEventListener('mouseenter', onMouseEnter);
+    card.addEventListener('mousemove', onMouseMove);
+    card.addEventListener('mouseleave', onMouseLeave);
+  });
+}
+
+/* ============================================================
+   7. SEARCH & FILTER
+   ============================================================ */
+function initSearchFilter() {
+  const searchInput = document.getElementById('searchInput');
+  const clearBtn    = document.getElementById('clearSearchBtn');
+  const filterPills = document.getElementById('filterPills');
+  let activeCat = 'all';
+  let searchTerm = '';
+
+  const filter = () => {
+    const cards = document.querySelectorAll('.project-card');
+    let shown = 0;
+    cards.forEach((card) => {
+      const name   = card.dataset.name   ?? '';
+      const tags   = card.dataset.tags   ?? '';
+      const domain = card.dataset.domain ?? '';
+      const cat    = card.dataset.cat    ?? '';
+      const matchSearch = !searchTerm || name.includes(searchTerm) || tags.includes(searchTerm) || domain.includes(searchTerm);
+      const matchCat    = activeCat === 'all' || cat === activeCat;
+      const visible = matchSearch && matchCat;
+      card.style.display = visible ? '' : 'none';
+      if (visible) shown++;
+    });
+    // Re-bind 3D tilt after filtering
+    init3DCardTilt();
+  };
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchTerm = e.target.value.toLowerCase().trim();
+      if (clearBtn) clearBtn.classList.toggle('hidden', !searchTerm);
+      filter();
+    });
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      searchTerm = '';
+      clearBtn.classList.add('hidden');
+      filter();
+    });
+  }
+
+  if (filterPills) {
+    filterPills.querySelectorAll('.filter-pill').forEach((pill) => {
+      pill.addEventListener('click', () => {
+        filterPills.querySelectorAll('.filter-pill').forEach((p) => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeCat = pill.dataset.cat ?? 'all';
+        filter();
+      });
+    });
+  }
+
+  // Command K shortcut
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      if (searchInput) {
+        const target = document.getElementById('showcase');
+        if (target && lenisInstance) {
+          lenisInstance.scrollTo(target, { offset: 0, duration: 1.2 });
+        } else if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+        setTimeout(() => searchInput.focus(), 600);
+      }
+    }
+  });
+}
+
+/* ============================================================
+   8. PROMPT MODAL (With file:// CORS graceful handling)
+   ============================================================ */
+let modalSlug = '';
+
+function openPromptModal(slug, name) {
+  modalSlug = slug;
+  const modal       = document.getElementById('promptModal');
+  const titleEl     = document.getElementById('modalTitle');
+  const slugEl      = document.getElementById('modalSlug');
+  const statsEl     = document.getElementById('modalStats');
+  const promptView  = document.getElementById('modalPromptView');
+  const sandboxView = document.getElementById('modalSandboxView');
+  const iframe      = document.getElementById('sandboxIframe');
+  const fullscreenLink = document.getElementById('modalFullscreenLink');
+  const tabPromptBtn   = document.getElementById('tabPromptBtn');
+  const tabSandboxBtn  = document.getElementById('tabSandboxBtn');
+
+  if (!modal) return;
+
+  titleEl.textContent = name;
+  slugEl.textContent  = `${slug}.txt`;
+  promptView.textContent = 'Đang tải nội dung prompt...';
+  if (sandboxView) sandboxView.classList.add('hidden');
+  if (promptView) promptView.classList.remove('hidden');
+  if (tabPromptBtn) tabPromptBtn.classList.add('active');
+  if (tabSandboxBtn) tabSandboxBtn.classList.remove('active');
+  if (iframe) iframe.src = '';
+  if (fullscreenLink) fullscreenLink.href = `${slug}/index.html`;
+
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  if (lenisInstance) lenisInstance.stop();
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+
+  fetch(`${slug}.txt`)
+    .then(r => r.ok ? r.text() : Promise.reject(r.status))
+    .then(text => {
+      promptView.textContent = text;
+      const lines = text.split('\n').length;
+      if (statsEl) statsEl.textContent = `${lines.toLocaleString()} dòng`;
+    })
+    .catch(() => {
+      const isFileProtocol = window.location.protocol === 'file:';
+      if (isFileProtocol) {
+        promptView.textContent = `[Chế độ Offline (file://)]\n\nDo chính sách bảo mật của trình duyệt khi mở tệp cục bộ (file://), trình duyệt chặn Ajax đọc tệp .txt.\n\n→ Bạn có thể mở trực tiếp tệp "${slug}.txt" trong thư mục dự án.\n→ Hoặc chuyển sang tab "Live Sandbox" / nhấn "Mở tab riêng" ở góc phải để trải nghiệm giao diện!`;
+      } else {
+        promptView.textContent = `[Không thể tải prompt cho "${name}". Tệp: ${slug}.txt]`;
+      }
+      if (statsEl) statsEl.textContent = '—';
+    });
+
+  if (tabPromptBtn) {
+    tabPromptBtn.onclick = () => {
+      if (promptView) promptView.classList.remove('hidden');
+      if (sandboxView) sandboxView.classList.add('hidden');
+      tabPromptBtn.classList.add('active');
+      if (tabSandboxBtn) tabSandboxBtn.classList.remove('active');
+    };
+  }
+
+  if (tabSandboxBtn) {
+    tabSandboxBtn.onclick = () => {
+      if (sandboxView) sandboxView.classList.remove('hidden');
+      if (promptView) promptView.classList.add('hidden');
+      tabSandboxBtn.classList.add('active');
+      if (tabPromptBtn) tabPromptBtn.classList.remove('active');
+      if (iframe && (!iframe.src || iframe.src === window.location.href)) {
+        iframe.src = `${slug}/index.html`;
+      }
+    };
+  }
+}
+
+function initModal() {
+  const modal    = document.getElementById('promptModal');
+  const backdrop = document.getElementById('modalBackdrop');
+  const closeBtn = document.getElementById('closeModalBtn');
+  const copyBtn  = document.getElementById('copyPromptBtn');
+
+  const close = () => {
+    if (!modal) return;
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+    if (lenisInstance) lenisInstance.start();
+    const iframe = document.getElementById('sandboxIframe');
+    if (iframe) iframe.src = '';
+  };
+
+  if (backdrop) backdrop.addEventListener('click', close);
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      const text = document.getElementById('modalPromptView')?.textContent ?? '';
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => showToast('Đã sao chép prompt thành công!'));
+      }
+    });
+  }
+}
+
+/* ============================================================
+   9. RANDOM PROJECT
+   ============================================================ */
+function openRandomProject() {
+  const projects = window.PROJECTS_DATA ?? [];
+  if (!projects.length) return;
+  const p = projects[Math.floor(Math.random() * projects.length)];
+  window.open(`${p.slug}/index.html`, '_blank');
+}
+
+/* ============================================================
+   10. TOAST
+   ============================================================ */
+function showToast(msg) {
+  const toast   = document.getElementById('toast');
+  const toastMsg = document.getElementById('toastMsg');
+  if (!toast) return;
+  if (toastMsg) toastMsg.textContent = msg;
+  toast.classList.remove('hidden');
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+  setTimeout(() => toast.classList.add('hidden'), 2800);
+}
+
+/* ============================================================
+   11. SCROLL PROGRESS
+   ============================================================ */
+function initScrollProgress() {
+  const header = document.querySelector('.header');
+  let scrolled = false;
+
+  window.addEventListener('scroll', () => {
+    const now = window.scrollY > 60;
+    if (now !== scrolled) {
+      scrolled = now;
+      header?.classList.toggle('scrolled', scrolled);
+    }
+  }, { passive: true });
+}
+
+/* ============================================================
+   12. DYNAMIC BACKGROUND VIDEO ENGINE (Alternates Across Themes)
+   ============================================================ */
+const BG_STREAMS = [
+  {
+    name: 'Signal Falcon',
+    url: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260813_052122_e77a27e6-17f1-4794-889b-3ceaa0e9e8cb.mp4'
+  },
+  {
+    name: 'Evolve AI Core',
+    url: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260809_012548_ef22562c-c0ae-4816-ad9d-f8922af4e6a7.mp4'
+  },
+  {
+    name: 'Apogee Nebula',
+    url: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260811_020942_ad4d8050-ffda-4da0-bbfd-d1ef10fb4e08.mp4'
+  },
+  {
+    name: 'LŪMEN Liquid DeFi',
+    url: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260809_055628_8d1faee1-df62-430c-99d9-bb436a5c3722.mp4'
+  },
+  {
+    name: 'Epoch 3D Crystal',
+    url: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260810_015053_8bb609b1-e23a-4467-850d-6e44b82d3345.mp4'
+  },
+  {
+    name: 'Vantage Neural Signals',
+    url: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260807_054659_91544a03-7cb7-4a0b-9dfd-b4b7324391e6.mp4'
+  },
+  {
+    name: 'Next Layer AI Portal',
+    url: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260807_064508_48c772cb-1d54-4786-bb21-12c8ff4d5da9.mp4'
+  }
+];
+
+let currentBgIndex = Math.floor(Math.random() * BG_STREAMS.length);
+let activeVideoSlot = 1;
+let bgRotationInterval = null;
+
+function initBgVideoEngine() {
+  const v1 = document.getElementById('bgVideo1');
+  const v2 = document.getElementById('bgVideo2');
+  const titleEl = document.getElementById('bgStreamTitle');
+  const prevBtn = document.getElementById('bgPrevBtn');
+  const nextBtn = document.getElementById('bgNextBtn');
+
+  if (!v1 || !v2) return;
+
+  const loadStream = (index, crossfade = true) => {
+    currentBgIndex = (index + BG_STREAMS.length) % BG_STREAMS.length;
+    const stream = BG_STREAMS[currentBgIndex];
+
+    const nextVideo = activeVideoSlot === 1 ? v2 : v1;
+    const currVideo = activeVideoSlot === 1 ? v1 : v2;
+
+    if (crossfade) {
+      nextVideo.src = stream.url;
+      nextVideo.load();
+      nextVideo.play().catch(() => {});
+      nextVideo.classList.add('active');
+      currVideo.classList.remove('active');
+      activeVideoSlot = activeVideoSlot === 1 ? 2 : 1;
+    } else {
+      currVideo.src = stream.url;
+      currVideo.load();
+      currVideo.play().catch(() => {});
+      currVideo.classList.add('active');
+    }
+
+    if (titleEl) {
+      titleEl.textContent = `BG: ${stream.name}`;
+    }
+  };
+
+  // Initial load
+  loadStream(currentBgIndex, false);
+
+  // Auto-rotate every 12 seconds across the different project videos
+  bgRotationInterval = setInterval(() => {
+    loadStream(currentBgIndex + 1, true);
+  }, 12000);
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      clearInterval(bgRotationInterval);
+      loadStream(currentBgIndex - 1, true);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      clearInterval(bgRotationInterval);
+      loadStream(currentBgIndex + 1, true);
+    });
+  }
+}
+
+
+</script>
 </body>
 </html>
