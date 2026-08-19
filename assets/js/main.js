@@ -1,7 +1,8 @@
-/**
+﻿/**
  * AI-Prompts Showcase Hub — main.js
  * Universal offline-ready (file:// + http://),
- * Cinematic Anime GIF Preloader, Mobile menu, Three.js galaxy,
+ * Lenis Inertial Smooth Scrolling, Dynamic 3D Perspective Card Tilt & Specular Glare,
+ * Cinematic Anime GIF Preloader, Mobile menu, Three.js Luminous Fluid Wave Matrix,
  * stats count-up, project cards render with HTML escaping, search/filter, modal, toast
  */
 
@@ -24,25 +25,28 @@ document.addEventListener('DOMContentLoaded', () => {
   // 0. Cinematic Anime Preloader
   initPreloader();
 
-  // 1. Mobile Menu
+  // 1. Lenis Smooth Inertial Scroll
+  initSmoothScroll();
+
+  // 2. Mobile Menu
   initMobileMenu();
 
-  // 2. Three.js Galaxy
+  // 3. Three.js Luminous Fluid Energy Waves
   initThreeGalaxy();
 
-  // 3. Stats Count-Up
+  // 4. Stats Count-Up
   initStats();
 
-  // 4. Render 34 Projects
+  // 5. Render 34 Projects & 3D Card Hover
   renderProjects(window.PROJECTS_DATA || []);
 
-  // 5. Search & Filter
+  // 6. Search & Filter
   initSearchFilter();
 
-  // 6. Modal
+  // 7. Modal
   initModal();
 
-  // 7. Scroll Progress
+  // 8. Scroll Progress
   initScrollProgress();
 });
 
@@ -99,7 +103,44 @@ function initPreloader() {
 }
 
 /* ============================================================
-   1. MOBILE MENU
+   1. LENIS SMOOTH INERTIAL SCROLLING
+   ============================================================ */
+let lenisInstance = null;
+
+function initSmoothScroll() {
+  if (typeof Lenis !== 'undefined') {
+    lenisInstance = new Lenis({
+      duration: 1.25,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true,
+      touchMultiplier: 1.5,
+    });
+
+    function raf(time) {
+      lenisInstance.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Intercept internal hash anchor navigation
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        const href = anchor.getAttribute('href');
+        if (href && href.length > 1) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            lenisInstance.scrollTo(target, { offset: 0, duration: 1.4 });
+          }
+        }
+      });
+    });
+  }
+}
+
+/* ============================================================
+   2. MOBILE MENU
    ============================================================ */
 function initMobileMenu() {
   const burger    = document.getElementById('burgerBtn');
@@ -144,7 +185,7 @@ function initMobileMenu() {
 }
 
 /* ============================================================
-   2. THREE.JS LUMINOUS FLUID ENERGY WAVES (Zero Square Blocks)
+   3. THREE.JS LUMINOUS FLUID ENERGY WAVES (Zero Square Blocks)
    ============================================================ */
 function initThreeGalaxy() {
   const container = document.getElementById('threeCanvas');
@@ -161,7 +202,7 @@ function initThreeGalaxy() {
   Object.assign(container.style, { position:'fixed', inset:'0', pointerEvents:'none', zIndex:'1' });
   Object.assign(renderer.domElement.style, { width:'100%', height:'100%' });
 
-  // ── Procedural Circular Glow Particle Texture (Eliminates all hard square blocks) ──
+  // ── Procedural Circular Glow Particle Texture (Zero hard square edges) ──
   function createGlowSprite() {
     const canvas = document.createElement('canvas');
     canvas.width = 64;
@@ -179,7 +220,7 @@ function initThreeGalaxy() {
 
   const glowTexture = createGlowSprite();
 
-  // ── 1. Undulating Kinetic Energy Wave Grid (60x60 = 3600 nodes) ──
+  // ── 1. Undulating Kinetic Energy Wave Grid (55x55 = 3025 nodes) ──
   const gridX = 55;
   const gridZ = 55;
   const numParticles = gridX * gridZ;
@@ -202,9 +243,9 @@ function initThreeGalaxy() {
 
       // Vibrant cyber gradient palette
       const ratio = (ix + iz) / (gridX + gridZ);
-      waveCol[idx * 3]     = 0.05 + ratio * 0.6;  // R (purple to pink)
-      waveCol[idx * 3 + 1] = 0.65 - ratio * 0.2;  // G (cyan to violet)
-      waveCol[idx * 3 + 2] = 0.95;                // B (deep blue)
+      waveCol[idx * 3]     = 0.05 + ratio * 0.6;  // R
+      waveCol[idx * 3 + 1] = 0.65 - ratio * 0.2;  // G
+      waveCol[idx * 3 + 2] = 0.95;                // B
       idx++;
     }
   }
@@ -284,11 +325,9 @@ function initThreeGalaxy() {
     requestAnimationFrame(animate);
     clock += 0.022;
 
-    // Smooth mouse damping
     currentMouseX += (targetMouseX - currentMouseX) * 0.05;
     currentMouseY += (targetMouseY - currentMouseY) * 0.05;
 
-    // Undulate wave mesh
     const positions = waveGeo.attributes.position.array;
     let pIdx = 0;
     for (let ix = 0; ix < gridX; ix++) {
@@ -296,7 +335,6 @@ function initThreeGalaxy() {
         const x = ix * spacing - offsetX;
         const z = iz * spacing - offsetZ;
         
-        // Multi-frequency harmonic liquid ripples
         const y = Math.sin(x * 0.3 + clock) * Math.cos(z * 0.3 + clock * 0.8) * 0.95
                 + Math.sin((x + z) * 0.18 + clock * 1.2) * 0.55;
 
@@ -306,11 +344,9 @@ function initThreeGalaxy() {
     }
     waveGeo.attributes.position.needsUpdate = true;
 
-    // Subtle wave orientation tilt with cursor
     waveMesh.rotation.z = currentMouseX * 0.12;
     waveMesh.rotation.x = 0.35 + currentMouseY * 0.08;
 
-    // Drift ambient stardust
     starMesh.rotation.y = clock * 0.03 + currentMouseX * 0.1;
     starMesh.rotation.x = Math.sin(clock * 0.02) * 0.05 + currentMouseY * 0.06;
 
@@ -320,7 +356,7 @@ function initThreeGalaxy() {
 }
 
 /* ============================================================
-   3. STATS COUNT-UP (easeOutCubic)
+   4. STATS COUNT-UP (easeOutCubic)
    ============================================================ */
 function initStats() {
   const stats = document.querySelectorAll('.stat');
@@ -362,7 +398,7 @@ function initStats() {
 }
 
 /* ============================================================
-   4. RENDER PROJECT CARDS (With robust HTML escaping & direct index.html paths)
+   5. RENDER 34 PROJECT CARDS (With Specular Glare & 3D Tilt)
    ============================================================ */
 function renderProjects(projects) {
   const grid = document.getElementById('projectsGrid');
@@ -395,6 +431,7 @@ function renderProjects(projects) {
         data-tags="${escapeHtml(searchTags)}"
         data-cat="${safeCat}"
         data-domain="${safeDomain.toLowerCase()}">
+        <div class="card-glare"></div>
         <div class="card-preview">${previewHtml}</div>
         <div class="card-body">
           <div class="card-top">
@@ -419,10 +456,70 @@ function renderProjects(projects) {
       </article>
     `;
   }).join('');
+
+  // Initialize 3D Card Hover after rendering
+  init3DCardTilt();
 }
 
 /* ============================================================
-   5. SEARCH & FILTER
+   6. DYNAMIC 3D CARD PERSPECTIVE TILT & SPECULAR FLARE
+   ============================================================ */
+function init3DCardTilt() {
+  const cards = document.querySelectorAll('.project-card');
+
+  cards.forEach((card) => {
+    let glare = card.querySelector('.card-glare');
+    if (!glare) {
+      glare = document.createElement('div');
+      glare.className = 'card-glare';
+      card.appendChild(glare);
+    }
+
+    let bounds = null;
+
+    const onMouseEnter = () => {
+      bounds = card.getBoundingClientRect();
+      card.style.transition = 'transform 0.12s ease-out, border-color 0.4s ease, box-shadow 0.4s ease';
+      if (glare) glare.style.opacity = '1';
+    };
+
+    const onMouseMove = (e) => {
+      if (!bounds) bounds = card.getBoundingClientRect();
+      const x = e.clientX - bounds.left;
+      const y = e.clientY - bounds.top;
+
+      const centerX = bounds.width / 2;
+      const centerY = bounds.height / 2;
+
+      const percentX = (x - centerX) / centerX;
+      const percentY = (y - centerY) / centerY;
+
+      const maxTilt = 10; // degrees
+      const tiltX = -percentY * maxTilt;
+      const tiltY = percentX * maxTilt;
+
+      card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) translateZ(14px) scale3d(1.025, 1.025, 1.025)`;
+
+      if (glare) {
+        glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(56, 189, 248, 0.42) 0%, rgba(168, 85, 247, 0.18) 35%, transparent 65%)`;
+      }
+    };
+
+    const onMouseLeave = () => {
+      bounds = null;
+      card.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.4s ease, box-shadow 0.4s ease';
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0) scale3d(1, 1, 1)';
+      if (glare) glare.style.opacity = '0';
+    };
+
+    card.addEventListener('mouseenter', onMouseEnter);
+    card.addEventListener('mousemove', onMouseMove);
+    card.addEventListener('mouseleave', onMouseLeave);
+  });
+}
+
+/* ============================================================
+   7. SEARCH & FILTER
    ============================================================ */
 function initSearchFilter() {
   const searchInput = document.getElementById('searchInput');
@@ -480,7 +577,12 @@ function initSearchFilter() {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
       e.preventDefault();
       if (searchInput) {
-        document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth' });
+        const target = document.getElementById('showcase');
+        if (target && lenisInstance) {
+          lenisInstance.scrollTo(target, { offset: 0, duration: 1.2 });
+        } else if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
         setTimeout(() => searchInput.focus(), 600);
       }
     }
@@ -488,7 +590,7 @@ function initSearchFilter() {
 }
 
 /* ============================================================
-   6. PROMPT MODAL (With file:// CORS graceful handling)
+   8. PROMPT MODAL (With file:// CORS graceful handling)
    ============================================================ */
 let modalSlug = '';
 
@@ -519,6 +621,7 @@ function openPromptModal(slug, name) {
 
   modal.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
+  if (lenisInstance) lenisInstance.stop();
   if (typeof lucide !== 'undefined') lucide.createIcons();
 
   fetch(`${slug}.txt`)
@@ -570,6 +673,7 @@ function initModal() {
     if (!modal) return;
     modal.classList.add('hidden');
     document.body.style.overflow = '';
+    if (lenisInstance) lenisInstance.start();
     const iframe = document.getElementById('sandboxIframe');
     if (iframe) iframe.src = '';
   };
@@ -589,7 +693,7 @@ function initModal() {
 }
 
 /* ============================================================
-   7. RANDOM PROJECT
+   9. RANDOM PROJECT
    ============================================================ */
 function openRandomProject() {
   const projects = window.PROJECTS_DATA ?? [];
@@ -599,7 +703,7 @@ function openRandomProject() {
 }
 
 /* ============================================================
-   8. TOAST
+   10. TOAST
    ============================================================ */
 function showToast(msg) {
   const toast   = document.getElementById('toast');
@@ -612,7 +716,7 @@ function showToast(msg) {
 }
 
 /* ============================================================
-   9. SCROLL PROGRESS
+   11. SCROLL PROGRESS
    ============================================================ */
 function initScrollProgress() {
   const header = document.querySelector('.header');
