@@ -1,4 +1,4 @@
-﻿/**
+/**
  * AI-Prompts Showcase Hub — main.js
  * Universal offline-ready (file:// + http://),
  * Cinematic Anime GIF Preloader, Mobile menu, Three.js galaxy,
@@ -144,14 +144,14 @@ function initMobileMenu() {
 }
 
 /* ============================================================
-   2. THREE.JS GALAXY
+   2. THREE.JS LUMINOUS FLUID ENERGY WAVES (Zero Square Blocks)
    ============================================================ */
 function initThreeGalaxy() {
   const container = document.getElementById('threeCanvas');
   if (!container || typeof THREE === 'undefined') return;
 
   const scene    = new THREE.Scene();
-  const camera   = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const camera   = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000);
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
@@ -161,32 +161,115 @@ function initThreeGalaxy() {
   Object.assign(container.style, { position:'fixed', inset:'0', pointerEvents:'none', zIndex:'1' });
   Object.assign(renderer.domElement.style, { width:'100%', height:'100%' });
 
-  const count = 1200;
-  const geo   = new THREE.BufferGeometry();
-  const pos   = new Float32Array(count * 3);
-  const col   = new Float32Array(count * 3);
-  const palettes = [[0.22,0.64,0.91],[0.66,0.33,0.97],[0.93,0.28,0.60],[0.06,0.73,0.51]];
-
-  for (let i = 0; i < count; i++) {
-    pos[i*3]   = (Math.random()-0.5)*18;
-    pos[i*3+1] = (Math.random()-0.5)*18;
-    pos[i*3+2] = (Math.random()-0.5)*14;
-    const p = palettes[Math.floor(Math.random()*palettes.length)];
-    col[i*3]=p[0]; col[i*3+1]=p[1]; col[i*3+2]=p[2];
+  // ── Procedural Circular Glow Particle Texture (Eliminates all hard square blocks) ──
+  function createGlowSprite() {
+    const canvas = document.createElement('canvas');
+    canvas.width = 64;
+    canvas.height = 64;
+    const ctx = canvas.getContext('2d');
+    const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+    grad.addColorStop(0, 'rgba(255, 255, 255, 1)');
+    grad.addColorStop(0.2, 'rgba(56, 189, 248, 0.85)');
+    grad.addColorStop(0.5, 'rgba(168, 85, 247, 0.35)');
+    grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 64, 64);
+    return new THREE.CanvasTexture(canvas);
   }
 
-  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  geo.setAttribute('color',    new THREE.BufferAttribute(col, 3));
+  const glowTexture = createGlowSprite();
 
-  const mat  = new THREE.PointsMaterial({ size:0.06, vertexColors:true, transparent:true, opacity:0.65, sizeAttenuation:true });
-  const mesh = new THREE.Points(geo, mat);
-  scene.add(mesh);
-  camera.position.z = 6;
+  // ── 1. Undulating Kinetic Energy Wave Grid (60x60 = 3600 nodes) ──
+  const gridX = 55;
+  const gridZ = 55;
+  const numParticles = gridX * gridZ;
+  const waveGeo = new THREE.BufferGeometry();
+  const wavePos = new Float32Array(numParticles * 3);
+  const waveCol = new Float32Array(numParticles * 3);
 
-  let mouseX = 0, mouseY = 0;
+  const spacing = 0.55;
+  const offsetX = (gridX * spacing) / 2;
+  const offsetZ = (gridZ * spacing) / 2;
+
+  let idx = 0;
+  for (let ix = 0; ix < gridX; ix++) {
+    for (let iz = 0; iz < gridZ; iz++) {
+      const x = ix * spacing - offsetX;
+      const z = iz * spacing - offsetZ;
+      wavePos[idx * 3]     = x;
+      wavePos[idx * 3 + 1] = 0;
+      wavePos[idx * 3 + 2] = z;
+
+      // Vibrant cyber gradient palette
+      const ratio = (ix + iz) / (gridX + gridZ);
+      waveCol[idx * 3]     = 0.05 + ratio * 0.6;  // R (purple to pink)
+      waveCol[idx * 3 + 1] = 0.65 - ratio * 0.2;  // G (cyan to violet)
+      waveCol[idx * 3 + 2] = 0.95;                // B (deep blue)
+      idx++;
+    }
+  }
+
+  waveGeo.setAttribute('position', new THREE.BufferAttribute(wavePos, 3));
+  waveGeo.setAttribute('color',    new THREE.BufferAttribute(waveCol, 3));
+
+  const waveMat = new THREE.PointsMaterial({
+    size: 0.32,
+    map: glowTexture,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.75,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+    sizeAttenuation: true
+  });
+
+  const waveMesh = new THREE.Points(waveGeo, waveMat);
+  waveMesh.position.y = -3.2;
+  waveMesh.rotation.x = 0.35;
+  scene.add(waveMesh);
+
+  // ── 2. Floating Ambient Stardust Layer ──
+  const starCount = 200;
+  const starGeo   = new THREE.BufferGeometry();
+  const starPos   = new Float32Array(starCount * 3);
+  const starCol   = new Float32Array(starCount * 3);
+
+  for (let i = 0; i < starCount; i++) {
+    starPos[i * 3]     = (Math.random() - 0.5) * 22;
+    starPos[i * 3 + 1] = (Math.random() - 0.5) * 14;
+    starPos[i * 3 + 2] = (Math.random() - 0.5) * 16;
+
+    const isCyan = Math.random() > 0.5;
+    starCol[i * 3]     = isCyan ? 0.2 : 0.7;
+    starCol[i * 3 + 1] = isCyan ? 0.8 : 0.3;
+    starCol[i * 3 + 2] = isCyan ? 1.0 : 0.9;
+  }
+
+  starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+  starGeo.setAttribute('color',    new THREE.BufferAttribute(starCol, 3));
+
+  const starMat = new THREE.PointsMaterial({
+    size: 0.45,
+    map: glowTexture,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.65,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+  });
+
+  const starMesh = new THREE.Points(starGeo, starMat);
+  scene.add(starMesh);
+
+  camera.position.set(0, 1.5, 12);
+
+  // ── 3. Smooth Mouse Parallax Lerping ──
+  let targetMouseX = 0, targetMouseY = 0;
+  let currentMouseX = 0, currentMouseY = 0;
+
   document.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+    targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
   });
 
   window.addEventListener('resize', () => {
@@ -195,10 +278,42 @@ function initThreeGalaxy() {
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 
+  // ── 4. Animation Loop ──
+  let clock = 0;
   const animate = () => {
     requestAnimationFrame(animate);
-    mesh.rotation.y += 0.0008 + mouseX * 0.0003;
-    mesh.rotation.x += 0.0004 + mouseY * 0.0002;
+    clock += 0.022;
+
+    // Smooth mouse damping
+    currentMouseX += (targetMouseX - currentMouseX) * 0.05;
+    currentMouseY += (targetMouseY - currentMouseY) * 0.05;
+
+    // Undulate wave mesh
+    const positions = waveGeo.attributes.position.array;
+    let pIdx = 0;
+    for (let ix = 0; ix < gridX; ix++) {
+      for (let iz = 0; iz < gridZ; iz++) {
+        const x = ix * spacing - offsetX;
+        const z = iz * spacing - offsetZ;
+        
+        // Multi-frequency harmonic liquid ripples
+        const y = Math.sin(x * 0.3 + clock) * Math.cos(z * 0.3 + clock * 0.8) * 0.95
+                + Math.sin((x + z) * 0.18 + clock * 1.2) * 0.55;
+
+        positions[pIdx * 3 + 1] = y;
+        pIdx++;
+      }
+    }
+    waveGeo.attributes.position.needsUpdate = true;
+
+    // Subtle wave orientation tilt with cursor
+    waveMesh.rotation.z = currentMouseX * 0.12;
+    waveMesh.rotation.x = 0.35 + currentMouseY * 0.08;
+
+    // Drift ambient stardust
+    starMesh.rotation.y = clock * 0.03 + currentMouseX * 0.1;
+    starMesh.rotation.x = Math.sin(clock * 0.02) * 0.05 + currentMouseY * 0.06;
+
     renderer.render(scene, camera);
   };
   animate();
