@@ -21,14 +21,12 @@ const ALL_PROJECTS = [
   'cozy-paws', 'adam-roberts', 'mostar-city', 'skyelite-jets',
   'dehelpers-hero', 'void-404', 'echoid-voice', 'synapsex-landing',
   'kollektiva', 'vantage-landing', 'next-layer-ai', 'forma-contact',
-  'evolve-ai', 'nexum-hero', 'epoch-hero'
+  'evolve-ai', 'nexum-hero', 'epoch-hero', 'apogee-hero', 'lumen-index', 'signal-login'
 ];
 
 const RECENT_PROJECTS = [
-  'adam-roberts', 'mostar-city', 'skyelite-jets', 'dehelpers-hero',
-  'void-404', 'echoid-voice', 'synapsex-landing', 'kollektiva',
-  'vantage-landing', 'next-layer-ai', 'forma-contact', 'evolve-ai',
-  'nexum-hero', 'epoch-hero'
+  'kollektiva', 'vantage-landing', 'next-layer-ai', 'forma-contact', 'evolve-ai',
+  'nexum-hero', 'epoch-hero', 'apogee-hero', 'lumen-index', 'signal-login'
 ];
 
 // Helper to serve static folder if pure HTML
@@ -42,10 +40,10 @@ function serveStatic(projectDir, port) {
       }
       const ext = path.extname(filePath).toLowerCase();
       const mimeTypes = {
-        '.html': 'text/html',
-        '.js': 'text/javascript',
-        '.css': 'text/css',
-        '.json': 'application/json',
+        '.html': 'text/html; charset=utf-8',
+        '.js': 'text/javascript; charset=utf-8',
+        '.css': 'text/css; charset=utf-8',
+        '.json': 'application/json; charset=utf-8',
         '.png': 'image/png',
         '.jpg': 'image/jpeg',
         '.gif': 'image/gif',
@@ -60,7 +58,7 @@ function serveStatic(projectDir, port) {
           res.end('Error loading file');
         } else {
           res.writeHead(200, { 'Content-Type': contentType });
-          res.end(content, 'utf-8');
+          res.end(content);
         }
       });
     });
@@ -106,24 +104,29 @@ function isServerRunning(url) {
   });
 }
 
-async function capturePreview(projectSlug, customPort = 5173, width = 1487, height = 1058) {
+async function capturePreview(projectSlug, customPort = 5300, width = 1464, height = 949) {
   const projectPath = path.join(ROOT_DIR, projectSlug);
   if (!fs.existsSync(projectPath)) {
     console.error(`[Error] Project directory "${projectSlug}" does not exist at ${projectPath}`);
     return;
   }
 
-  const url = `http://localhost:${customPort}/`;
+  let url = `http://localhost:${customPort}/`;
   let localServer = null;
   let viteChild = null;
 
-  const running = await isServerRunning(url);
-  if (!running) {
-    const hasPackageJson = fs.existsSync(path.join(projectPath, 'package.json'));
-    if (hasPackageJson) {
-      viteChild = await startViteServer(projectSlug, customPort);
-    } else {
-      localServer = await serveStatic(projectSlug, customPort);
+  // Check if customPort is the root showcase server (port 3333)
+  if (customPort === 3333) {
+    url = `http://localhost:3333/${projectSlug}/`;
+  } else {
+    const running = await isServerRunning(url);
+    if (!running) {
+      const hasPackageJson = fs.existsSync(path.join(projectPath, 'package.json'));
+      if (hasPackageJson) {
+        viteChild = await startViteServer(projectSlug, customPort);
+      } else {
+        localServer = await serveStatic(projectSlug, customPort);
+      }
     }
   }
 
