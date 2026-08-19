@@ -1,8 +1,8 @@
 ﻿/**
  * AI-Prompts Showcase Hub — main.js
  * Universal offline-ready (file:// + http://),
- * Mobile menu, Three.js galaxy, stats count-up,
- * project cards render with HTML escaping, search/filter, modal, toast
+ * Cinematic Anime GIF Preloader, Mobile menu, Three.js galaxy,
+ * stats count-up, project cards render with HTML escaping, search/filter, modal, toast
  */
 
 // Helper to escape HTML characters in dynamic data
@@ -21,14 +21,82 @@ document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
   }
 
+  // 0. Cinematic Anime Preloader
+  initPreloader();
+
+  // 1. Mobile Menu
   initMobileMenu();
+
+  // 2. Three.js Galaxy
   initThreeGalaxy();
+
+  // 3. Stats Count-Up
   initStats();
+
+  // 4. Render 34 Projects
   renderProjects(window.PROJECTS_DATA || []);
+
+  // 5. Search & Filter
   initSearchFilter();
+
+  // 6. Modal
   initModal();
+
+  // 7. Scroll Progress
   initScrollProgress();
 });
+
+/* ============================================================
+   0. CINEMATIC ANIME PRELOADER
+   ============================================================ */
+function initPreloader() {
+  const preloader = document.getElementById('preloader');
+  const fill      = document.getElementById('preloaderFill');
+  const percent   = document.getElementById('preloaderPercent');
+  const status    = document.getElementById('preloaderStatus');
+
+  if (!preloader) return;
+
+  let progress = 0;
+  const duration = 1400; // ms
+  const interval = 20;
+  const step = 100 / (duration / interval);
+
+  const statuses = [
+    { p: 0, text: 'Khởi tạo 34 Không gian UI/UX...' },
+    { p: 35, text: 'Nạp đồ họa Three.js & WebGL Shaders...' },
+    { p: 70, text: 'Đồng bộ hóa 34 Live Previews...' },
+    { p: 95, text: 'Hoàn tất • Chào mừng bạn!' }
+  ];
+
+  const timer = setInterval(() => {
+    progress += step;
+    if (progress >= 100) {
+      progress = 100;
+      clearInterval(timer);
+
+      if (fill) fill.style.width = '100%';
+      if (percent) percent.textContent = '100%';
+      if (status) status.textContent = 'Hoàn tất • Chào mừng bạn!';
+
+      setTimeout(() => {
+        preloader.classList.add('loaded');
+        setTimeout(() => {
+          preloader.remove();
+        }, 900);
+      }, 350);
+    } else {
+      const current = Math.floor(progress);
+      if (fill) fill.style.width = `${current}%`;
+      if (percent) percent.textContent = `${String(current).padStart(2, '0')}%`;
+
+      const match = statuses.filter(s => current >= s.p).pop();
+      if (match && status && status.textContent !== match.text) {
+        status.textContent = match.text;
+      }
+    }
+  }, interval);
+}
 
 /* ============================================================
    1. MOBILE MENU

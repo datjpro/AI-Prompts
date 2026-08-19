@@ -9,7 +9,7 @@
   <!-- Inter (UI) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- BubbledotICG-FinePos (retro dot-matrix display) -->
   <link href="https://db.onlinewebfonts.com/c/8cb707a9b8a73f8a7403336b861c3074?family=BubbledotICG-FinePos" rel="stylesheet" />
@@ -29,6 +29,51 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       CINEMATIC PRELOADER (With Anime GIF Asset)
+  ══════════════════════════════════════════════════════════════ -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-backdrop">
+      <div class="preloader-glow preloader-glow-cyan"></div>
+      <div class="preloader-glow preloader-glow-purple"></div>
+    </div>
+    
+    <div class="preloader-content">
+      <!-- GIF Avatar Container with Liquid Neon Glass Ring -->
+      <div class="preloader-avatar-wrap">
+        <div class="preloader-ring"></div>
+        <div class="preloader-gif-frame">
+          <img src="assets/Anime%20Girl%20GIF.gif" alt="Loading Animation" class="preloader-gif" />
+          <div class="preloader-vignette"></div>
+        </div>
+        <div class="preloader-badge">
+          <span class="preloader-badge-dot"></span>
+          <span>AI-PROMPTS // SYNCING</span>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div class="preloader-title">
+        <span>AI-PROMPTS</span> <span class="text-cyan">SHOWCASE</span>
+      </div>
+      <div class="preloader-status" id="preloaderStatus">
+        Khởi tạo 34 Không gian UI/UX...
+      </div>
+
+      <!-- Progress Bar & Percentage -->
+      <div class="preloader-bar-wrap">
+        <div class="preloader-bar-bg">
+          <div class="preloader-bar-fill" id="preloaderFill"></div>
+        </div>
+        <div class="preloader-percent" id="preloaderPercent">00%</div>
+      </div>
+    </div>
+
+    <!-- Shutter Curtain for Exit Transition -->
+    <div class="preloader-shutter preloader-shutter-top"></div>
+    <div class="preloader-shutter preloader-shutter-bottom"></div>
+  </div>
 
   <!-- ══════════════════════════════════════════════════════════════
        BACKGROUND VIDEO (full-viewport cover)
