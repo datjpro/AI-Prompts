@@ -6,9 +6,9 @@ Bộ sưu tập các dự án Giao diện Web (Frontend Web Applications) cao c�
 
 ## 📌 Tổng quan Repository (Repository Overview)
 
-🌐 **Live Demo Hub**: Xem trực tuyến tất cả 18 giao diện tại [GitHub Pages Live Showcase Hub](https://datjpro.github.io/AI-Prompts/)
+🌐 **Live Demo Hub**: Xem trực tuyến tất cả giao diện tại [GitHub Pages Live Showcase Hub](https://datjpro.github.io/AI-Prompts/)
 
-Repository này chứa **32 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
+Repository này chứa **33 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
 
 ```
 AI-Prompts/
@@ -143,6 +143,10 @@ AI-Prompts/
 └── 📈 Apogee - Essential Data Intelligence Hero Landing
     ├── 📄 apogee-hero.txt
     └── 📁 apogee-hero/
+
+└── 💎 LŪMEN // ÍNDEX - DeFi & Private Banking Hero Landing
+    ├── 📄 lumen-index.txt
+    └── 📁 lumen-index/
 ```
 
 ---
@@ -382,6 +386,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`apogee-hero.txt`](./apogee-hero.txt)
 * **Thư mục ứng dụng**: [`apogee-hero/`](./apogee-hero/)
 * **Mô tả**: Hero landing page thế hệ mới chuẩn pixel-exact xây dựng bằng React 18, TypeScript, Vite, Tailwind CSS và Lucide React. Nổi bật với background video CloudFront tinh vân vũ trụ tràn toàn màn hình (100vh), typography Suisse Intl, 32 cột biểu đồ doanh thu hoạt ảnh tăng trưởng theo hàm cubic-bezier với 4 cột dự phóng mờ (`rgba(255,255,255,0.1)`), thẻ glassmorphism doanh thu $14,205,890.00 với badge +32.4%, hệ thống nút CTA bo góc `rounded-[12px]` với khoảng đệm chuẩn xác, và thanh điều hướng trung tâm/đăng nhập dạng viên nang kính mờ kèm menu mobile chuyển cảnh mượt mà và tự động khóa cuộn trang (body scroll lock).
+
+---
+
+### 33. 💎 LŪMEN // ÍNDEX — DeFi & Private Banking Hero Landing
+* **File Prompt**: [`lumen-index.txt`](./lumen-index.txt)
+* **Thư mục ứng dụng**: [`lumen-index/`](./lumen-index/)
+* **Mô tả**: Single full-viewport hero section cho nền tảng DeFi & Private Banking cao cấp xây dựng bằng React 18, TypeScript, Vite, Tailwind CSS và Lucide React. Nổi bật với background video CloudFront tràn màn hình không phủ scrim, typography Graphik LCG & Manrope, hệ thống 4 đường lưới dọc + 2 đường ngang và 8 dấu cộng `+` 10×10px giao cắt, sơ đồ 3 nút trung tâm kết nối qua 6 đường SVG elbow lines (`[ CORE_ENTITY ]`, `[ LUMINOUS_INSIGHT ]`, `[ CONNECTIVITY ]`), thẻ thông tin vát góc 45° chamfered border SVG (`NOT A BANK — AN ECOSYSTEM`), nút CTA `Explore Private Banking` biểu tượng sao 4 cánh `✦`, và menu mobile cross-fade mượt mà.
 
 ---
 

@@ -1,0 +1,287 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   AI-PROMPTS MASTERPIECE HUB — MAIN STYLESHEET
+   ========================================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-void: #04060a;
+  --color-abyss: #080a14;
+  --color-cyan: #38bdf8;
+  --color-purple: #a855f7;
+  --color-pink: #ec4899;
+  --font-display: 'Syne', 'Outfit', sans-serif;
+  --font-sans: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-void);
+  color: #f8fafc;
+  overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   1. CINEMATIC INTRO PRELOADER & SPLASH SCREEN
+   ========================================================================== */
+.intro-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background-color: #04060a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.8s cubic-bezier(0.85, 0, 0.15, 1), visibility 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.intro-preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-shutter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.intro-shutter-row {
+  flex: 1;
+  width: 100%;
+  background: #06080e;
+  transform: scaleY(1);
+  transform-origin: center;
+  transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.intro-preloader.loaded .intro-shutter-top {
+  transform: translateY(-100%);
+}
+
+.intro-preloader.loaded .intro-shutter-bottom {
+  transform: translateY(100%);
+}
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro-logo-glow {
+  filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.6));
+}
+
+.intro-progress-bar-bg {
+  width: 260px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.intro-progress-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  background: linear-gradient(90deg, #38bdf8, #a855f7, #ec4899);
+  transition: width 0.1s linear;
+  box-shadow: 0 0 12px #38bdf8;
+}
+
+/* ==========================================================================
+   2. THREE.JS CANVAS & AMBIENT BACKGROUNDS
+   ========================================================================== */
+#threeCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+.bg-mesh-pattern {
+  background-image: 
+    radial-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    radial-gradient(rgba(168, 85, 247, 0.05) 1px, transparent 1px);
+  background-size: 36px 36px, 72px 72px;
+  background-position: 0 0, 18px 18px;
+}
+
+/* ==========================================================================
+   3. LIQUID GLASSMORPHISM SURFACES
+   ========================================================================== */
+.glass-panel {
+  background: rgba(10, 14, 26, 0.7);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.glass-card-3d {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.005) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7);
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease-out, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.glass-card-3d:hover {
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 30px 60px -15px rgba(56, 189, 248, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.bento-flagship {
+  background: linear-gradient(145deg, rgba(16, 24, 48, 0.7) 0%, rgba(8, 12, 24, 0.85) 100%);
+  backdrop-filter: blur(32px);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 35px -5px rgba(56, 189, 248, 0.15);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.bento-flagship:hover {
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 30px 65px -12px rgba(0, 0, 0, 0.9), 0 0 45px -5px rgba(56, 189, 248, 0.3);
+}
+
+/* ==========================================================================
+   4. GRADIENTS & TYPOGRAPHY
+   ========================================================================== */
+.gradient-hero-text {
+  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #38bdf8 80%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-accent-cyan {
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Word Reveal Stagger */
+@keyframes wordReveal {
+  from {
+    opacity: 0;
+    filter: blur(16px);
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-word {
+  display: inline-block;
+  opacity: 0;
+  animation: wordReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   5. BUTTON EFFECTS & MICRO-INTERACTIONS
+   ========================================================================== */
+.btn-text-roll {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-text-roll .roll-inner {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-text-roll:hover .roll-inner {
+  transform: translateY(-50%);
+}
+
+/* ==========================================================================
+   6. INFINITE MARQUEE
+   ========================================================================== */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ==========================================================================
+   7. PROMPT MODAL & TERMINAL CODE VIEWER
+   ========================================================================== */
+.terminal-line-numbers {
+  user-select: none;
+  opacity: 0.35;
+  text-align: right;
+  padding-right: 1rem;
+}
+
+/* Toast */
+@keyframes toastSlide {
+  0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+  15% { opacity: 1; transform: translateY(0) scale(1); }
+  85% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-12px) scale(0.95); }
+}
+
+.toast-anim {
+  animation: toastSlide 2.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   8. CUSTOM SCROLLBAR
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-cyan);
+}
