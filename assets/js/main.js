@@ -2,7 +2,7 @@
  * AI-Prompts Showcase Hub — main.js
  * Universal offline-ready (file:// + http://),
  * Lenis Inertial Smooth Scrolling, Dynamic 3D Perspective Card Tilt & Specular Glare,
- * Cinematic Anime GIF Preloader, Mobile menu, Three.js Luminous Fluid Wave Matrix,
+ * Dynamic Showcase Preview Cycling Preloader, Mobile menu, Three.js Luminous Fluid Wave Matrix,
  * stats count-up, project cards render with HTML escaping, search/filter, modal, toast
  */
 
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
   }
 
-  // 0. Cinematic Anime Preloader
+  // 0. Dynamic Showcase Preview Cycling Preloader
   initPreloader();
 
   // 1. Lenis Smooth Inertial Scroll
@@ -51,37 +51,58 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ============================================================
-   0. CINEMATIC ANIME PRELOADER
+   0. DYNAMIC SHOWCASE PREVIEW CYCLING PRELOADER
    ============================================================ */
 function initPreloader() {
   const preloader = document.getElementById('preloader');
   const fill      = document.getElementById('preloaderFill');
   const percent   = document.getElementById('preloaderPercent');
   const status    = document.getElementById('preloaderStatus');
+  const gifImg    = document.getElementById('preloaderGifImg');
+  const badgeText = document.getElementById('preloaderBadgeText');
 
   if (!preloader) return;
 
+  // Actual showcase projects to cycle dynamically
+  const sampleProjects = (window.PROJECTS_DATA && window.PROJECTS_DATA.length)
+    ? [...window.PROJECTS_DATA].sort(() => 0.5 - Math.random())
+    : [
+        { id: 34, name: 'Signal Log in', preview: 'signal-login/preview.gif' },
+        { id: 33, name: 'LŪMEN // ÍNDEX', preview: 'lumen-index/preview.gif' },
+        { id: 32, name: 'Apogee', preview: 'apogee-hero/preview.gif' },
+        { id: 29, name: 'Evolve AI', preview: 'evolve-ai/preview.gif' },
+        { id: 31, name: 'Digital Epoch', preview: 'epoch-hero/preview.gif' },
+        { id: 24, name: 'SynapseX', preview: 'synapsex-landing/preview.gif' }
+      ];
+
+  let cycleIdx = 0;
+  if (gifImg && sampleProjects[0]) gifImg.src = sampleProjects[0].preview;
+  if (badgeText && sampleProjects[0]) badgeText.textContent = `UI #${sampleProjects[0].id} • ${sampleProjects[0].name}`;
+
+  // Cycle preview GIF and badge every 300ms during loading
+  const cycleTimer = setInterval(() => {
+    cycleIdx = (cycleIdx + 1) % sampleProjects.length;
+    const p = sampleProjects[cycleIdx];
+    if (gifImg && p.preview) gifImg.src = p.preview;
+    if (badgeText) badgeText.textContent = `UI #${p.id} • ${p.name}`;
+    if (status) status.textContent = `Đang nạp UI #${p.id}: ${p.name}...`;
+  }, 300);
+
   let progress = 0;
-  const duration = 1400; // ms
+  const duration = 1500; // ms
   const interval = 20;
   const step = 100 / (duration / interval);
-
-  const statuses = [
-    { p: 0, text: 'Khởi tạo 34 Không gian UI/UX...' },
-    { p: 35, text: 'Nạp đồ họa Three.js & WebGL Shaders...' },
-    { p: 70, text: 'Đồng bộ hóa 34 Live Previews...' },
-    { p: 95, text: 'Hoàn tất • Chào mừng bạn!' }
-  ];
 
   const timer = setInterval(() => {
     progress += step;
     if (progress >= 100) {
       progress = 100;
       clearInterval(timer);
+      clearInterval(cycleTimer);
 
       if (fill) fill.style.width = '100%';
       if (percent) percent.textContent = '100%';
-      if (status) status.textContent = 'Hoàn tất • Chào mừng bạn!';
+      if (status) status.textContent = 'Khởi tạo 34 Masterpiece UI hoàn tất!';
 
       setTimeout(() => {
         preloader.classList.add('loaded');
@@ -93,11 +114,6 @@ function initPreloader() {
       const current = Math.floor(progress);
       if (fill) fill.style.width = `${current}%`;
       if (percent) percent.textContent = `${String(current).padStart(2, '0')}%`;
-
-      const match = statuses.filter(s => current >= s.p).pop();
-      if (match && status && status.textContent !== match.text) {
-        status.textContent = match.text;
-      }
     }
   }, interval);
 }
@@ -202,7 +218,6 @@ function initThreeGalaxy() {
   Object.assign(container.style, { position:'fixed', inset:'0', pointerEvents:'none', zIndex:'1' });
   Object.assign(renderer.domElement.style, { width:'100%', height:'100%' });
 
-  // ── Procedural Circular Glow Particle Texture (Zero hard square edges) ──
   function createGlowSprite() {
     const canvas = document.createElement('canvas');
     canvas.width = 64;
@@ -220,7 +235,6 @@ function initThreeGalaxy() {
 
   const glowTexture = createGlowSprite();
 
-  // ── 1. Undulating Kinetic Energy Wave Grid (55x55 = 3025 nodes) ──
   const gridX = 55;
   const gridZ = 55;
   const numParticles = gridX * gridZ;
@@ -241,7 +255,6 @@ function initThreeGalaxy() {
       wavePos[idx * 3 + 1] = 0;
       wavePos[idx * 3 + 2] = z;
 
-      // Vibrant cyber gradient palette
       const ratio = (ix + iz) / (gridX + gridZ);
       waveCol[idx * 3]     = 0.05 + ratio * 0.6;  // R
       waveCol[idx * 3 + 1] = 0.65 - ratio * 0.2;  // G
@@ -269,7 +282,6 @@ function initThreeGalaxy() {
   waveMesh.rotation.x = 0.35;
   scene.add(waveMesh);
 
-  // ── 2. Floating Ambient Stardust Layer ──
   const starCount = 200;
   const starGeo   = new THREE.BufferGeometry();
   const starPos   = new Float32Array(starCount * 3);
@@ -304,7 +316,6 @@ function initThreeGalaxy() {
 
   camera.position.set(0, 1.5, 12);
 
-  // ── 3. Smooth Mouse Parallax Lerping ──
   let targetMouseX = 0, targetMouseY = 0;
   let currentMouseX = 0, currentMouseY = 0;
 
@@ -319,7 +330,6 @@ function initThreeGalaxy() {
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 
-  // ── 4. Animation Loop ──
   let clock = 0;
   const animate = () => {
     requestAnimationFrame(animate);
@@ -479,7 +489,7 @@ function init3DCardTilt() {
 
     const onMouseEnter = () => {
       bounds = card.getBoundingClientRect();
-      card.style.transition = 'transform 0.12s ease-out, border-color 0.4s ease, box-shadow 0.4s ease';
+      card.style.transition = 'transform 0.1s ease-out, border-color 0.35s ease, box-shadow 0.35s ease';
       if (glare) glare.style.opacity = '1';
     };
 
@@ -494,21 +504,26 @@ function init3DCardTilt() {
       const percentX = (x - centerX) / centerX;
       const percentY = (y - centerY) / centerY;
 
-      const maxTilt = 10; // degrees
+      const maxTilt = 16; // Bold, tangible 16 degree tilt
       const tiltX = -percentY * maxTilt;
       const tiltY = percentX * maxTilt;
 
-      card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) translateZ(14px) scale3d(1.025, 1.025, 1.025)`;
+      // 3D perspective rotation + forward translation + dynamic 3D drop shadow
+      card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) translateY(-8px) translateZ(20px) scale3d(1.03, 1.03, 1.03)`;
+      card.style.boxShadow = `${(-tiltY * 2.2).toFixed(1)}px ${(tiltX * 2.2 + 22).toFixed(1)}px 45px rgba(0, 0, 0, 0.85), 0 0 35px rgba(14, 165, 233, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35)`;
+      card.style.borderColor = 'rgba(14, 165, 233, 0.7)';
 
       if (glare) {
-        glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(56, 189, 248, 0.42) 0%, rgba(168, 85, 247, 0.18) 35%, transparent 65%)`;
+        glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(56, 189, 248, 0.5) 0%, rgba(168, 85, 247, 0.22) 40%, transparent 70%)`;
       }
     };
 
     const onMouseLeave = () => {
       bounds = null;
-      card.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.4s ease, box-shadow 0.4s ease';
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0) scale3d(1, 1, 1)';
+      card.style.transition = 'transform 0.65s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.4s ease, box-shadow 0.4s ease';
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) translateZ(0) scale3d(1, 1, 1)';
+      card.style.boxShadow = '0 12px 35px -10px rgba(0, 0, 0, 0.7)';
+      card.style.borderColor = 'rgba(255, 255, 255, 0.12)';
       if (glare) glare.style.opacity = '0';
     };
 
@@ -542,6 +557,8 @@ function initSearchFilter() {
       card.style.display = visible ? '' : 'none';
       if (visible) shown++;
     });
+    // Re-bind 3D tilt after filtering
+    init3DCardTilt();
   };
 
   if (searchInput) {
