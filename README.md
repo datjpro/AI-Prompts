@@ -8,7 +8,7 @@ Bộ sưu tập các dự án Giao diện Web (Frontend Web Applications) cao c�
 
 🌐 **Live Demo Hub**: Xem trực tuyến tất cả 18 giao diện tại [GitHub Pages Live Showcase Hub](https://datjpro.github.io/AI-Prompts/)
 
-Repository này chứa **25 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
+Repository này chứa **32 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
 
 ```
 AI-Prompts/
@@ -139,6 +139,10 @@ AI-Prompts/
 └── 🌐 Digital Epoch - Decentralized Web Foundation Hero
     ├── 📄 epoch-hero.txt
     └── 📁 epoch-hero/
+
+└── 📈 Apogee - Essential Data Intelligence Hero Landing
+    ├── 📄 apogee-hero.txt
+    └── 📁 apogee-hero/
 ```
 
 ---
@@ -155,7 +159,7 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 
 ---
 
-## 📑 Danh sách Chi tiết 31 Dự án (Detailed Project Breakdown)
+## 📑 Danh sách Chi tiết 32 Dự án (Detailed Project Breakdown)
 
 ### 1. ✈️ Wandor — AI Trip Planner
 * **File Prompt**: [`wandor-travel.txt`](./wandor-travel.txt)
@@ -373,6 +377,15 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **Mô tả**: Hero section hiện đại, hiệu năng cao xây dựng bằng React 19, TypeScript, Tailwind CSS v4 và Motion. Nổi bật với khung container bo góc lớn `rounded-[48px]`, background video tinh thể 3D CloudFront, typography kết hợp Outfit & Inter, motion text reveal mượt mà, thanh navbar nổi chân trang kiểu capsule kính mờ (`✦`, Products, Docs, Get in touch >), và marquee scroller vô tận gồm 8 logo công nghệ với hiệu ứng đổi màu nền gradient phóng to sống động khi di chuột.
 
 ---
+
+### 32. 📈 Apogee — Essential Data Intelligence Hero Landing
+* **File Prompt**: [`apogee-hero.txt`](./apogee-hero.txt)
+* **Thư mục ứng dụng**: [`apogee-hero/`](./apogee-hero/)
+* **Mô tả**: Hero landing page thế hệ mới chuẩn pixel-exact xây dựng bằng React 18, TypeScript, Vite, Tailwind CSS và Lucide React. Nổi bật với background video CloudFront tinh vân vũ trụ tràn toàn màn hình (100vh), typography Suisse Intl, 32 cột biểu đồ doanh thu hoạt ảnh tăng trưởng theo hàm cubic-bezier với 4 cột dự phóng mờ (`rgba(255,255,255,0.1)`), thẻ glassmorphism doanh thu $14,205,890.00 với badge +32.4%, hệ thống nút CTA bo góc `rounded-[12px]` với khoảng đệm chuẩn xác, và thanh điều hướng trung tâm/đăng nhập dạng viên nang kính mờ kèm menu mobile chuyển cảnh mượt mà và tự động khóa cuộn trang (body scroll lock).
+
+---
+
+
 
 
 
