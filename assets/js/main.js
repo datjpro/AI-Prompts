@@ -1,4 +1,4 @@
-﻿/**
+/**
  * AI-Prompts Showcase Hub — main.js
  * Universal offline-ready (file:// + http://),
  * Lenis Inertial Smooth Scrolling, Dynamic 3D Perspective Card Tilt & Specular Glare,
@@ -25,28 +25,31 @@ document.addEventListener('DOMContentLoaded', () => {
   // 0. Dynamic Showcase Preview Cycling Preloader
   initPreloader();
 
-  // 1. Lenis Smooth Inertial Scroll
+  // 1. Dynamic Background Video Stream Engine (Rotates across project themes)
+  initBgVideoEngine();
+
+  // 2. Lenis Smooth Inertial Scroll
   initSmoothScroll();
 
-  // 2. Mobile Menu
+  // 3. Mobile Menu
   initMobileMenu();
 
-  // 3. Three.js Luminous Fluid Energy Waves
+  // 4. Three.js Luminous Fluid Energy Waves
   initThreeGalaxy();
 
-  // 4. Stats Count-Up
+  // 5. Stats Count-Up
   initStats();
 
-  // 5. Render 34 Projects & 3D Card Hover
+  // 6. Render 34 Projects & 3D Card Hover
   renderProjects(window.PROJECTS_DATA || []);
 
-  // 6. Search & Filter
+  // 7. Search & Filter
   initSearchFilter();
 
-  // 7. Modal
+  // 8. Modal
   initModal();
 
-  // 8. Scroll Progress
+  // 9. Scroll Progress
   initScrollProgress();
 });
 
@@ -747,3 +750,102 @@ function initScrollProgress() {
     }
   }, { passive: true });
 }
+
+/* ============================================================
+   12. DYNAMIC BACKGROUND VIDEO ENGINE (Alternates Across Themes)
+   ============================================================ */
+const BG_STREAMS = [
+  {
+    name: 'Signal Falcon',
+    url: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260813_052122_e77a27e6-17f1-4794-889b-3ceaa0e9e8cb.mp4'
+  },
+  {
+    name: 'Evolve AI Core',
+    url: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260809_012548_ef22562c-c0ae-4816-ad9d-f8922af4e6a7.mp4'
+  },
+  {
+    name: 'Apogee Nebula',
+    url: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260811_020942_ad4d8050-ffda-4da0-bbfd-d1ef10fb4e08.mp4'
+  },
+  {
+    name: 'LŪMEN Liquid DeFi',
+    url: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260809_055628_8d1faee1-df62-430c-99d9-bb436a5c3722.mp4'
+  },
+  {
+    name: 'Epoch 3D Crystal',
+    url: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260810_015053_8bb609b1-e23a-4467-850d-6e44b82d3345.mp4'
+  },
+  {
+    name: 'Vantage Neural Signals',
+    url: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260807_054659_91544a03-7cb7-4a0b-9dfd-b4b7324391e6.mp4'
+  },
+  {
+    name: 'Next Layer AI Portal',
+    url: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260807_064508_48c772cb-1d54-4786-bb21-12c8ff4d5da9.mp4'
+  }
+];
+
+let currentBgIndex = Math.floor(Math.random() * BG_STREAMS.length);
+let activeVideoSlot = 1;
+let bgRotationInterval = null;
+
+function initBgVideoEngine() {
+  const v1 = document.getElementById('bgVideo1');
+  const v2 = document.getElementById('bgVideo2');
+  const titleEl = document.getElementById('bgStreamTitle');
+  const prevBtn = document.getElementById('bgPrevBtn');
+  const nextBtn = document.getElementById('bgNextBtn');
+
+  if (!v1 || !v2) return;
+
+  const loadStream = (index, crossfade = true) => {
+    currentBgIndex = (index + BG_STREAMS.length) % BG_STREAMS.length;
+    const stream = BG_STREAMS[currentBgIndex];
+
+    const nextVideo = activeVideoSlot === 1 ? v2 : v1;
+    const currVideo = activeVideoSlot === 1 ? v1 : v2;
+
+    if (crossfade) {
+      nextVideo.src = stream.url;
+      nextVideo.load();
+      nextVideo.play().catch(() => {});
+      nextVideo.classList.add('active');
+      currVideo.classList.remove('active');
+      activeVideoSlot = activeVideoSlot === 1 ? 2 : 1;
+    } else {
+      currVideo.src = stream.url;
+      currVideo.load();
+      currVideo.play().catch(() => {});
+      currVideo.classList.add('active');
+    }
+
+    if (titleEl) {
+      titleEl.textContent = `BG: ${stream.name}`;
+    }
+  };
+
+  // Initial load
+  loadStream(currentBgIndex, false);
+
+  // Auto-rotate every 12 seconds across the different project videos
+  bgRotationInterval = setInterval(() => {
+    loadStream(currentBgIndex + 1, true);
+  }, 12000);
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      clearInterval(bgRotationInterval);
+      loadStream(currentBgIndex - 1, true);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      clearInterval(bgRotationInterval);
+      loadStream(currentBgIndex + 1, true);
+    });
+  }
+}
+

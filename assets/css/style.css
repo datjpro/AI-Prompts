@@ -313,7 +313,7 @@ body{
 }
 
 /* ============================================================
-   BACKGROUND VIDEO
+   BACKGROUND VIDEO ENGINE (Multi-Theme Cross-Fade Streams)
    ============================================================ */
 .bg{
   position:fixed;inset:0;
@@ -324,10 +324,82 @@ body{
   position:absolute;inset:0;
   width:100%;height:100%;
   object-fit:cover;pointer-events:none;
+  opacity:0;
+  transition:opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.bg-video.active{
+  opacity:1;
 }
 .bg-scrim{
   position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.22) 45%,rgba(0,0,0,0.72) 100%);
+  background:linear-gradient(180deg,rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.25) 45%,rgba(0,0,0,0.78) 100%);
+  pointer-events:none;
+}
+
+/* Floating Background Controller Capsule */
+.bg-switcher-capsule {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: rgba(10, 15, 26, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
+  transition: border-color 0.3s ease, transform 0.2s ease;
+}
+.bg-switcher-capsule:hover {
+  border-color: rgba(14, 165, 233, 0.4);
+  transform: translateY(-1px);
+}
+.bg-switch-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.bg-switch-btn:hover {
+  background: rgba(14, 165, 233, 0.25);
+  color: #38bdf8;
+}
+.bg-switch-btn svg {
+  width: 13px;
+  height: 13px;
+}
+.bg-stream-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 6px;
+}
+.bg-stream-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0ea5e9;
+  box-shadow: 0 0 8px #0ea5e9;
+  animation: dotPulse 1.4s ease-in-out infinite alternate;
+}
+.bg-stream-title {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 /* Three.js canvas */
