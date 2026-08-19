@@ -1,455 +1,269 @@
-<!DOCTYPE html>
-<html lang="vi" class="dark scroll-smooth">
+﻿<!DOCTYPE html>
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI-Prompts — Next-Gen Frontend Masterpiece Showcase</title>
-  <meta name="description" content="Khám phá 34 kiệt tác giao diện Web UI/UX đỉnh cao thế hệ mới, kiến tạo 100% từ AI Prompts chuyên sâu với 3D WebGL, Shaders, Video Loops và Liquid Glassmorphism." />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='none'><rect width='256' height='256' rx='64' fill='%23080A19'/><path d='M 256 256 L 178 256 C 150.386 256 128 233.614 128 206 L 128 256 L 0 256 L 0 192 C 0 156.654 28.654 128 64 128 C 99.346 128 128 156.654 128 192 L 128 128 L 256 128 Z M 78 0 C 105.614 0 128 22.386 128 50 L 128 0 L 256 0 L 256 64 C 256 99.346 227.346 128 192 128 C 156.654 128 128 99.346 128 64 L 128 128 L 0 128 L 0 0 Z' fill='%2338bdf8'/></svg>" />
+  <meta name="description" content="34 kiệt tác giao diện Web UI/UX đỉnh cao, kiến tạo 100% từ AI Prompts với 3D WebGL, Shaders, Video Loops và Liquid Glassmorphism." />
 
-  <!-- Google Fonts: Syne, Outfit, Plus Jakarta Sans, JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  <!-- Inter (UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            display: ['"Syne"', '"Outfit"', 'sans-serif'],
-            body: ['"Outfit"', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
-          },
-          colors: {
-            void: '#04060a',
-            abyss: '#080a14',
-            surface: 'rgba(12, 16, 28, 0.65)',
-            glow: {
-              cyan: '#38bdf8',
-              purple: '#a855f7',
-              pink: '#ec4899',
-              amber: '#f59e0b',
-              emerald: '#10b981',
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <!-- BubbledotICG-FinePos (retro dot-matrix display) -->
+  <link href="https://db.onlinewebfonts.com/c/8cb707a9b8a73f8a7403336b861c3074?family=BubbledotICG-FinePos" rel="stylesheet" />
 
-  <!-- External Stylesheet (Modular) -->
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Font Awesome 6.5.2 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- CDN Libraries: Lucide Icons, Three.js, Canvas-Confetti -->
+  <!-- Lucide Icons (for project cards & modal) -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-</head>
-<body class="min-h-screen flex flex-col selection:bg-cyan-500 selection:text-slate-950 relative bg-mesh-pattern">
 
-  <!-- Cinematic Intro Preloader & Shutter Curtain -->
-  <div class="intro-preloader" id="introPreloader">
-    <div class="intro-shutter">
-      <div class="intro-shutter-row intro-shutter-top"></div>
-      <div class="intro-shutter-row intro-shutter-bottom"></div>
-    </div>
-    <div class="intro-content">
-      <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-purple-600 p-[1px] mb-6 intro-logo-glow">
-        <div class="w-full h-full bg-[#080a14] rounded-2xl flex items-center justify-center">
-          <svg width="32" height="32" viewBox="0 0 256 256" fill="none" class="text-cyan-400">
-            <path d="M 256 256 L 178 256 C 150.386 256 128 234.614 128 206 L 128 256 L 0 256 L 0 192 C 0 156.654 28.654 128 64 128 C 99.346 128 128 156.654 128 192 L 128 128 L 256 128 Z M 78 0 C 105.614 0 128 22.386 128 50 L 128 0 L 256 0 L 256 64 C 256 99.346 227.346 128 192 128 C 156.654 128 128 99.346 128 64 L 128 128 L 0 128 L 0 0 Z" fill="currentColor"/>
-          </svg>
-        </div>
-      </div>
-      <div class="font-display text-2xl sm:text-3xl font-extrabold text-white tracking-wider mb-2">
-        AI-PROMPTS <span class="text-cyan-400">SHOWCASE</span>
-      </div>
-      <div class="font-mono text-xs text-slate-400 tracking-widest uppercase mb-6">
-        Initializing 34 Next-Gen UI Environments...
-      </div>
-      <div class="intro-progress-bar-bg mb-3">
-        <div class="intro-progress-bar-fill" id="introProgressBar"></div>
-      </div>
-      <div class="font-mono text-xs font-bold text-cyan-400" id="introPercent">00%</div>
-    </div>
+  <!-- Three.js (galaxy) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       BACKGROUND VIDEO (full-viewport cover)
+  ══════════════════════════════════════════════════════════════ -->
+  <div class="bg">
+    <video class="bg-video" autoplay muted loop playsinline>
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260813_052122_e77a27e6-17f1-4794-889b-3ceaa0e9e8cb.mp4" type="video/mp4" />
+    </video>
+    <div class="bg-scrim"></div>
   </div>
 
-  <!-- 3D WebGL Particle Galaxy Canvas (Three.js) -->
+  <!-- Three.js galaxy canvas -->
   <div id="threeCanvas"></div>
 
-  <!-- Cosmic Nebula Ambient Light Bulbs -->
-  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-    <div class="absolute -top-60 left-1/4 w-[750px] h-[750px] bg-sky-500/12 rounded-full blur-[170px]"></div>
-    <div class="absolute top-1/2 -right-60 w-[800px] h-[800px] bg-purple-600/10 rounded-full blur-[180px]"></div>
-    <div class="absolute -bottom-60 left-1/3 w-[700px] h-[700px] bg-cyan-500/10 rounded-full blur-[170px]"></div>
-  </div>
+  <!-- ══════════════════════════════════════════════════════════════
+       HERO PAGE (viewport 1 — single-screen lock)
+  ══════════════════════════════════════════════════════════════ -->
+  <div class="page" id="heroPage">
 
-  <!-- Floating Liquid Glass Navbar -->
-  <header class="fixed top-5 inset-x-0 z-50 max-w-7xl mx-auto px-4 sm:px-6">
-    <nav class="glass-panel rounded-2xl px-5 py-3.5 flex items-center justify-between">
-      <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-3.5 group">
-        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-purple-600 p-[1px] shadow-xl shadow-cyan-500/25 group-hover:scale-105 transition-transform duration-300">
-          <div class="w-full h-full bg-[#080a14] rounded-xl flex items-center justify-center relative overflow-hidden">
-            <div class="absolute inset-0 bg-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <svg width="22" height="22" viewBox="0 0 256 256" fill="none" class="text-cyan-400 group-hover:rotate-12 transition-transform duration-300">
-              <path d="M 256 256 L 178 256 C 150.386 256 128 234.614 128 206 L 128 256 L 0 256 L 0 192 C 0 156.654 28.654 128 64 128 C 99.346 128 128 156.654 128 192 L 128 128 L 256 128 Z M 78 0 C 105.614 0 128 22.386 128 50 L 128 0 L 256 0 L 256 64 C 256 99.346 227.346 128 192 128 C 156.654 128 128 99.346 128 64 L 128 128 L 0 128 L 0 0 Z" fill="currentColor"/>
-            </svg>
-          </div>
-        </div>
-        <div class="flex flex-col">
-          <div class="font-display font-extrabold text-[16px] tracking-tight text-white flex items-center gap-2">
-            AI-PROMPTS <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">34 UIs</span>
-          </div>
-          <span class="text-[11px] text-slate-400 -mt-0.5 font-normal tracking-wide">Next-Gen Masterpiece Hub</span>
-        </div>
-      </a>
+    <!-- HEADER -->
+    <header class="header anim" style="--d:0s">
+      <div class="header-inner">
 
-      <!-- Quick Nav Links -->
-      <div class="hidden md:flex items-center gap-8 text-xs font-semibold text-slate-300">
-        <a href="#flagship" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5 group">
-          <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 group-hover:scale-150 transition-transform"></span>
-          Flagship Showcase
+        <!-- Logo -->
+        <a href="#" class="logo-btn" aria-label="AI-Prompts Home">
+          <svg width="22" height="22" viewBox="0 0 256 256" fill="none" aria-hidden="true">
+            <path d="M 256 256 L 178 256 C 150.386 256 128 233.614 128 206 L 128 256 L 0 256 L 0 192 C 0 156.654 28.654 128 64 128 C 99.346 128 128 156.654 128 192 L 128 128 L 256 128 Z M 78 0 C 105.614 0 128 22.386 128 50 L 128 0 L 256 0 L 256 64 C 256 99.346 227.346 128 192 128 C 156.654 128 128 99.346 128 64 L 128 128 L 0 128 L 0 0 Z" fill="#0ea5e9"/>
+          </svg>
         </a>
-        <a href="#showcase" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5 group">
-          <i data-lucide="grid" class="w-3.5 h-3.5 text-purple-400"></i>
-          Kho 34 Dự Án
-        </a>
-        <a href="AGENTS.md" target="_blank" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5 group">
-          <i data-lucide="bot" class="w-3.5 h-3.5 text-pink-400"></i>
-          Agent Protocol
-        </a>
-      </div>
 
-      <!-- Action Buttons -->
-      <div class="flex items-center gap-3">
-        <button id="quickSearchBtn" class="hidden sm:flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 text-xs transition shadow-inner">
-          <i data-lucide="search" class="w-3.5 h-3.5 text-cyan-400"></i>
-          <span>Tra cứu Prompt...</span>
-          <kbd class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300">⌘K</kbd>
+        <!-- Desktop nav pill -->
+        <nav class="nav-pill desktop-only" aria-label="Site navigation">
+          <a href="#heroPage" class="nav-link active" aria-current="page">Overview</a>
+          <a href="#showcase" class="nav-link">34 Projects</a>
+          <a href="AGENTS.md" target="_blank" class="nav-link">Agent Protocol</a>
+        </nav>
+
+        <!-- GitHub button (desktop) -->
+        <a href="https://github.com/datjpro/AI-Prompts" target="_blank" class="sign-in-btn desktop-only">
+          <i class="fa-brands fa-github" style="font-size:15px"></i> GitHub
+        </a>
+
+        <!-- Burger (mobile) -->
+        <button class="burger mobile-only" id="burgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </button>
-        <a href="https://github.com/datjpro/AI-Prompts" target="_blank" class="btn-text-roll bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-extrabold transition shadow-lg shadow-cyan-500/25 h-10">
-          <div class="roll-inner h-full flex flex-col justify-center">
-            <span class="flex items-center gap-1.5 py-1"><i data-lucide="github" class="w-4 h-4"></i> GitHub Repository</span>
-            <span class="flex items-center gap-1.5 py-1"><i data-lucide="star" class="w-4 h-4"></i> Star On GitHub</span>
-          </div>
+      </div>
+
+      <!-- Mobile overlay & sheet -->
+      <div class="menu-overlay hidden" id="menuOverlay" aria-hidden="true"></div>
+      <div class="mobile-menu hidden" id="mobileMenu" role="dialog" aria-modal="true">
+        <nav class="mobile-links">
+          <a href="#heroPage" class="mobile-link active" data-index="0" aria-current="page">Overview</a>
+          <a href="#showcase" class="mobile-link" data-index="1">34 Projects</a>
+          <a href="AGENTS.md" target="_blank" class="mobile-link" data-index="2">Agent Protocol</a>
+        </nav>
+        <a href="https://github.com/datjpro/AI-Prompts" target="_blank" class="mobile-sign-in">
+          <i class="fa-brands fa-github"></i> GitHub Repository
         </a>
       </div>
-    </nav>
-  </header>
+    </header>
 
-  <!-- Hero Section -->
-  <section class="min-h-screen pt-40 pb-20 flex flex-col justify-center items-center text-center relative z-10 px-4 sm:px-6">
-    <!-- Top Pill Badge -->
-    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900/90 border border-cyan-500/30 text-cyan-300 text-xs font-semibold mb-8 shadow-inner shadow-cyan-500/10 backdrop-blur-xl animate-word" style="animation-delay: 0.1s;">
-      <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-      <span class="font-mono text-[11px] uppercase tracking-wider">34 Live UI/UX Masterpieces • 100% AI Prompts</span>
-    </div>
+    <!-- HERO CENTER -->
+    <main class="hero">
 
-    <!-- Main Headline with Blur Reveal -->
-    <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight max-w-6xl leading-[1.04] mb-8">
-      <span class="animate-word gradient-hero-text" style="animation-delay: 0.25s;">Next-Gen Web UI</span><br />
-      <span class="animate-word gradient-accent-cyan" style="animation-delay: 0.4s;">Kiến Tạo Từ AI Prompts</span>
-    </h1>
-
-    <!-- Subtitle -->
-    <p class="text-slate-400 text-base sm:text-lg lg:text-xl max-w-3xl font-normal leading-relaxed mb-12 animate-word" style="animation-delay: 0.55s;">
-      Trải nghiệm bộ sưu tập 34 giao diện Web đẳng cấp thế giới với đồ họa 3D Three.js, Shaders chuyển động, Liquid Glassmorphism, Video Loops tràn viền và tương tác âm thanh/chuột đạt chuẩn 60 FPS.
-    </p>
-
-    <!-- Hero Actions -->
-    <div class="flex flex-wrap items-center justify-center gap-4 mb-16 animate-word" style="animation-delay: 0.7s;">
-      <a href="#flagship" class="btn-text-roll bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-7 py-4 rounded-2xl text-sm font-extrabold transition shadow-xl shadow-cyan-500/30 h-13">
-        <div class="roll-inner h-full flex flex-col justify-center">
-          <span class="flex items-center gap-2 py-1">Khám Phá Flagships <i data-lucide="arrow-down-right" class="w-4 h-4"></i></span>
-          <span class="flex items-center gap-2 py-1">Trải Nghiệm Ngay <i data-lucide="arrow-down-right" class="w-4 h-4"></i></span>
+      <!-- Trust row -->
+      <div class="trust-row anim" style="--d:0.08s">
+        <div class="avatar a1" aria-hidden="true">
+          <span class="avatar-inner"><i class="fa-brands fa-react"></i></span>
         </div>
-      </a>
-      <button onclick="openRandomProject()" class="btn-text-roll glass-panel hover:bg-white/10 text-white px-6 py-4 rounded-2xl text-sm font-semibold transition border border-white/15 h-13">
-        <div class="roll-inner h-full flex flex-col justify-center">
-          <span class="flex items-center gap-2 py-1"><i data-lucide="dices" class="w-4 h-4 text-cyan-400"></i> Xem UI Ngẫu Nhiên</span>
-          <span class="flex items-center gap-2 py-1"><i data-lucide="sparkles" class="w-4 h-4 text-pink-400"></i> Trải Nghiệm Bất Ngờ</span>
+        <div class="avatar a2" aria-hidden="true">
+          <span class="avatar-inner">
+            <svg width="14" height="14" viewBox="0 0 256 256" fill="none" aria-hidden="true">
+              <path d="M 0 200 L 128 0 L 256 200 Z" fill="#646cff"/>
+            </svg>
+          </span>
         </div>
-      </button>
-    </div>
-
-    <!-- Live Performance Stats Matrix -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl w-full animate-word" style="animation-delay: 0.85s;">
-      <div class="glass-card-3d rounded-2xl p-5 text-center">
-        <div class="font-display text-3xl sm:text-4xl font-extrabold text-cyan-400 mb-1">34</div>
-        <div class="text-xs text-slate-400 font-medium">Giao Diện Web Hoàn Chỉnh</div>
-      </div>
-      <div class="glass-card-3d rounded-2xl p-5 text-center">
-        <div class="font-display text-3xl sm:text-4xl font-extrabold text-purple-400 mb-1">100%</div>
-        <div class="text-xs text-slate-400 font-medium">AI Prompt-Driven Native</div>
-      </div>
-      <div class="glass-card-3d rounded-2xl p-5 text-center">
-        <div class="font-display text-3xl sm:text-4xl font-extrabold text-pink-400 mb-1">60 FPS</div>
-        <div class="text-xs text-slate-400 font-medium">Three.js, Shaders &amp; Motion</div>
-      </div>
-      <div class="glass-card-3d rounded-2xl p-5 text-center">
-        <div class="font-display text-3xl sm:text-4xl font-extrabold text-amber-400 mb-1">34 / 34</div>
-        <div class="text-xs text-slate-400 font-medium">Live GIF Previews</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Infinite Tech Stack Logo Marquee -->
-  <section class="py-10 border-y border-white/10 bg-slate-950/40 relative overflow-hidden z-10">
-    <div class="flex whitespace-nowrap animate-marquee items-center gap-12">
-      <span class="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-slate-400"><i data-lucide="atom" class="w-4 h-4 text-cyan-400"></i> REACT 19 &amp; 18</span>
-      <span class="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-slate-400"><i data-lucide="box" class="w-4 h-4 text-purple-400"></i> THREE.JS &amp; WEBGL</span>
-      <span class="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-slate-400"><i data-lucide="wind" class="w-4 h-4 text-sky-400"></i> TAILWIND CSS V4 &amp; V3.4</span>
-      <span class="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-slate-400"><i data-lucide="file-code" class="w-4 h-4 text-blue-400"></i> TYPESCRIPT 5.5</span>
-      <span class="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-slate-400"><i data-lucide="sparkles" class="w-4 h-4 text-pink-400"></i> MOTION &amp; KEYFRAMES</span>
-      <span class="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-slate-400"><i data-lucide="zap" class="w-4 h-4 text-amber-400"></i> VITE 5 &amp; 6</span>
-      <span class="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-slate-400"><i data-lucide="layers" class="w-4 h-4 text-emerald-400"></i> LIQUID GLASSMORPHISM</span>
-      <!-- Seamless Duplicate -->
-      <span class="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-slate-400"><i data-lucide="atom" class="w-4 h-4 text-cyan-400"></i> REACT 19 &amp; 18</span>
-      <span class="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-slate-400"><i data-lucide="box" class="w-4 h-4 text-purple-400"></i> THREE.JS &amp; WEBGL</span>
-      <span class="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-slate-400"><i data-lucide="wind" class="w-4 h-4 text-sky-400"></i> TAILWIND CSS V4 &amp; V3.4</span>
-      <span class="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-slate-400"><i data-lucide="file-code" class="w-4 h-4 text-blue-400"></i> TYPESCRIPT 5.5</span>
-      <span class="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-slate-400"><i data-lucide="sparkles" class="w-4 h-4 text-pink-400"></i> MOTION &amp; KEYFRAMES</span>
-      <span class="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-slate-400"><i data-lucide="zap" class="w-4 h-4 text-amber-400"></i> VITE 5 &amp; 6</span>
-      <span class="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-slate-400"><i data-lucide="layers" class="w-4 h-4 text-emerald-400"></i> LIQUID GLASSMORPHISM</span>
-    </div>
-  </section>
-
-  <!-- Flagship Bento Showcase Section -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 z-10 relative" id="flagship">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-14">
-      <div>
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-bold mb-3">
-          <i data-lucide="crown" class="w-3.5 h-3.5"></i> FLAGSHIP SHOWCASE
+        <div class="avatar a3" aria-hidden="true">
+          <span class="avatar-inner"><i class="fa-brands fa-github" style="color:#111"></i></span>
         </div>
-        <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white">4 Dự Án Tiêu Biểu Thế Hệ Mới</h2>
+        <div class="trust-pill">Kiến tạo bởi AI Prompts • 34 Masterpieces</div>
       </div>
-      <p class="text-slate-400 text-sm max-w-md mt-4 md:mt-0 font-normal">
-        Trải nghiệm trực tiếp những dự án hội tụ đầy đủ các đỉnh cao về thị giác: video background, 3D WebGL, liquid glass và typography siêu sắc nét.
+
+      <!-- Headline -->
+      <div class="headline" aria-label="Next-Gen Frontend Masterpieces">
+        <span class="hl-line hl1 anim" style="--d:0.15s">Next-Gen</span>
+        <span class="hl-line hl2 anim" style="--d:0.32s">Frontend Masterpieces</span>
+      </div>
+
+      <!-- Subhead -->
+      <p class="subhead anim" style="--d:0.30s">
+        Bộ sưu tập 34 giao diện Web đẳng cấp thế giới với 3D WebGL,<br class="br-desktop" />
+        Liquid Glassmorphism, Video Loops và tương tác 60 FPS.
       </p>
-    </div>
 
-    <!-- Flagship Bento Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-7">
-      <!-- Bento 1: Apogee (Large Left, 7 cols) -->
-      <div class="lg:col-span-7 bento-flagship rounded-3xl p-7 sm:p-9 flex flex-col justify-between group relative overflow-hidden">
-        <div class="relative z-10">
-          <div class="flex items-center justify-between mb-6">
-            <span class="px-3.5 py-1.5 rounded-full bg-blue-500/20 text-cyan-300 border border-blue-500/40 text-xs font-mono font-bold flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-              NEWEST MASTERPIECE #34
-            </span>
-            <span class="text-xs font-mono text-slate-400">React 18 • TS • Tailwind</span>
-          </div>
-          <h3 class="font-display text-3xl sm:text-4xl font-extrabold text-white mb-3 group-hover:text-cyan-300 transition-colors">
-            Apogee — Essential Data Intelligence
-          </h3>
-          <p class="text-slate-300 text-sm leading-relaxed mb-6 max-w-xl">
-            Hero section dark cinematic tràn màn hình 100vh với video tinh vân CloudFront, 32 cột biểu đồ hoạt ảnh tăng trưởng doanh thu ($14.2M), và hệ thống capsule nav mượt mà.
-          </p>
-        </div>
-
-        <div class="relative z-10">
-          <div class="relative w-full h-64 sm:h-72 rounded-2xl overflow-hidden mb-6 border border-white/15 shadow-2xl bg-black">
-            <img src="apogee-hero/preview.gif" alt="Apogee Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-          </div>
-
-          <div class="flex flex-wrap items-center justify-between gap-4">
-            <button onclick="openPromptModal('apogee-hero', 'Apogee')" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white text-xs font-bold border border-white/10 transition">
-              <i data-lucide="file-text" class="w-4 h-4 text-cyan-400"></i> Xem Prompt Chi Tiết
-            </button>
-            <a href="apogee-hero/" target="_blank" class="btn-text-roll bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-3 rounded-xl text-xs font-extrabold transition shadow-lg shadow-cyan-500/25">
-              <div class="roll-inner">
-                <span class="flex items-center gap-1.5">Mở Fullscreen Demo <i data-lucide="external-link" class="w-4 h-4"></i></span>
-                <span class="flex items-center gap-1.5">Trải Nghiệm Ngay <i data-lucide="external-link" class="w-4 h-4"></i></span>
-              </div>
-            </a>
-          </div>
-        </div>
+      <!-- CTA -->
+      <div class="cta-group anim" style="--d:0.42s">
+        <a href="#showcase" class="cta-btn">Khám Phá 34 Dự Án</a>
+        <button onclick="openRandomProject()" class="cta-ghost">⚄ Xem UI Ngẫu Nhiên</button>
       </div>
 
-      <!-- Bento 2 & 3: Right Column (5 cols) -->
-      <div class="lg:col-span-5 flex flex-col gap-7">
-        <!-- Bento 2: Digital Epoch -->
-        <div class="bento-flagship rounded-3xl p-6 sm:p-7 flex flex-col justify-between group relative overflow-hidden">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-mono font-bold">#31 • DECENTRALIZED</span>
-              <span class="text-xs font-mono text-slate-400">React 19 • Motion</span>
-            </div>
-            <h3 class="font-display text-2xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">Digital Epoch</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-4">Container bo góc 48px, video tinh thể 3D, thanh navbar capsule nổi chân trang và marquee logo vô tận.</p>
-          </div>
-          <div class="relative w-full h-36 rounded-xl overflow-hidden mb-4 border border-white/10">
-            <img src="epoch-hero/preview.gif" alt="Epoch Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          </div>
-          <div class="flex items-center justify-between gap-3 pt-2">
-            <button onclick="openPromptModal('epoch-hero', 'Digital Epoch')" class="text-xs text-slate-400 hover:text-white flex items-center gap-1">
-              <i data-lucide="file-text" class="w-3.5 h-3.5 text-purple-400"></i> Prompt
-            </button>
-            <a href="epoch-hero/" target="_blank" class="px-4 py-2 rounded-xl bg-purple-500 hover:bg-purple-400 text-slate-950 text-xs font-bold transition flex items-center gap-1 shadow-lg shadow-purple-500/20">
-              Live Demo <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-            </a>
-          </div>
-        </div>
+    </main>
 
-        <!-- Bento 3: SynapseX -->
-        <div class="bento-flagship rounded-3xl p-6 sm:p-7 flex flex-col justify-between group relative overflow-hidden">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-mono font-bold">#24 • NEURAL AI</span>
-              <span class="text-xs font-mono text-slate-400">Scramble Text • 3D</span>
-            </div>
-            <h3 class="font-display text-2xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">SynapseX Interface</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-4">Video nền tương tác vị trí chuột, Space Mono typography, scramble text animations và card kiến trúc 3 lớp.</p>
-          </div>
-          <div class="relative w-full h-36 rounded-xl overflow-hidden mb-4 border border-white/10">
-            <img src="synapsex-landing/preview.gif" alt="SynapseX Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          </div>
-          <div class="flex items-center justify-between gap-3 pt-2">
-            <button onclick="openPromptModal('synapsex-landing', 'SynapseX')" class="text-xs text-slate-400 hover:text-white flex items-center gap-1">
-              <i data-lucide="file-text" class="w-3.5 h-3.5 text-emerald-400"></i> Prompt
-            </button>
-            <a href="synapsex-landing/" target="_blank" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition flex items-center gap-1 shadow-lg shadow-emerald-500/20">
-              Live Demo <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-            </a>
-          </div>
-        </div>
+    <!-- STATS FOOTER (bottom of viewport 1) -->
+    <footer class="stats-footer">
+      <div class="stat anim" style="--d:0.52s" data-target="34" data-suffix="" data-decimals="0">
+        <span class="stat-icon" aria-hidden="true">#</span>
+        <span class="stat-value">0</span>
+        <span class="stat-label">Giao Diện Hoàn Chỉnh</span>
+      </div>
+      <div class="stat anim" style="--d:0.60s" data-target="100" data-suffix="%" data-decimals="0">
+        <span class="stat-icon" aria-hidden="true">%</span>
+        <span class="stat-value">0%</span>
+        <span class="stat-label">AI Prompt-Driven</span>
+      </div>
+      <div class="stat anim" style="--d:0.68s" data-target="60" data-suffix=" FPS" data-decimals="0">
+        <span class="stat-icon" aria-hidden="true">*</span>
+        <span class="stat-value">0 FPS</span>
+        <span class="stat-label">Render Performance</span>
+      </div>
+      <div class="stat anim" style="--d:0.76s" data-target="34" data-suffix="/34" data-decimals="0">
+        <span class="stat-icon" aria-hidden="true">&lt;</span>
+        <span class="stat-value">0/34</span>
+        <span class="stat-label">Live GIF Previews</span>
+      </div>
+    </footer>
+
+  </div><!-- /.page -->
+
+  <!-- ══════════════════════════════════════════════════════════════
+       PROJECTS SHOWCASE (scrollable section below hero)
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="showcase-section" id="showcase">
+
+    <!-- Section header + search/filter -->
+    <div class="showcase-header">
+      <div>
+        <div class="showcase-eyebrow">CATALOG INDEX</div>
+        <h2 class="showcase-title">Toàn Bộ 34 Giao Diện Web</h2>
+      </div>
+      <div class="search-wrap">
+        <i data-lucide="search" class="search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Tìm theo tên, thẻ, công nghệ..." class="search-input" />
+        <button id="clearSearchBtn" class="clear-btn hidden" aria-label="Clear search">
+          <i data-lucide="x"></i>
+        </button>
       </div>
     </div>
+
+    <!-- Filter pills -->
+    <div class="filter-pills" id="filterPills">
+      <button data-cat="all" class="filter-pill active">Tất Cả (34)</button>
+      <button data-cat="ai" class="filter-pill">AI &amp; Neural Ops</button>
+      <button data-cat="agency" class="filter-pill">Creative Agency</button>
+      <button data-cat="portfolio" class="filter-pill">Portfolio &amp; 3D</button>
+      <button data-cat="wellness" class="filter-pill">Health &amp; Wellness</button>
+      <button data-cat="ecom" class="filter-pill">E-Commerce &amp; Tech</button>
+      <button data-cat="travel" class="filter-pill">Travel &amp; Sci-Fi</button>
+      <button data-cat="apps" class="filter-pill">SaaS &amp; 404</button>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="projects-grid" id="projectsGrid">
+      <!-- dynamically rendered by main.js -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div class="footer-brand">
+          <svg width="20" height="20" viewBox="0 0 256 256" fill="none" aria-hidden="true">
+            <path d="M 256 256 L 178 256 C 150.386 256 128 233.614 128 206 L 128 256 L 0 256 L 0 192 C 0 156.654 28.654 128 64 128 C 99.346 128 128 156.654 128 192 L 128 128 L 256 128 Z M 78 0 C 105.614 0 128 22.386 128 50 L 128 0 L 256 0 L 256 64 C 256 99.346 227.346 128 192 128 C 156.654 128 128 99.346 128 64 L 128 128 L 0 128 L 0 0 Z" fill="#0ea5e9"/>
+          </svg>
+          <div>
+            <span class="footer-name">AI-Prompts Showcase Hub</span>
+            <div class="footer-sub">34 Sản phẩm Web • Kiến tạo bởi Antigravity Agent</div>
+          </div>
+        </div>
+        <p class="footer-copy">© 2026 AI-Prompts Repository. GitHub Pages.</p>
+      </div>
+    </footer>
   </section>
 
-  <!-- Complete 34 Projects Showcase Grid Explorer -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 z-10 relative" id="showcase">
-    <!-- Header & Filter Bar -->
-    <div class="flex flex-col gap-6 mb-12">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <div class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest mb-1.5">CATALOG INDEX</div>
-          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white">Toàn Bộ 34 Giao Diện Web</h2>
-        </div>
-        
-        <!-- Search Input -->
-        <div class="relative w-full sm:w-80">
-          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-            <i data-lucide="search" class="w-4 h-4 text-cyan-400"></i>
-          </div>
-          <input 
-            type="text" 
-            id="searchInput" 
-            placeholder="Tìm theo tên, thẻ, công nghệ..." 
-            class="w-full pl-10 pr-10 py-3 bg-slate-900/90 border border-slate-800 rounded-xl text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition shadow-lg"
-          />
-          <button id="clearSearchBtn" class="hidden absolute inset-y-0 right-3 flex items-center text-slate-500 hover:text-white">
-            <i data-lucide="x" class="w-3.5 h-3.5"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Category Filter Pills -->
-      <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-white/5" id="filterPills">
-        <button data-cat="all" class="filter-pill px-4 py-2 rounded-xl text-xs font-bold bg-cyan-500 text-slate-950 border border-cyan-400 shadow-lg shadow-cyan-500/20 transition cursor-pointer">Tất Cả (34)</button>
-        <button data-cat="ai" class="filter-pill px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-cyan-500/40 hover:text-cyan-300 transition cursor-pointer">AI &amp; Neural Ops</button>
-        <button data-cat="agency" class="filter-pill px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-cyan-500/40 hover:text-cyan-300 transition cursor-pointer">Creative Agency</button>
-        <button data-cat="portfolio" class="filter-pill px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-cyan-500/40 hover:text-cyan-300 transition cursor-pointer">Portfolio &amp; 3D</button>
-        <button data-cat="wellness" class="filter-pill px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-cyan-500/40 hover:text-cyan-300 transition cursor-pointer">Health &amp; Wellness</button>
-        <button data-cat="ecom" class="filter-pill px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-cyan-500/40 hover:text-cyan-300 transition cursor-pointer">E-Commerce &amp; Tech</button>
-        <button data-cat="travel" class="filter-pill px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-cyan-500/40 hover:text-cyan-300 transition cursor-pointer">Travel &amp; Sci-Fi</button>
-        <button data-cat="apps" class="filter-pill px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-cyan-500/40 hover:text-cyan-300 transition cursor-pointer">SaaS &amp; 404</button>
-      </div>
-    </div>
-
-    <!-- Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7" id="projectsGrid">
-      <!-- Dynamically generated via main.js -->
-    </div>
-  </section>
-
-  <!-- Interactive Prompt & Live Sandbox Modal -->
-  <div id="promptModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-6">
-    <div class="absolute inset-0 bg-slate-950/85 backdrop-blur-xl" id="modalBackdrop"></div>
-    <div class="relative w-full max-w-5xl max-h-[92vh] bg-[#090d1a] border border-white/15 rounded-3xl shadow-2xl flex flex-col overflow-hidden">
-      <!-- Modal Header -->
-      <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-slate-900/80">
-        <div class="flex items-center gap-3.5">
-          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
-            <i data-lucide="code-2" class="w-5 h-5"></i>
-          </div>
+  <!-- ══════════════════════════════════════════════════════════════
+       PROMPT / SANDBOX MODAL
+  ══════════════════════════════════════════════════════════════ -->
+  <div id="promptModal" class="modal hidden">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="modal-icon"><i data-lucide="code-2"></i></div>
           <div>
-            <h3 class="text-base font-bold text-white flex items-center gap-2" id="modalTitle">Project Title</h3>
-            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
-              <span id="modalSlug" class="text-cyan-400">project.txt</span>
+            <h3 class="modal-title" id="modalTitle">Project Title</h3>
+            <div class="modal-meta">
+              <span id="modalSlug" class="modal-slug">project.txt</span>
               <span>•</span>
               <span id="modalStats">0 dòng</span>
             </div>
           </div>
         </div>
-
-        <!-- Modal Tabs & Actions -->
-        <div class="flex items-center gap-2">
-          <div class="hidden sm:flex items-center p-1 rounded-xl bg-slate-950 border border-white/10 text-xs">
-            <button id="tabPromptBtn" class="px-3 py-1.5 rounded-lg bg-cyan-500 text-slate-950 font-bold transition">Prompt Text</button>
-            <button id="tabSandboxBtn" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white font-medium transition">Live Sandbox</button>
+        <div class="modal-actions">
+          <div class="modal-tabs">
+            <button id="tabPromptBtn" class="modal-tab active">Prompt Text</button>
+            <button id="tabSandboxBtn" class="modal-tab">Live Sandbox</button>
           </div>
-          <button id="copyPromptBtn" class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-bold transition shadow-lg shadow-cyan-500/20">
-            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-            <span>Sao chép</span>
+          <button id="copyPromptBtn" class="modal-copy-btn">
+            <i data-lucide="copy"></i> Sao chép
           </button>
-          <button id="closeModalBtn" class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition">
-            <i data-lucide="x" class="w-5 h-5"></i>
+          <button id="closeModalBtn" class="modal-close-btn" aria-label="Close">
+            <i data-lucide="x"></i>
           </button>
         </div>
       </div>
-
-      <!-- Modal Body (Prompt View) -->
-      <div id="modalPromptView" class="flex-1 overflow-y-auto p-6 bg-[#050711] font-mono text-xs text-slate-300 leading-relaxed whitespace-pre-wrap select-text">
-        Đang tải nội dung prompt...
+      <div id="modalPromptView" class="modal-prompt-view">Đang tải...</div>
+      <div id="modalSandboxView" class="modal-sandbox-view hidden">
+        <iframe id="sandboxIframe" src="" class="sandbox-frame"></iframe>
       </div>
-
-      <!-- Modal Body (Sandbox View) -->
-      <div id="modalSandboxView" class="flex-1 hidden bg-black relative">
-        <iframe id="sandboxIframe" src="" class="w-full h-full border-none"></iframe>
-      </div>
-
-      <!-- Modal Footer -->
-      <div class="px-6 py-3.5 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 bg-slate-900/80">
-        <span class="flex items-center gap-1.5"><i data-lucide="info" class="w-3.5 h-3.5 text-cyan-400"></i> Prompt chuẩn hóa cho Antigravity, Claude, ChatGPT, Cursor</span>
-        <a id="modalFullscreenLink" href="#" target="_blank" class="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-1 transition">
-          Mở tab riêng <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+      <div class="modal-footer">
+        <span><i data-lucide="info"></i> Prompt chuẩn hóa cho Antigravity, Claude, ChatGPT, Cursor</span>
+        <a id="modalFullscreenLink" href="#" target="_blank" class="modal-fullscreen-link">
+          Mở tab riêng <i data-lucide="external-link"></i>
         </a>
       </div>
     </div>
   </div>
 
-  <!-- Toast Notification -->
-  <div id="toast" class="fixed bottom-8 right-8 z-50 hidden px-5 py-3.5 rounded-2xl bg-cyan-500 text-slate-950 font-bold text-xs shadow-2xl flex items-center gap-2.5 shadow-cyan-500/30">
-    <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+  <!-- Toast -->
+  <div id="toast" class="toast hidden">
+    <i data-lucide="check-circle-2"></i>
     <span id="toastMsg">Đã sao chép prompt thành công!</span>
   </div>
 
-  <!-- Footer -->
-  <footer class="glass-panel border-t border-white/10 py-14 text-xs text-slate-500 z-10 relative mt-auto">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center shadow-lg">
-          <i data-lucide="sparkles" class="w-4 h-4"></i>
-        </div>
-        <div>
-          <span class="font-bold text-slate-200">AI-Prompts Showcase Hub</span> — Kiến tạo bởi Antigravity Agent
-          <div class="text-[11px] text-slate-400">34 Sản phẩm Web • Thiết kế chuẩn Quốc tế</div>
-        </div>
-      </div>
-      <p class="text-slate-400">© 2026 AI-Prompts Repository. Sẵn sàng tích hợp GitHub Actions &amp; Pages.</p>
-    </div>
-  </footer>
-
-  <!-- Scripts (Modular Separation) -->
   <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
