@@ -22,13 +22,14 @@ const ALL_PROJECTS = [
   'dehelpers-hero', 'void-404', 'echoid-voice', 'synapsex-landing',
   'kollektiva', 'vantage-landing', 'next-layer-ai', 'forma-contact',
   'evolve-ai', 'nexum-hero', 'epoch-hero', 'apogee-hero', 'lumen-index', 'signal-login',
-  'vesper-ai'
+  'vesper-ai',
+  'mainframe-hero'
 ];
 
 const RECENT_PROJECTS = [
   'kollektiva', 'vantage-landing', 'next-layer-ai', 'forma-contact', 'evolve-ai',
   'nexum-hero', 'epoch-hero', 'apogee-hero', 'lumen-index', 'signal-login',
-  'vesper-ai'
+  'vesper-ai', 'mainframe-hero'
 ];
 
 // Helper to serve static folder if pure HTML

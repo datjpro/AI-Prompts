@@ -23,7 +23,7 @@ Tệp tài liệu này quy định các quy tắc hoạt động, quy trình ki�
 
 Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent **BẮT BUỘC** phải kiểm tra danh sách bên dưới để đảm bảo chủ đề/nhiệm vụ không bị trùng lặp với các dự án đã có.
 
-### 📋 Danh mục 35 Dự án Hiện có (Prompt Catalog Index):
+### 📋 Danh mục 36 Dự án Hiện có (Prompt Catalog Index):
 
 | STT | Project Name | Tệp Prompt | Thư mục Dự án | Lĩnh vực (Domain) | Đặc trưng UI/UX & Tính năng chính |
 |---|---|---|---|---|---|
@@ -62,6 +62,7 @@ Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent
 | 33 | **LŪMEN // ÍNDEX** | `lumen-index.txt` | `lumen-index/` | DeFi & Private Banking / Hero Landing | Single full-viewport DeFi hero (100vh), CloudFront looping video, Graphik LCG & Manrope typography, 3 central technical nodes with SVG elbow lines, chamfered info card, cross-fade mobile menu |
 | 34 | **Signal Log in** | `signal-login.txt` | `signal-login/` | Xác thực & SaaS / Log in Hero | Trang đăng nhập pixel-exact tự chứa (1464×949), video chim ưng lao dốc CloudFront, typography Eloquia & FreeSans, bộ điều khiển Responsive 3 chế độ (Desktop / Tablet / Mobile), badge sét inline SVG và timeline hoạt ảnh WAAPI |
 | 35 | **Vesper.ai** | `vesper-ai.txt` | `vesper-ai/` | Hạ tầng AI / Operational AI Landing | Single-viewport thuần sắc đen #000000, video CloudFront 100% không overlay, Inter & Instrument Serif, liquid-metal pills nav, shine hover effects, 3 chỉ số vận hành |
+| 36 | **Mainframe** | `mainframe-hero.txt` | `mainframe-hero/` | Creative Agency / Hero Landing | Background video CloudFront mouse-scrubbed mượt mà, typography Helvetica Now Display, A.R.I.A AI agent typewriter effect, action pills với tính năng copy email một chạm |
 
 
 

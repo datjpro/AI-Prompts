@@ -8,7 +8,7 @@ Bộ sưu tập các dự án Giao diện Web (Frontend Web Applications) cao c�
 
 🌐 **Live Demo Hub**: Xem trực tuyến tất cả giao diện tại [GitHub Pages Live Showcase Hub](https://datjpro.github.io/AI-Prompts/)
 
-Repository này chứa **35 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
+Repository này chứa **36 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
 
 ```
 AI-Prompts/
@@ -155,6 +155,10 @@ AI-Prompts/
 └── ✦ Vesper.ai - Operational AI Infrastructure
     ├── 📄 vesper-ai.txt
     └── 📁 vesper-ai/
+
+└── ✳︎ Mainframe - Creative Agency Hero Landing
+    ├── 📄 mainframe-hero.txt
+    └── 📁 mainframe-hero/
 ```
 
 ---
@@ -415,6 +419,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`vesper-ai.txt`](./vesper-ai.txt)
 * **Thư mục ứng dụng**: [`vesper-ai/`](./vesper-ai/)
 * **Mô tả**: Single-viewport landing page thuần sắc đen `#000000` (self-contained single `index.html` file, zero external UI runtime) cho nền tảng hạ tầng AI vận hành. Nổi bật với background video CloudFront tràn toàn màn hình (100vh), typography Inter kết hợp Instrument Serif italic cho điểm nhấn chữ *AI agents*, hệ thống thanh điều hướng dạng viên nang kim loại lỏng (liquid-metal pills) với hiệu ứng quét ánh sáng đa chiều `::before`, các nút bấm liquid glass (solid & ghost) phản quang gradient tinh xảo, badge ngôi sao lấp lánh `drop-shadow`, và chân trang thống kê tối giản 3 chỉ số với bộ icons SVG tối ưu sắc nét.
+
+---
+
+### 36. ✳︎ Mainframe — Creative Agency Hero Landing
+* **File Prompt**: [`mainframe-hero.txt`](./mainframe-hero.txt)
+* **Thư mục ứng dụng**: [`mainframe-hero/`](./mainframe-hero/)
+* **Mô tả**: Full-screen hero landing page cho Creative Agency "Mainframe" xây dựng bằng React 18, TypeScript, Vite và Tailwind CSS. Nổi bật với background video CloudFront được điều khiển tua mượt mà theo cử động chuột ngang (interactive mouse-scrubbing) với bộ quản lý chống tràn seek (seek-flooding guard), typography chuẩn xác với Helvetica Now Display Medium cho logo và Regular cho nội dung trang, nhãn làm mờ A.R.I.A Agent, hiệu ứng gõ phím typewriter custom hook `useTypewriter` với con trỏ nhấp nháy, thanh điều hướng fixed navbar kèm mobile menu overlay chuyển cảnh xoay chữ X, và cụm 5 nút hành động dạng viên nang (action pills) hỗ trợ sao chép địa chỉ email 1 chạm vào clipboard.
 
 ---
 
