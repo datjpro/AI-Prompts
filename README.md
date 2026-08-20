@@ -8,7 +8,7 @@ Bộ sưu tập các dự án Giao diện Web (Frontend Web Applications) cao c�
 
 🌐 **Live Demo Hub**: Xem trực tuyến tất cả giao diện tại [GitHub Pages Live Showcase Hub](https://datjpro.github.io/AI-Prompts/)
 
-Repository này chứa **34 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
+Repository này chứa **35 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
 
 ```
 AI-Prompts/
@@ -151,6 +151,10 @@ AI-Prompts/
 └── 🦅 Signal - Log in Hero Page
     ├── 📄 signal-login.txt
     └── 📁 signal-login/
+
+└── ✦ Vesper.ai - Operational AI Infrastructure
+    ├── 📄 vesper-ai.txt
+    └── 📁 vesper-ai/
 ```
 
 ---
@@ -404,6 +408,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`signal-login.txt`](./signal-login.txt)
 * **Thư mục ứng dụng**: [`signal-login/`](./signal-login/)
 * **Mô tả**: Trang đăng nhập pixel-exact tự chứa 100% (self-contained single `index.html` file, zero-dependency) chuẩn tham chiếu 1464×949. Nổi bật với video chim ưng lao dốc tốc độ cao CloudFront, typography Eloquia (variable 200–800) & FreeSans, bộ điều khiển Responsive 3 chế độ (Mode A Landscape co giãn tỷ lệ card/photo mượt mà, Mode B Tablet Portrait masthead band 42.5vh & headline wrap, Mode C Mobile Stacked scrim gradient & card bo góc 28px phủ ảnh), inline SVGs (badge sét, mũi tên, Google 4 màu), và timeline hoạt ảnh mở màn Web Animations API (WAAPI) từ 40ms đến 1260ms kèm pre-paint guard chống giật layout.
+
+---
+
+### 35. ✦ Vesper.ai — Operational AI Infrastructure
+* **File Prompt**: [`vesper-ai.txt`](./vesper-ai.txt)
+* **Thư mục ứng dụng**: [`vesper-ai/`](./vesper-ai/)
+* **Mô tả**: Single-viewport landing page thuần sắc đen `#000000` (self-contained single `index.html` file, zero external UI runtime) cho nền tảng hạ tầng AI vận hành. Nổi bật với background video CloudFront tràn toàn màn hình (100vh), typography Inter kết hợp Instrument Serif italic cho điểm nhấn chữ *AI agents*, hệ thống thanh điều hướng dạng viên nang kim loại lỏng (liquid-metal pills) với hiệu ứng quét ánh sáng đa chiều `::before`, các nút bấm liquid glass (solid & ghost) phản quang gradient tinh xảo, badge ngôi sao lấp lánh `drop-shadow`, và chân trang thống kê tối giản 3 chỉ số với bộ icons SVG tối ưu sắc nét.
 
 ---
 

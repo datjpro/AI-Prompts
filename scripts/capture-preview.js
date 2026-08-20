@@ -21,12 +21,14 @@ const ALL_PROJECTS = [
   'cozy-paws', 'adam-roberts', 'mostar-city', 'skyelite-jets',
   'dehelpers-hero', 'void-404', 'echoid-voice', 'synapsex-landing',
   'kollektiva', 'vantage-landing', 'next-layer-ai', 'forma-contact',
-  'evolve-ai', 'nexum-hero', 'epoch-hero', 'apogee-hero', 'lumen-index', 'signal-login'
+  'evolve-ai', 'nexum-hero', 'epoch-hero', 'apogee-hero', 'lumen-index', 'signal-login',
+  'vesper-ai'
 ];
 
 const RECENT_PROJECTS = [
   'kollektiva', 'vantage-landing', 'next-layer-ai', 'forma-contact', 'evolve-ai',
-  'nexum-hero', 'epoch-hero', 'apogee-hero', 'lumen-index', 'signal-login'
+  'nexum-hero', 'epoch-hero', 'apogee-hero', 'lumen-index', 'signal-login',
+  'vesper-ai'
 ];
 
 // Helper to serve static folder if pure HTML
