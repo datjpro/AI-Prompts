@@ -8,7 +8,7 @@ Bộ sưu tập các dự án Giao diện Web (Frontend Web Applications) cao c�
 
 🌐 **Live Demo Hub**: Xem trực tuyến tất cả giao diện tại [GitHub Pages Live Showcase Hub](https://datjpro.github.io/AI-Prompts/)
 
-Repository này chứa **36 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
+Repository này chứa **37 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
 
 ```
 AI-Prompts/
@@ -159,6 +159,10 @@ AI-Prompts/
 └── ✳︎ Mainframe - Creative Agency Hero Landing
     ├── 📄 mainframe-hero.txt
     └── 📁 mainframe-hero/
+
+└── 👤 Marcus Bennet - Editorial Portfolio Hero
+    ├── 📄 marcus-bennet.txt
+    └── 📁 marcus-bennet/
 ```
 
 ---
@@ -426,6 +430,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`mainframe-hero.txt`](./mainframe-hero.txt)
 * **Thư mục ứng dụng**: [`mainframe-hero/`](./mainframe-hero/)
 * **Mô tả**: Full-screen hero landing page cho Creative Agency "Mainframe" xây dựng bằng React 18, TypeScript, Vite và Tailwind CSS. Nổi bật với background video CloudFront được điều khiển tua mượt mà theo cử động chuột ngang (interactive mouse-scrubbing) với bộ quản lý chống tràn seek (seek-flooding guard), typography chuẩn xác với Helvetica Now Display Medium cho logo và Regular cho nội dung trang, nhãn làm mờ A.R.I.A Agent, hiệu ứng gõ phím typewriter custom hook `useTypewriter` với con trỏ nhấp nháy, thanh điều hướng fixed navbar kèm mobile menu overlay chuyển cảnh xoay chữ X, và cụm 5 nút hành động dạng viên nang (action pills) hỗ trợ sao chép địa chỉ email 1 chạm vào clipboard.
+
+---
+
+### 37. 👤 Marcus — Bennet — Editorial Cutout Portfolio Hero
+* **File Prompt**: [`marcus-bennet.txt`](./marcus-bennet.txt)
+* **Thư mục ứng dụng**: [`marcus-bennet/`](./marcus-bennet/)
+* **Mô tả**: Single full-viewport portfolio hero chuẩn thiết kế editorial cao cấp cho Visuals Composer Marcus Bennet xây dựng bằng React 18, TypeScript, Vite, Tailwind CSS và Lucide React. Nổi bật với typography Helvetica Neue ME, hệ thống phân lớp z-index chính xác với background full-bleed nghệ thuật, dòng chữ khổng lồ marquee cuộn liên tục 30s (`translateX(0)` → `translateX(-50%)`), ảnh chân dung cutout xếp lớp nổi đè lên trên chữ, đường kẻ cream mở rộng từ trái sang phải, cùng menu drawer mobile trượt chuyển cảnh mượt mà với hiệu ứng mở so le (staggered delay).
 
 ---
 
