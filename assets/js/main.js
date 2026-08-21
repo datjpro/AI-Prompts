@@ -40,7 +40,7 @@ function initApp() {
   // 5. Stats Count-Up
   initStats();
 
-  // 6. Render 34 Projects & 3D Card Hover
+  // 6. Render 37 Projects & 3D Card Hover
   renderProjects(window.PROJECTS_DATA || []);
 
   // 7. Search & Filter
@@ -76,9 +76,9 @@ function initPreloader() {
   const step = 100 / (duration / interval);
 
   const statuses = [
-    { p: 0, text: 'Khởi tạo 34 Không gian UI/UX...' },
+    { p: 0, text: 'Khởi tạo 37 Không gian UI/UX...' },
     { p: 35, text: 'Nạp đồ họa Three.js & WebGL Shaders...' },
-    { p: 70, text: 'Đồng bộ hóa 34 Live Masterpieces...' },
+    { p: 70, text: 'Đồng bộ hóa 37 Live Masterpieces...' },
     { p: 95, text: 'Hoàn tất • Chào mừng bạn!' }
   ];
 
@@ -401,7 +401,7 @@ function initStats() {
 }
 
 /* ============================================================
-   5. RENDER 34 PROJECT CARDS (With Specular Glare & 3D Tilt)
+   5. RENDER 37 PROJECT CARDS (With Specular Glare & 3D Tilt)
    ============================================================ */
 function renderProjects(projects) {
   const grid = document.getElementById('projectsGrid');

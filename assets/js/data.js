@@ -517,5 +517,53 @@ window.PROJECTS_DATA = [
     preview: "signal-login/preview.gif",
     stats: { lines: "470 lines", difficulty: "Expert" },
     featured: true
+  },
+  {
+    id: 35,
+    name: "Vesper.ai",
+    slug: "vesper-ai",
+    category: "landing",
+    domain: "Hạ tầng AI / Operational AI Infrastructure",
+    badge: "Pure Black Single-Viewport",
+    tags: ["Single-file HTML/CSS/JS", "Inter & Instrument Serif", "CloudFront Video", "Liquid-Metal Pills", "Staggered Entrance"],
+    desc: "Single-viewport landing page thuần sắc đen #000000 cho nền tảng Vesper.ai. Video nền CloudFront tràn viền 100% không overlay, typography Inter kết hợp Instrument Serif nghiêng, thanh điều hướng dạng viên nang kim loại lỏng (liquid-metal pills), nút CTA hiệu ứng ánh kim lướt qua, và 3 chỉ số vận hành tinh gọn.",
+    icon: "sparkles",
+    accent: "#9a9a9a",
+    gradient: "from-zinc-400/20 via-neutral-600/15 to-transparent",
+    preview: "vesper-ai/preview.gif",
+    stats: { lines: "410 lines", difficulty: "Intermediate" },
+    featured: true
+  },
+  {
+    id: 36,
+    name: "Mainframe®",
+    slug: "mainframe-hero",
+    category: "landing",
+    domain: "Creative Agency / Hero Landing",
+    badge: "Mouse-Scrub Video Hero",
+    tags: ["React + Vite + Tailwind", "Helvetica Now Display", "Mouse-Scrub Video", "A.R.I.A Agent", "Action Pills"],
+    desc: "Full-screen hero landing page cho Creative Agency 'Mainframe'. Background video CloudFront điều khiển tua theo cử động chuột ngang (mouse-scrub), typography Helvetica Now Display, A.R.I.A AI agent typewriter effect, hệ thống nút action pills linh hoạt với tính năng copy email 1 chạm.",
+    icon: "sparkles",
+    accent: "#000000",
+    gradient: "from-neutral-800/20 via-zinc-700/15 to-transparent",
+    preview: "mainframe-hero/preview.gif",
+    stats: { lines: "280 lines", difficulty: "Advanced" },
+    featured: true
+  },
+  {
+    id: 37,
+    name: "Marcus — Bennet",
+    slug: "marcus-bennet",
+    category: "portfolio",
+    domain: "Portfolio / Visuals Composer & Digital Crafter",
+    badge: "Editorial Cutout Portfolio",
+    tags: ["React + Vite + Tailwind", "Helvetica Neue ME", "Infinite Dual Marquee", "Cutout Layering", "Mobile Slide Drawer"],
+    desc: "Single full-viewport portfolio hero chuẩn thiết kế editorial cao cấp cho Visuals Composer Marcus Bennet. Typography Helvetica Neue ME, ảnh chân dung cutout xếp lớp đè lên marquee cuộn vô tận 30s, đường phân cách cream mở rộng và thanh điều hướng mobile trượt mượt mà.",
+    icon: "sparkles",
+    accent: "#efeee9",
+    gradient: "from-stone-500/20 via-neutral-600/15 to-transparent",
+    preview: "marcus-bennet/preview.gif",
+    stats: { lines: "260 lines", difficulty: "Advanced" },
+    featured: true
   }
 ];
