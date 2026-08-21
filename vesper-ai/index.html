@@ -949,7 +949,10 @@
   <div class="grain"></div>
 
   <div class="hero-photo">
-    <video autoplay muted loop playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260818_072341_50851634-bbc3-4c33-9acc-7647d4db44aa.mp4"></video>
+    <video id="hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="background.mp4" type="video/mp4">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260818_072341_50851634-bbc3-4c33-9acc-7647d4db44aa.mp4" type="video/mp4">
+    </video>
   </div>
 
   <div class="page">
@@ -1073,6 +1076,25 @@
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const appears = document.querySelectorAll('.appear');
       const heroPhoto = document.querySelector('.hero-photo');
+      const heroVideo = document.getElementById('hero-video');
+
+      // Video auto-start guarantee
+      if (heroVideo) {
+        heroVideo.muted = true;
+        const playPromise = heroVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(function() {
+            // Autoplay policy fallback: try again on first interaction
+            const resumeVideo = function() {
+              heroVideo.play();
+              window.removeEventListener('click', resumeVideo);
+              window.removeEventListener('touchstart', resumeVideo);
+            };
+            window.addEventListener('click', resumeVideo, { once: true });
+            window.addEventListener('touchstart', resumeVideo, { once: true });
+          });
+        }
+      }
 
       if (heroPhoto) {
         heroPhoto.addEventListener('animationend', function() {
@@ -1088,36 +1110,17 @@
         }, { once: true });
       });
 
-      // Animation fallback after 2 rAFs
-      requestAnimationFrame(function() {
-        requestAnimationFrame(function() {
-          if (prefersReducedMotion) {
-            document.querySelectorAll('.appear, .hero-photo, .badge-star, .headline em').forEach(function(el) {
-              el.classList.add('is-in');
-            });
-            return;
-          }
-          let running = false;
-          appears.forEach(function(el) {
-            if (typeof el.getAnimations === 'function') {
-              const anims = el.getAnimations();
-              if (anims.some(function(a) { return a.playState === 'running' || a.playState === 'finished'; })) {
-                running = true;
-              }
-            }
-          });
-          if (!running && appears.length > 0) {
-            appears.forEach(function(el) { el.classList.add('is-in'); });
-            if (heroPhoto) heroPhoto.classList.add('is-in');
-          }
+      if (prefersReducedMotion) {
+        document.querySelectorAll('.appear, .hero-photo, .badge-star, .headline em').forEach(function(el) {
+          el.classList.add('is-in');
         });
-      });
-
-      // Safety timeout
-      setTimeout(function() {
-        appears.forEach(function(el) { el.classList.add('is-in'); });
-        if (heroPhoto) heroPhoto.classList.add('is-in');
-      }, 3500);
+      } else {
+        // Fallback safety: cleanup animations after maximum possible delay + duration (2.8s)
+        setTimeout(function() {
+          appears.forEach(function(el) { el.classList.add('is-in'); });
+          if (heroPhoto) heroPhoto.classList.add('is-in');
+        }, 2800);
+      }
 
       // Mobile Menu Interactions
       const burger = document.getElementById('burger-btn');
