@@ -2374,7 +2374,7 @@ function initStats() {
 }
 
 /* ============================================================
-   5. RENDER 34 PROJECT CARDS (With Specular Glare & 3D Tilt)
+   5. RENDER 37 PROJECT CARDS (With Specular Glare & 3D Tilt)
    ============================================================ */
 function renderProjects(projects) {
   const grid = document.getElementById('projectsGrid');
@@ -2399,7 +2399,7 @@ function renderProjects(projects) {
 
     const isInitialBatch = idx < 6;
     const previewHtml = p.preview
-      ? `<img src="${p.preview}" onerror="if(!this.dataset.triedFallback){this.dataset.triedFallback='1';this.src='${safeSlug}/preview.gif';}" alt="${safeName} preview" loading="${isInitialBatch ? 'eager' : 'lazy'}" decoding="async" fetchpriority="${idx < 3 ? 'high' : 'auto'}" />`
+      ? `<img src="${p.preview}" onerror="if(!this.dataset.triedFallback){this.dataset.triedFallback='1';this.src='https://raw.githubusercontent.com/datjpro/AI-Prompts/main/${safeSlug}/preview.webp';}" alt="${safeName} preview" loading="${isInitialBatch ? 'eager' : 'lazy'}" decoding="async" fetchpriority="${idx < 3 ? 'high' : 'auto'}" />`
       : `<div class="card-preview-placeholder">${escapeHtml(p.icon ?? '⚡')}</div>`;
 
     return `

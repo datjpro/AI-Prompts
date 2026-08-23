@@ -167,25 +167,18 @@ async function capturePreview(projectSlug, customPort = 5300, width = 1464, heig
   }
 
   const targetWebp = path.join(projectPath, 'preview.webp');
-  const targetGif = path.join(projectPath, 'preview.gif');
   const publicDir = path.join(projectPath, 'public');
   const publicWebp = path.join(publicDir, 'preview.webp');
-  const publicGif = path.join(publicDir, 'preview.gif');
 
   console.log(`[FFmpeg] Compiling preview.webp for "${projectSlug}"...`);
   const ffmpegWebpCmd = `ffmpeg -y -framerate 10 -i "${path.join(framesDir, 'frame_%03d.png')}" -vf "scale=800:-1:flags=lanczos" -vcodec libwebp -lossless 0 -compression_level 4 -q:v 75 -loop 0 "${targetWebp}"`;
   execSync(ffmpegWebpCmd, { stdio: 'ignore' });
 
-  console.log(`[FFmpeg] Compiling preview.gif for "${projectSlug}"...`);
-  const ffmpegGifCmd = `ffmpeg -y -framerate 10 -i "${path.join(framesDir, 'frame_%03d.png')}" -vf "scale=800:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" "${targetGif}"`;
-  execSync(ffmpegGifCmd, { stdio: 'ignore' });
-
   if (fs.existsSync(publicDir)) {
     fs.copyFileSync(targetWebp, publicWebp);
-    fs.copyFileSync(targetGif, publicGif);
   }
 
-  console.log(`[Success] preview.webp & preview.gif created for ${projectSlug}`);
+  console.log(`[Success] preview.webp created for ${projectSlug}`);
   fs.rmSync(framesDir, { recursive: true, force: true });
 }
 
