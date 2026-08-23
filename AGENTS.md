@@ -10,12 +10,12 @@ Tệp tài liệu này quy định các quy tắc hoạt động, quy trình ki�
 
 * **Tệp Prompt**: Đặt ở thư mục gốc dưới dạng `<project-name>.txt` (sử dụng `kebab-case`).
 * **Thư mục Ứng dụng**: Đặt ở thư mục gốc dưới dạng `<project-name>/` (sử dụng `kebab-case` trùng tên hoàn toàn với tệp prompt).
-* **Tệp GIF Demo (BẮT BUỘC BẰNG MỌI GIÁ)**: Mọi thư mục ứng dụng **BẮT BUỘC** phải sở hữu 1 tệp GIF xem trước giao diện động riêng biệt tại `<project-name>/preview.gif` (và `<project-name>/public/preview.gif`), được chụp/render trực tiếp từ chính giao diện ứng dụng đang hoạt động của dự án đó (tuyệt đối không dùng lại GIF của dự án khác). Đồng thời BẮT BUỘC phải đăng ký đường dẫn `preview: "<project-name>/preview.gif"` trong mảng `projects` của tệp `index.html` để hiển thị trên Live Showcase Hub.
+* **Tệp Ảnh Động Demo WebP (BẮT BUỘC BẰNG MỌI GIÁ)**: Mọi thư mục ứng dụng **BẮT BUỘC** phải sở hữu 1 tệp ảnh động xem trước giao diện tại `<project-name>/preview.webp` (và `<project-name>/public/preview.webp`), được chụp/render trực tiếp từ chính giao diện ứng dụng đang hoạt động của dự án đó (tiết kiệm ~80% dung lượng và màu 24-bit sắc nét so với GIF). Đồng thời BẮT BUỘC phải đăng ký đường dẫn `preview: "<project-name>/preview.webp"` trong mảng `projects` của tệp `index.html` để hiển thị trên Live Showcase Hub.
 
 *Ví dụ:*
 - Tệp Prompt: `wandor-travel.txt`
 - Thư mục dự án: `wandor-travel/`
-- Tệp GIF xem trước: `wandor-travel/preview.gif`
+- Tệp WebP xem trước: `wandor-travel/preview.webp`
 
 ---
 
@@ -97,10 +97,10 @@ Khi người dùng yêu cầu thêm Prompt/Ứng dụng mới, Agent thực hi�
    - Khi thêm dự án mới: `feat(<project-name>): add <Project Name> prompt & application`
    - Khi sửa đổi dự án: `fix(<project-name>): <nội dung sửa>` hoặc `refactor(<project-name>): <nội dung>`
    - Khi cập nhật tài liệu: `docs: update AGENTS.md & README.md for <project-name>`
-3. **BẮT BUỘC CHẠY DEMO & CHỜ USER DUYỆT TRƯỚC KHIN COMMIT**:
+3. **BẮT BUỘC CHẠY DEMO & CHỜ USER DUYỆT TRƯỚC KHI COMMIT**:
    - AI Agent **TUYỆT ĐỐI KHÔNG TỰ Ý COMMIT** code ngay sau khi tạo/chỉnh sửa dự án.
    - AI Agent **BẮT BUỘC** phải chạy server demo local (ví dụ `npm run dev`), thông báo cho người dùng xem và duyệt giao diện web.
-   - Chỉ khi Người dùng xem demo và phản hồi **đồng ý/duyệt**, Agent mới được thực hiện tạo `preview.gif`, cập nhật tài liệu (`AGENTS.md`, `README.md`), `git commit` và `git push`.
+   - Chỉ khi Người dùng xem demo và phản hồi **đồng ý/duyệt**, Agent mới được thực hiện tạo `preview.webp`, cập nhật tài liệu (`AGENTS.md`, `README.md`), `git commit` và `git push`.
 
 ### 🔄 Quy trình 6 Bước cho AI Agent khi thêm Prompt mới:
 
@@ -116,13 +116,13 @@ npx -y create-vite@latest <project-name> --template react-ts
 npm run dev
 # (Dừng tại đây, gửi link local demo cho User kiểm tra và CHỜ USER DUYỆT)
 
-# Bước 4: Sau khi User ĐỒNG Ý/DUYỆT, tạo tệp preview.gif demo giao diện thực tế
+# Bước 4: Sau khi User ĐỒNG Ý/DUYỆT, tạo tệp preview.webp demo giao diện thực tế
 # (Sử dụng script tự động chụp giao diện ứng dụng web đang hoạt động:)
 node scripts/capture-preview.js <project-name> [port]
 
-# Bước 5: Thêm vào Git cho riêng dự án đó (bao gồm tệp prompt, ứng dụng & preview.gif)
+# Bước 5: Thêm vào Git cho riêng dự án đó (bao gồm tệp prompt, ứng dụng & preview.webp)
 git add <project-name>.txt <project-name>/
-git commit -m "feat(<project-name>): add <Project Name> prompt, application & preview GIF"
+git commit -m "feat(<project-name>): add <Project Name> prompt, application & preview WebP"
 
 # Bước 6: Cập nhật AGENTS.md và README.md, commit và push lên GitHub
 git add AGENTS.md README.md index.html
@@ -132,9 +132,9 @@ git push origin main
 
 ---
 
-## 🎬 5. Công cụ Tự động Chụp GIF Giao diện Web (`scripts/capture-preview.js`)
+## 🎬 5. Công cụ Tự động Chụp WebP Giao diện Web (`scripts/capture-preview.js`)
 
-Để đảm bảo mọi tệp `preview.gif` đều được quay từ giao diện thực tế của ứng dụng Web (bao gồm UI, typography, nút bấm, glass card và video background), dự án cung cấp sẵn script chuyên dụng tại `scripts/capture-preview.js`.
+Để đảm bảo mọi tệp `preview.webp` đều được quay từ giao diện thực tế của ứng dụng Web (bao gồm UI, typography, nút bấm, glass card và video background với chuẩn 24-bit màu sắc siêu nhẹ), dự án cung cấp sẵn script chuyên dụng tại `scripts/capture-preview.js`.
 
 ### 📌 Cú pháp Sử dụng:
 ```bash
@@ -143,10 +143,10 @@ node scripts/capture-preview.js <project-name> [port] [viewportWidth] [viewportH
 
 ### 💡 Ví dụ:
 ```bash
-# Tạo GIF cho dự án vantage-landing (đang chạy ở port 5173)
+# Tạo WebP cho dự án vantage-landing (đang chạy ở port 5173)
 node scripts/capture-preview.js vantage-landing 5173
 
-# Tạo GIF cho dự án next-layer-ai (đang chạy ở port 5174)
+# Tạo WebP cho dự án next-layer-ai (đang chạy ở port 5174)
 node scripts/capture-preview.js next-layer-ai 5174
 ```
 
@@ -155,7 +155,7 @@ node scripts/capture-preview.js next-layer-ai 5174
 2. Sử dụng Playwright Chromium headless mở giao diện chuẩn kích thước viewport (1487x1058 hoặc tùy chỉnh).
 3. Đợi 1000ms cho các hiệu ứng entrance motion ổn định.
 4. Chụp liên tiếp 30 khung hình PNG (3 giây ở 10 FPS).
-5. Tự động dùng `ffmpeg` ghép các khung hình thành `preview.gif` tối ưu palette màu và sao chép tự động sang cả `<project-name>/preview.gif` và `<project-name>/public/preview.gif`.
+5. Tự động dùng `ffmpeg` ghép các khung hình thành `preview.webp` (24-bit TrueColor, nén tối ưu giảm ~80% dung lượng) và sao chép tự động sang cả `<project-name>/preview.webp` và `<project-name>/public/preview.webp`.
 
 
 ---

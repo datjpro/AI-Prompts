@@ -13,6 +13,7 @@ const mimeTypes = {
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.gif': 'image/gif',
+  '.webp': 'image/webp',
   '.svg': 'image/svg+xml',
   '.txt': 'text/plain; charset=utf-8',
   '.mp4': 'video/mp4',
