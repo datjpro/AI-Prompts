@@ -2003,6 +2003,13 @@ function initApp() {
 
   // 9. Scroll Progress
   initScrollProgress();
+
+  // 10. Register PWA Service Worker for instant offline cache
+  if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    });
+  }
 }
 
 if (document.readyState === 'loading') {
@@ -2153,11 +2160,16 @@ function initThreeGalaxy() {
   const container = document.getElementById('threeCanvas');
   if (!container || typeof THREE === 'undefined') return;
 
+  const isMobile = window.innerWidth < 768;
+  const isLowCore = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   const scene    = new THREE.Scene();
   const camera   = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: !isMobile, powerPreference: 'high-performance' });
 
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  const pixelRatio = isMobile ? 1 : Math.min(window.devicePixelRatio, 1.25);
+  renderer.setPixelRatio(pixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setClearColor(0x000000, 0);
   container.appendChild(renderer.domElement);
@@ -2181,14 +2193,14 @@ function initThreeGalaxy() {
 
   const glowTexture = createGlowSprite();
 
-  const gridX = 55;
-  const gridZ = 55;
+  const gridX = isMobile || isLowCore || prefersReduced ? 32 : 48;
+  const gridZ = isMobile || isLowCore || prefersReduced ? 32 : 48;
   const numParticles = gridX * gridZ;
   const waveGeo = new THREE.BufferGeometry();
   const wavePos = new Float32Array(numParticles * 3);
   const waveCol = new Float32Array(numParticles * 3);
 
-  const spacing = 0.55;
+  const spacing = (55 * 0.55) / gridX;
   const offsetX = (gridX * spacing) / 2;
   const offsetZ = (gridZ * spacing) / 2;
 
@@ -2213,7 +2225,7 @@ function initThreeGalaxy() {
   waveGeo.setAttribute('color',    new THREE.BufferAttribute(waveCol, 3));
 
   const waveMat = new THREE.PointsMaterial({
-    size: 0.32,
+    size: isMobile ? 0.38 : 0.32,
     map: glowTexture,
     vertexColors: true,
     transparent: true,
@@ -2228,7 +2240,7 @@ function initThreeGalaxy() {
   waveMesh.rotation.x = 0.35;
   scene.add(waveMesh);
 
-  const starCount = 200;
+  const starCount = isMobile || isLowCore ? 80 : 160;
   const starGeo   = new THREE.BufferGeometry();
   const starPos   = new Float32Array(starCount * 3);
   const starCol   = new Float32Array(starCount * 3);
@@ -2517,22 +2529,24 @@ function initSearchFilter() {
   let activeCat = 'all';
   let searchTerm = '';
 
+  let filterRaf = null;
   const filter = () => {
-    const cards = document.querySelectorAll('.project-card');
-    let shown = 0;
-    cards.forEach((card) => {
-      const name   = card.dataset.name   ?? '';
-      const tags   = card.dataset.tags   ?? '';
-      const domain = card.dataset.domain ?? '';
-      const cat    = card.dataset.cat    ?? '';
-      const matchSearch = !searchTerm || name.includes(searchTerm) || tags.includes(searchTerm) || domain.includes(searchTerm);
-      const matchCat    = activeCat === 'all' || cat === activeCat;
-      const visible = matchSearch && matchCat;
-      card.style.display = visible ? '' : 'none';
-      if (visible) shown++;
+    if (filterRaf) cancelAnimationFrame(filterRaf);
+    filterRaf = requestAnimationFrame(() => {
+      const cards = document.querySelectorAll('.project-card');
+      let shown = 0;
+      cards.forEach((card) => {
+        const name   = card.dataset.name   ?? '';
+        const tags   = card.dataset.tags   ?? '';
+        const domain = card.dataset.domain ?? '';
+        const cat    = card.dataset.cat    ?? '';
+        const matchSearch = !searchTerm || name.includes(searchTerm) || tags.includes(searchTerm) || domain.includes(searchTerm);
+        const matchCat    = activeCat === 'all' || cat === activeCat;
+        const visible = matchSearch && matchCat;
+        card.style.display = visible ? '' : 'none';
+        if (visible) shown++;
+      });
     });
-    // Re-bind 3D tilt after filtering
-    init3DCardTilt();
   };
 
   if (searchInput) {
