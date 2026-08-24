@@ -1113,7 +1113,7 @@ html.lenis, html.lenis body {
         <span>AI-PROMPTS</span> <span class="text-cyan">SHOWCASE</span>
       </div>
       <div class="preloader-status" id="preloaderStatus">
-        Khởi tạo 37 Không gian UI/UX...
+        Khởi tạo 38 Không gian UI/UX...
       </div>
 
       <!-- Progress Bar & Percentage -->
@@ -2046,11 +2046,12 @@ function initPreloader() {
   const duration = 1400; // ms
   const interval = 20;
   const step = 100 / (duration / interval);
+  const totalCount = (window.PROJECTS_DATA || []).length || 38;
 
   const statuses = [
-    { p: 0, text: 'Khởi tạo 37 Không gian UI/UX...' },
+    { p: 0, text: `Khởi tạo ${totalCount} Không gian UI/UX...` },
     { p: 35, text: 'Nạp đồ họa Three.js & WebGL Shaders...' },
-    { p: 70, text: 'Đồng bộ hóa 37 Live Masterpieces...' },
+    { p: 70, text: `Đồng bộ hóa ${totalCount} Live Masterpieces...` },
     { p: 95, text: 'Hoàn tất • Chào mừng bạn!' }
   ];
 
