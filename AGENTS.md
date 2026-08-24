@@ -23,7 +23,7 @@ Tệp tài liệu này quy định các quy tắc hoạt động, quy trình ki�
 
 Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent **BẮT BUỘC** phải kiểm tra danh sách bên dưới để đảm bảo chủ đề/nhiệm vụ không bị trùng lặp với các dự án đã có.
 
-### 📋 Danh mục 38 Dự án Hiện có (Prompt Catalog Index):
+### 📋 Danh mục 39 Dự án Hiện có (Prompt Catalog Index):
 
 | STT | Project Name | Tệp Prompt | Thư mục Dự án | Lĩnh vực (Domain) | Đặc trưng UI/UX & Tính năng chính |
 |---|---|---|---|---|---|
@@ -65,6 +65,7 @@ Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent
 | 36 | **Mainframe** | `mainframe-hero.txt` | `mainframe-hero/` | Creative Agency / Hero Landing | Background video CloudFront mouse-scrubbed mượt mà, typography Helvetica Now Display, A.R.I.A AI agent typewriter effect, action pills với tính năng copy email một chạm |
 | 37 | **Marcus Bennet** | `marcus-bennet.txt` | `marcus-bennet/` | Portfolio / Editorial Hero | Single full-viewport portfolio, typography Helvetica Neue ME, background full-bleed, ảnh chân dung cutout xếp lớp đè lên marquee chạy vô tận 30s, đường phân cách cream mở rộng |
 | 38 | **Vectrus Energy** | `vectrus-energy.txt` | `vectrus-energy/` | Năng lượng & Tài nguyên / Scroll Tied Video | Standalone cinematic one-page 500vh scroll track, WebCodecs + MP4Box frame bank scrubbing & LRU ImageBitmap cache, typography Helvetica Neue ME, dynamic Dark/White color flip at p > 0.55, 3 sequential sections with stagger animations |
+| 39 | **Palomar Labs** | `palomar-landing.txt` | `palomar-landing/` | Hạ tầng AI / Unified LLM System | Single full-viewport video hero (100vh), typography Helvetica Neue Light kết hợp 5 display fonts cho hàng logo Backed by, navbar cố định chuyển nền khi cuộn, frosted announcement pill |
 
 
 

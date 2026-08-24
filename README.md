@@ -167,6 +167,10 @@ AI-Prompts/
 └── ⚡ Vectrus Energy - Scroll Tied Video Section
     ├── 📄 vectrus-energy.txt
     └── 📁 vectrus-energy/
+
+└── ▲ Palomar Labs - One Unified System for LLMs
+    ├── 📄 palomar-landing.txt
+    └── 📁 palomar-landing/
 ```
 
 ---
@@ -448,6 +452,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`vectrus-energy.txt`](./vectrus-energy.txt)
 * **Thư mục ứng dụng**: [`vectrus-energy/`](./vectrus-energy/)
 * **Mô tả**: Standalone cinematic one-page site 500vh scroll track cho Vectrus Energy xây dựng bằng React 18, TypeScript, Vite, Tailwind CSS, Lucide React và MP4Box + WebCodecs. Nổi bật với công nghệ trích xuất và giải mã khung hình video thời gian thực từ MP4 CloudFront lưu vào Frame Bank kèm bộ nhớ đệm ImageBitmap LRU Cache (`LRU_MAX = 24`), vòng lặp requestAnimationFrame tính toán Lerp mượt mà (`LERP_TAU = 8`), tự động chuyển màu thương hiệu (#1D3045 → White) khi cuộn qua phân đoạn video tối (`p > 0.55`), 3 phân đoạn nội dung hiển thị tuần tự với hiệu ứng Stagger mượt mà, và menu mobile toàn màn hình.
+
+---
+
+### 39. ▲ Palomar Labs — One Unified System for LLMs
+* **File Prompt**: [`palomar-landing.txt`](./palomar-landing.txt)
+* **Thư mục ứng dụng**: [`palomar-landing/`](./palomar-landing/)
+* **Mô tả**: Standalone pixel-accurate marketing landing page cho Palomar Labs xây dựng bằng React 18, TypeScript, Vite, Tailwind CSS và Lucide React. Nổi bật với background video CloudFront phong cảnh bao la tràn màn hình (100vh object-bottom), typography Helvetica Neue Light tinh tế kết hợp 5 font chữ display cho hàng logo Backed by (Playfair Display, Oswald, Montserrat, Roboto Slab, Raleway), fixed navbar chuyển nền khi cuộn và frosted announcement pill thanh lịch.
 
 ---
 
