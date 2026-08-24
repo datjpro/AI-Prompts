@@ -71,20 +71,23 @@ Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent
 
 ---
 
-## 🛡️ 3. Các Bước Kiểm tra Trùng lặp (Checklist cho AI Agent)
+## 🛡️ 3. Các Bước Kiểm tra Trùng lặp & Đăng ký Dự án Mới (Anti-Duplication & Catalog Protocol)
 
-Khi người dùng yêu cầu thêm Prompt/Ứng dụng mới, Agent thực hiện 3 bước kiểm tra:
+Khi người dùng yêu cầu thêm Prompt/Ứng dụng mới, Agent thực hiện 3 bước kiểm tra và quy trình đăng ký bắt buộc:
 
 1. **Kiểm tra Lĩnh vực (Domain Overlap Check)**:
-   - Ý tưởng mới có thuộc 12 lĩnh vực trên hay không?
-   - *Ví dụ*: Nếu người dùng yêu cầu làm "Ứng dụng đặt vé máy bay", Agent cần lưu ý là đã có `wandor-travel` và `space-travel-landing`. Agent cần định hướng tạo sự khác biệt rõ rệt (ví dụ: làm app "Tàu thủy / Du thuyền sang trọng" hoặc mở rộng dự án cũ).
+   - Ý tưởng mới có thuộc các lĩnh vực đã có hay không?
+   - *Ví dụ*: Nếu người dùng yêu cầu làm "Ứng dụng du lịch", Agent cần lưu ý là đã có `wandor-travel`, `space-travel-landing`, `mostar-city`. Agent cần định hướng tạo sự khác biệt rõ rệt hoặc mở rộng theo phong cách độc đáo.
 
 2. **Kiểm tra Tính năng & Component (Feature Overlap Check)**:
-   - Các linh kiện UI chính (Canvas 3D, Video Hero, Interactive Game, Command K Palette) đã có ở đâu chưa?
+   - Các linh kiện UI chính (Canvas 3D, Video Hero, Interactive Game, Command K Palette, WebCodecs Video Scrubbing) đã có ở đâu chưa?
    - Tránh tạo 2 dự án có giao diện và hành vi giống nhau đến >60%.
 
-3. **Cập nhật Chỉ mục**:
-   - Nếu Ý tưởng mới đạt tiêu chuẩn không trùng lặp, Agent **BẮT BUỘC** bổ sung hàng mới vào Bảng Chỉ mục ở mục 2 của tệp `AGENTS.md` này và tệp `README.md`.
+3. **Cập nhật Chỉ mục & Đăng ký Tự động vào Live Showcase (`index.html`) (BẮT BUỘC)**:
+   - **Tự động tăng số lượng dự án trong `index.html`**: Cập nhật thẻ meta description `<meta name="description" content="<N> kiệt tác giao diện Web UI/UX đỉnh cao...">` với `<N>` là tổng số lượng dự án mới nhất.
+   - **Đăng ký vào mảng `projects` trong `index.html`**: Thêm đầy đủ object thông tin dự án mới (`id`, `name`, `slug`, `category`, `domain`, `badge`, `tags`, `desc`, `icon`, `accent`, `gradient`, `preview: "<project-name>/preview.webp"`, `stats`, `featured`).
+   - **Thêm vào script chụp preview (`scripts/capture-preview.js`)**: Bổ sung `<project-name>` vào `ALL_PROJECTS` và `RECENT_PROJECTS`.
+   - **Cập nhật Chỉ mục tài liệu**: Bổ sung hàng mới vào Bảng Chỉ mục ở mục 2 của `AGENTS.md` (tăng số lượng trong tiêu đề mục) và tệp `README.md` (cả cây thư mục và mục mô tả chi tiết dự án).
 
 ---
 
@@ -97,11 +100,11 @@ Khi người dùng yêu cầu thêm Prompt/Ứng dụng mới, Agent thực hi�
 2. **Format Commit Message**:
    - Khi thêm dự án mới: `feat(<project-name>): add <Project Name> prompt & application`
    - Khi sửa đổi dự án: `fix(<project-name>): <nội dung sửa>` hoặc `refactor(<project-name>): <nội dung>`
-   - Khi cập nhật tài liệu: `docs: update AGENTS.md & README.md for <project-name>`
+   - Khi cập nhật tài liệu: `docs: update index.html, AGENTS.md and README.md index for <project-name>`
 3. **BẮT BUỘC CHẠY DEMO & CHỜ USER DUYỆT TRƯỚC KHI COMMIT**:
    - AI Agent **TUYỆT ĐỐI KHÔNG TỰ Ý COMMIT** code ngay sau khi tạo/chỉnh sửa dự án.
    - AI Agent **BẮT BUỘC** phải chạy server demo local (ví dụ `npm run dev`), thông báo cho người dùng xem và duyệt giao diện web.
-   - Chỉ khi Người dùng xem demo và phản hồi **đồng ý/duyệt**, Agent mới được thực hiện tạo `preview.webp`, cập nhật tài liệu (`AGENTS.md`, `README.md`), `git commit` và `git push`.
+   - Chỉ khi Người dùng xem demo và phản hồi **đồng ý/duyệt**, Agent mới được thực hiện tạo `preview.webp` (đảm bảo chuyển động động mượt mà), cập nhật tài liệu (`index.html`, `AGENTS.md`, `README.md`), `git commit` và `git push`.
 
 ### 🔄 Quy trình 6 Bước cho AI Agent khi thêm Prompt mới:
 
@@ -118,16 +121,16 @@ npm run dev
 # (Dừng tại đây, gửi link local demo cho User kiểm tra và CHỜ USER DUYỆT)
 
 # Bước 4: Sau khi User ĐỒNG Ý/DUYỆT, tạo tệp preview.webp demo giao diện thực tế
-# (Sử dụng script tự động chụp giao diện ứng dụng web đang hoạt động:)
+# (Sử dụng script tự động chụp giao diện ứng dụng web đang hoạt động - hỗ trợ cả cuộn và tương tác:)
 node scripts/capture-preview.js <project-name> [port]
 
 # Bước 5: Thêm vào Git cho riêng dự án đó (bao gồm tệp prompt, ứng dụng & preview.webp)
 git add <project-name>.txt <project-name>/
 git commit -m "feat(<project-name>): add <Project Name> prompt, application & preview WebP"
 
-# Bước 6: Cập nhật AGENTS.md và README.md, commit và push lên GitHub
-git add AGENTS.md README.md index.html
-git commit -m "docs: update AGENTS.md and README.md index for <project-name>"
+# Bước 6: Cập nhật index.html (tăng số lượng dự án & thêm vào mảng projects), AGENTS.md, README.md, scripts/capture-preview.js, commit và push lên GitHub
+git add index.html AGENTS.md README.md scripts/capture-preview.js
+git commit -m "docs: update index.html, AGENTS.md and README.md index for <project-name>"
 git push origin main
 ```
 

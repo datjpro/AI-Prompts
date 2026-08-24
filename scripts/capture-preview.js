@@ -150,14 +150,32 @@ async function capturePreview(projectSlug, customPort = 5300, width = 1464, heig
   const page = await context.newPage();
 
   try {
-    await page.goto(url, { waitUntil: 'networkidle', timeout: 15000 }).catch(() => {});
-    await page.waitForTimeout(1200);
+    await page.goto(url, { waitUntil: 'networkidle', timeout: 20000 }).catch(() => {});
+    await page.waitForTimeout(2500);
 
-    const numFrames = 30;
+    const scrollHeight = await page.evaluate(() => document.documentElement.scrollHeight - window.innerHeight);
+    const hasScroll = scrollHeight > 200;
+
+    const numFrames = 36;
     for (let i = 0; i < numFrames; i++) {
+      if (hasScroll) {
+        // Smoothly scroll through the entire page progression
+        const progress = i / (numFrames - 1);
+        await page.evaluate((p) => {
+          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+          window.scrollTo({ top: p * maxScroll, behavior: 'instant' });
+        }, progress);
+        await page.waitForTimeout(120);
+      } else {
+        // Move mouse across screen to trigger hover / mouse-scrub effects
+        const mouseX = Math.round((width * (i % 18)) / 18);
+        const mouseY = Math.round(height * 0.5 + Math.sin((i / numFrames) * Math.PI * 2) * 100);
+        await page.mouse.move(mouseX, mouseY);
+        await page.waitForTimeout(100);
+      }
+
       const framePath = path.join(framesDir, `frame_${String(i).padStart(3, '0')}.png`);
       await page.screenshot({ path: framePath });
-      await page.waitForTimeout(100);
     }
   } finally {
     await browser.close();
