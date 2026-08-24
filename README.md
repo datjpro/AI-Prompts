@@ -163,6 +163,10 @@ AI-Prompts/
 └── 👤 Marcus Bennet - Editorial Portfolio Hero
     ├── 📄 marcus-bennet.txt
     └── 📁 marcus-bennet/
+
+└── ⚡ Vectrus Energy - Scroll Tied Video Section
+    ├── 📄 vectrus-energy.txt
+    └── 📁 vectrus-energy/
 ```
 
 ---
@@ -437,6 +441,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`marcus-bennet.txt`](./marcus-bennet.txt)
 * **Thư mục ứng dụng**: [`marcus-bennet/`](./marcus-bennet/)
 * **Mô tả**: Single full-viewport portfolio hero chuẩn thiết kế editorial cao cấp cho Visuals Composer Marcus Bennet xây dựng bằng React 18, TypeScript, Vite, Tailwind CSS và Lucide React. Nổi bật với typography Helvetica Neue ME, hệ thống phân lớp z-index chính xác với background full-bleed nghệ thuật, dòng chữ khổng lồ marquee cuộn liên tục 30s (`translateX(0)` → `translateX(-50%)`), ảnh chân dung cutout xếp lớp nổi đè lên trên chữ, đường kẻ cream mở rộng từ trái sang phải, cùng menu drawer mobile trượt chuyển cảnh mượt mà với hiệu ứng mở so le (staggered delay).
+
+---
+
+### 38. ⚡ Vectrus Energy — Scroll Tied Video Section
+* **File Prompt**: [`vectrus-energy.txt`](./vectrus-energy.txt)
+* **Thư mục ứng dụng**: [`vectrus-energy/`](./vectrus-energy/)
+* **Mô tả**: Standalone cinematic one-page site 500vh scroll track cho Vectrus Energy xây dựng bằng React 18, TypeScript, Vite, Tailwind CSS, Lucide React và MP4Box + WebCodecs. Nổi bật với công nghệ trích xuất và giải mã khung hình video thời gian thực từ MP4 CloudFront lưu vào Frame Bank kèm bộ nhớ đệm ImageBitmap LRU Cache (`LRU_MAX = 24`), vòng lặp requestAnimationFrame tính toán Lerp mượt mà (`LERP_TAU = 8`), tự động chuyển màu thương hiệu (#1D3045 → White) khi cuộn qua phân đoạn video tối (`p > 0.55`), 3 phân đoạn nội dung hiển thị tuần tự với hiệu ứng Stagger mượt mà, và menu mobile toàn màn hình.
 
 ---
 
