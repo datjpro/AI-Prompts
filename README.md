@@ -171,6 +171,10 @@ AI-Prompts/
 └── ▲ Palomar Labs - One Unified System for LLMs
     ├── 📄 palomar-landing.txt
     └── 📁 palomar-landing/
+
+└── 🏎️ VEYRA - Interactive Electric Vehicle Design Study
+    ├── 📄 veyra-interactive-car.txt
+    └── 📁 veyra-interactive-car/
 ```
 
 ---
@@ -187,7 +191,7 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 
 ---
 
-## 📑 Danh sách Chi tiết 32 Dự án (Detailed Project Breakdown)
+## 📑 Danh sách Chi tiết 40 Dự án (Detailed Project Breakdown)
 
 ### 1. ✈️ Wandor — AI Trip Planner
 * **File Prompt**: [`wandor-travel.txt`](./wandor-travel.txt)
@@ -459,6 +463,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`palomar-landing.txt`](./palomar-landing.txt)
 * **Thư mục ứng dụng**: [`palomar-landing/`](./palomar-landing/)
 * **Mô tả**: Standalone pixel-accurate marketing landing page cho Palomar Labs xây dựng bằng React 18, TypeScript, Vite, Tailwind CSS và Lucide React. Nổi bật với background video CloudFront phong cảnh bao la tràn màn hình (100vh object-bottom), typography Helvetica Neue Light tinh tế kết hợp 5 font chữ display cho hàng logo Backed by (Playfair Display, Oswald, Montserrat, Roboto Slab, Raleway), fixed navbar chuyển nền khi cuộn và frosted announcement pill thanh lịch.
+
+---
+
+### 40. 🏎️ VEYRA — Interactive Electric Vehicle Design Study
+* **File Prompt**: [`veyra-interactive-car.txt`](./veyra-interactive-car.txt)
+* **Thư mục ứng dụng**: [`veyra-interactive-car/`](./veyra-interactive-car/)
+* **Mô tả**: Interactive automotive design study cho mẫu xe điện độc lập VEYRA của Amir Mušić, xây dựng bằng React 18, TypeScript, Vite, Tailwind CSS và Lucide React. Sở hữu khung hình chuẩn 1672:941 và 4 điểm hotspot tương tác: mở nắp capo và xuyên thấu khối pin thông qua cơ chế Hover Video giải mã trực tiếp lên HTML5 Canvas 60fps, bộ dock chuyển đổi màu sơn (5 màu) và mâm xe (3 kiểu), cùng 2 chế độ Technical Cutaway xem cận cảnh mặt cắt động cơ điện & kiến trúc pin kèm các điểm chú thích kỹ thuật chi tiết.
 
 ---
 
