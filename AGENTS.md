@@ -23,7 +23,7 @@ Tệp tài liệu này quy định các quy tắc hoạt động, quy trình ki�
 
 Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent **BẮT BUỘC** phải kiểm tra danh sách bên dưới để đảm bảo chủ đề/nhiệm vụ không bị trùng lặp với các dự án đã có.
 
-### 📋 Danh mục 40 Dự án Hiện có (Prompt Catalog Index):
+### 📋 Danh mục 41 Dự án Hiện có (Prompt Catalog Index):
 
 | STT | Project Name | Tệp Prompt | Thư mục Dự án | Lĩnh vực (Domain) | Đặc trưng UI/UX & Tính năng chính |
 |---|---|---|---|---|---|
@@ -67,6 +67,7 @@ Trước khi khởi tạo bất kỳ Prompt hoặc Dự án mới nào, AI Agent
 | 38 | **Vectrus Energy** | `vectrus-energy.txt` | `vectrus-energy/` | Năng lượng & Tài nguyên / Scroll Tied Video | Standalone cinematic one-page 500vh scroll track, WebCodecs + MP4Box frame bank scrubbing & LRU ImageBitmap cache, typography Helvetica Neue ME, dynamic Dark/White color flip at p > 0.55, 3 sequential sections with stagger animations |
 | 39 | **Palomar Labs** | `palomar-landing.txt` | `palomar-landing/` | Hạ tầng AI / Unified LLM System | Single full-viewport video hero (100vh), typography Helvetica Neue Light kết hợp 5 display fonts cho hàng logo Backed by, navbar cố định chuyển nền khi cuộn, frosted announcement pill |
 | 40 | **VEYRA** | `veyra-interactive-car.txt` | `veyra-interactive-car/` | Thiết kế Ô tô Điện / Automotive Study | Interactive scene xe điện, 4 điểm tương tác mở nắp capo & xuyên thấu pin qua Hover Canvas Video 60fps, bộ chọn màu sơn & mâm xe, 2 chế độ Technical Cutaway |
+| 41 | **Vertex Shops** | `vertex-shops.txt` | `vertex-shops/` | E-Commerce SaaS / 3D Cylinder Showcase | Vòng xoay 3D perspective 37 thẻ sản phẩm (R=891px, cull 42°), browser mock phủ lớp trước, badge viền kim loại pixel contract, hiệu ứng glow nút bấm |
 
 
 

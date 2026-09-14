@@ -27,14 +27,15 @@ const ALL_PROJECTS = [
   'marcus-bennet',
   'vectrus-energy',
   'palomar-landing',
-  'veyra-interactive-car'
+  'veyra-interactive-car',
+  'vertex-shops'
 ];
 
 const RECENT_PROJECTS = [
   'kollektiva', 'vantage-landing', 'next-layer-ai', 'forma-contact', 'evolve-ai',
   'nexum-hero', 'epoch-hero', 'apogee-hero', 'lumen-index', 'signal-login',
   'vesper-ai', 'mainframe-hero', 'marcus-bennet', 'vectrus-energy', 'palomar-landing',
-  'veyra-interactive-car'
+  'veyra-interactive-car', 'vertex-shops'
 ];
 
 // Helper to serve static folder if pure HTML

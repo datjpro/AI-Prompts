@@ -8,7 +8,7 @@ Bộ sưu tập các dự án Giao diện Web (Frontend Web Applications) cao c�
 
 🌐 **Live Demo Hub**: Xem trực tuyến tất cả giao diện tại [GitHub Pages Live Showcase Hub](https://datjpro.github.io/AI-Prompts/)
 
-Repository này chứa **37 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
+Repository này chứa **41 dự án web hoàn chỉnh** đi kèm với các **tệp tin Prompt chi tiết (.txt)** tương ứng được chuẩn hóa tên gọi 1-1 với thư mục dự án:
 
 ```
 AI-Prompts/
@@ -100,15 +100,15 @@ AI-Prompts/
     ├── 📄 dehelpers-hero.txt
     └── 📁 dehelpers-hero/
 
-└── ⛔ Void 404 - Cinematic Full-Viewport 404 Error Page
+└── 🕳️ Void 404 - Full-Viewport Cinematic 404 Page
     ├── 📄 void-404.txt
     └── 📁 void-404/
 
-└── 🎙️ ECHOID - Voice Identity Product Hero Landing
+└── 🎙️ ECHOID - Voice Identity Protocol Hero
     ├── 📄 echoid-voice.txt
     └── 📁 echoid-voice/
 
-└── 🧠 SynapseX - Neural-AI Interface Landing
+└── 🧠 SynapseX - Neural-AI Interface Landing Page
     ├── 📄 synapsex-landing.txt
     └── 📁 synapsex-landing/
 
@@ -116,23 +116,23 @@ AI-Prompts/
     ├── 📄 kollektiva.txt
     └── 📁 kollektiva/
 
-└── 📊 Vantage - Stop Digging Through Dashboards Landing Page
+└── 📊 Vantage - Analytics & Signal Intelligence Landing
     ├── 📄 vantage-landing.txt
     └── 📁 vantage-landing/
 
-└── ⚡ Next Layer AI - The Next Layer of Intelligence Landing Page
+└── 🧬 Next Layer AI - AI Infrastructure Landing
     ├── 📄 next-layer-ai.txt
     └── 📁 next-layer-ai/
 
-└── ✉️ Forma Contact - Bold Ideas Contact Landing Page
+└── ✉️ Forma Contact - Agency Interactive Contact Landing
     ├── 📄 forma-contact.txt
     └── 📁 forma-contact/
 
-└── 🧠 Evolve AI - Intelligence Designed To Evolve Landing Page
+└── 🤖 Evolve AI - Self-Evolving AI Core Landing
     ├── 📄 evolve-ai.txt
     └── 📁 evolve-ai/
 
-└── ⚡ Nexum - AI-Ops Cinematic Hero Landing
+└── ⚡ Nexum - AI-Ops Operations Hero Landing
     ├── 📄 nexum-hero.txt
     └── 📁 nexum-hero/
 
@@ -160,7 +160,7 @@ AI-Prompts/
     ├── 📄 mainframe-hero.txt
     └── 📁 mainframe-hero/
 
-└── 👤 Marcus Bennet - Editorial Portfolio Hero
+└── 👤 Marcus Bennet - Editorial Cutout Portfolio Hero
     ├── 📄 marcus-bennet.txt
     └── 📁 marcus-bennet/
 
@@ -175,6 +175,10 @@ AI-Prompts/
 └── 🏎️ VEYRA - Interactive Electric Vehicle Design Study
     ├── 📄 veyra-interactive-car.txt
     └── 📁 veyra-interactive-car/
+
+└── 🛍️ Vertex Shops - 3D Cylinder E-Commerce SaaS Hero
+    ├── 📄 vertex-shops.txt
+    └── 📁 vertex-shops/
 ```
 
 ---
@@ -191,7 +195,7 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 
 ---
 
-## 📑 Danh sách Chi tiết 40 Dự án (Detailed Project Breakdown)
+## 📑 Danh sách Chi tiết 41 Dự án (Detailed Project Breakdown)
 
 ### 1. ✈️ Wandor — AI Trip Planner
 * **File Prompt**: [`wandor-travel.txt`](./wandor-travel.txt)
@@ -470,6 +474,13 @@ Tất cả các dự án trong repository đều sử dụng bộ công nghệ W
 * **File Prompt**: [`veyra-interactive-car.txt`](./veyra-interactive-car.txt)
 * **Thư mục ứng dụng**: [`veyra-interactive-car/`](./veyra-interactive-car/)
 * **Mô tả**: Interactive automotive design study cho mẫu xe điện độc lập VEYRA của Amir Mušić, xây dựng bằng React 18, TypeScript, Vite, Tailwind CSS và Lucide React. Sở hữu khung hình chuẩn 1672:941 và 4 điểm hotspot tương tác: mở nắp capo và xuyên thấu khối pin thông qua cơ chế Hover Video giải mã trực tiếp lên HTML5 Canvas 60fps, bộ dock chuyển đổi màu sơn (5 màu) và mâm xe (3 kiểu), cùng 2 chế độ Technical Cutaway xem cận cảnh mặt cắt động cơ điện & kiến trúc pin kèm các điểm chú thích kỹ thuật chi tiết.
+
+---
+
+### 41. 🛍️ Vertex Shops — 3D Cylinder E-Commerce SaaS Hero
+* **File Prompt**: [`vertex-shops.txt`](./vertex-shops.txt)
+* **Thư mục ứng dụng**: [`vertex-shops/`](./vertex-shops/)
+* **Mô tả**: Hero landing page dark-mode tự chứa (single-file HTML/CSS/JS không runtime ngoài) cho nền tảng thương mại điện tử Vertex Shops. Nổi bật với vòng xoay 3D perspective 37 thẻ sản phẩm theo hình trụ xoay mượt mà ($R=891\text{px}$, góc nhìn $891\text{px}$, cull $42^\circ$), thẻ browser mock phủ lớp trước với hiệu ứng phản chiếu, badge viền kim loại pixel contract, các nút bấm viền phát sáng chân nút chuẩn thiết kế, nền trời sao động hai lớp và timeline hoạt ảnh WAAPI so le sống động.
 
 ---
 
